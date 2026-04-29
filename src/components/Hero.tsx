@@ -3,7 +3,11 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Zap } from 'lucide-react';
 import './Hero.css';
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onOpenQuiz?: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
   return (
     <section className="hero-section">
       <div className="hero-bg-wrapper">
@@ -82,7 +86,7 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="hero-actions"
           >
-            <button className="btn btn-primary btn-glow">
+            <button className="btn btn-primary btn-glow" onClick={onOpenQuiz}>
               Build Your Agent <ArrowRight size={20} />
             </button>
             <button className="btn btn-secondary">

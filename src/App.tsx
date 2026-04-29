@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Hero from './components/Hero';
@@ -6,8 +6,11 @@ import ProblemSolution from './components/ProblemSolution';
 import Features from './components/Features';
 import Trust from './components/Trust';
 import Footer from './components/Footer';
+import QuizModal from './components/QuizModal';
 
 const App: React.FC = () => {
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
+
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
@@ -33,10 +36,20 @@ const App: React.FC = () => {
 
     requestAnimationFrame(raf);
 
+    // Pause scrolling when modal is open
+    if (isQuizOpen) {
+      lenis.stop();
+    } else {
+      lenis.start();
+    }
+
     return () => {
       lenis.destroy();
     };
-  }, []);
+  }, [isQuizOpen]);
+
+  const openQuiz = () => setIsQuizOpen(true);
+  const closeQuiz = () => setIsQuizOpen(false);
 
   return (
     <>
@@ -45,12 +58,13 @@ const App: React.FC = () => {
         style={{ scaleX }}
       />
       <main>
-        <Hero />
+        <Hero onOpenQuiz={openQuiz} />
         <ProblemSolution />
         <Features />
-        <Trust />
+        <Trust onOpenQuiz={openQuiz} />
       </main>
       <Footer />
+      <QuizModal isOpen={isQuizOpen} onClose={closeQuiz} />
     </>
   );
 }
