@@ -12,7 +12,11 @@ const techStack = [
   { icon: <Globe size={24} />, name: 'Omnichannel' },
 ];
 
-const Trust: React.FC = () => {
+interface TrustProps {
+  onOpenQuiz?: () => void;
+}
+
+const Trust: React.FC<TrustProps> = ({ onOpenQuiz }) => {
   return (
     <section className="section trust-section" id="trust">
       <div className="container">
@@ -54,7 +58,7 @@ const Trust: React.FC = () => {
             <p className="body-lg trust-desc">
               We aren't a faceless Silicon Valley agency. We are based right here in Arkansas, building custom automation tools for local businesses that want a competitive edge.
             </p>
-            <button className="btn btn-primary btn-glow mt-4">
+            <button className="btn btn-primary btn-glow mt-4" onClick={onOpenQuiz}>
               Book a Strategy Call
             </button>
           </motion.div>
