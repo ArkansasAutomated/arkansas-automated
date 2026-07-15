@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ArrowUpRight, MapPin } from 'lucide-react';
+import { useReveal } from '../lib/useReveal';
 import './LiveMarkets.css';
 
 const markets = [
@@ -34,16 +34,13 @@ const markets = [
 ];
 
 const LiveMarkets: React.FC = () => {
+  const headRef = useReveal<HTMLDivElement>();
+  const gridRef = useReveal<HTMLDivElement>();
+
   return (
     <section className="markets-section" id="markets">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-100px' }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="markets-header"
-        >
+        <div className="markets-header" ref={headRef}>
           <h2 className="heading-lg">
             One platform. <span className="accent">Real markets, live today.</span>
           </h2>
@@ -52,20 +49,16 @@ const LiveMarkets: React.FC = () => {
             capture homeowner demand, and route exclusive leads to local businesses. These
             are live and taking requests right now.
           </p>
-        </motion.div>
+        </div>
 
-        <div className="markets-grid">
-          {markets.map((m, i) => (
-            <motion.a
+        <div className="markets-grid" ref={gridRef}>
+          {markets.map((m) => (
+            <a
               key={m.host}
               href={m.url}
               target="_blank"
               rel="noopener noreferrer"
               className="market-card"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="market-card-top">
                 <span className={`market-tag market-tag-${m.tag.toLowerCase()}`}>{m.tag}</span>
@@ -77,23 +70,17 @@ const LiveMarkets: React.FC = () => {
               </div>
               <p className="market-blurb">{m.blurb}</p>
               <div className="market-host">{m.host}</div>
-            </motion.a>
+            </a>
           ))}
         </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="markets-footnote"
-        >
+        <p className="markets-footnote">
           More verticals and markets are rolling out across Arkansas.{' '}
           <a href="/list-your-business" className="markets-footnote-accent">
             List your business
           </a>{' '}
           to be part of them.
-        </motion.p>
+        </p>
       </div>
     </section>
   );

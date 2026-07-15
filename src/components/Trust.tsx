@@ -1,18 +1,15 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useReveal } from '../lib/useReveal';
 import './Trust.css';
 
 const Trust: React.FC = () => {
-  const reduce = useReducedMotion();
+  const leftRef = useReveal<HTMLDivElement>();
+  const listRef = useReveal<HTMLDivElement>();
+
   return (
     <section className="section trust-section" id="trust">
       <div className="container trust-grid">
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <div ref={leftRef}>
           <h2 className="heading-lg">
             Built in <span className="accent">Arkansas</span>, run in the open.
           </h2>
@@ -21,15 +18,9 @@ const Trust: React.FC = () => {
             property you see above, and the properties link back here. What we
             promise is what the platform actually does today, nothing more.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="trust-list"
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-        >
+        <div className="trust-list" ref={listRef}>
           <div className="trust-item">
             <h3>Real, live properties</h3>
             <p>
@@ -51,7 +42,7 @@ const Trust: React.FC = () => {
               local businesses that can take the job, never to marketing lists.
             </p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

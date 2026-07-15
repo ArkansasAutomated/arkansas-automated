@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
+import { useReveal } from '../lib/useReveal';
 import './HowItWorks.css';
 
 const steps = [
@@ -21,34 +21,23 @@ const steps = [
 ];
 
 const HowItWorks: React.FC = () => {
-  const reduce = useReducedMotion();
+  const headRef = useReveal<HTMLDivElement>();
+  const stepsRef = useReveal<HTMLDivElement>();
+
   return (
     <section className="section how-section" id="how">
       <div className="container">
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="how-header"
-        >
+        <div className="how-header" ref={headRef}>
           <h2 className="heading-lg">How the platform works</h2>
-        </motion.div>
+        </div>
 
-        <div className="how-steps">
-          {steps.map((s, i) => (
-            <motion.div
-              key={s.k}
-              className="how-step"
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            >
+        <div className="how-steps" ref={stepsRef}>
+          {steps.map((s) => (
+            <div key={s.k} className="how-step">
               <span className="how-k">{s.k}</span>
               <h3 className="heading-md">{s.h}</h3>
               <p>{s.p}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

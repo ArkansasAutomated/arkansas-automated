@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import { useReveal } from '../lib/useReveal';
 import './ForBusinesses.css';
 
 const points = [
@@ -19,17 +19,13 @@ const points = [
 ];
 
 const ForBusinesses: React.FC = () => {
-  const reduce = useReducedMotion();
+  const introRef = useReveal<HTMLDivElement>();
+  const pointsRef = useReveal<HTMLDivElement>();
+
   return (
     <section className="section forbiz-section" id="for-businesses">
       <div className="container forbiz-grid">
-        <motion.div
-          initial={reduce ? false : { opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="forbiz-intro"
-        >
+        <div className="forbiz-intro" ref={introRef}>
           <h2 className="heading-lg">
             Built for the businesses <span className="accent">doing the work</span>.
           </h2>
@@ -40,21 +36,14 @@ const ForBusinesses: React.FC = () => {
           <a className="btn btn-primary forbiz-cta" href="/list-your-business">
             List your business <ArrowRight size={18} />
           </a>
-        </motion.div>
+        </div>
 
-        <div className="forbiz-points">
-          {points.map((pt, i) => (
-            <motion.div
-              key={pt.h}
-              className="forbiz-point"
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            >
+        <div className="forbiz-points" ref={pointsRef}>
+          {points.map((pt) => (
+            <div key={pt.h} className="forbiz-point">
               <h3>{pt.h}</h3>
               <p>{pt.p}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
