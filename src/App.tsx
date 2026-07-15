@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Hero from './components/Hero';
+import LiveMarkets from './components/LiveMarkets';
 import ProblemSolution from './components/ProblemSolution';
 import Features from './components/Features';
 import Trust from './components/Trust';
@@ -59,6 +60,7 @@ const App: React.FC = () => {
       />
       <main>
         <Hero onOpenQuiz={openQuiz} />
+        <LiveMarkets />
         <ProblemSolution />
         <Features />
         <Trust onOpenQuiz={openQuiz} />

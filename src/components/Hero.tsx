@@ -58,7 +58,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
             className="hero-badge"
           >
             <Zap className="hero-badge-icon" size={16} />
-            <span>The Future of Arkansas Business</span>
+            <span>The Automated Local Platform for Arkansas</span>
           </motion.div>
           
           <motion.h1 
@@ -77,7 +77,7 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
             transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="body-lg hero-subtitle"
           >
-            We build custom AI agents and automation systems that help Arkansas businesses scale faster, cut costs, and dominate their local markets. Don't get left behind.
+            We build and run automated local directories that connect Arkansas homeowners with vetted local pros &mdash; and send local businesses real, exclusive leads. Live now across Fort Smith, the River Valley, and Northwest Arkansas.
           </motion.p>
           
           <motion.div 
@@ -86,11 +86,11 @@ const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
             transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
             className="hero-actions"
           >
-            <button className="btn btn-primary btn-glow" onClick={onOpenQuiz}>
-              Build Your Agent <ArrowRight size={20} />
-            </button>
-            <button className="btn btn-secondary">
-              See How It Works
+            <a className="btn btn-primary btn-glow" href="#markets">
+              Explore Live Markets <ArrowRight size={20} />
+            </a>
+            <button className="btn btn-secondary" onClick={onOpenQuiz}>
+              List Your Business
             </button>
           </motion.div>
         </div>
