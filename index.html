@@ -23,6 +23,41 @@
     <meta property="twitter:url" content="https://arkansasautomated.com/" />
     <meta property="twitter:title" content="Arkansas Automated | The Automated Local Platform for Arkansas" />
     <meta property="twitter:description" content="We build and operate local directories that turn search demand into real quote requests for Arkansas businesses." />
+
+    <!-- Measurement (privacy-respecting, no cookies, no PII).
+         1) First-party pageview beacon -> hub /api/public/pv (page_views table;
+            origin-allowlisted server-side, records domain/path/referrer only).
+         2) Vercel Web Analytics tag - silent 404 no-op until enabled on the
+            Vercel project (owner dashboard step). -->
+    <script>
+      (function () {
+        var HUB = "https://www.fortsmithdirectory.com/api/public/pv";
+        var first = true;
+        function pv() {
+          try {
+            fetch(HUB, {
+              method: "POST",
+              headers: { "Content-Type": "text/plain" },
+              body: JSON.stringify({
+                path: location.pathname,
+                referrer: first ? document.referrer || null : null,
+              }),
+              keepalive: true,
+            }).catch(function () {});
+          } catch (e) {}
+          first = false;
+        }
+        pv();
+        var push = history.pushState;
+        history.pushState = function () {
+          push.apply(this, arguments);
+          pv();
+        };
+        window.addEventListener("popstate", pv);
+      })();
+    </script>
+    <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+    <script defer src="/_vercel/insights/script.js"></script>
   </head>
   <body>
     <div id="root"></div>
