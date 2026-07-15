@@ -1,97 +1,52 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Zap } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import './Hero.css';
 
-interface HeroProps {
-  onOpenQuiz?: () => void;
-}
+const Hero: React.FC = () => {
+  const reduce = useReducedMotion();
+  const enter = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 28 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] as const },
+        };
 
-const Hero: React.FC<HeroProps> = ({ onOpenQuiz }) => {
   return (
     <section className="hero-section">
-      <div className="hero-bg-wrapper">
-        <img src="/hero-bg.png" alt="AI Network" className="hero-bg-image" />
-        <div className="hero-overlay"></div>
-      </div>
-      
-      {/* Floating Orbs for extra heat */}
-      <motion.div 
-        className="glow-cyan" 
-        style={{ top: '10%', left: '10%' }}
-        animate={{
-          y: [0, -50, 0],
-          x: [0, 30, 0],
-          scale: [1, 1.2, 1],
-          opacity: [0.15, 0.3, 0.15]
-        }}
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div 
-        className="glow-purple" 
-        style={{ bottom: '10%', right: '10%' }}
-        animate={{
-          y: [0, 50, 0],
-          x: [0, -30, 0],
-          scale: [1, 1.3, 1],
-          opacity: [0.15, 0.3, 0.15]
-        }}
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div 
-        className="glow-cyan" 
-        style={{ top: '40%', right: '30%', width: '150px', height: '150px' }}
-        animate={{
-          y: [0, -30, 0],
-          x: [0, -40, 0],
-          opacity: [0.1, 0.2, 0.1]
-        }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-      />
-      
+      <nav className="hero-nav container" aria-label="Main">
+        <a className="hero-brand" href="/">
+          Arkansas <span className="accent">Automated</span>
+        </a>
+        <div className="hero-nav-links">
+          <a href="#markets">Live markets</a>
+          <a href="#how">How it works</a>
+          <a className="btn btn-primary hero-nav-cta" href="/list-your-business">
+            List your business
+          </a>
+        </div>
+      </nav>
+
       <div className="container hero-container">
         <div className="hero-content">
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="hero-badge"
-          >
-            <Zap className="hero-badge-icon" size={16} />
-            <span>The Automated Local Platform for Arkansas</span>
-          </motion.div>
-          
-          <motion.h1 
-            initial={{ opacity: 0, y: 40, filter: 'blur(10px)' }}
-            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="heading-xl hero-title"
-          >
-            Automate <br />
-            <span className="text-gradient">Arkansas</span>
+          <motion.h1 className="heading-xl hero-title" {...enter(0.05)}>
+            The automated local platform for <span className="accent">Arkansas</span>.
           </motion.h1>
-          
-          <motion.p 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="body-lg hero-subtitle"
-          >
-            We build and run automated local directories that connect Arkansas homeowners with vetted local pros &mdash; and send local businesses real, exclusive leads. Live now across Fort Smith, the River Valley, and Northwest Arkansas.
+
+          <motion.p className="body-lg hero-subtitle" {...enter(0.18)}>
+            We build and operate local directories that turn search demand into
+            real quote requests for Arkansas businesses.
           </motion.p>
-          
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="hero-actions"
-          >
-            <a className="btn btn-primary btn-glow" href="#markets">
-              Explore Live Markets <ArrowRight size={20} />
+
+          <motion.div className="hero-actions" {...enter(0.3)}>
+            <a className="btn btn-primary" href="#markets">
+              Explore live markets <ArrowRight size={18} />
             </a>
-            <button className="btn btn-secondary" onClick={onOpenQuiz}>
-              List Your Business
-            </button>
+            <a className="btn btn-secondary" href="/list-your-business">
+              List your business
+            </a>
           </motion.div>
         </div>
       </div>

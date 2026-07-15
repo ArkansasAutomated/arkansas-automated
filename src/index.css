@@ -1,40 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600&display=swap');
-
+/*
+ * Arkansas Automated — design system (taste overhaul 2026-07-15).
+ *
+ * Obsidian base kept from the brand; the neon-rainbow layer removed.
+ * ONE accent (electric cyan), no purple, no glow-orb decoration, no
+ * gradient text. Fonts self-hosted via @fontsource (imported in main.tsx).
+ */
 :root {
-  /* Color Palette - Obsidian & Neon */
-  --bg-primary: #050505;
-  --bg-secondary: #0A0A0A;
-  --bg-tertiary: #141414;
-  
-  --accent-cyan: #00F0FF;
-  --accent-blue: #0055FF;
-  --accent-purple: #8A2BE2;
-  
-  --text-primary: #FFFFFF;
-  --text-secondary: #A0A0A0;
-  --text-muted: #666666;
-  
-  /* Typography */
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  
-  /* Spacing */
+  --bg-primary: #070809;
+  --bg-secondary: #0c0e10;
+  --bg-tertiary: #14171a;
+
+  --accent: #2ad8e6;
+  --accent-ink: #06282c;
+  --accent-soft: rgba(42, 216, 230, 0.08);
+  --accent-line: rgba(42, 216, 230, 0.35);
+
+  --text-primary: #f2f5f6;
+  --text-secondary: #9aa6ab;
+  --text-muted: #5d686d;
+
+  --line: rgba(255, 255, 255, 0.08);
+
+  --font-heading: 'Outfit', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
   --spacing-xs: 0.5rem;
   --spacing-sm: 1rem;
   --spacing-md: 2rem;
   --spacing-lg: 4rem;
-  --spacing-xl: 8rem;
-  
-  /* Radii */
+  --spacing-xl: 7rem;
+
   --radius-sm: 8px;
-  --radius-md: 16px;
-  --radius-lg: 24px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
   --radius-full: 9999px;
-  
-  /* Transitions */
-  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 * {
@@ -43,9 +45,10 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   width: 100%;
-  min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
@@ -58,9 +61,12 @@ html, body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.02em;
+  text-wrap: balance;
 }
+
+p { text-wrap: pretty; }
 
 a {
   color: inherit;
@@ -74,55 +80,34 @@ button {
   cursor: pointer;
 }
 
-/* Typography Utilities */
-.text-gradient {
-  background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple), var(--accent-blue), var(--accent-cyan));
-  background-size: 300% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-  animation: shine 4s linear infinite;
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
-@keyframes shine {
-  to {
-    background-position: 300% center;
-  }
-}
-
-.text-gradient-subtle {
-  background: linear-gradient(135deg, #ffffff, #a0a0a0);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  color: transparent;
-}
+/* Typography */
+.accent { color: var(--accent); }
 
 .heading-xl {
-  font-size: clamp(3rem, 8vw, 6rem);
+  font-size: clamp(2.8rem, 7vw, 5.2rem);
   font-weight: 800;
   letter-spacing: -0.03em;
 }
 
-.heading-lg {
-  font-size: clamp(2rem, 5vw, 4rem);
-}
+.heading-lg { font-size: clamp(2rem, 4.5vw, 3.4rem); }
 
-.heading-md {
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
-}
+.heading-md { font-size: clamp(1.4rem, 2.6vw, 2.1rem); }
 
 .body-lg {
-  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  font-size: clamp(1.075rem, 1.6vw, 1.2rem);
   color: var(--text-secondary);
 }
 
-/* Layout Utilities */
+/* Layout */
 .container {
-  max-width: 1440px;
+  max-width: 1280px;
   margin: 0 auto;
-  padding: 0 5%;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
 }
 
 .section {
@@ -130,39 +115,10 @@ button {
   position: relative;
 }
 
-/* Glassmorphism */
-.glass-panel {
-  background: rgba(20, 20, 20, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+.panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* Glow Effects */
-.glow-cyan {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: var(--accent-cyan);
-  filter: blur(150px);
-  border-radius: 50%;
-  opacity: 0.15;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.glow-purple {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  background: var(--accent-purple);
-  filter: blur(150px);
-  border-radius: 50%;
-  opacity: 0.15;
-  z-index: 0;
-  pointer-events: none;
 }
 
 /* Buttons */
@@ -171,81 +127,49 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 1rem 2rem;
+  padding: 0.95rem 1.9rem;
   border-radius: var(--radius-full);
   font-weight: 600;
-  font-size: 1.125rem;
-  transition: all var(--transition-normal);
-  position: relative;
-  overflow: hidden;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+  font-size: 1.05rem;
+  transition: transform var(--transition-fast), background var(--transition-fast),
+    border-color var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
 }
+
+.btn:active { transform: translateY(1px) scale(0.99); }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
-  color: #fff;
-  box-shadow: 0 0 20px rgba(0, 85, 255, 0.3);
-}
-
-.btn-glow {
-  animation: btn-pulse 3s infinite;
-}
-
-@keyframes btn-pulse {
-  0% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
-  50% { box-shadow: 0 0 40px rgba(0, 240, 255, 0.8), 0 0 20px rgba(138, 43, 226, 0.5); }
-  100% { box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); }
+  background: var(--accent);
+  color: var(--accent-ink);
 }
 
 .btn-primary:hover {
-  box-shadow: 0 0 40px rgba(0, 240, 255, 0.8);
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(42, 216, 230, 0.25);
 }
 
 .btn-secondary {
   background: transparent;
   color: var(--text-primary);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
 }
 
-/* Lenis standard setup */
-html.lenis, html.lenis body {
-  height: auto;
-}
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
 
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-smooth iframe {
-  pointer-events: none;
-}
-
-/* Scroll Progress */
-.scroll-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(to right, var(--accent-cyan), var(--accent-purple), var(--accent-blue));
-  background-size: 200% auto;
-  animation: shine 4s linear infinite;
-  transform-origin: 0%;
-  z-index: 9999;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

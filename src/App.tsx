@@ -1,27 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Lenis from 'lenis';
-import { motion, useScroll, useSpring } from 'framer-motion';
 import Hero from './components/Hero';
 import LiveMarkets from './components/LiveMarkets';
-import ProblemSolution from './components/ProblemSolution';
-import Features from './components/Features';
+import HowItWorks from './components/HowItWorks';
+import ForBusinesses from './components/ForBusinesses';
 import Trust from './components/Trust';
 import Footer from './components/Footer';
-import QuizModal from './components/QuizModal';
 
 const App: React.FC = () => {
-  const [isQuizOpen, setIsQuizOpen] = useState(false);
-
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
-
   useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
@@ -30,45 +21,31 @@ const App: React.FC = () => {
       touchMultiplier: 2,
     });
 
-    function raf(time: number) {
+    let raf = 0;
+    function loop(time: number) {
       lenis.raf(time);
-      requestAnimationFrame(raf);
+      raf = requestAnimationFrame(loop);
     }
-
-    requestAnimationFrame(raf);
-
-    // Pause scrolling when modal is open
-    if (isQuizOpen) {
-      lenis.stop();
-    } else {
-      lenis.start();
-    }
+    raf = requestAnimationFrame(loop);
 
     return () => {
+      cancelAnimationFrame(raf);
       lenis.destroy();
     };
-  }, [isQuizOpen]);
-
-  const openQuiz = () => setIsQuizOpen(true);
-  const closeQuiz = () => setIsQuizOpen(false);
+  }, []);
 
   return (
     <>
-      <motion.div
-        className="scroll-progress-bar"
-        style={{ scaleX }}
-      />
       <main>
-        <Hero onOpenQuiz={openQuiz} />
+        <Hero />
         <LiveMarkets />
-        <ProblemSolution />
-        <Features />
-        <Trust onOpenQuiz={openQuiz} />
+        <HowItWorks />
+        <ForBusinesses />
+        <Trust />
       </main>
       <Footer />
-      <QuizModal isOpen={isQuizOpen} onClose={closeQuiz} />
     </>
   );
-}
+};
 
 export default App;

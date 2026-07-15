@@ -10,7 +10,7 @@ const markets = [
     host: 'fortsmithdirectory.com',
     region: 'Fort Smith & the River Valley',
     blurb:
-      'The flagship hub. Vetted local pros across 11 service verticals — roofing, HVAC, moving, and more — each with its own landing site feeding one lead pipeline.',
+      'The flagship hub. Local pros across service verticals from roofing to HVAC to moving, each vertical with its own dedicated site feeding one lead pipeline.',
     tag: 'Hub',
   },
   {
@@ -19,7 +19,7 @@ const markets = [
     host: 'smarthomenwa.com',
     region: 'Northwest Arkansas',
     blurb:
-      'Smart-home automation for Fayetteville, Bentonville, Rogers, and Springdale — cameras, lighting, whole-home control, and install.',
+      'Smart-home automation for Fayetteville, Bentonville, Rogers, and Springdale: cameras, lighting, whole-home control, and install.',
     tag: 'Live',
   },
   {
@@ -28,7 +28,7 @@ const markets = [
     host: 'goodgarageco.com',
     region: 'Fort Smith & NWA',
     blurb:
-      'Garage cleanout, decluttering, and storage systems — connecting homeowners with local crews across two markets.',
+      'Garage cleanout, decluttering, and storage systems, connecting homeowners with local crews across two markets.',
     tag: 'Live',
   },
 ];
@@ -44,11 +44,8 @@ const LiveMarkets: React.FC = () => {
           transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
           className="markets-header"
         >
-          <div className="markets-eyebrow">
-            <MapPin size={16} /> <span>Live Markets</span>
-          </div>
           <h2 className="heading-lg">
-            One platform. <span className="text-gradient">Real markets, live today.</span>
+            One platform. <span className="accent">Real markets, live today.</span>
           </h2>
           <p className="body-lg markets-intro">
             Arkansas Automated builds and operates local directories that rank on Google,
@@ -92,8 +89,10 @@ const LiveMarkets: React.FC = () => {
           className="markets-footnote"
         >
           More verticals and markets are rolling out across Arkansas.{' '}
-          <span className="markets-footnote-accent">Own a local business?</span> Get listed and
-          receive exclusive local leads.
+          <a href="/list-your-business" className="markets-footnote-accent">
+            List your business
+          </a>{' '}
+          to be part of them.
         </motion.p>
       </div>
     </section>

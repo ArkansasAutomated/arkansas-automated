@@ -1,0 +1,137 @@
+.onboard-page {
+  min-height: 100dvh;
+  background:
+    radial-gradient(70% 40% at 90% 0%, var(--accent-soft), transparent 60%),
+    var(--bg-primary);
+}
+
+.onboard-nav {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.onboard-brand {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.onboard-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  transition: color var(--transition-fast);
+}
+
+.onboard-back:hover {
+  color: var(--text-primary);
+}
+
+.onboard-wrap {
+  max-width: 780px;
+  padding-bottom: var(--spacing-xl);
+}
+
+.onboard-header {
+  padding: var(--spacing-lg) 0 var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.onboard-header .body-lg {
+  max-width: 540px;
+}
+
+.onboard-form,
+.onboard-success {
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.onboard-success {
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.of-row {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .of-row {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.of-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.of-field label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.of-field input,
+.of-field select,
+.of-field textarea {
+  font: inherit;
+  color: var(--text-primary);
+  background: var(--bg-primary);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-sm);
+  padding: 0.8rem 1rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.of-field select {
+  appearance: none;
+  background-image: linear-gradient(45deg, transparent 50%, var(--text-secondary) 50%),
+    linear-gradient(135deg, var(--text-secondary) 50%, transparent 50%);
+  background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.of-field input:focus,
+.of-field select:focus,
+.of-field textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.of-field textarea {
+  resize: vertical;
+}
+
+.of-help {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.of-error {
+  color: #e5735c;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.of-submit {
+  width: 100%;
+}
+
+.of-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+}
