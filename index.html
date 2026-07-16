@@ -17,12 +17,29 @@
     <meta property="og:title" content="Arkansas Automated | The Automated Local Platform for Arkansas" />
     <meta property="og:description" content="We build and operate local directories that turn search demand into real quote requests for Arkansas businesses." />
     <meta property="og:site_name" content="Arkansas Automated" />
+    <meta property="og:image" content="https://arkansasautomated.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://arkansasautomated.com/" />
     <meta property="twitter:title" content="Arkansas Automated | The Automated Local Platform for Arkansas" />
     <meta property="twitter:description" content="We build and operate local directories that turn search demand into real quote requests for Arkansas businesses." />
+    <meta property="twitter:image" content="https://arkansasautomated.com/og.png" />
+
+    <!-- Structured data: real, verifiable facts only (PROTOCOL §10) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Arkansas Automated",
+        "url": "https://arkansasautomated.com/",
+        "description": "Builds and operates local directories that turn search demand into real quote requests for Arkansas businesses.",
+        "areaServed": { "@type": "State", "name": "Arkansas" },
+        "subOrganization": { "@type": "Organization", "name": "Fort Smith Directory", "url": "https://fortsmithdirectory.com/" }
+      }
+    </script>
 
     <!-- Measurement (privacy-respecting, no cookies, no PII).
          1) First-party pageview beacon -> hub /api/public/pv (page_views table;
