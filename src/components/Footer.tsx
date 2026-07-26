@@ -27,6 +27,9 @@ const Footer: React.FC = () => {
               <a href="https://goodgarageco.com" target="_blank" rel="noopener noreferrer">
                 Good Garage Co.
               </a>
+              <a href="https://www.nwaautomated.com" target="_blank" rel="noopener noreferrer">
+                NWA Automated
+              </a>
             </div>
             <div className="link-column">
               <h4>Platform</h4>
