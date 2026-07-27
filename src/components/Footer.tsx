@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
           <div className="footer-links">
             <div className="link-column">
               <h4>Live markets</h4>
-              <a href="https://www.fortsmithdirectory.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://fortsmithdirectory.com" target="_blank" rel="noopener noreferrer">
                 Fort Smith Directory
               </a>
               <a href="https://smarthomenwa.com" target="_blank" rel="noopener noreferrer">
