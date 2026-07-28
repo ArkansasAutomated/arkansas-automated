@@ -1,0 +1,90 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+}
+const { title, description, path, ogImage = "/og-image.png" } = Astro.props;
+const site = "https://arkansasautomated.com";
+const canonical = `${site}${path}`;
+const og = new URL(ogImage, site).href;
+
+// Organization schema only. No aggregateRating, no review count, no employee
+// or client numbers: nothing here is a claim we cannot show evidence for
+// (PROTOCOL 10).
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Arkansas Automated",
+  url: site,
+  description,
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
+    { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
+    { "@type": "State", name: "Arkansas" },
+  ],
+  serviceType: [
+    "Workflow automation",
+    "AI implementation",
+    "CRM integration",
+    "Business process automation",
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Arkansas Automated" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={og} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={og} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#070809" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      // First-party pageview beacon into the hub. APEX host, never www: www
+      // 308-redirects and a redirected cross-origin fetch resends with
+      // Origin: null, which the hub allowlist rejects. Failure is silent by
+      // design; measurement must never break a page.
+      try {
+        fetch("https://fortsmithdirectory.com/api/public/pv", {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({
+            path: location.pathname,
+            referrer: document.referrer || null,
+          }),
+          keepalive: true,
+        }).catch(() => {});
+      } catch (e) {
+        /* no-op */
+      }
+    </script>
+  </body>
+</html>

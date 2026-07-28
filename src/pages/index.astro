@@ -1,0 +1,445 @@
+---
+import Base from "../layouts/Base.astro";
+
+const title = "Workflow and AI Automation for Arkansas Operators | Arkansas Automated";
+const description =
+  "We design, build, and operate workflow and AI automation for businesses in Fort Smith and Northwest Arkansas. Request a workflow audit.";
+
+const leaks = [
+  {
+    h: "Quotes that wait overnight",
+    p: "A request lands after hours and goes out the next afternoon. By then the buyer is holding three other numbers and yours is not the first callback.",
+  },
+  {
+    h: "Calls that reach voicemail",
+    p: "An unanswered call is not a message in a queue. It is a customer dialing the next name on the list while your crew is under a truck.",
+  },
+  {
+    h: "The same job, typed three times",
+    p: "Details captured in the field, rekeyed into the CRM, rekeyed again into accounting. You are paying three times for one piece of information.",
+  },
+  {
+    h: "Follow-up that runs on memory",
+    p: "Estimates go cold because the second and third touch belong to nobody in particular. The work was already won and then quietly lost.",
+  },
+];
+
+const installs = [
+  {
+    n: "01",
+    h: "Lead and quote pipeline",
+    p: "Calls, forms, email, and text land in one queue, routed by job type and timestamped. The first response goes out while the buyer is still deciding, not the next business day.",
+  },
+  {
+    n: "02",
+    h: "AI front desk",
+    p: "Answers, qualifies, and books against your real calendar. It captures the address, the job type, and the urgency before anyone on your team picks up a phone.",
+  },
+  {
+    n: "03",
+    h: "Job and invoice flow",
+    p: "Work orders, estimates, and invoices move between the field, the CRM, and accounting without a person retyping them. The data is entered once, by whoever is closest to the job.",
+  },
+  {
+    n: "04",
+    h: "Building and equipment monitoring",
+    p: "Lighting, HVAC, and equipment schedules run on a controller and report by exception, instead of running on whoever remembers to walk the floor last.",
+  },
+];
+
+const phases = [
+  {
+    k: "First",
+    h: "Audit",
+    p: "We trace one expensive workflow end to end. Every handoff, every delay, every decision, and what each one costs you in hours and lost work.",
+  },
+  {
+    k: "Then",
+    h: "Build",
+    p: "We connect only what that workflow needs, on the tools you already pay for. Clear rules, and human review wherever judgment actually belongs.",
+  },
+  {
+    k: "Ongoing",
+    h: "Operate",
+    p: "We run it and keep it working as your software, your staff, and your season change. Automation that nobody maintains stops being automation.",
+  },
+];
+
+const properties = [
+  {
+    name: "Fort Smith Directory",
+    role: "Local directory and lead pipeline for the River Valley",
+    host: "fortsmithdirectory.com",
+    url: "https://fortsmithdirectory.com",
+  },
+  {
+    name: "NWA Automated",
+    role: "Automation practice for Northwest Arkansas businesses",
+    host: "nwaautomated.com",
+    url: "https://nwaautomated.com",
+  },
+  {
+    name: "Smart Home NWA",
+    role: "Residential automation and installation",
+    host: "smarthomenwa.com",
+    url: "https://smarthomenwa.com",
+  },
+  {
+    name: "Good Garage Co.",
+    role: "Garage cleanout and storage systems",
+    host: "goodgarageco.com",
+    url: "https://goodgarageco.com",
+  },
+];
+
+const industries = [
+  "Logistics and transportation",
+  "Manufacturing and fabrication",
+  "Construction and trades",
+  "Home services",
+  "Professional services",
+  "Healthcare and wellness",
+  "Retail and hospitality",
+  "Other",
+];
+const teamSizes = ["Under 10", "10 to 25", "25 to 100", "100 to 500", "Over 500"];
+const bottlenecks = [
+  "Slow lead and quote response",
+  "Missed calls and after-hours coverage",
+  "Scheduling and dispatch",
+  "Duplicate data entry between systems",
+  "Customer follow-up and retention",
+  "Invoicing, billing, and collections",
+  "Reporting and visibility",
+  "Not sure yet",
+];
+---
+
+<Base title={title} description={description} path="/">
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Arkansas <span class="accent">Automated</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="nav-hide" href="#what-we-install">What we install</a>
+        <a class="nav-hide" href="#engagement">How it works</a>
+        <a class="btn btn-primary" href="#audit">Request a workflow audit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1 class="heading-xl enter">Cut operating overhead without cutting the team.</h1>
+          <p class="body-lg enter enter-2">
+            We map one expensive workflow, automate it end to end, and keep it running. Built and
+            operated in Arkansas.
+          </p>
+          <div class="hero-ctas enter enter-3">
+            <a class="btn btn-primary" href="#audit">Request a workflow audit</a>
+            <a class="btn btn-secondary" href="#what-we-install">What we install</a>
+          </div>
+        </div>
+        <figure class="hero-figure enter enter-2">
+          <img
+            src="/images/hero-operations.webp"
+            alt="Warehouse operations worker inspecting inventory on a racking system"
+            width="1600"
+            height="900"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="overhead">
+      <div class="container">
+        <h2 class="heading-lg measure">Overhead is never one big line item.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          It is a dozen small handoffs that each cost an hour, repeated every week by people you
+          hired to do something more valuable.
+        </p>
+        <div class="leak-grid">
+          {
+            leaks.map((l) => (
+              <article class="leak">
+                <h3>{l.h}</h3>
+                <p>{l.p}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="what-we-install">
+      <div class="container">
+        <h2 class="heading-lg measure">What we actually install.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          Deployments are scoped to your operational footprint. Most start with one of these and
+          extend once it is proven in the work.
+        </p>
+        <div class="rows">
+          {
+            installs.map((i) => (
+              <article class="row">
+                <div class="row-n">{i.n}</div>
+                <h3>{i.h}</h3>
+                <p>{i.p}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="engagement">
+      <div class="container">
+        <h2 class="heading-lg measure">How an engagement runs.</h2>
+        <div class="phases">
+          {
+            phases.map((p) => (
+              <article class="phase">
+                <span class="phase-k">{p.k}</span>
+                <h3>{p.h}</h3>
+                <p>{p.p}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="boundary">
+      <div class="container split">
+        <div>
+          <h2 class="heading-lg">What we will not automate.</h2>
+        </div>
+        <div>
+          <p class="body-lg">
+            Judgment, negotiation, pricing exceptions, and the conversations that decide whether
+            somebody trusts your company stay with your people.
+          </p>
+          <p class="body-lg" style="margin-top:1.1rem">
+            Good automation makes that line obvious instead of blurring it. If a system cannot state
+            plainly where it stops and a human starts, it is not finished, and we will tell you so
+            during the audit rather than after the invoice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="proof">
+      <div class="container">
+        <h2 class="heading-lg measure">We run this playbook on our own properties.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          Arkansas Automated builds and operates the local directories and service sites below. The
+          intake, routing, and follow-up systems we install for clients are the ones our own revenue
+          depends on. They are live, so you can check them.
+        </p>
+        <div class="props">
+          {
+            properties.map((p) => (
+              <a class="prop" href={p.url} target="_blank" rel="noopener">
+                <span class="prop-name">{p.name}</span>
+                <span class="prop-role">{p.role}</span>
+                <span class="prop-host">{p.host}</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="audit">
+      <div class="container split">
+        <div>
+          <h2 class="heading-lg">Request a workflow audit.</h2>
+          <p class="body-lg" style="margin-top:1rem">
+            Tell us where the work gets stuck. We trace your highest-cost workflow and show you what
+            changes if it runs itself, before you commit to anything.
+          </p>
+          <p class="body-lg" style="margin-top:1rem">
+            If automation is the wrong answer for your situation, the audit will say that too.
+          </p>
+        </div>
+
+        <div class="form-card">
+          <form id="audit-form" novalidate>
+            <div class="field">
+              <label for="businessName">Business name</label>
+              <input id="businessName" name="businessName" type="text" required autocomplete="organization" />
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="contactName">Your name</label>
+                <input id="contactName" name="contactName" type="text" required autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="email">Work email</label>
+                <input id="email" name="email" type="email" required autocomplete="email" />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="teamSize">Team size</label>
+                <select id="teamSize" name="teamSize">
+                  <option value="">Select one</option>
+                  {teamSizes.map((t) => <option value={t}>{t}</option>)}
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="industry">Industry</label>
+              <select id="industry" name="industry">
+                <option value="">Select one</option>
+                {industries.map((i) => <option value={i}>{i}</option>)}
+              </select>
+            </div>
+            <div class="field">
+              <label for="bottleneck">Where does the work get stuck?</label>
+              <select id="bottleneck" name="bottleneck">
+                <option value="">Select one</option>
+                {bottlenecks.map((b) => <option value={b}>{b}</option>)}
+              </select>
+            </div>
+            <div class="field">
+              <label for="details">Anything else worth knowing</label>
+              <textarea id="details" name="details" rows="3" placeholder="The tools you run on, and what a typical week looks like."></textarea>
+            </div>
+
+            <!-- Honeypot. Real people never see or fill this; the hub rejects
+                 any submission that carries a value (server-side bot-field). -->
+            <div class="hp" aria-hidden="true">
+              <label for="bot-field">Do not fill this in</label>
+              <input id="bot-field" name="bot-field" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <button class="btn btn-primary" type="submit" style="width:100%" id="audit-submit">
+              Request the audit
+            </button>
+            <p class="form-note">No cost and no obligation. We reply from a real address.</p>
+            <div id="audit-msg" class="form-msg" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="brand">Arkansas <span class="accent">Automated</span></div>
+          <p class="body-lg" style="margin-top:0.9rem;max-width:32ch;font-size:1rem">
+            Workflow and AI automation for operators in Fort Smith, Northwest Arkansas, and across
+            the state.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Network</h4>
+          {properties.map((p) => <a href={p.url} target="_blank" rel="noopener">{p.name}</a>)}
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#what-we-install">What we install</a>
+          <a href="#engagement">How an engagement runs</a>
+          <a href="/list-your-business">List your business</a>
+          <a href="#audit">Request a workflow audit</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} Arkansas Automated. Built and operated in Arkansas.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Posts to the hub's public lead endpoint as type "automation_assessment".
+    //
+    // APEX host, never www: www 308-redirects, and a redirected cross-origin
+    // fetch resends with Origin: null, which the hub allowlist rejects. That
+    // exact bug silently ate every submission from this domain until 2026-07-27.
+    //
+    // text/plain is deliberate: it is a CORS-safelisted content type, so the
+    // browser sends no preflight.
+    const ENDPOINT = "https://fortsmithdirectory.com/api/public/leads";
+    const form = document.getElementById("audit-form") as HTMLFormElement | null;
+    const msg = document.getElementById("audit-msg") as HTMLElement | null;
+    const submit = document.getElementById("audit-submit") as HTMLButtonElement | null;
+
+    function show(kind: "ok" | "error", text: string) {
+      if (!msg) return;
+      msg.hidden = false;
+      msg.dataset.kind = kind;
+      msg.textContent = text;
+    }
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form || !submit) return;
+      const fd = new FormData(form);
+      const val = (k: string) => {
+        const v = fd.get(k);
+        return typeof v === "string" && v.trim() !== "" ? v.trim() : undefined;
+      };
+
+      const businessName = val("businessName");
+      const contactName = val("contactName");
+      const email = val("email");
+      if (!businessName || !contactName || !email) {
+        show("error", "Business name, your name, and a work email are required.");
+        return;
+      }
+
+      submit.disabled = true;
+      const original = submit.textContent;
+      submit.textContent = "Sending";
+
+      // `category` is deliberately omitted: leads.category is a foreign key to
+      // categories(slug) and automation is not a directory category, so sending
+      // one would fail the insert.
+      const payload: Record<string, unknown> = {
+        type: "automation_assessment",
+        businessName,
+        name: contactName,
+        email,
+        phone: val("phone"),
+        details: val("details"),
+        spokeDomain: "arkansasautomated.com",
+        sourcePath: location.pathname,
+        "bot-field": fd.get("bot-field") ?? "",
+        extra: {
+          industry: val("industry") ?? null,
+          teamSize: val("teamSize") ?? null,
+          bottleneck: val("bottleneck") ?? null,
+        },
+      };
+
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify(payload),
+        });
+        if (res.ok) {
+          form.reset();
+          show("ok", "Received. We will read this and reply from a real address, usually within one business day.");
+          submit.textContent = "Request received";
+          return;
+        }
+        show("error", "That did not go through. Email dre@arkansasautomated.com and we will pick it up from there.");
+      } catch {
+        show("error", "That did not go through. Email dre@arkansasautomated.com and we will pick it up from there.");
+      }
+      submit.disabled = false;
+      submit.textContent = original;
+    });
+  </script>
+</Base>

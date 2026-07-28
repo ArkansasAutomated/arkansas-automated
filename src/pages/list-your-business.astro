@@ -1,0 +1,205 @@
+---
+import Base from "../layouts/Base.astro";
+
+const title = "List Your Business | Arkansas Automated";
+const description =
+  "Submit your business to the Arkansas Automated directory network. Free to submit, reviewed by a human before anything publishes.";
+
+// Mirrors the hub's categories table (slug -> label). The hub validates the
+// slug against categories(slug), so these must stay in lockstep or the
+// submission fails validation with a 422.
+const CATEGORIES = [
+  { slug: "roofing", label: "Roofing" },
+  { slug: "hvac", label: "HVAC / Heating & Air" },
+  { slug: "driveway-sealing", label: "Driveway Sealing & Asphalt" },
+  { slug: "furniture-assembly", label: "Furniture Assembly" },
+  { slug: "home-staging", label: "Home Staging" },
+  { slug: "smart-home", label: "Smart Home Installation" },
+  { slug: "garage", label: "Garage & Storage Systems" },
+  { slug: "professional-organizing", label: "Professional Organizing" },
+  { slug: "weddings", label: "Weddings & Events" },
+  { slug: "moving", label: "Moving" },
+  { slug: "dumpster-rental", label: "Dumpster Rental" },
+  { slug: "storage", label: "Storage" },
+  { slug: "water-damage", label: "Water Damage Restoration" },
+  { slug: "foundation-repair", label: "Foundation Repair" },
+  { slug: "mold-remediation", label: "Mold Remediation" },
+  { slug: "contractors", label: "General Contractor / Other" },
+];
+---
+
+<Base title={title} description={description} path="/list-your-business">
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="/">Arkansas <span class="accent">Automated</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a class="nav-hide" href="/#what-we-install">What we install</a>
+        <a class="btn btn-primary" href="/#audit">Request a workflow audit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container split">
+        <div>
+          <h1 class="heading-lg">List your business.</h1>
+          <p class="body-lg" style="margin-top:1rem">
+            We build and operate local directories across Fort Smith and Northwest Arkansas. Submitting
+            your business costs nothing.
+          </p>
+          <p class="body-lg" style="margin-top:1rem">
+            Every submission is read by a person before anything publishes. Nothing goes live
+            automatically, and we will not list you in a category you do not actually serve.
+          </p>
+        </div>
+
+        <div class="form-card">
+          <form id="onboard-form" novalidate>
+            <div class="field">
+              <label for="businessName">Business name</label>
+              <input id="businessName" name="businessName" type="text" required autocomplete="organization" />
+            </div>
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category" name="category" required>
+                <option value="">Select one</option>
+                {CATEGORIES.map((c) => <option value={c.slug}>{c.label}</option>)}
+              </select>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="contactName">Your name</label>
+                <input id="contactName" name="contactName" type="text" required autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" required autocomplete="email" />
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel" />
+              </div>
+              <div class="field">
+                <label for="website">Website</label>
+                <input id="website" name="website" type="text" placeholder="example.com" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="address">Address</label>
+              <input id="address" name="address" type="text" autocomplete="street-address" />
+            </div>
+            <div class="field">
+              <label for="areas">Areas you serve</label>
+              <input id="areas" name="areas" type="text" placeholder="Fort Smith, Van Buren, Greenwood" />
+            </div>
+            <div class="field">
+              <label for="description">What you do</label>
+              <textarea id="description" name="description" rows="3"></textarea>
+            </div>
+
+            <button class="btn btn-primary" type="submit" style="width:100%" id="onboard-submit">
+              Submit for review
+            </button>
+            <p class="form-note">Free to submit. Reviewed by a person before anything publishes.</p>
+            <div id="onboard-msg" class="form-msg" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="margin-top:0;border-top:0;padding-top:0">
+        <p>&copy; {new Date().getFullYear()} Arkansas Automated. Built and operated in Arkansas.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Hub onboarding contract (fort-smith-pros src/lib/onboard-intake.ts):
+    //   POST text/plain (CORS-safelisted, no preflight)
+    //   {type:"business_onboarding", businessName, category, contactName, email,
+    //    phone?, website?, address?, neighborhoods?, description?, sourcePath}
+    // Writes ONE pending claims row. A human reviews before anything publishes.
+    //
+    // APEX host, never www. www 308-redirects and the redirected fetch resends
+    // with Origin: null, which the allowlist rejects: the submission dies while
+    // the form looks like it worked. That bug ate every submission from this
+    // page until 2026-07-27.
+    //
+    // Blank optional fields are ABSENT, not "": the hub's Zod schema rejects ""
+    // for email and website.
+    const ENDPOINT = "https://fortsmithdirectory.com/api/public/onboard";
+    const form = document.getElementById("onboard-form") as HTMLFormElement | null;
+    const msg = document.getElementById("onboard-msg") as HTMLElement | null;
+    const submit = document.getElementById("onboard-submit") as HTMLButtonElement | null;
+
+    function show(kind: "ok" | "error", text: string) {
+      if (!msg) return;
+      msg.hidden = false;
+      msg.dataset.kind = kind;
+      msg.textContent = text;
+    }
+
+    form?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!form || !submit) return;
+      const fd = new FormData(form);
+      const val = (k: string) => {
+        const v = fd.get(k);
+        return typeof v === "string" && v.trim() !== "" ? v.trim() : undefined;
+      };
+
+      const businessName = val("businessName");
+      const category = val("category");
+      const contactName = val("contactName");
+      const email = val("email");
+      if (!businessName || !category || !contactName || !email) {
+        show("error", "Business name, category, your name, and email are required.");
+        return;
+      }
+
+      submit.disabled = true;
+      const original = submit.textContent;
+      submit.textContent = "Sending";
+
+      const areas = val("areas");
+      try {
+        const res = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain" },
+          body: JSON.stringify({
+            type: "business_onboarding",
+            businessName,
+            category,
+            contactName,
+            email,
+            phone: val("phone"),
+            website: val("website"),
+            address: val("address"),
+            neighborhoods: areas
+              ? areas.split(",").map((s) => s.trim()).filter(Boolean).slice(0, 12)
+              : undefined,
+            description: val("description"),
+            sourcePath: location.pathname,
+          }),
+        });
+        if (res.ok) {
+          form.reset();
+          show("ok", "Received. A person will review this before anything publishes.");
+          submit.textContent = "Submitted";
+          return;
+        }
+        show("error", "That did not go through. Email dre@arkansasautomated.com and we will add you manually.");
+      } catch {
+        show("error", "That did not go through. Email dre@arkansasautomated.com and we will add you manually.");
+      }
+      submit.disabled = false;
+      submit.textContent = original;
+    });
+  </script>
+</Base>

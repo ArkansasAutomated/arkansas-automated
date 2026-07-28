@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://arkansasautomated.com/sitemap.xml
+Sitemap: https://arkansasautomated.com/sitemap-index.xml
