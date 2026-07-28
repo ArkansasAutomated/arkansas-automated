@@ -12,7 +12,7 @@ import './OnboardPage.css';
  * The hub writes a PENDING claims row; a human reviews before anything
  * publishes. Nothing here promises otherwise.
  */
-const ONBOARD_ENDPOINT = 'https://www.fortsmithdirectory.com/api/public/onboard';
+const ONBOARD_ENDPOINT = 'https://fortsmithdirectory.com/api/public/onboard';
 
 // Mirrors the hub's categories table (slug -> label). Slugs must match.
 const CATEGORIES: Array<{ slug: string; label: string }> = [

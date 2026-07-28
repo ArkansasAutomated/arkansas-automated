@@ -6,7 +6,7 @@ import './LiveMarkets.css';
 const markets = [
   {
     name: 'Fort Smith Directory',
-    url: 'https://www.fortsmithdirectory.com',
+    url: 'https://fortsmithdirectory.com',
     host: 'fortsmithdirectory.com',
     region: 'Fort Smith & the River Valley',
     blurb:
