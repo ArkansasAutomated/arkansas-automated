@@ -2,13 +2,5 @@
   "framework": "astro",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "cleanUrls": true,
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [{ "type": "host", "value": "www.arkansasautomated.com" }],
-      "destination": "https://arkansasautomated.com/$1",
-      "permanent": true
-    }
-  ]
+  "cleanUrls": true
 }
