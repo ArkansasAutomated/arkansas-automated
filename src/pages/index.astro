@@ -1,18 +1,18 @@
 ---
 import Base from "../layouts/Base.astro";
 
-const title = "Workflow and AI Automation for Arkansas Operators | Arkansas Automated";
+const title = "AI Workshops and Done-For-You Automation in Arkansas | Arkansas Automated";
 const description =
-  "We design, build, and operate workflow and AI automation for businesses in Fort Smith and Northwest Arkansas. Request a workflow audit.";
+  "In-person AI workshops for Arkansas business owners. Build your AI receptionist in one afternoon, or have us build and run the automation for you.";
 
 const leaks = [
   {
-    h: "Quotes that wait overnight",
-    p: "A request lands after hours and goes out the next afternoon. By then the buyer is holding three other numbers and yours is not the first callback.",
-  },
-  {
     h: "Calls that reach voicemail",
     p: "An unanswered call is not a message in a queue. It is a customer dialing the next name on the list while your crew is under a truck.",
+  },
+  {
+    h: "Quotes that wait overnight",
+    p: "A request lands after hours and goes out the next afternoon. By then the buyer is holding three other numbers and yours is not the first callback.",
   },
   {
     h: "The same job, typed three times",
@@ -24,44 +24,98 @@ const leaks = [
   },
 ];
 
-const installs = [
+const agenda = [
   {
-    n: "01",
-    h: "Lead and quote pipeline",
-    p: "Calls, forms, email, and text land in one queue, routed by job type and timestamped. The first response goes out while the buyer is still deciding, not the next business day.",
+    t: "1:00",
+    h: "The cost of a missed call",
+    p: "What after-hours voicemail actually costs a local service business, and what a human receptionist versus an AI front desk runs per month.",
   },
   {
-    n: "02",
-    h: "AI front desk",
-    p: "Answers, qualifies, and books against your real calendar. It captures the address, the job type, and the urgency before anyone on your team picks up a phone.",
+    t: "1:45",
+    h: "Watch it answer",
+    p: "Live demo. An AI receptionist picks up, qualifies the caller, captures the job details, and books it against a real calendar.",
   },
   {
-    n: "03",
-    h: "Job and invoice flow",
-    p: "Work orders, estimates, and invoices move between the field, the CRM, and accounting without a person retyping them. The data is entered once, by whoever is closest to the job.",
+    t: "2:30",
+    h: "Build yours",
+    p: "Configure your own version: your greeting, your services, your calendar, your SMS handoff. No code, and we build it together.",
   },
   {
-    n: "04",
-    h: "Building and equipment monitoring",
-    p: "Lighting, HVAC, and equipment schedules run on a controller and report by exception, instead of running on whoever remembers to walk the floor last.",
+    t: "4:00",
+    h: "Test it live",
+    p: "Call your own number from the room. Set the guardrails and escalation rules. Then decide: run it yourself, or hand it to us.",
   },
 ];
 
-const phases = [
+const included = [
+  "A working AI receptionist prototype configured for your business",
+  "Your calendar and SMS follow-up wired in before you leave",
+  "Escalation rules you set and test yourself",
+  "30 days of email support after the session",
+  "Your seat price credited toward a done-for-you build started within 60 days",
+  "A room capped at 18 owners, so your questions get answered",
+];
+
+const paths = [
   {
-    k: "First",
-    h: "Audit",
-    p: "We trace one expensive workflow end to end. Every handoff, every delay, every decision, and what each one costs you in hours and lost work.",
+    k: "Learn",
+    h: "The workshop",
+    p: "$497 early bird. One afternoon, hands-on, and you leave with a working prototype. Best if you want to understand the system you are running.",
   },
   {
-    k: "Then",
-    h: "Build",
-    p: "We connect only what that workflow needs, on the tools you already pay for. Clear rules, and human review wherever judgment actually belongs.",
+    k: "Audit",
+    h: "AI operations audit",
+    p: "$999. We map your calls, quotes, scheduling, and invoicing, then hand you a prioritized automation plan with real ROI numbers.",
   },
   {
-    k: "Ongoing",
-    h: "Operate",
-    p: "We run it and keep it working as your software, your staff, and your season change. Automation that nobody maintains stops being automation.",
+    k: "Build",
+    h: "Done for you, plus retainer",
+    p: "From $2,500 setup plus monthly. We build it, launch it, and stay on to keep it working as your business changes.",
+  },
+];
+
+const packages = [
+  {
+    price: "$2,500 + $497/mo",
+    h: "AI front desk",
+    p: "Answers 24/7 in your business's voice, qualifies the caller, and books straight onto your calendar. SMS follow-up, call recordings, and monthly tuning included.",
+  },
+  {
+    price: "$1,500 to $5,000 + monthly",
+    h: "Workflow automation",
+    p: "Lead to quote to job to invoice, without the retyping and the follow-up gaps. Built on the tools you already pay for.",
+  },
+  {
+    price: "From $2,000/mo",
+    h: "Embedded retainer",
+    p: "We come to you. On-site working sessions, a continuous build-out of custom workflows, priority turnaround, and staff training included.",
+  },
+];
+
+const faqs = [
+  {
+    q: "I am not technical. Will I keep up in the workshop?",
+    a: "Yes. The workshop is built for owners, not engineers. Everything is no-code, we build step by step together, and the room is capped at 18 so nobody gets left behind. If you can run a smartphone, you can do this.",
+  },
+  {
+    q: "What exactly do I leave with?",
+    a: "A working AI receptionist prototype configured for your business: your greeting, your services, your calendar, and SMS follow-up. You will call it live before you leave. Keep running it yourself, or hand it to us to productionize and manage.",
+  },
+  {
+    q: "What if I would rather not sit through a workshop?",
+    a: "That is exactly what the done-for-you work is for. Start with the free 15-minute assessment call, and if the ROI is there we build and manage everything, including on-site work under the retainer.",
+  },
+  {
+    q: "What does it cost after the workshop?",
+    a: "Nothing is required. If you want us to run it, the AI front desk is $2,500 setup plus $497 a month. Larger workflow builds run $1,500 to $5,000 setup. Your seat price credits toward any build started within 60 days.",
+  },
+  {
+    q: "Does the AI receptionist sound robotic?",
+    a: "You will hear it in the first hour of the workshop, or on your assessment call with your own business details loaded. It answers in your business's voice, follows your rules, and hands off to a human whenever you say so.",
+  },
+  {
+    q: "When and where do workshops run?",
+    a: "Saturday afternoons, 1 to 5 PM, in Fort Smith, with Northwest Arkansas sessions as demand grows. The room address goes out with your seat confirmation. Private workshops for one company or one trade are available on request.",
   },
 ];
 
@@ -92,26 +146,10 @@ const properties = [
   },
 ];
 
-const industries = [
-  "Logistics and transportation",
-  "Manufacturing and fabrication",
-  "Construction and trades",
-  "Home services",
-  "Professional services",
-  "Healthcare and wellness",
-  "Retail and hospitality",
-  "Other",
-];
-const teamSizes = ["Under 10", "10 to 25", "25 to 100", "100 to 500", "Over 500"];
-const bottlenecks = [
-  "Slow lead and quote response",
-  "Missed calls and after-hours coverage",
-  "Scheduling and dispatch",
-  "Duplicate data entry between systems",
-  "Customer follow-up and retention",
-  "Invoicing, billing, and collections",
-  "Reporting and visibility",
-  "Not sure yet",
+const intents = [
+  "Reserve a workshop seat, $497 early bird",
+  "Book the free 15-minute assessment",
+  "Talk done-for-you or retainer",
 ];
 ---
 
@@ -120,9 +158,10 @@ const bottlenecks = [
     <div class="container nav-inner">
       <a class="brand" href="/">Arkansas <span class="accent">Automated</span></a>
       <nav class="nav-links" aria-label="Main">
-        <a class="nav-hide" href="#what-we-install">What we install</a>
-        <a class="nav-hide" href="#engagement">How it works</a>
-        <a class="btn btn-primary" href="#audit">Request a workflow audit</a>
+        <a class="nav-hide" href="#workshop">The workshop</a>
+        <a class="nav-hide" href="#done-for-you">Done for you</a>
+        <a class="nav-hide" href="#faq">FAQ</a>
+        <a class="btn btn-primary" href="#reserve">Reserve a seat</a>
       </nav>
     </div>
   </header>
@@ -131,22 +170,22 @@ const bottlenecks = [
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <h1 class="heading-xl enter">Cut operating overhead without cutting the team.</h1>
+          <h1 class="heading-xl enter">Build your AI receptionist in one afternoon.</h1>
           <p class="body-lg enter enter-2">
-            We map one expensive workflow, automate it end to end, and keep it running. Built and
-            operated in Arkansas.
+            In-person workshop for Arkansas business owners. Walk in with your phone number, walk
+            out with a 24/7 AI front desk.
           </p>
           <div class="hero-ctas enter enter-3">
-            <a class="btn btn-primary" href="#audit">Request a workflow audit</a>
-            <a class="btn btn-secondary" href="#what-we-install">What we install</a>
+            <a class="btn btn-primary" href="#reserve">Reserve a seat</a>
+            <a class="btn btn-secondary" href="#done-for-you">We build it for you</a>
           </div>
         </div>
         <figure class="hero-figure enter enter-2">
           <img
-            src="/images/hero-operations.webp"
-            alt="Warehouse operations worker inspecting inventory on a racking system"
-            width="1600"
-            height="900"
+            src="/images/hero-workshop.webp"
+            alt="Facilitator demonstrating an AI phone dashboard to business owners seated around a workshop table"
+            width="2048"
+            height="1062"
             fetchpriority="high"
             decoding="async"
           />
@@ -154,12 +193,12 @@ const bottlenecks = [
       </div>
     </section>
 
-    <section class="section section-tint" id="overhead">
+    <section class="section section-tint" id="missed-calls">
       <div class="container">
-        <h2 class="heading-lg measure">Overhead is never one big line item.</h2>
+        <h2 class="heading-lg measure">How many calls went to voicemail last weekend?</h2>
         <p class="body-lg measure" style="margin-top:1rem">
-          It is a dozen small handoffs that each cost an hour, repeated every week by people you
-          hired to do something more valuable.
+          For a local service business, the leak is never one big line item. It is a dozen small
+          handoffs that each cost an hour, repeated every week.
         </p>
         <div class="leak-grid">
           {
@@ -174,35 +213,90 @@ const bottlenecks = [
       </div>
     </section>
 
-    <section class="section" id="what-we-install">
+    <section class="section" id="workshop">
       <div class="container">
-        <h2 class="heading-lg measure">What we actually install.</h2>
+        <span class="eyebrow">The workshop</span>
+        <h2 class="heading-lg measure">One afternoon. Your own AI front desk, working.</h2>
         <p class="body-lg measure" style="margin-top:1rem">
-          Deployments are scoped to your operational footprint. Most start with one of these and
-          extend once it is proven in the work.
+          A half-day, in-person session in Fort Smith. You watch a live AI receptionist work, then
+          build your own with help in the room, then call it yourself before you leave.
         </p>
-        <div class="rows">
+
+        <div class="workshop-grid">
+          <div class="rows">
+            {
+              agenda.map((a) => (
+                <article class="row">
+                  <div class="row-n">{a.t}</div>
+                  <h3>{a.h}</h3>
+                  <p>{a.p}</p>
+                </article>
+              ))
+            }
+          </div>
+          <figure class="workshop-figure">
+            <img
+              src="/images/workshop-hands.webp"
+              alt="Workshop participant testing his new AI receptionist from his own phone"
+              width="1536"
+              height="944"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>Test call from the room, before you leave.</figcaption>
+          </figure>
+        </div>
+
+        <div class="facts">
+          <div class="fact"><span class="fact-k">When</span> Saturdays, 1 to 5 PM</div>
+          <div class="fact"><span class="fact-k">Where</span> Fort Smith, address with confirmation</div>
+          <div class="fact"><span class="fact-k">Room</span> Capped at 18 owners</div>
+          <div class="fact"><span class="fact-k">Price</span> $497 early bird, $697 standard</div>
+          <div class="fact"><span class="fact-k">Second seat</span> $297 for a partner or office manager</div>
+        </div>
+
+        <ul class="included">
+          {included.map((i) => <li>{i}</li>)}
+        </ul>
+
+        <a class="btn btn-primary" href="#reserve" style="margin-top:2.5rem">Reserve a seat</a>
+      </div>
+    </section>
+
+    <section class="section section-tint" id="paths">
+      <div class="container">
+        <h2 class="heading-lg measure">Three ways to work with us.</h2>
+        <div class="phases">
           {
-            installs.map((i) => (
-              <article class="row">
-                <div class="row-n">{i.n}</div>
-                <h3>{i.h}</h3>
-                <p>{i.p}</p>
+            paths.map((p) => (
+              <article class="phase">
+                <span class="phase-k">{p.k}</span>
+                <h3>{p.h}</h3>
+                <p>{p.p}</p>
               </article>
             ))
           }
         </div>
+        <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
+          Workshop and audit fees credit toward a done-for-you build started within 60 days.
+        </p>
       </div>
     </section>
 
-    <section class="section section-tint" id="engagement">
+    <section class="section" id="done-for-you">
       <div class="container">
-        <h2 class="heading-lg measure">How an engagement runs.</h2>
-        <div class="phases">
+        <span class="eyebrow">Done for you</span>
+        <h2 class="heading-lg measure">Too busy for a workshop? We come in and build it.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          For owners who would rather pay for the outcome than sit through the training. We price
+          the result, not the tech, and every engagement starts with a free 15-minute assessment
+          call.
+        </p>
+        <div class="rows">
           {
-            phases.map((p) => (
-              <article class="phase">
-                <span class="phase-k">{p.k}</span>
+            packages.map((p) => (
+              <article class="row row-pkg">
+                <div class="row-n row-price">{p.price}</div>
                 <h3>{p.h}</h3>
                 <p>{p.p}</p>
               </article>
@@ -212,7 +306,7 @@ const bottlenecks = [
       </div>
     </section>
 
-    <section class="section" id="boundary">
+    <section class="section section-tint" id="boundary">
       <div class="container split">
         <div>
           <h2 class="heading-lg">What we will not automate.</h2>
@@ -223,21 +317,21 @@ const bottlenecks = [
             somebody trusts your company stay with your people.
           </p>
           <p class="body-lg" style="margin-top:1.1rem">
-            Good automation makes that line obvious instead of blurring it. If a system cannot state
-            plainly where it stops and a human starts, it is not finished, and we will tell you so
-            during the audit rather than after the invoice.
+            Good automation makes that line obvious instead of blurring it. If a system cannot
+            state plainly where it stops and a human starts, it is not finished, and we will tell
+            you so before the invoice, not after.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="section section-tint" id="proof">
+    <section class="section" id="proof">
       <div class="container">
         <h2 class="heading-lg measure">We run this playbook on our own properties.</h2>
         <p class="body-lg measure" style="margin-top:1rem">
           Arkansas Automated builds and operates the local directories and service sites below. The
-          intake, routing, and follow-up systems we install for clients are the ones our own revenue
-          depends on. They are live, so you can check them.
+          intake, routing, and follow-up systems we install for clients are the ones our own
+          revenue depends on. They are live, so you can check them.
         </p>
         <div class="props">
           {
@@ -253,21 +347,43 @@ const bottlenecks = [
       </div>
     </section>
 
-    <section class="section" id="audit">
+    <section class="section section-tint" id="faq">
+      <div class="container faq-wrap">
+        <h2 class="heading-lg measure">Questions owners actually ask.</h2>
+        <div class="faq-list">
+          {
+            faqs.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="reserve">
       <div class="container split">
         <div>
-          <h2 class="heading-lg">Request a workflow audit.</h2>
+          <h2 class="heading-lg">Reserve your seat.</h2>
           <p class="body-lg" style="margin-top:1rem">
-            Tell us where the work gets stuck. We trace your highest-cost workflow and show you what
-            changes if it runs itself, before you commit to anything.
+            One form for everything: workshop seats, the free assessment, and done-for-you scoping.
+            Tell us which and we reply from a real address, usually within one business day.
           </p>
           <p class="body-lg" style="margin-top:1rem">
-            If automation is the wrong answer for your situation, the audit will say that too.
+            No payment due now. Your seat, the date, and the room address are confirmed by email.
           </p>
         </div>
 
         <div class="form-card">
-          <form id="audit-form" novalidate>
+          <form id="reserve-form" novalidate>
+            <div class="field">
+              <label for="intent">I want to</label>
+              <select id="intent" name="intent">
+                {intents.map((i) => <option value={i}>{i}</option>)}
+              </select>
+            </div>
             <div class="field">
               <label for="businessName">Business name</label>
               <input id="businessName" name="businessName" type="text" required autocomplete="organization" />
@@ -288,30 +404,16 @@ const bottlenecks = [
                 <input id="phone" name="phone" type="tel" autocomplete="tel" />
               </div>
               <div class="field">
-                <label for="teamSize">Team size</label>
-                <select id="teamSize" name="teamSize">
-                  <option value="">Select one</option>
-                  {teamSizes.map((t) => <option value={t}>{t}</option>)}
+                <label for="seats">Seats (workshop only)</label>
+                <select id="seats" name="seats">
+                  <option value="1">1</option>
+                  <option value="2">2, partner rate</option>
                 </select>
               </div>
             </div>
             <div class="field">
-              <label for="industry">Industry</label>
-              <select id="industry" name="industry">
-                <option value="">Select one</option>
-                {industries.map((i) => <option value={i}>{i}</option>)}
-              </select>
-            </div>
-            <div class="field">
-              <label for="bottleneck">Where does the work get stuck?</label>
-              <select id="bottleneck" name="bottleneck">
-                <option value="">Select one</option>
-                {bottlenecks.map((b) => <option value={b}>{b}</option>)}
-              </select>
-            </div>
-            <div class="field">
-              <label for="details">Anything else worth knowing</label>
-              <textarea id="details" name="details" rows="3" placeholder="The tools you run on, and what a typical week looks like."></textarea>
+              <label for="details">What is the first thing you would want an AI receptionist to handle?</label>
+              <textarea id="details" name="details" rows="3" placeholder="Example: after-hours calls, booking estimates, rescheduling."></textarea>
             </div>
 
             <!-- Honeypot. Real people never see or fill this; the hub rejects
@@ -321,11 +423,11 @@ const bottlenecks = [
               <input id="bot-field" name="bot-field" type="text" tabindex="-1" autocomplete="off" />
             </div>
 
-            <button class="btn btn-primary" type="submit" style="width:100%" id="audit-submit">
-              Request the audit
+            <button class="btn btn-primary" type="submit" style="width:100%" id="reserve-submit">
+              Send my request
             </button>
-            <p class="form-note">No cost and no obligation. We reply from a real address.</p>
-            <div id="audit-msg" class="form-msg" hidden></div>
+            <p class="form-note">No payment due now. We reply from a real address.</p>
+            <div id="reserve-msg" class="form-msg" hidden></div>
           </form>
         </div>
       </div>
@@ -338,8 +440,8 @@ const bottlenecks = [
         <div>
           <div class="brand">Arkansas <span class="accent">Automated</span></div>
           <p class="body-lg" style="margin-top:0.9rem;max-width:32ch;font-size:1rem">
-            Workflow and AI automation for operators in Fort Smith, Northwest Arkansas, and across
-            the state.
+            In-person AI workshops and done-for-you automation for operators in Fort Smith,
+            Northwest Arkansas, and across the state.
           </p>
         </div>
         <div class="footer-col">
@@ -348,10 +450,10 @@ const bottlenecks = [
         </div>
         <div class="footer-col">
           <h4>Company</h4>
-          <a href="#what-we-install">What we install</a>
-          <a href="#engagement">How an engagement runs</a>
+          <a href="#workshop">The workshop</a>
+          <a href="#done-for-you">Done for you</a>
           <a href="/list-your-business">List your business</a>
-          <a href="#audit">Request a workflow audit</a>
+          <a href="#reserve">Reserve a seat</a>
         </div>
       </div>
       <div class="footer-bottom">
@@ -361,7 +463,9 @@ const bottlenecks = [
   </footer>
 
   <script>
-    // Posts to the hub's public lead endpoint as type "automation_assessment".
+    // Posts to the hub's public lead endpoint as type "automation_assessment",
+    // the same capture path the previous audit form used. The workshop intent
+    // rides in `extra`, so no hub change is required.
     //
     // APEX host, never www: www 308-redirects, and a redirected cross-origin
     // fetch resends with Origin: null, which the hub allowlist rejects. That
@@ -370,9 +474,9 @@ const bottlenecks = [
     // text/plain is deliberate: it is a CORS-safelisted content type, so the
     // browser sends no preflight.
     const ENDPOINT = "https://fortsmithdirectory.com/api/public/leads";
-    const form = document.getElementById("audit-form") as HTMLFormElement | null;
-    const msg = document.getElementById("audit-msg") as HTMLElement | null;
-    const submit = document.getElementById("audit-submit") as HTMLButtonElement | null;
+    const form = document.getElementById("reserve-form") as HTMLFormElement | null;
+    const msg = document.getElementById("reserve-msg") as HTMLElement | null;
+    const submit = document.getElementById("reserve-submit") as HTMLButtonElement | null;
 
     function show(kind: "ok" | "error", text: string) {
       if (!msg) return;
@@ -416,9 +520,8 @@ const bottlenecks = [
         sourcePath: location.pathname,
         "bot-field": fd.get("bot-field") ?? "",
         extra: {
-          industry: val("industry") ?? null,
-          teamSize: val("teamSize") ?? null,
-          bottleneck: val("bottleneck") ?? null,
+          intent: val("intent") ?? null,
+          seats: val("seats") ?? null,
         },
       };
 
