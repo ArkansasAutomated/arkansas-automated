@@ -1,0 +1,80 @@
+---
+/* /services — hub listing every engagement type with prices. */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { services } from "../../data/services";
+
+const title = "Services and Pricing | Arkansas Automated";
+const description =
+  "AI front desk builds, operations audits, workflow automation, and embedded retainers for Arkansas businesses. Public pricing, no sales call required to see the numbers.";
+
+const site = "https://arkansasautomated.com";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Arkansas Automated services",
+      itemListElement: services.map((s, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: `${s.name}, ${s.price}`,
+        url: `${site}/services/${s.slug}`,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Services", item: `${site}/services` },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/services" schema={schema}>
+  <SiteNav />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span>Services
+        </nav>
+        <h1 class="heading-xl measure">Done-for-you automation, with public pricing.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          We price the result, not the tech, and the numbers are on the website because an AI
+          agent or a busy owner should not need a sales call to read a price sheet. Every
+          engagement starts with a free 15-minute assessment call.
+        </p>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-primary" href="/#reserve">Book the free assessment</a>
+          <a class="btn btn-secondary" href="/#workshop">The $497 workshop instead</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <div class="rows">
+          {
+            services.map((s) => (
+              <article class="row row-pkg">
+                <div class="row-n row-price">{s.price}</div>
+                <h3><a class="text-link-plain" href={`/services/${s.slug}`}>{s.name}</a></h3>
+                <p>{s.tagline}</p>
+              </article>
+            ))
+          }
+        </div>
+        <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
+          Workshop and audit fees credit toward a done-for-you build started within 60 days.
+          Machine-readable pricing for AI agents lives at
+          {" "}<a class="text-link" href="/pricing.md">/pricing.md</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

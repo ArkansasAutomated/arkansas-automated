@@ -1,0 +1,191 @@
+---
+/*
+ * /for/[industry] — Personas playbook (programmatic-seo skill). Trade-specific
+ * leaks, automate-first items, and FAQs from src/data/industries.ts, with
+ * Service + FAQPage + BreadcrumbList schema.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import LeadForm from "../../components/LeadForm.astro";
+import { industries, industryBySlug } from "../../data/industries";
+
+export function getStaticPaths() {
+  return industries.map((i) => ({ params: { industry: i.slug } }));
+}
+
+const { industry: slug } = Astro.params;
+const ind = industryBySlug(slug);
+const display = ind.name.charAt(0).toUpperCase() + ind.name.slice(1);
+
+const title = `AI for ${display} in Arkansas | Arkansas Automated`;
+const description = `${ind.intent}. In-person AI workshops and done-for-you automation from Arkansas Automated, built for how a ${ind.singular} actually runs.`;
+
+const sharedFaqs = [
+  {
+    q: "Can I learn to run this myself?",
+    a: "Yes. The Saturday workshop in Fort Smith is hands-on and no-code: you build your own AI receptionist in one afternoon and call it live before you leave. Seats are $497 early bird and credit toward any done-for-you build started within 60 days.",
+  },
+  {
+    q: "What if I want it built and managed for me?",
+    a: "That is the done-for-you path. Start with the free 15-minute assessment, and if the ROI is there we build, launch, and manage the system, including on-site work under the retainer for larger operations.",
+  },
+];
+
+const faqs = [...ind.faqs, ...sharedFaqs];
+const otherTrades = industries.filter((i) => i.slug !== ind.slug).slice(0, 5);
+
+const site = "https://arkansasautomated.com";
+const pageUrl = `${site}/for/${ind.slug}`;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: `AI automation for ${ind.name}`,
+      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: site },
+      areaServed: { "@type": "State", name: "Arkansas" },
+      description: ind.intent,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Industries", item: `${site}/for` },
+        { "@type": "ListItem", position: 3, name: display, item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path={`/for/${ind.slug}`} schema={schema}>
+  <SiteNav />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span><a href="/for">Industries</a><span>/</span>{display}
+        </nav>
+        <h1 class="heading-xl measure">AI that answers, books, and follows up for {ind.name}.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">{ind.angle}</p>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-primary" href="#contact">Book the free assessment</a>
+          <a class="btn btn-secondary" href="/#workshop">Learn it in the workshop</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-lg measure">Where a {ind.singular} loses the week.</h2>
+        <div class="leak-grid">
+          {
+            ind.leaks.map((l) => (
+              <article class="leak">
+                <h3>{l.h}</h3>
+                <p>{l.p}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="heading-lg measure">What to automate first.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          In this order. Each one pays for the next, and none of them requires new staff.
+        </p>
+        <div class="rows">
+          {
+            ind.automate.map((a, idx) => (
+              <article class="row">
+                <div class="row-n">{String(idx + 1).padStart(2, "0")}</div>
+                <h3>{a.h}</h3>
+                <p>{a.p}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container split">
+        <div>
+          <h2 class="heading-lg">Learn it, or hand it to us.</h2>
+        </div>
+        <div>
+          <p class="body-lg">
+            The Saturday workshop teaches you to build and run the system yourself: $497 early
+            bird, one afternoon, and you leave with a working prototype. If you would rather pay
+            for the outcome, the AI front desk build is $2,500 plus $497 a month, and larger
+            workflow builds run $1,500 to $5,000 setup.
+          </p>
+          <p class="body-lg" style="margin-top:1.1rem">
+            Every engagement starts with a free 15-minute assessment call.
+            {" "}<a class="text-link" href="/services">See full services and pricing</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container faq-wrap">
+        <h2 class="heading-lg measure">Questions {ind.name} ask us.</h2>
+        <div class="faq-list">
+          {
+            faqs.map((f) => (
+              <details class="faq-item">
+                <summary>{f.q}</summary>
+                <p>{f.a}</p>
+              </details>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <h2 class="heading-md">We also build for</h2>
+        <div class="link-chips">
+          {otherTrades.map((i) => (
+            <a class="chip" href={`/for/${i.slug}`}>{i.name.charAt(0).toUpperCase() + i.name.slice(1)}</a>
+          ))}
+          <a class="chip chip-strong" href="/for">All industries</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container split">
+        <div>
+          <h2 class="heading-lg">Start with the free assessment.</h2>
+          <p class="body-lg" style="margin-top:1rem">
+            Fifteen minutes, your business details, and a straight answer on whether automation
+            pays for itself in your operation. If it does not, we will tell you that too.
+          </p>
+          <p class="fine-print" style="margin-top:2rem">
+            Last updated July 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+          </p>
+        </div>
+        <LeadForm
+          defaultIntent="Book the free 15-minute assessment"
+          detailsPlaceholder={`Example: missed calls while on jobs, quote follow-up for my ${ind.singular}.`}
+        />
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

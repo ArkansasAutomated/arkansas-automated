@@ -1,0 +1,137 @@
+---
+/*
+ * /learn/ai-receptionist-vs-answering-service — Comparisons playbook.
+ * Table-first structure for "X vs Y" queries.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+const title = "AI Receptionist vs Answering Service: Honest Comparison | Arkansas Automated";
+const description =
+  "Answering services charge per minute and read scripts. AI receptionists answer instantly and book jobs. A side-by-side comparison of cost, quality, and where each one wins.";
+
+const rows = [
+  { dim: "Answer speed", ai: "First ring, every call, unlimited simultaneous calls", human: "Queue at busy times; spillover during call floods" },
+  { dim: "Availability", ai: "24/7/365, no holidays or sick days", human: "24/7 plans cost more; overnight quality varies" },
+  { dim: "Cost structure", ai: "Flat monthly ($497/mo with us), no per-minute meter", human: "Per minute or per call, typically $1 to $2 per minute" },
+  { dim: "Booking jobs", ai: "Books into your real calendar during the call", human: "Usually takes a message for you to call back" },
+  { dim: "Script consistency", ai: "Exact, every call, updated the day you change it", human: "Varies by operator and by shift" },
+  { dim: "Judgment and empathy", ai: "Hands off to your humans by rule", human: "Real human judgment, when you get a good operator" },
+  { dim: "Call records", ai: "Recording, transcript, and summary of every call", human: "Message slips; recordings rare" },
+];
+
+const site = "https://arkansasautomated.com";
+const pageUrl = `${site}/learn/ai-receptionist-vs-answering-service`;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      headline: "AI Receptionist vs Answering Service: An Honest Comparison",
+      description,
+      author: { "@type": "Person", name: "Andre Brassfield", jobTitle: "Founder, Arkansas Automated" },
+      publisher: { "@type": "Organization", name: "Arkansas Automated", url: site },
+      datePublished: "2026-07-29",
+      dateModified: "2026-07-29",
+      mainEntityOfPage: pageUrl,
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Learn", item: `${site}/learn` },
+        { "@type": "ListItem", position: 3, name: "AI receptionist vs answering service", item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/learn/ai-receptionist-vs-answering-service" schema={schema} ogType="article">
+  <SiteNav />
+  <main>
+    <article class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span><a href="/learn">Learn</a><span>/</span>AI vs answering service
+        </nav>
+        <h1 class="heading-xl measure">AI receptionist vs answering service.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          A traditional answering service is a shared pool of human operators reading scripts
+          and taking messages. An AI receptionist is dedicated software that answers instantly,
+          follows your script exactly, and books the job during the call. For most Arkansas
+          service businesses the AI wins on cost and speed. Humans still win on judgment.
+        </p>
+        <p class="fine-print" style="margin-top:1.5rem">
+          Last updated July 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+        </p>
+      </div>
+    </article>
+
+    <section class="section section-tint">
+      <div class="container article-body">
+        <div class="table-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>AI receptionist</th>
+                <th>Answering service</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r) => (
+                <tr>
+                  <th scope="row">{r.dim}</th>
+                  <td>{r.ai}</td>
+                  <td>{r.human}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="heading-lg measure">Where the answering service still wins</h2>
+        <p>
+          Judgment calls. A grieving family calling a funeral home, an angry customer who needs
+          a person to take responsibility, a caller whose situation fits no script. Human
+          operators with real empathy handle those better than any voice system, and a good
+          service earns its fee on those calls alone. The catch: you are paying pool rates for
+          shared operators, and the great operator who knew your business rotates off your
+          account.
+        </p>
+
+        <h2 class="heading-lg measure">Where the AI wins, and it is most of the day</h2>
+        <p>
+          The other ninety percent of calls: hours, pricing ranges, booking, rescheduling,
+          directions, service questions. The AI answers on the first ring at 2 AM during a storm
+          surge, follows your script exactly on call four hundred the same as call one, and
+          books into your calendar instead of leaving you a message to return. The caller who
+          would have hung up on hold becomes a booked job.
+        </p>
+        <p>
+          The honest setup for most shops is the AI front desk with human escalation rules:
+          routine calls handled instantly, judgment calls handed to your people immediately.
+          You stop paying per minute for a stranger to take messages, and your humans only
+          touch the calls that actually need a human.
+        </p>
+
+        <div class="next-step">
+          <p>
+            Hear the difference with your own business details loaded:
+            {" "}<a class="text-link" href="/#reserve">book the free 15-minute assessment</a>, or
+            {" "}<a class="text-link" href="/services/ai-front-desk">see the AI front desk pricing</a>.
+          </p>
+        </div>
+
+        <div class="link-chips" style="margin-top:2.5rem">
+          <a class="chip" href="/learn/what-is-an-ai-receptionist">What is an AI receptionist?</a>
+          <a class="chip" href="/learn/ai-receptionist-cost">What an AI receptionist costs</a>
+          <a class="chip chip-strong" href="/learn">All guides</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

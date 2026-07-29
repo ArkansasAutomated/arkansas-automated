@@ -1,0 +1,114 @@
+---
+/*
+ * /learn/ai-receptionist-cost — cost-query page with real numbers, the
+ * pricing data AI agents and owners both look for.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+const title = "How Much Does an AI Receptionist Cost in 2026? | Arkansas Automated";
+const description =
+  "Real AI receptionist pricing: $2,500 setup plus $497 a month with Arkansas Automated, versus $2,500 to $3,500 a month for a hire and $1 to $2 a minute for answering services.";
+
+const site = "https://arkansasautomated.com";
+const pageUrl = `${site}/learn/ai-receptionist-cost`;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      headline: "How Much Does an AI Receptionist Cost in 2026?",
+      description,
+      author: { "@type": "Person", name: "Andre Brassfield", jobTitle: "Founder, Arkansas Automated" },
+      publisher: { "@type": "Organization", name: "Arkansas Automated", url: site },
+      datePublished: "2026-07-29",
+      dateModified: "2026-07-29",
+      mainEntityOfPage: pageUrl,
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Learn", item: `${site}/learn` },
+        { "@type": "ListItem", position: 3, name: "AI receptionist cost", item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/learn/ai-receptionist-cost" schema={schema} ogType="article">
+  <SiteNav />
+  <main>
+    <article class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span><a href="/learn">Learn</a><span>/</span>AI receptionist cost
+        </nav>
+        <h1 class="heading-xl measure">What an AI receptionist costs.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          With Arkansas Automated, an AI receptionist costs $2,500 to set up and $497 a month,
+          flat. A full-time human receptionist in Arkansas costs $2,500 to $3,500 a month before
+          payroll tax and covers a quarter of the week. A per-minute answering service costs
+          $1 to $2 per minute, which quietly becomes $800 to $2,000 a month at real call volume.
+        </p>
+        <p class="fine-print" style="margin-top:1.5rem">
+          Last updated July 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+        </p>
+      </div>
+    </article>
+
+    <section class="section section-tint">
+      <div class="container article-body">
+        <h2 class="heading-lg measure">The three ways businesses cover the phone</h2>
+        <p>
+          <strong>Hire a receptionist.</strong> $30,000 to $42,000 a year fully loaded in
+          Arkansas, covering 40 of the week's 168 hours, before turnover, training, and sick
+          days. The right answer at real scale, and the wrong one for a shop where the owner
+          still answers between jobs.
+        </p>
+        <p>
+          <strong>Per-minute answering service.</strong> $1 to $2 per minute sounds cheap until
+          you do the multiplication. A service business fielding 300 short calls a month at two
+          to three minutes each is spending $800 to $2,000 monthly, and the operators still
+          take messages instead of booking jobs.
+        </p>
+        <p>
+          <strong>AI front desk.</strong> $2,500 setup plus $497 a month with us, flat, no
+          per-minute meter. Call volume, nights, weekends, and storm surges included. Monthly
+          tuning with a human included. That is the number on our website because we think you
+          should be able to read it without a sales call.
+        </p>
+
+        <h2 class="heading-lg measure">What the $497 a month has to beat</h2>
+        <p>
+          For most Arkansas service businesses the break-even is one or two jobs a month. An
+          HVAC replacement, a roof, a new dental family, a retained legal client: any one of
+          those pays for months of service. The missed call is never a line item on the P&L,
+          which is exactly why it leaks for years.
+        </p>
+        <p>
+          If your call volume is genuinely low, we will tell you on the assessment call and
+          point you at the cheaper fix. The $999 operations audit exists for businesses that
+          want the math in writing before committing to anything.
+        </p>
+
+        <div class="next-step">
+          <p>
+            See the full price sheet at <a class="text-link" href="/services">services and
+            pricing</a>, or <a class="text-link" href="/#reserve">book the free assessment</a>
+            and hear the receptionist answer as your business.
+          </p>
+        </div>
+
+        <div class="link-chips" style="margin-top:2.5rem">
+          <a class="chip" href="/learn/what-is-an-ai-receptionist">What is an AI receptionist?</a>
+          <a class="chip" href="/learn/ai-receptionist-vs-answering-service">AI vs answering service</a>
+          <a class="chip chip-strong" href="/learn">All guides</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

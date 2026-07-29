@@ -1,0 +1,62 @@
+---
+/*
+ * Shared site footer. The location and industry columns keep every pSEO hub
+ * within one click of every page (no orphans, hub-and-spoke per the
+ * site-architecture skill).
+ */
+import { cities } from "../data/cities";
+import { industries } from "../data/industries";
+
+const properties = [
+  { name: "Fort Smith Directory", url: "https://fortsmithdirectory.com" },
+  { name: "NWA Automated", url: "https://nwaautomated.com" },
+  { name: "Smart Home NWA", url: "https://smarthomenwa.com" },
+  { name: "Good Garage Co.", url: "https://goodgarageco.com" },
+];
+
+const footerCities = cities.filter((c) =>
+  ["fort-smith", "fayetteville", "rogers", "little-rock", "conway", "hot-springs"].includes(c.slug),
+);
+const footerIndustries = industries.filter((i) =>
+  ["plumbers", "hvac", "roofers", "dentists", "law-firms"].includes(i.slug),
+);
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid footer-grid-wide">
+      <div>
+        <div class="brand">Arkansas <span class="accent">Automated</span></div>
+        <p class="body-lg" style="margin-top:0.9rem;max-width:32ch;font-size:1rem">
+          In-person AI workshops and done-for-you automation for operators in Fort Smith,
+          Northwest Arkansas, and across the state.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h4>Workshops</h4>
+        {footerCities.map((c) => <a href={`/ai-workshops/${c.slug}`}>{c.name}</a>)}
+        <a href="/ai-workshops">All {cities.length} cities</a>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        {footerIndustries.map((i) => <a href={`/for/${i.slug}`}>{i.name.charAt(0).toUpperCase() + i.name.slice(1)}</a>)}
+        <a href="/for">All industries</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="/services">Services and pricing</a>
+        <a href="/learn">Learn</a>
+        <a href="/#workshop">The workshop</a>
+        <a href="/#reserve">Reserve a seat</a>
+        <a href="/list-your-business">List your business</a>
+      </div>
+      <div class="footer-col">
+        <h4>Network</h4>
+        {properties.map((p) => <a href={p.url} target="_blank" rel="noopener">{p.name}</a>)}
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; {new Date().getFullYear()} Arkansas Automated. Built and operated in Arkansas.</p>
+    </div>
+  </div>
+</footer>

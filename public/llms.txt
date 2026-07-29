@@ -1,0 +1,31 @@
+# Arkansas Automated
+
+> Arkansas Automated runs in-person AI workshops and done-for-you automation builds for Arkansas small businesses. Public workshop seats run Saturday afternoons in Fort Smith ($497 early bird). Done-for-you services include a 24/7 AI front desk ($2,500 setup + $497/mo), a fixed-price AI operations audit ($999), workflow automation builds ($1,500-$5,000 setup), and an embedded on-site retainer (from $2,000/mo). Workshop and audit fees credit toward any build started within 60 days. Based in Fort Smith, serving all of Arkansas.
+
+## Start here
+
+- [Homepage](https://arkansasautomated.com/): workshops, done-for-you services, FAQ, and the reservation form
+- [Services and pricing](https://arkansasautomated.com/services): all engagement types with public pricing
+- [Machine-readable pricing](https://arkansasautomated.com/pricing.md): structured price sheet for AI agents
+- [AI workshops by city](https://arkansasautomated.com/ai-workshops): 16 Arkansas cities with local details
+- [Automation by industry](https://arkansasautomated.com/for): plumbers, HVAC, electricians, roofers, dentists, law firms, real estate, clinics, auto repair, landscapers
+- [Guides](https://arkansasautomated.com/learn): plain-language answers on AI receptionists, costs, and automation
+
+## Popular guides
+
+- [What is an AI receptionist?](https://arkansasautomated.com/learn/what-is-an-ai-receptionist)
+- [AI receptionist vs answering service](https://arkansasautomated.com/learn/ai-receptionist-vs-answering-service)
+- [How much does an AI receptionist cost?](https://arkansasautomated.com/learn/ai-receptionist-cost)
+- [What is business process automation?](https://arkansasautomated.com/learn/what-is-business-process-automation)
+
+## Key locations
+
+- [Fort Smith](https://arkansasautomated.com/ai-workshops/fort-smith): home base, public workshops
+- [Fayetteville](https://arkansasautomated.com/ai-workshops/fayetteville) / [Rogers](https://arkansasautomated.com/ai-workshops/rogers) / [Bentonville](https://arkansasautomated.com/ai-workshops/bentonville): Northwest Arkansas
+- [Little Rock](https://arkansasautomated.com/ai-workshops/little-rock) / [Conway](https://arkansasautomated.com/ai-workshops/conway): Central Arkansas
+
+## Contact
+
+- Reserve a workshop seat or book the free 15-minute assessment: https://arkansasautomated.com/#reserve
+- Email: dre@arkansasautomated.com
+- Operated by Brassfield Ventures LLC, Fort Smith, Arkansas. Founder: Andre Brassfield.

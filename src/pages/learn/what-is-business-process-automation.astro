@@ -1,0 +1,111 @@
+---
+/*
+ * /learn/what-is-business-process-automation — Glossary playbook for the
+ * broader "automation" query cluster.
+ */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+const title = "What Is Business Process Automation? A Plain Guide | Arkansas Automated";
+const description =
+  "Business process automation means software does the repeatable handoffs: capturing leads, chasing quotes, scheduling, invoicing. What it is, what to automate first, and what to leave alone.";
+
+const site = "https://arkansasautomated.com";
+const pageUrl = `${site}/learn/what-is-business-process-automation`;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      headline: "What Is Business Process Automation?",
+      description,
+      author: { "@type": "Person", name: "Andre Brassfield", jobTitle: "Founder, Arkansas Automated" },
+      publisher: { "@type": "Organization", name: "Arkansas Automated", url: site },
+      datePublished: "2026-07-29",
+      dateModified: "2026-07-29",
+      mainEntityOfPage: pageUrl,
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Learn", item: `${site}/learn` },
+        { "@type": "ListItem", position: 3, name: "What is business process automation?", item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/learn/what-is-business-process-automation" schema={schema} ogType="article">
+  <SiteNav />
+  <main>
+    <article class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span><a href="/learn">Learn</a><span>/</span>What is business process automation?
+        </nav>
+        <h1 class="heading-xl measure">What is business process automation?</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          Business process automation means software handles the repeatable handoffs in your
+          operation: capturing the lead, chasing the quote, booking the job, sending the
+          invoice, and asking for the review. The steps happen the same way every time, on
+          time, without anybody remembering to do them. It is not about replacing people. It
+          is about stopping the leaks between them.
+        </p>
+        <p class="fine-print" style="margin-top:1.5rem">
+          Last updated July 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+        </p>
+      </div>
+    </article>
+
+    <section class="section section-tint">
+      <div class="container article-body">
+        <h2 class="heading-lg measure">The handoffs where small businesses leak</h2>
+        <p>
+          Almost every leak in a small service business sits between two people or two systems.
+          The call reaches voicemail between the customer and the office. The quote waits
+          overnight between the office and the estimator. The job details get typed three times
+          between the field, the CRM, and accounting. The follow-up runs on memory between the
+          estimate and the second touch. None of these are people problems. They are handoff
+          problems, and handoffs are what automation is for.
+        </p>
+
+        <h2 class="heading-lg measure">What to automate first</h2>
+        <p>
+          In the order that pays back fastest for most Arkansas businesses: answering every
+          call, because a missed call is a customer dialing the next name on the list. Quote
+          and estimate follow-up, because the second and third touch close a third of open
+          quotes and belong to nobody today. Scheduling, because phone tag costs an hour a job.
+          Invoice chasing, because late invoices are a cash-flow problem wearing a politeness
+          costume. Then review requests, because your reputation should compound while you work.
+        </p>
+
+        <h2 class="heading-lg measure">What to leave alone</h2>
+        <p>
+          Judgment, negotiation, pricing exceptions, and the conversations that decide whether
+          somebody trusts your company stay with your people. Good automation makes that line
+          obvious instead of blurring it. If a system cannot state plainly where it stops and
+          a human starts, it is not finished. Our own rule, printed on our homepage and applied
+          to every build: we will tell you what not to automate before the invoice, not after.
+        </p>
+
+        <div class="next-step">
+          <p>
+            Want your own leaks mapped with dollar figures attached? The
+            {" "}<a class="text-link" href="/services/operations-audit">$999 operations audit</a>
+            {" "}does exactly that, and the fee credits toward any build within 60 days.
+          </p>
+        </div>
+
+        <div class="link-chips" style="margin-top:2.5rem">
+          <a class="chip" href="/learn/what-is-an-ai-receptionist">What is an AI receptionist?</a>
+          <a class="chip" href="/for">Automation by industry</a>
+          <a class="chip chip-strong" href="/learn">All guides</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

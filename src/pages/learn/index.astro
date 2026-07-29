@@ -1,0 +1,93 @@
+---
+/* /learn — hub for the guide cluster. */
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+const title = "Learn: AI and Automation Guides for Arkansas Businesses | Arkansas Automated";
+const description =
+  "Plain-language guides on AI receptionists, answering services, real pricing, and business process automation, written for Arkansas owners, not engineers.";
+
+const guides = [
+  {
+    slug: "what-is-an-ai-receptionist",
+    name: "What is an AI receptionist?",
+    role: "What it does on a call, what it costs, and where it stops.",
+  },
+  {
+    slug: "ai-receptionist-vs-answering-service",
+    name: "AI receptionist vs answering service",
+    role: "A side-by-side comparison of cost, speed, and where each one wins.",
+  },
+  {
+    slug: "ai-receptionist-cost",
+    name: "How much does an AI receptionist cost?",
+    role: "Real 2026 numbers versus a hire and per-minute services.",
+  },
+  {
+    slug: "what-is-business-process-automation",
+    name: "What is business process automation?",
+    role: "The handoffs where small businesses leak, in the order to fix them.",
+  },
+];
+
+const site = "https://arkansasautomated.com";
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "AI and automation guides",
+      itemListElement: guides.map((g, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: g.name,
+        url: `${site}/learn/${g.slug}`,
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Learn", item: `${site}/learn` },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/learn" schema={schema}>
+  <SiteNav />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span>Learn
+        </nav>
+        <h1 class="heading-xl measure">Plain answers on AI and automation.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          Short guides written for Arkansas business owners, not engineers. Real numbers,
+          honest trade-offs, and no jargon. If you would rather learn hands-on, the
+          {" "}<a class="text-link" href="/#workshop">Saturday workshop</a> is the fastest path.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section-tint">
+      <div class="container">
+        <div class="city-grid">
+          {
+            guides.map((g) => (
+              <a class="city-card" href={`/learn/${g.slug}`}>
+                <span class="prop-name">{g.name}</span>
+                <span class="prop-role">{g.role}</span>
+                <span class="city-cta">Read the guide</span>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>

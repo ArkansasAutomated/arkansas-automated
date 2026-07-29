@@ -257,6 +257,67 @@ img { max-width: 100%; display: block; }
 .footer-bottom { margin-top: 2.75rem; padding-top: 1.5rem; border-top: 1px solid var(--line);
   color: var(--text-muted); font-size: 0.88rem; }
 
+/* pSEO cluster additions (2026-07-29). Same tokens, same shape lock. */
+
+/* Breadcrumbs: quiet, one line, mirrors URL hierarchy. */
+.crumbs { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1.6rem;
+  display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.crumbs a { color: var(--text-secondary); }
+.crumbs a:hover { color: var(--accent); }
+
+/* Inline text links: the only underline style on the site. */
+.text-link { color: var(--accent); text-decoration: underline; text-underline-offset: 0.22em; }
+.text-link:hover { color: var(--text-primary); }
+.text-link-plain { color: inherit; }
+.text-link-plain:hover { color: var(--accent); }
+
+/* Link chips: related pages, nearby cities, cross-links. */
+.link-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+.chip { border: 1px solid var(--line); border-radius: var(--radius-full);
+  padding: 0.5rem 1.05rem; font-size: 0.92rem; color: var(--text-secondary);
+  transition: border-color var(--transition-fast), color var(--transition-fast); }
+.chip:hover { border-color: var(--accent-line); color: var(--text-primary); }
+.chip-strong { border-color: var(--accent-line); color: var(--accent); }
+.chip-strong:hover { color: var(--text-primary); }
+
+/* Hub cards: city / industry / guide tiles. Same hairline-grid language as
+   the leak grid, interactive. */
+.city-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line);
+  border-radius: var(--radius-lg); overflow: hidden; margin-top: 2.5rem; }
+@media (min-width: 700px) { .city-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1020px) { .city-grid { grid-template-columns: repeat(3, 1fr); } }
+.city-card { background: var(--bg-primary); padding: 1.6rem 1.7rem; display: flex;
+  flex-direction: column; gap: 0.4rem; transition: background var(--transition-fast); }
+.city-card:hover { background: var(--bg-tertiary); }
+.city-cta { color: var(--accent); font-size: 0.9rem; margin-top: 0.3rem; }
+
+/* Fine print: freshness + author lines (ai-seo E-E-A-T signals). */
+.fine-print { color: var(--text-muted); font-size: 0.88rem; }
+
+/* Article body (learn pages): readable measure, spaced sections. */
+.article-body { max-width: 46rem; }
+.article-body h2 { margin-top: 3rem; }
+.article-body h2:first-child { margin-top: 0; }
+.article-body p { color: var(--text-secondary); margin-top: 1.15rem; }
+.article-body strong { color: var(--text-primary); }
+.next-step { margin-top: 2.75rem; border-top: 2px solid var(--accent-line); padding-top: 1.4rem; }
+.next-step p { margin-top: 0; }
+
+/* Comparison table (learn/vs pages). */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius-md); }
+.compare-table { width: 100%; border-collapse: collapse; font-size: 0.97rem; min-width: 640px; }
+.compare-table th, .compare-table td { text-align: left; padding: 1rem 1.2rem;
+  border-bottom: 1px solid var(--line); vertical-align: top; }
+.compare-table thead th { font-family: var(--font-heading); font-weight: 600; font-size: 1.02rem;
+  background: var(--bg-tertiary); }
+.compare-table tbody th { font-weight: 600; color: var(--text-primary); white-space: nowrap; }
+.compare-table td { color: var(--text-secondary); }
+.compare-table tbody tr:last-child th, .compare-table tbody tr:last-child td { border-bottom: none; }
+
+/* Wider footer grid for the expanded link columns. */
+@media (min-width: 800px) { .footer-grid-wide { grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; } }
+@media (min-width: 560px) and (max-width: 799px) { .footer-grid-wide { grid-template-columns: 1fr 1fr; } }
+
 /* Motion: entrance only, and only when the user has not asked for less.
    Content is fully visible without JS and without animation. */
 @media (prefers-reduced-motion: no-preference) {

@@ -1,3 +1,28 @@
+# Arkansas Automated welcomes AI search and citation crawlers. Citation is
+# how Arkansas owners find the workshops; blocking the bots that cite us
+# would be blocking the front door (ai-seo skill).
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: *
 Allow: /
 

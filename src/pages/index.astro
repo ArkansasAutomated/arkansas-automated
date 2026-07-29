@@ -1,5 +1,8 @@
 ---
 import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import LeadForm from "../components/LeadForm.astro";
 
 const title = "AI Workshops and Done-For-You Automation in Arkansas | Arkansas Automated";
 const description =
@@ -146,25 +149,48 @@ const properties = [
   },
 ];
 
-const intents = [
-  "Reserve a workshop seat, $497 early bird",
-  "Book the free 15-minute assessment",
-  "Talk done-for-you or retainer",
-];
+// Homepage schema: ProfessionalService + WebSite + FAQPage. The FAQPage
+// mirrors the visible FAQ section exactly (schema must match page content).
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      name: "Arkansas Automated",
+      url: "https://arkansasautomated.com",
+      description,
+      areaServed: [
+        { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
+        { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
+        { "@type": "State", name: "Arkansas" },
+      ],
+      serviceType: [
+        "AI workshops and training",
+        "Workflow automation",
+        "AI implementation",
+        "CRM integration",
+        "Business process automation",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      name: "Arkansas Automated",
+      url: "https://arkansasautomated.com",
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+  ],
+};
 ---
 
-<Base title={title} description={description} path="/">
-  <header class="nav">
-    <div class="container nav-inner">
-      <a class="brand" href="/">Arkansas <span class="accent">Automated</span></a>
-      <nav class="nav-links" aria-label="Main">
-        <a class="nav-hide" href="#workshop">The workshop</a>
-        <a class="nav-hide" href="#done-for-you">Done for you</a>
-        <a class="nav-hide" href="#faq">FAQ</a>
-        <a class="btn btn-primary" href="#reserve">Reserve a seat</a>
-      </nav>
-    </div>
-  </header>
+<Base title={title} description={description} path="/" schema={homeSchema}>
+  <SiteNav />
 
   <main>
     <section class="hero">
@@ -376,173 +402,14 @@ const intents = [
           </p>
         </div>
 
-        <div class="form-card">
-          <form id="reserve-form" novalidate>
-            <div class="field">
-              <label for="intent">I want to</label>
-              <select id="intent" name="intent">
-                {intents.map((i) => <option value={i}>{i}</option>)}
-              </select>
-            </div>
-            <div class="field">
-              <label for="businessName">Business name</label>
-              <input id="businessName" name="businessName" type="text" required autocomplete="organization" />
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="contactName">Your name</label>
-                <input id="contactName" name="contactName" type="text" required autocomplete="name" />
-              </div>
-              <div class="field">
-                <label for="email">Work email</label>
-                <input id="email" name="email" type="email" required autocomplete="email" />
-              </div>
-            </div>
-            <div class="field-row">
-              <div class="field">
-                <label for="phone">Phone</label>
-                <input id="phone" name="phone" type="tel" autocomplete="tel" />
-              </div>
-              <div class="field">
-                <label for="seats">Seats (workshop only)</label>
-                <select id="seats" name="seats">
-                  <option value="1">1</option>
-                  <option value="2">2, partner rate</option>
-                </select>
-              </div>
-            </div>
-            <div class="field">
-              <label for="details">What is the first thing you would want an AI receptionist to handle?</label>
-              <textarea id="details" name="details" rows="3" placeholder="Example: after-hours calls, booking estimates, rescheduling."></textarea>
-            </div>
-
-            <!-- Honeypot. Real people never see or fill this; the hub rejects
-                 any submission that carries a value (server-side bot-field). -->
-            <div class="hp" aria-hidden="true">
-              <label for="bot-field">Do not fill this in</label>
-              <input id="bot-field" name="bot-field" type="text" tabindex="-1" autocomplete="off" />
-            </div>
-
-            <button class="btn btn-primary" type="submit" style="width:100%" id="reserve-submit">
-              Send my request
-            </button>
-            <p class="form-note">No payment due now. We reply from a real address.</p>
-            <div id="reserve-msg" class="form-msg" hidden></div>
-          </form>
-        </div>
+        <LeadForm
+          defaultIntent="Reserve a workshop seat, $497 early bird"
+          detailsPlaceholder="Example: after-hours calls, booking estimates, rescheduling."
+        />
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="brand">Arkansas <span class="accent">Automated</span></div>
-          <p class="body-lg" style="margin-top:0.9rem;max-width:32ch;font-size:1rem">
-            In-person AI workshops and done-for-you automation for operators in Fort Smith,
-            Northwest Arkansas, and across the state.
-          </p>
-        </div>
-        <div class="footer-col">
-          <h4>Network</h4>
-          {properties.map((p) => <a href={p.url} target="_blank" rel="noopener">{p.name}</a>)}
-        </div>
-        <div class="footer-col">
-          <h4>Company</h4>
-          <a href="#workshop">The workshop</a>
-          <a href="#done-for-you">Done for you</a>
-          <a href="/list-your-business">List your business</a>
-          <a href="#reserve">Reserve a seat</a>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} Arkansas Automated. Built and operated in Arkansas.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Posts to the hub's public lead endpoint as type "automation_assessment",
-    // the same capture path the previous audit form used. The workshop intent
-    // rides in `extra`, so no hub change is required.
-    //
-    // APEX host, never www: www 308-redirects, and a redirected cross-origin
-    // fetch resends with Origin: null, which the hub allowlist rejects. That
-    // exact bug silently ate every submission from this domain until 2026-07-27.
-    //
-    // text/plain is deliberate: it is a CORS-safelisted content type, so the
-    // browser sends no preflight.
-    const ENDPOINT = "https://fortsmithdirectory.com/api/public/leads";
-    const form = document.getElementById("reserve-form") as HTMLFormElement | null;
-    const msg = document.getElementById("reserve-msg") as HTMLElement | null;
-    const submit = document.getElementById("reserve-submit") as HTMLButtonElement | null;
-
-    function show(kind: "ok" | "error", text: string) {
-      if (!msg) return;
-      msg.hidden = false;
-      msg.dataset.kind = kind;
-      msg.textContent = text;
-    }
-
-    form?.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      if (!form || !submit) return;
-      const fd = new FormData(form);
-      const val = (k: string) => {
-        const v = fd.get(k);
-        return typeof v === "string" && v.trim() !== "" ? v.trim() : undefined;
-      };
-
-      const businessName = val("businessName");
-      const contactName = val("contactName");
-      const email = val("email");
-      if (!businessName || !contactName || !email) {
-        show("error", "Business name, your name, and a work email are required.");
-        return;
-      }
-
-      submit.disabled = true;
-      const original = submit.textContent;
-      submit.textContent = "Sending";
-
-      // `category` is deliberately omitted: leads.category is a foreign key to
-      // categories(slug) and automation is not a directory category, so sending
-      // one would fail the insert.
-      const payload: Record<string, unknown> = {
-        type: "automation_assessment",
-        businessName,
-        name: contactName,
-        email,
-        phone: val("phone"),
-        details: val("details"),
-        spokeDomain: "arkansasautomated.com",
-        sourcePath: location.pathname,
-        "bot-field": fd.get("bot-field") ?? "",
-        extra: {
-          intent: val("intent") ?? null,
-          seats: val("seats") ?? null,
-        },
-      };
-
-      try {
-        const res = await fetch(ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify(payload),
-        });
-        if (res.ok) {
-          form.reset();
-          show("ok", "Received. We will read this and reply from a real address, usually within one business day.");
-          submit.textContent = "Request received";
-          return;
-        }
-        show("error", "That did not go through. Email dre@arkansasautomated.com and we will pick it up from there.");
-      } catch {
-        show("error", "That did not go through. Email dre@arkansasautomated.com and we will pick it up from there.");
-      }
-      submit.disabled = false;
-      submit.textContent = original;
-    });
-  </script>
+  <SiteFooter />
 </Base>
+
