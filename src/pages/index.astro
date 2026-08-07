@@ -159,6 +159,10 @@ const homeSchema = {
       name: "Arkansas Automated",
       url: "https://arkansasautomated.com",
       description,
+      // Real alternative representations of the same operator (Brassfield
+      // Ventures), shown on this page in the "We run this playbook on our own
+      // properties" section. No invented social profiles (PROTOCOL 10).
+      sameAs: properties.map((p) => p.url),
       areaServed: [
         { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
         { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
