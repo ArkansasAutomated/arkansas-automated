@@ -77,19 +77,100 @@ const schema = pageSchema ?? defaultSchema;
       // 308-redirects and a redirected cross-origin fetch resends with
       // Origin: null, which the hub allowlist rejects. Failure is silent by
       // design; measurement must never break a page.
-      try {
-        fetch("https://fortsmithdirectory.com/api/public/pv", {
-          method: "POST",
-          headers: { "Content-Type": "text/plain" },
-          body: JSON.stringify({
-            path: location.pathname,
-            referrer: document.referrer || null,
-          }),
-          keepalive: true,
-        }).catch(() => {});
-      } catch (e) {
-        /* no-op */
-      }
+      //
+      // WHY THIS IS GATED (2026-08-08). The previous version fired
+      // unconditionally on parse. That made every automated page load count as
+      // a session, and the resulting number was not survivable as a conversion
+      // denominator: over the 30 days to 2026-08-08 this domain recorded 222
+      // pageviews, of which 133 carried referrer "https://www.google.com/"
+      // while Search Console recorded 15 impressions and 2 clicks for the same
+      // window. Google cannot send 133 visits it never served. Two of those
+      // rows were paths (/assessment, /ai-tools-assessment) that have never
+      // existed on this site, four seconds apart. The fleet's own agents also
+      // land here: three loads on 2026-08-08 at 14:41 and 14:43 UTC were
+      // written by an automated session whose navigator.webdriver reads false,
+      // so a webdriver check does NOT filter them.
+      //
+      // What DOES separate them is that automated loads are rendered into a
+      // page that never becomes visible. So the rule is: count a view only
+      // once the page has been continuously visible for DWELL_MS, and only
+      // once per path per tab session.
+      //
+      // TRADEOFFS, stated plainly:
+      // - A human who leaves inside DWELL_MS is not counted. That is deliberate.
+      //   A sub-second visible session cannot convert, so excluding it makes the
+      //   conversion denominator honest rather than flattering.
+      // - A human who opens this in a background tab is counted when they
+      //   actually look at it, not when the tab was created.
+      // - This is a heuristic, not proof of humanity. A headless browser that
+      //   reports itself visible still counts. It removes a known, measured
+      //   source of inflation; it does not make the number bot-proof.
+      // - Counts after this ships are NOT comparable to counts before it. A
+      //   drop is this filter working, not traffic disappearing.
+      (function () {
+        var DWELL_MS = 1500;
+        var ENDPOINT = "https://fortsmithdirectory.com/api/public/pv";
+        var KEY = "aa:pv:" + location.pathname;
+
+        // Once per path per tab session: reloads and hash navigation are not
+        // new sessions. Private modes can throw on sessionStorage, so every
+        // access is guarded and failure degrades to the old count-once-per-load.
+        try {
+          if (sessionStorage.getItem(KEY)) return;
+        } catch (e) {
+          /* storage unavailable; continue unguarded */
+        }
+
+        var timer = null;
+        var sent = false;
+
+        function send() {
+          if (sent) return;
+          sent = true;
+          disarm();
+          document.removeEventListener("visibilitychange", onVisibility);
+          try {
+            sessionStorage.setItem(KEY, "1");
+          } catch (e) {
+            /* no-op */
+          }
+          try {
+            fetch(ENDPOINT, {
+              method: "POST",
+              headers: { "Content-Type": "text/plain" },
+              body: JSON.stringify({
+                path: location.pathname,
+                referrer: document.referrer || null,
+              }),
+              keepalive: true,
+            }).catch(function () {});
+          } catch (e) {
+            /* no-op */
+          }
+        }
+
+        function arm() {
+          if (sent || timer !== null) return;
+          timer = window.setTimeout(send, DWELL_MS);
+        }
+
+        function disarm() {
+          if (timer !== null) {
+            clearTimeout(timer);
+            timer = null;
+          }
+        }
+
+        // Leaving before the dwell elapses resets it: the clock measures
+        // continuous attention, not elapsed wall time with the tab buried.
+        function onVisibility() {
+          if (document.visibilityState === "visible") arm();
+          else disarm();
+        }
+
+        document.addEventListener("visibilitychange", onVisibility);
+        onVisibility();
+      })();
     </script>
   </body>
 </html>
