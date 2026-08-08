@@ -80,7 +80,14 @@ const intents = [
     <button class="btn btn-primary" type="submit" style="width:100%" id="reserve-submit">
       Send my request
     </button>
-    <p class="form-note">No payment due now. We reply from a real address.</p>
+    <!-- Second conversion path. Until now this form was the only way to reach
+         the business from any page, and it sits roughly 84% of the way down
+         the homepage. No phone number is published for this brand, so email is
+         the only alternative that can be stated truthfully here. -->
+    <p class="form-note">
+      No payment due now. We reply from a real address. You can also email
+      <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>.
+    </p>
     <div id="reserve-msg" class="form-msg" hidden></div>
   </form>
 </div>
@@ -102,6 +109,67 @@ const intents = [
     msg.hidden = false;
     msg.dataset.kind = kind;
     msg.textContent = text;
+  }
+
+  /*
+   * Failure recovery. Before 2026-08-08 a failed POST showed an address as
+   * plain text, so the only way to recover was to retype everything into a
+   * mail client. Anyone who had already filled the form was the most motivated
+   * visitor on the page, and that is exactly who was dropped. This rebuilds
+   * what they typed into a prefilled mailto so a transport failure costs one
+   * click instead of the lead.
+   */
+  function showRecoverable(text: string, mail: { subject: string; body: string }) {
+    if (!msg) return;
+    msg.hidden = false;
+    msg.dataset.kind = "error";
+    msg.textContent = "";
+
+    const p = document.createElement("p");
+    p.textContent = text;
+    msg.appendChild(p);
+
+    const a = document.createElement("a");
+    a.href =
+      "mailto:dre@arkansasautomated.com?subject=" +
+      encodeURIComponent(mail.subject) +
+      "&body=" +
+      encodeURIComponent(mail.body);
+    a.textContent = "Send this as an email instead";
+    a.style.textDecoration = "underline";
+    msg.appendChild(a);
+  }
+
+  // Funnel context, recorded only on submissions that succeed. It rides in the
+  // lead's existing `extra` (jsonb `payload` on the hub) so it needs no schema
+  // or endpoint change. It cannot tell us about people who never submit; that
+  // needs an events endpoint the hub does not have yet.
+  const pageLoadedAt = Date.now();
+  let firstInteractionAt: number | null = null;
+  let failedAttempts = 0;
+  let formEverVisible = false;
+
+  form?.addEventListener(
+    "input",
+    () => {
+      if (firstInteractionAt === null) firstInteractionAt = Date.now();
+    },
+    { once: false },
+  );
+
+  if (form && "IntersectionObserver" in window) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            formEverVisible = true;
+            io.disconnect();
+          }
+        }
+      },
+      { threshold: 0.3 },
+    );
+    io.observe(form);
   }
 
   form?.addEventListener("submit", async (e) => {
@@ -141,25 +209,62 @@ const intents = [
       extra: {
         intent: val("intent") ?? null,
         seats: val("seats") ?? null,
+        // Funnel context. `msToSubmit` is time from page load; `msToFirstInput`
+        // separates "arrived ready to convert" from "read the page first".
+        // `formEverVisible` false means the form was submitted without ever
+        // scrolling into view, which is a bot tell worth keeping on the row.
+        msToSubmit: Date.now() - pageLoadedAt,
+        msToFirstInput: firstInteractionAt === null ? null : firstInteractionAt - pageLoadedAt,
+        failedAttempts,
+        formEverVisible,
+        referrer: document.referrer || null,
       },
     };
 
-    try {
+    const mail = {
+      subject: `Arkansas Automated request from ${businessName}`,
+      body: [
+        `Business: ${businessName}`,
+        `Name: ${contactName}`,
+        `Email: ${email}`,
+        `Phone: ${val("phone") ?? ""}`,
+        `I want to: ${val("intent") ?? ""}`,
+        `Seats: ${val("seats") ?? ""}`,
+        "",
+        `${val("details") ?? ""}`,
+      ].join("\n"),
+    };
+
+    // One retry before giving up. A single transient network blip should not
+    // cost a lead that is already typed and submitted.
+    async function post(): Promise<boolean> {
       const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(payload),
       });
-      if (res.ok) {
-        form.reset();
-        show("ok", "Received. We will read this and reply from a real address, usually within one business day.");
-        submit.textContent = "Request received";
-        return;
-      }
-      show("error", "That did not go through. Email dre@arkansasautomated.com and we will pick it up from there.");
-    } catch {
-      show("error", "That did not go through. Email dre@arkansasautomated.com and we will pick it up from there.");
+      return res.ok;
     }
+
+    let ok = false;
+    for (let attempt = 0; attempt < 2 && !ok; attempt++) {
+      try {
+        ok = await post();
+      } catch {
+        ok = false;
+      }
+      if (!ok && attempt === 0) await new Promise((r) => setTimeout(r, 800));
+    }
+
+    if (ok) {
+      form.reset();
+      show("ok", "Received. We will read this and reply from a real address, usually within one business day.");
+      submit.textContent = "Request received";
+      return;
+    }
+
+    failedAttempts++;
+    showRecoverable("That did not go through, and we do not want to lose your request. ", mail);
     submit.disabled = false;
     submit.textContent = original;
   });
