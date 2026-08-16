@@ -120,6 +120,10 @@ img { max-width: 100%; display: block; }
 .cta-choice { display: flex; flex-direction: column; gap: 0.55rem; align-items: flex-start; }
 .cta-choice .btn { width: 100%; white-space: normal; text-align: center; }
 .cta-choice span { color: var(--text-muted); font-size: 0.78rem; line-height: 1.45; max-width: 29ch; }
+.tool-link { display: inline-flex; gap: .5rem; align-items: center; color: var(--accent); font-size: .9rem; margin-top: 1rem; border-bottom: 1px solid var(--accent-line); padding-bottom: .2rem; }
+.tool-link:hover { color: var(--text-primary); border-color: var(--text-primary); }
+.tool-link span { transition: transform var(--transition-fast); }
+.tool-link:hover span { transform: translateX(3px); }
 .hero-figure { position: relative; border-radius: var(--radius-lg); overflow: hidden;
   border: 1px solid var(--line); aspect-ratio: 16 / 11; background: var(--bg-tertiary); }
 .hero-figure img { width: 100%; height: 100%; object-fit: cover; }
