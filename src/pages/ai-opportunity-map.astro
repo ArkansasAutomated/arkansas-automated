@@ -89,12 +89,24 @@ const description = "Find the parts of your business where AI or automation coul
           </form>
 
           <section class="map-result" data-result-panel hidden aria-live="polite">
-            <div class="result-top"><div><p class="eyebrow" data-result-route>YOUR NEXT MOVE</p><h2>Your clearest opening is operational leverage.</h2><p class="step-copy">The opportunity is not “use AI.” It is removing this specific drag from the business.</p></div><div class="signal" data-signal>—</div></div>
+            <div class="result-top"><div><p class="eyebrow" data-result-route>YOUR AI OPPORTUNITY MAP</p><h2>Three openings worth looking at next.</h2><p class="step-copy">This is a working hypothesis based on what you told us, not a generic AI score. Take it into a real conversation.</p></div><div class="signal" data-signal>—</div></div>
             <div class="opportunity-list" data-opportunity-list></div>
-            <div class="recommendation"><p class="eyebrow">Recommended path</p><p data-recommendation></p></div>
+            <div class="recommendation"><p class="eyebrow">The best first move</p><p data-recommendation></p></div>
+            <div class="capture-block">
+              <p class="eyebrow">Keep your map</p>
+              <h3>Send this to me and I’ll bring it to the call.</h3>
+              <p>Your result becomes a structured starting brief instead of disappearing into a browser tab.</p>
+              <form data-map-capture novalidate>
+                <div class="capture-grid"><label>Your name<input name="name" required autocomplete="name" /></label><label>Work email<input name="email" type="email" required autocomplete="email" /></label></div>
+                <input name="businessName" type="hidden" /><input name="industry" type="hidden" />
+                <button class="btn btn-primary" type="submit">Send my opportunity map <span>→</span></button>
+                <p class="capture-status" data-capture-status hidden></p>
+                <p class="form-legal">By submitting, you agree that Arkansas Automated may contact you about this map and your next step. See our <a href="/privacy">privacy page</a>.</p>
+              </form>
+            </div>
             <div class="booking-block">
               <p class="eyebrow">Ready to make it concrete?</p>
-              <h3>Book the initial consult.</h3>
+              <h3>Book the 30-minute opportunity session.</h3>
               <p>Bring the workflow costing you the most. We’ll map the people, tools, exceptions, and first useful move.</p>
               <div id="my-cal-inline-arkansas-automated-initial-consult" class="cal-embed"></div>
             </div>
@@ -114,16 +126,18 @@ const description = "Find the parts of your business where AI or automation coul
   const steps = [...document.querySelectorAll<HTMLElement>("[data-step]")];
   const resultPanel = document.querySelector<HTMLElement>("[data-result-panel]");
   const progress = [...document.querySelectorAll<HTMLElement>("[data-progress]")];
-  const issues = [
-    { id: "inquiries", title: "Response system", detail: "Capture, qualify, and route inquiries before they disappear." },
-    { id: "inquiries", title: "Follow-up loop", detail: "Make the next action obvious and consistent without making it robotic." },
-    { id: "handoffs", title: "Handoff map", detail: "Make ownership and exceptions visible across the tools already in use." },
-    { id: "handoffs", title: "Workflow automation", detail: "Remove the copy-paste and waiting between the people doing the work." },
-    { id: "admin", title: "Admin reduction", detail: "Identify repetitive work worth removing before buying another tool." },
-    { id: "admin", title: "Team copilot", detail: "Teach a safe pattern for drafting, summarizing, and preparing work." },
-    { id: "visibility", title: "Operating signal", detail: "Create a small, trusted view of what needs attention." },
-    { id: "visibility", title: "Decision rhythm", detail: "Turn scattered data into a weekly decision habit." },
-  ];
+  const opportunityCatalog: Record<string, Array<{ title: string; happening: string; change: string; impact: string; difficulty: string; firstMove: string }>> = {
+    dental: [
+      { title: "Patient intake + follow-up automation", happening: "Staff manually receive forms → enter information → check missing information → call or text patients → update systems.", change: "Forms are categorized → missing information is flagged → follow-ups are triggered → staff handle exceptions.", impact: "5–10 staff hours/week recovered; fewer missed follow-ups; clearer incomplete-work visibility.", difficulty: "Medium", firstMove: "Map the current intake workflow" },
+      { title: "Recall and reactivation workflow", happening: "Patients who are due, overdue, or undecided live in separate lists and depend on memory.", change: "The right patient gets the right reminder at the right time, with a human handoff when needed.", impact: "More consistent recall; less front-desk chasing; a cleaner opportunity queue.", difficulty: "Medium", firstMove: "List the patient segments and handoff rules" },
+      { title: "Front-desk knowledge copilot", happening: "The same policy, scheduling, and insurance questions interrupt the team all day.", change: "Staff get a trusted answer pattern and escalation path without improvising every time.", impact: "Fewer interruptions; faster answers; safer consistency across the team.", difficulty: "Low", firstMove: "Collect the 20 questions staff answer most" },
+    ],
+    default: [
+      { title: "Lead intake + follow-up automation", happening: "Requests arrive through calls, forms, email, or messages → someone re-enters the details → follow-up depends on memory.", change: "Requests are categorized → missing information is flagged → next actions are triggered → people handle exceptions.", impact: "Fewer dropped opportunities; recovered staff time; clearer visibility into incomplete work.", difficulty: "Medium", firstMove: "Map the current intake-to-follow-up workflow" },
+      { title: "Handoff and exception map", happening: "Work waits between people and tools because ownership and exceptions are unclear.", change: "Each handoff has an owner, a visible state, and a human escalation path.", impact: "Less waiting; fewer duplicate updates; faster decisions when work goes sideways.", difficulty: "Medium", firstMove: "Draw one real job from request to completion" },
+      { title: "Team knowledge copilot", happening: "People repeatedly search, summarize, draft, and answer the same operational questions.", change: "The team gets a shared preparation layer with clear limits and human review.", impact: "Fewer interruptions; faster preparation; better reuse of the knowledge you already own.", difficulty: "Low", firstMove: "Collect the 20 repeated questions and tasks" },
+    ],
+  };
 
   function setStep(next: number) {
     state.step = next;
@@ -176,31 +190,83 @@ const description = "Find the parts of your business where AI or automation coul
     if (error) error.hidden = true;
     const frequency = (form?.elements.namedItem("frequency") as HTMLSelectElement)?.value ?? "low";
     const value = (form?.elements.namedItem("value") as HTMLSelectElement)?.value ?? "low";
+    const industry = ((form?.elements.namedItem("industry") as HTMLInputElement)?.value ?? "").toLowerCase();
+    const catalog = industry.includes("dent") ? opportunityCatalog.dental : opportunityCatalog.default;
+    const selected = [...new Set(state.issues)];
+    const ranked = catalog.slice(0, 3);
     const signal = frequency === "high" || value === "high" ? "HIGH" : frequency === "medium" || value === "medium" ? "MED" : "LOW";
     const route = state.path === "learn" ? "LEARN IT" : state.path === "build" ? "BUILD IT" : "LEARN + BUILD";
-    const recommendation = state.path === "learn"
-      ? "Start with an Arkansas Automated workshop or focused education session. Bring one real workflow and leave with a tested first move."
-      : state.path === "build"
-        ? "Book a focused AI and automation assessment. We’ll scope the bottleneck, human handoffs, tools, and implementation path."
-        : "Use a guided working session: your team learns the pattern while Arkansas Automated turns the highest-value workflow into a usable system.";
+    const recommendation = ranked[0]?.firstMove ?? "Map one real workflow from request to completion";
     const list = document.querySelector<HTMLElement>("[data-opportunity-list]");
-    list?.replaceChildren(...issues.filter((item) => state.issues.includes(item.id)).map((item) => {
+    list?.replaceChildren(...ranked.map((item, index) => {
       const article = document.createElement("article");
       article.className = "opportunity-item";
+      const rank = document.createElement("p"); rank.className = "opportunity-rank"; rank.textContent = `#${index + 1} OPPORTUNITY`;
       const title = document.createElement("h3"); title.textContent = item.title;
-      const detail = document.createElement("p"); detail.textContent = item.detail;
-      article.append(title, detail);
+      const makeDetail = (label: string, text: string) => { const p = document.createElement("p"); const strong = document.createElement("strong"); strong.textContent = label; p.append(strong, document.createTextNode(text)); return p; };
+      const happening = makeDetail("What may be happening now", item.happening);
+      const change = makeDetail("What could change", item.change);
+      const impact = makeDetail("Potential impact", item.impact);
+      const meta = document.createElement("p"); meta.className = "opportunity-meta"; meta.textContent = `Difficulty: ${item.difficulty} · Best first move: ${item.firstMove}`;
+      article.append(rank, title, happening, change, impact, meta);
       return article;
     }));
     document.querySelector<HTMLElement>("[data-signal]")!.textContent = signal;
-    document.querySelector<HTMLElement>("[data-result-route]")!.textContent = route;
+    document.querySelector<HTMLElement>("[data-result-route]")!.textContent = `${route} · YOUR AI OPPORTUNITY MAP`;
     document.querySelector<HTMLElement>("[data-recommendation]")!.textContent = recommendation;
-    const params = new URLSearchParams({ business: (form?.elements.namedItem("business") as HTMLInputElement)?.value ?? "", industry: (form?.elements.namedItem("industry") as HTMLInputElement)?.value ?? "", issues: state.issues.join(","), path: state.path });
+    const business = (form?.elements.namedItem("business") as HTMLInputElement)?.value ?? "";
+    const params = new URLSearchParams({ business, industry: (form?.elements.namedItem("industry") as HTMLInputElement)?.value ?? "", issues: selected.join(","), path: state.path });
     history.replaceState({}, "", `${location.pathname}?${params}`);
+    const capture = document.querySelector<HTMLFormElement>("[data-map-capture]");
+    if (capture) {
+      (capture.elements.namedItem("businessName") as HTMLInputElement).value = business;
+      (capture.elements.namedItem("industry") as HTMLInputElement).value = industry;
+    }
     state.result = true;
     form?.setAttribute("hidden", "true");
     resultPanel?.removeAttribute("hidden");
     resultPanel?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  document.querySelector<HTMLFormElement>("[data-map-capture]")?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const capture = event.currentTarget as HTMLFormElement;
+    const status = capture.querySelector<HTMLElement>("[data-capture-status]");
+    const submit = capture.querySelector<HTMLButtonElement>("button[type=submit]");
+    const name = String((capture.elements.namedItem("name") as HTMLInputElement)?.value ?? "").trim();
+    const email = String((capture.elements.namedItem("email") as HTMLInputElement)?.value ?? "").trim();
+    const business = String((capture.elements.namedItem("businessName") as HTMLInputElement)?.value ?? "").trim();
+    const industry = String((capture.elements.namedItem("industry") as HTMLInputElement)?.value ?? "").trim();
+    if (!name || !email) { if (status) { status.hidden = false; status.textContent = "Your name and work email are required."; } return; }
+    if (submit) { submit.disabled = true; submit.textContent = "Sending…"; }
+    const params = new URLSearchParams(location.search);
+    const payload = {
+      type: "ai_opportunity_map",
+      businessName: business,
+      name,
+      email,
+      spokeDomain: "arkansasautomated.com",
+      sourcePath: location.pathname,
+      details: `AI Opportunity Map: ${params.get("issues") ?? ""}`,
+      "bot-field": "",
+      extra: {
+        industry,
+        issues: params.get("issues"),
+        preferredPath: params.get("path"),
+        mapSignal: document.querySelector<HTMLElement>("[data-signal]")?.textContent ?? null,
+        capturedAt: new Date().toISOString(),
+        source: "ai-opportunity-map",
+      },
+    };
+    try {
+      const response = await fetch("https://fortsmithdirectory.com/api/public/leads", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload) });
+      if (!response.ok) throw new Error("lead endpoint rejected request");
+      if (status) { status.hidden = false; status.dataset.kind = "ok"; status.textContent = "Your map is saved. Bring it to the opportunity session below."; }
+      if (submit) submit.textContent = "Map saved";
+    } catch {
+      if (status) { status.hidden = false; status.dataset.kind = "error"; status.textContent = "We could not save the map right now. You can still book the session below."; }
+      if (submit) { submit.disabled = false; submit.textContent = "Send my opportunity map →"; }
+    }
   });
 </script>
 
@@ -230,6 +296,6 @@ const description = "Find the parts of your business where AI or automation coul
   .map-section { padding-top: 3rem; }.map-shell { max-width: 920px; margin: 0 auto; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--bg-secondary); padding: clamp(1.4rem, 4vw, 3.2rem); }
   .map-progress { display: flex; align-items: center; gap: .75rem; margin-bottom: 3rem; color: var(--text-muted); font-size: .75rem; font-weight: 600; letter-spacing: .12em; }.progress-line { height: 1px; flex: 1; background: var(--line); }.progress-step.active { color: var(--accent); }
   .map-step h2, .map-result h2 { font-size: clamp(1.8rem, 4vw, 3rem); max-width: 18ch; margin-bottom: .75rem; }.step-copy { color: var(--text-secondary); max-width: 56ch; }.field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }.field-grid .full { grid-column: 1/-1; }label { display: grid; gap: .45rem; color: var(--text-secondary); font-size: .88rem; }input, select { width: 100%; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-primary); color: var(--text-primary); padding: .9rem 1rem; font: inherit; }input:focus, select:focus { border-color: var(--accent); outline: 2px solid var(--accent-soft); }
-  .next-button { margin-top: 2rem; }.next-button span { font-size: 1.2em; }.text-button { margin-left: 1rem; border: 0; background: transparent; color: var(--text-secondary); cursor: pointer; font: inherit; }.step-actions { display: flex; align-items: center; }.multi-grid, .path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }.multi-choice, .path-choice { text-align: left; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-primary); color: var(--text-primary); padding: 1.2rem; cursor: pointer; transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast); }.multi-choice:hover, .path-choice:hover, .multi-choice.selected, .path-choice.selected { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); }.multi-choice strong, .path-choice strong { display: block; font-family: var(--font-heading); font-size: 1.1rem; }.multi-choice small, .path-choice small { display: block; color: var(--text-secondary); line-height: 1.45; margin-top: .4rem; }.choice-icon { color: var(--accent); font-size: 1.4rem; display: block; margin-bottom: .8rem; }.validation { color: #ff947a; font-size: .85rem; margin-top: 1rem; }.map-result { border-top: 1px solid var(--line); padding-top: 2rem; }.result-top { display: flex; justify-content: space-between; gap: 2rem; }.signal { color: var(--accent); font-family: var(--font-heading); font-size: 2.6rem; font-weight: 800; }.opportunity-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); margin-top: 2rem; border: 1px solid var(--line); }.opportunity-item { background: var(--bg-primary); padding: 1.25rem; }.opportunity-item h3 { font-size: 1.05rem; margin-bottom: .35rem; }.opportunity-item p { color: var(--text-secondary); font-size: .9rem; }.recommendation { margin-top: 1.5rem; padding: 1.25rem; border-left: 2px solid var(--accent); background: var(--accent-soft); }.recommendation p:last-child { color: var(--text-primary); }.booking-block { margin-top: 2rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-primary); }.booking-block h3 { font-size: 1.5rem; margin-bottom: .35rem; }.booking-block > p:not(.eyebrow) { color: var(--text-secondary); }.cal-embed { min-height: 650px; margin-top: 1.25rem; overflow: auto; }
+  .next-button { margin-top: 2rem; }.next-button span { font-size: 1.2em; }.text-button { margin-left: 1rem; border: 0; background: transparent; color: var(--text-secondary); cursor: pointer; font: inherit; }.step-actions { display: flex; align-items: center; }.multi-grid, .path-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }.multi-choice, .path-choice { text-align: left; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-primary); color: var(--text-primary); padding: 1.2rem; cursor: pointer; transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast); }.multi-choice:hover, .path-choice:hover, .multi-choice.selected, .path-choice.selected { border-color: var(--accent); background: var(--accent-soft); transform: translateY(-2px); }.multi-choice strong, .path-choice strong { display: block; font-family: var(--font-heading); font-size: 1.1rem; }.multi-choice small, .path-choice small { display: block; color: var(--text-secondary); line-height: 1.45; margin-top: .4rem; }.choice-icon { color: var(--accent); font-size: 1.4rem; display: block; margin-bottom: .8rem; }.validation { color: #ff947a; font-size: .85rem; margin-top: 1rem; }.map-result { border-top: 1px solid var(--line); padding-top: 2rem; }.result-top { display: flex; justify-content: space-between; gap: 2rem; }.signal { color: var(--accent); font-family: var(--font-heading); font-size: 2.6rem; font-weight: 800; }.opportunity-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); margin-top: 2rem; border: 1px solid var(--line); }.opportunity-item { background: var(--bg-primary); padding: 1.25rem; }.opportunity-item h3 { font-size: 1.05rem; margin-bottom: .65rem; }.opportunity-item p { color: var(--text-secondary); font-size: .9rem; margin-top: .75rem; }.opportunity-item p strong { display: block; color: var(--text-primary); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .18rem; }.opportunity-rank { color: var(--accent) !important; font-size: .72rem !important; font-weight: 700; letter-spacing: .12em; margin-top: 0 !important; }.opportunity-meta { color: var(--text-primary) !important; border-top: 1px solid var(--line); padding-top: .75rem; margin-top: 1rem !important; font-size: .78rem !important; }.recommendation { margin-top: 1.5rem; padding: 1.25rem; border-left: 2px solid var(--accent); background: var(--accent-soft); }.recommendation p:last-child { color: var(--text-primary); }.capture-block { margin-top: 1.5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-primary); }.capture-block h3 { font-size: 1.5rem; margin-bottom: .35rem; }.capture-block > p:not(.eyebrow) { color: var(--text-secondary); }.capture-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.25rem; }.capture-status { margin-top: .8rem; color: var(--accent); }.capture-status[data-kind="error"] { color: #ff947a; }.form-legal { color: var(--text-muted); font-size: .76rem; margin-top: .7rem; }.form-legal a { color: var(--text-primary); text-decoration: underline; text-underline-offset: .18em; }.booking-block { margin-top: 1.5rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-primary); }.booking-block h3 { font-size: 1.5rem; margin-bottom: .35rem; }.booking-block > p:not(.eyebrow) { color: var(--text-secondary); }.cal-embed { min-height: 650px; margin-top: 1.25rem; overflow: auto; }
   @media (max-width: 640px) { .field-grid, .multi-grid, .path-grid, .opportunity-list { grid-template-columns: 1fr; }.field-grid .full { grid-column: auto; }.result-top { display: block; }.signal { margin-top: 1rem; }.map-mark { min-height: 220px; } }
 </style>
