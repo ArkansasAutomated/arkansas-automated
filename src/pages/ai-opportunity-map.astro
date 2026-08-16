@@ -97,7 +97,7 @@ const description = "Find the parts of your business where AI or automation coul
               <h3>Send this to me and I’ll bring it to the call.</h3>
               <p>Your result becomes a structured starting brief instead of disappearing into a browser tab.</p>
               <form data-map-capture novalidate>
-                <div class="capture-grid"><label>Your name<input name="name" required autocomplete="name" /></label><label>Work email<input name="email" type="email" required autocomplete="email" /></label></div>
+                <div class="capture-grid"><label>Your name<input name="name" required autocomplete="name" /></label><label>Work email<input name="email" type="email" required autocomplete="email" /></label><label>Phone<input name="phone" type="tel" required autocomplete="tel" placeholder="(479) 555-0123" /></label></div>
                 <input name="businessName" type="hidden" /><input name="industry" type="hidden" />
                 <button class="btn btn-primary" type="submit">Send my opportunity map <span>→</span></button>
                 <p class="capture-status" data-capture-status hidden></p>
@@ -235,16 +235,18 @@ const description = "Find the parts of your business where AI or automation coul
     const submit = capture.querySelector<HTMLButtonElement>("button[type=submit]");
     const name = String((capture.elements.namedItem("name") as HTMLInputElement)?.value ?? "").trim();
     const email = String((capture.elements.namedItem("email") as HTMLInputElement)?.value ?? "").trim();
+    const phone = String((capture.elements.namedItem("phone") as HTMLInputElement)?.value ?? "").trim();
     const business = String((capture.elements.namedItem("businessName") as HTMLInputElement)?.value ?? "").trim();
     const industry = String((capture.elements.namedItem("industry") as HTMLInputElement)?.value ?? "").trim();
-    if (!name || !email) { if (status) { status.hidden = false; status.textContent = "Your name and work email are required."; } return; }
+    if (!name || !email || phone.replace(/\D/g, "").length < 7) { if (status) { status.hidden = false; status.textContent = "Your name, work email, and a valid phone number are required."; } return; }
     if (submit) { submit.disabled = true; submit.textContent = "Sending…"; }
     const params = new URLSearchParams(location.search);
     const payload = {
-      type: "ai_opportunity_map",
+      type: "automation_assessment",
       businessName: business,
       name,
       email,
+      phone,
       spokeDomain: "arkansasautomated.com",
       sourcePath: location.pathname,
       details: `AI Opportunity Map: ${params.get("issues") ?? ""}`,
