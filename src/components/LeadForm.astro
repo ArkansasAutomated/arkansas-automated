@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: "workshop" | "assessment";
+  variant?: "workshop" | "assessment" | "merchant";
   formId?: string;
   defaultIntent?: string;
   detailsPlaceholder?: string;
@@ -21,8 +21,9 @@ const {
   submitLabel,
 } = Astro.props;
 const isWorkshop = variant === "workshop";
+const isMerchant = variant === "merchant";
 const intent = defaultIntent ??
-  (isWorkshop ? "Reserve a workshop seat, $497 early bird" : "Book the free 15-minute assessment");
+  (isWorkshop ? "Reserve a workshop seat, $497 early bird" : isMerchant ? "Merchant store activation" : "Book the free 15-minute assessment");
 const fieldId = (name: string) => `${formId}-${name}`;
 ---
 
@@ -31,12 +32,12 @@ const fieldId = (name: string) => `${formId}-${name}`;
     data-city={sourceCity} data-industry={sourceIndustry} data-service={sourceService} novalidate>
     <input type="hidden" name="intent" value={intent} />
     <div class="field">
-      <label for={fieldId("businessName")}>Business name</label>
+      <label for={fieldId("businessName")}>{isMerchant ? "Store name" : "Business name"}</label>
       <input id={fieldId("businessName")} name="businessName" type="text" required autocomplete="organization" />
     </div>
     <div class="field-row">
       <div class="field">
-        <label for={fieldId("contactName")}>Your name</label>
+        <label for={fieldId("contactName")}>{isMerchant ? "Contact name" : "Your name"}</label>
         <input id={fieldId("contactName")} name="contactName" type="text" required autocomplete="name" />
       </div>
       <div class="field">
@@ -44,41 +45,50 @@ const fieldId = (name: string) => `${formId}-${name}`;
         <input id={fieldId("email")} name="email" type="email" required autocomplete="email" />
       </div>
     </div>
-    <div class="field-row">
+    {isMerchant ? (
       <div class="field">
-        <label for={fieldId("phone")}>Phone</label>
-        <input id={fieldId("phone")} name="phone" type="tel" autocomplete="tel" />
+        <label for={fieldId("mall")}>Mall / property name</label>
+        <input id={fieldId("mall")} name="industry" type="text" placeholder="Example: Central Mall" />
       </div>
-      {isWorkshop ? (
+    ) : (
+      <div class="field-row">
         <div class="field">
-          <label for={fieldId("seats")}>Seats</label>
-          <select id={fieldId("seats")} name="seats">
-            <option value="1">1 seat, $497 early bird</option>
-            <option value="2">2 seats, partner rate</option>
-          </select>
+          <label for={fieldId("phone")}>Phone</label>
+          <input id={fieldId("phone")} name="phone" type="tel" autocomplete="tel" />
         </div>
-      ) : (
-        <div class="field">
-          <label for={fieldId("industry")}>Industry</label>
-          <input id={fieldId("industry")} name="industry" type="text" placeholder="Example: HVAC" />
-        </div>
-      )}
-    </div>
+        {isWorkshop ? (
+          <div class="field">
+            <label for={fieldId("seats")}>Seats</label>
+            <select id={fieldId("seats")} name="seats">
+              <option value="1">1 seat, $497 early bird</option>
+              <option value="2">2 seats, partner rate</option>
+            </select>
+          </div>
+        ) : (
+          <div class="field">
+            <label for={fieldId("industry")}>Industry</label>
+            <input id={fieldId("industry")} name="industry" type="text" placeholder="Example: HVAC" />
+          </div>
+        )}
+      </div>
+    )}
     {isWorkshop ? (
       <div class="field">
         <label for={fieldId("session")}>Preferred session</label>
         <input id={fieldId("session")} name="session" type="text" placeholder="Next available Saturday, or a date that works" />
       </div>
-    ) : (
+    ) : !isMerchant ? (
       <div class="field">
         <label for={fieldId("stack")}>Phone, calendar, or CRM tools <span class="optional">(optional)</span></label>
         <input id={fieldId("stack")} name="stack" type="text" placeholder="Example: RingCentral, Google Calendar, Jobber" />
       </div>
+    ) : null}
+    {!isMerchant && (
+      <div class="field">
+        <label for={fieldId("details")}>{isWorkshop ? "Biggest call-handling problem" : "What should work better?"} <span class="optional">(optional)</span></label>
+        <textarea id={fieldId("details")} name="details" rows="3" placeholder={detailsPlaceholder}></textarea>
+      </div>
     )}
-    <div class="field">
-      <label for={fieldId("details")}>{isWorkshop ? "Biggest call-handling problem" : "What should work better?"} <span class="optional">(optional)</span></label>
-      <textarea id={fieldId("details")} name="details" rows="3" placeholder={detailsPlaceholder}></textarea>
-    </div>
     <div class="hp" aria-hidden="true">
       <label for={fieldId("bot-field")}>Do not fill this in</label>
       <input id={fieldId("bot-field")} name="bot-field" type="text" tabindex="-1" autocomplete="off" />
@@ -208,7 +218,9 @@ const fieldId = (name: string) => `${formId}-${name}`;
         form.reset();
         show("ok", form.dataset.variant === "workshop"
           ? "Request received. We will confirm availability, price, and the room details by email."
-          : "Request received. We will reply from a real address, usually within one business day.");
+          : form.dataset.variant === "merchant"
+            ? "Activation request received. We will confirm enrollment status within one business day."
+            : "Request received. We will reply from a real address, usually within one business day.");
         submit.textContent = "Request received";
         return;
       }
