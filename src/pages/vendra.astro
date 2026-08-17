@@ -68,17 +68,6 @@ const steps = [
   },
 ];
 
-const audiences = [
-  {
-    h: "For the mall team",
-    p: "A consistent view of reporting status, a cleaner follow-up path on exceptions, and an auditable record of the completed workflow. You coordinate the cohort without handling per-store billing.",
-  },
-  {
-    h: "For merchants",
-    p: "A 5-10 minute activation, then one monthly process. Your store pays <strong>$29/month</strong>. Payment-taking does not change. CSV remains available if a POS connection is the wrong fit.",
-  },
-];
-
 const bounds = [
   {
     h: "What Vendra does",
@@ -166,19 +155,6 @@ const bounds = [
       </div>
     </section>
 
-    <section class="section section-tint">
-      <div class="container split">
-        {
-          audiences.map((item) => (
-            <article>
-              <h2 class="heading-md">{item.h}</h2>
-              <p class="body-lg" style="margin-top:0.85rem">{item.p}</p>
-            </article>
-          ))
-        }
-      </div>
-    </section>
-
     <section class="section section-tint" id="activate">
       <div class="container split">
         <div>
@@ -193,6 +169,7 @@ const bounds = [
           </p>
         </div>
         <LeadForm
+          variant="merchant"
           formId="vendra-activate"
           defaultIntent="Merchant store activation"
           submitLabel="Check if my property participates"
