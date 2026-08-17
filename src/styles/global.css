@@ -159,6 +159,11 @@ img { max-width: 100%; display: block; }
 .row h3 { font-size: 1.28rem; font-weight: 600; }
 .row p { color: var(--text-secondary); }
 
+.faq-list { margin-top: 3rem; border-top: 1px solid var(--line); }
+.faq-list article { padding: 1.6rem 0; border-bottom: 1px solid var(--line); max-width: 46rem; }
+.faq-list h3 { font-size: 1.2rem; font-weight: 600; }
+.faq-list p { color: var(--text-secondary); margin-top: 0.45rem; }
+
 /* Engagement: 3 phases. */
 /* Three phases grouped by a top hairline rather than boxed in three identical
    cards. Same information, without the stock feature-card row. */
