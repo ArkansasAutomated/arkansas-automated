@@ -13,7 +13,7 @@ import LeadForm from "../components/LeadForm.astro";
 
 const title = "Vendra | Sales Reporting for Modern Shopping Centers";
 const description =
-  "Vendra is an Arkansas Automated solution that helps shopping centers bring merchants into an auditable monthly sales-reporting workflow through supported POS connections or validated CSV uploads.";
+  "Vendra is a merchant-paid monthly sales-reporting workflow for shopping centers. Stores pay $29/month and activate through a property-manager invite.";
 
 const site = "https://arkansasautomated.com";
 const schema = {
@@ -34,7 +34,7 @@ const schema = {
       offers: {
         "@type": "Offer",
         availability: "https://schema.org/LimitedAvailability",
-        description: "Controlled shopping-center rollout. Contact Arkansas Automated to evaluate a property.",
+        description: "Controlled shopping-center rollout. Merchants pay $29/month; property managers request a demo.",
       },
     },
     {
@@ -71,11 +71,11 @@ const steps = [
 const audiences = [
   {
     h: "For the mall team",
-    p: "A consistent view of reporting status, a cleaner follow-up path on exceptions, and an auditable record of the completed workflow.",
+    p: "A consistent view of reporting status, a cleaner follow-up path on exceptions, and an auditable record of the completed workflow. You coordinate the cohort without handling per-store billing.",
   },
   {
     h: "For merchants",
-    p: "A 5-10 minute activation, then one monthly process. Payment-taking does not change. CSV remains available if a POS connection is the wrong fit.",
+    p: "A 5-10 minute activation, then one monthly process. Your store pays <strong>$29/month</strong>. Payment-taking does not change. CSV remains available if a POS connection is the wrong fit.",
   },
 ];
 
@@ -102,7 +102,7 @@ const bounds = [
           </nav>
           <h1 class="heading-xl">Get stores reporting-ready in 5-10 minutes.</h1>
           <p class="body-lg">
-            Vendra places mall merchants into an auditable monthly sales-reporting workflow.
+            Vendra is a <strong>$29/month merchant subscription</strong> that places stores into an auditable monthly sales-reporting workflow managed by the shopping center. The mall coordinates invites and status; the store pays.
           </p>
           <div class="hero-ctas">
             <a class="btn btn-primary" href="#request">Discuss a rollout</a>
@@ -123,9 +123,7 @@ const bounds = [
     <section class="section section-tint">
       <div class="container">
         <p class="measure body-lg" style="margin:0">
-          Vendra is an Arkansas Automated solution that helps shopping centers bring
-          merchants into an auditable monthly sales-reporting workflow through supported
-          POS connections or validated CSV uploads.
+          Vendra is an Arkansas Automated solution. Each store subscribes for <strong>$29/month</strong>; the mall team coordinates the cohort and views reporting status without covering per-store costs.
         </p>
         <div class="leak-grid" style="margin-top:3rem">
           {
