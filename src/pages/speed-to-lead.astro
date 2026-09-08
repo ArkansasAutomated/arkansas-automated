@@ -42,10 +42,10 @@ const steps = [
         </div>
 
         <div>
-          <form id="auditForm" class="enter rounded-2xl border border-[var(--line)] bg-[rgba(18,21,19,.94)] p-5 shadow-[0_28px_80px_rgba(3,8,5,.45)] md:p-7">
+          <form id="auditForm" class="form-card enter">
             <div class="mb-5">
               <label for="businessUrl" class="mb-2 block text-sm font-medium" style="color:var(--text-primary)">Business website</label>
-              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0 1rem;">
+              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:var(--bg-primary);padding:0 1rem;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 <input required id="businessUrl" name="businessUrl" type="text" inputmode="url" placeholder="yourbusiness.com" style="flex:1;min-width:0;background:transparent;border:none;outline:none;padding:1rem 0.75rem;color:var(--text-primary);font-size:1rem" />
               </div>
@@ -53,7 +53,7 @@ const steps = [
 
             <div style="margin-bottom:1.25rem">
               <label for="email" style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Email for your report</label>
-              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0 1rem;">
+              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:var(--bg-primary);padding:0 1rem;">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 <input required id="email" name="email" type="email" placeholder="you@yourbusiness.com" style="flex:1;min-width:0;background:transparent;border:none;outline:none;padding:1rem 0.75rem;color:var(--text-primary);font-size:1rem" />
               </div>
@@ -72,7 +72,7 @@ const steps = [
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:1.25rem;">
               <label>
                 <span style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Industry</span>
-                <select name="industry" style="width:100%;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0.75rem;color:var(--text-primary);font-size:0.875rem">
+                <select name="industry" style="width:100%;border-radius:0.75rem;border:1px solid var(--line);background:var(--bg-primary);padding:0.75rem;color:var(--text-primary);font-size:0.875rem">
                   <option value="general">General</option>
                   <option value="plumbing">Plumbing</option>
                   <option value="hvac">HVAC</option>
@@ -81,16 +81,16 @@ const steps = [
               </label>
               <label>
                 <span style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Monthly leads</span>
-                <input type="number" min="1" max="10000" name="monthlyLeads" value="50" style="width:100%;border-radius:0.75rem;border:1px solid var(--line);background:#0d100e;padding:0.75rem;color:var(--text-primary);font-size:0.875rem" />
+                <input type="number" min="1" max="10000" name="monthlyLeads" value="50" style="width:100%;border-radius:0.75rem;border:1px solid var(--line);background:var(--bg-primary);padding:0.75rem;color:var(--text-primary);font-size:0.875rem" />
               </label>
             </div>
 
             <label style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.875rem;color:var(--text-muted);margin-bottom:1.25rem;cursor:pointer">
-              <input required type="checkbox" name="authorization" style="margin-top:0.25rem;width:1rem;height:1rem;accent-color:#7fc99a" />
+              <input required type="checkbox" name="authorization" style="margin-top:0.25rem;width:1rem;height:1rem;accent-color:var(--accent)" />
               <span>I own or represent this business and authorize one disclosed response-time test.</span>
             </label>
 
-            <button type="submit" id="auditBtn" style="width:100%;display:flex;align-items:center;justify-content:center;gap:0.5rem;border-radius:0.75rem;background:var(--accent);color:var(--accent-ink);font-weight:600;padding:1rem;cursor:pointer;border:none;font-size:1rem;transition:filter 0.15s">
+            <button type="submit" id="auditBtn" class="btn btn-primary" style="width:100%">
               Start the audit
               <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </button>
