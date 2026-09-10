@@ -3,14 +3,14 @@
  *
  * Paper shop: warm white page, white cards, soft ink type. Quiet teal is
  * reserved for eyebrows, links, and small marks — never for primary buttons.
- * Fonts self-hosted via @fontsource. This file is the whole system; the page
- * adds no ad-hoc colors.
+ * Fonts self-hosted via @fontsource latin CSS (font-display: swap).
+ * Latin-only; Outfit 400 unused (headings are 600/800). This file is the
+ * whole system; the page adds no ad-hoc colors.
  */
-@import "@fontsource/outfit/400.css";
-@import "@fontsource/outfit/600.css";
-@import "@fontsource/outfit/800.css";
-@import "@fontsource/inter/400.css";
-@import "@fontsource/inter/600.css";
+@import "@fontsource/outfit/latin-600.css";
+@import "@fontsource/outfit/latin-800.css";
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-600.css";
 
 :root {
   --bg-primary: #f7f4ef;
