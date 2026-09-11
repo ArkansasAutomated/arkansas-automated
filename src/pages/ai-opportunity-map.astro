@@ -120,6 +120,7 @@ const description = "Find the parts of your business where AI or automation coul
 </Base>
 
 <script>
+  import { HUB_LEADS_URL } from "../lib/hub";
   type MapState = { step: number; issues: string[]; path: string; result: boolean };
   const state: MapState = { step: 0, issues: [], path: "", result: false };
   const form = document.querySelector<HTMLFormElement>("#opportunity-map");
@@ -281,7 +282,7 @@ const description = "Find the parts of your business where AI or automation coul
       },
     };
     try {
-      const response = await fetch("https://fortsmithdirectory.com/api/public/leads", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload) });
+      const response = await fetch(HUB_LEADS_URL, { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(payload) });
       if (!response.ok) throw new Error("lead endpoint rejected request");
       if (status) { status.hidden = false; status.dataset.kind = "ok"; status.textContent = "Your map is saved. Bring it to the opportunity session below."; }
       if (submit) submit.textContent = "Map saved";
