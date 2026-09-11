@@ -120,6 +120,7 @@ const CATEGORIES = [
   </footer>
 
   <script>
+    import { HUB_ONBOARD_URL } from "../lib/hub";
     // Hub onboarding contract (fort-smith-pros src/lib/onboard-intake.ts):
     //   POST text/plain (CORS-safelisted, no preflight)
     //   {type:"business_onboarding", businessName, category, contactName, email,
@@ -133,7 +134,7 @@ const CATEGORIES = [
     //
     // Blank optional fields are ABSENT, not "": the hub's Zod schema rejects ""
     // for email and website.
-    const ENDPOINT = "https://fortsmithdirectory.com/api/public/onboard";
+    const ENDPOINT = HUB_ONBOARD_URL;
     const form = document.getElementById("onboard-form") as HTMLFormElement | null;
     const msg = document.getElementById("onboard-msg") as HTMLElement | null;
     const submit = document.getElementById("onboard-submit") as HTMLButtonElement | null;

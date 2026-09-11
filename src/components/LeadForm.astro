@@ -103,7 +103,8 @@ const fieldId = (name: string) => `${formId}-${name}`;
 </div>
 
 <script>
-  const ENDPOINT = "https://fortsmithdirectory.com/api/public/leads";
+  import { HUB_LEADS_URL } from "../lib/hub";
+  const ENDPOINT = HUB_LEADS_URL;
 
   document.querySelectorAll<HTMLFormElement>("[data-lead-form]").forEach((form) => {
     if (form.dataset.ready === "true") return;

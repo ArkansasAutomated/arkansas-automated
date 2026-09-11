@@ -2,12 +2,13 @@
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import { SPEED_TO_LEAD_API } from "../lib/hub";
 
 const title = "Speed to Lead — Response Time Wins Jobs";
 const description =
   "Measure how quickly your business responds to new leads. Most contractors lose jobs to slower competitors. Free lead response audit.";
 
-const API = "https://speed-to-lead-five.vercel.app";
+const API = SPEED_TO_LEAD_API;
 const THANKYOU = "/speed-to-lead/thank-you";
 
 const stats = [

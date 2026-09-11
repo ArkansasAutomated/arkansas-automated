@@ -8,6 +8,7 @@ import {
   canonicalUrl,
   absoluteUrl,
 } from "../lib/seo";
+import { HUB_PV_URL } from "../lib/hub";
 
 interface Props {
   title: string;
@@ -56,6 +57,8 @@ const defaultSchema = {
   ],
 };
 const schema = pageSchema ?? defaultSchema;
+const pageviewEndpoint = import.meta.env.PROD ? HUB_PV_URL : "";
+const siteHost = new URL(Astro.site?.origin ?? SITE_URL).hostname;
 ---
 
 <!doctype html>
@@ -93,11 +96,14 @@ const schema = pageSchema ?? defaultSchema;
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <slot />
 
-    <script>
+    <script define:vars={{ pageviewEndpoint, siteHost }}>
       // First-party pageview beacon into the hub. APEX host, never www: www
       // 308-redirects and a redirected cross-origin fetch resends with
       // Origin: null, which the hub allowlist rejects. Failure is silent by
       // design; measurement must never break a page.
+      //
+      // Host gate: only the canonical apex host is counted. astro dev, local
+      // preview, and *.vercel.app previews are not production sessions.
       //
       // WHY THIS IS GATED (2026-08-08). The previous version fired
       // unconditionally on parse. That made every automated page load count as
@@ -129,8 +135,11 @@ const schema = pageSchema ?? defaultSchema;
       // - Counts after this ships are NOT comparable to counts before it. A
       //   drop is this filter working, not traffic disappearing.
       (function () {
+        var ENDPOINT = pageviewEndpoint;
+        if (!ENDPOINT) return;
+        if (location.hostname !== siteHost) return;
+
         var DWELL_MS = 1500;
-        var ENDPOINT = "https://fortsmithdirectory.com/api/public/pv";
         var KEY = "aa:pv:" + location.pathname;
 
         // Once per path per tab session: reloads and hash navigation are not
