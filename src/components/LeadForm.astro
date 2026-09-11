@@ -98,7 +98,7 @@ const fieldId = (name: string) => `${formId}-${name}`;
     </button>
     <p class="form-note">No payment today. We usually reply within one business day. You can also email <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>.</p>
     <p class="form-legal">By submitting, you agree that Arkansas Automated may contact you about this request. See our <a href="/privacy">privacy and data handling page</a>.</p>
-    <div class="form-msg" data-lead-message hidden></div>
+    <div class="form-msg" data-lead-message hidden role="status" aria-live="polite"></div>
   </form>
 </div>
 
@@ -119,6 +119,7 @@ const fieldId = (name: string) => `${formId}-${name}`;
       if (!msg) return;
       msg.hidden = false;
       msg.dataset.kind = kind;
+      msg.setAttribute("role", kind === "error" ? "alert" : "status");
       msg.textContent = text;
     }
 
@@ -126,6 +127,7 @@ const fieldId = (name: string) => `${formId}-${name}`;
       if (!msg) return;
       msg.hidden = false;
       msg.dataset.kind = "error";
+      msg.setAttribute("role", "alert");
       msg.textContent = "";
       const p = document.createElement("p");
       p.textContent = text;
@@ -161,8 +163,17 @@ const fieldId = (name: string) => `${formId}-${name}`;
       const businessName = val("businessName");
       const contactName = val("contactName");
       const email = val("email");
+      let firstInvalid: HTMLInputElement | null = null;
+      for (const name of ["businessName", "contactName", "email"] as const) {
+        const input = form.querySelector<HTMLInputElement>(`[name="${name}"]`);
+        if (!input) continue;
+        const empty = !val(name);
+        input.setAttribute("aria-invalid", empty ? "true" : "false");
+        if (empty && !firstInvalid) firstInvalid = input;
+      }
       if (!businessName || !contactName || !email) {
         show("error", "Business name, your name, and a work email are required.");
+        firstInvalid?.focus();
         return;
       }
       submit.disabled = true;

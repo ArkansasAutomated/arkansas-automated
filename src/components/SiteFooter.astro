@@ -32,19 +32,19 @@ const footerIndustries = industries.filter((i) =>
           Northwest Arkansas, and across the state.
         </p>
       </div>
-      <div class="footer-col">
-        <h4>AI receptionist</h4>
+      <nav class="footer-col" aria-label="AI receptionist">
+        <h2>AI receptionist</h2>
         {footerCities.map((c) => <a href={`/ai-receptionist/${c.slug}`}>{c.name}</a>)}
         <a href="/ai-receptionist">All {cities.length} cities</a>
         <a href="/ai-workshops">Workshops by city</a>
-      </div>
-      <div class="footer-col">
-        <h4>Industries</h4>
+      </nav>
+      <nav class="footer-col" aria-label="Industries">
+        <h2>Industries</h2>
         {footerIndustries.map((i) => <a href={`/for/${i.slug}`}>{i.name.charAt(0).toUpperCase() + i.name.slice(1)}</a>)}
         <a href="/for">All industries</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
+      </nav>
+      <nav class="footer-col" aria-label="Company">
+        <h2>Company</h2>
         <a href="/services">Services and pricing</a>
         <a href="/vendra">Vendra sales reporting</a>
         <a href="/fix">Problems we fix</a>
@@ -55,15 +55,15 @@ const footerIndustries = industries.filter((i) =>
         <a href="/#workshop">The workshop</a>
         <a href="/#reserve">Choose your next step</a>
         <a href="/list-your-business">List your business</a>
-      </div>
-      <div class="footer-col">
-        <h4>Network</h4>
+      </nav>
+      <nav class="footer-col" aria-label="Network">
+        <h2>Network</h2>
         {properties.map((p) => <a href={p.url} target="_blank" rel="noopener">{p.name}</a>)}
-      </div>
+      </nav>
     </div>
     <div class="footer-bottom">
       <p>&copy; {new Date().getFullYear()} Arkansas Automated. Built and operated in Arkansas.</p>
-      <p class="footer-legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/automation-guardrails">Automation guardrails</a></p>
+      <nav class="footer-legal" aria-label="Legal"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/automation-guardrails">Automation guardrails</a></nav>
     </div>
   </div>
 </footer>

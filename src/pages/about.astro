@@ -9,10 +9,10 @@ const description = "Arkansas Automated helps local service-business owners buil
 
 <Base title={title} description={description} path="/about">
   <SiteNav />
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="section">
       <div class="container article-body">
-        <p class="crumbs"><a href="/">Home</a><span>/</span><span>About</span></p>
+        <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><span>About</span></nav>
         <h1 class="heading-lg">Automation built by Arkansas operators.</h1>
         <p class="body-lg">Arkansas Automated helps service-business owners answer calls, follow up with leads, and move information between the tools they already use.</p>
         <h2 class="heading-md">Two ways to work with us</h2>

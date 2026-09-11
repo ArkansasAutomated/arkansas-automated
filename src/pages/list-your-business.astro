@@ -39,7 +39,7 @@ const CATEGORIES = [
     </div>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="section">
       <div class="container split">
         <div>
@@ -104,7 +104,7 @@ const CATEGORIES = [
               Submit for review
             </button>
             <p class="form-note">Free to submit. Reviewed by a person before anything publishes.</p>
-            <div id="onboard-msg" class="form-msg" hidden></div>
+            <div id="onboard-msg" class="form-msg" hidden role="status" aria-live="polite"></div>
           </form>
         </div>
       </div>
@@ -142,6 +142,7 @@ const CATEGORIES = [
       if (!msg) return;
       msg.hidden = false;
       msg.dataset.kind = kind;
+      msg.setAttribute("role", kind === "error" ? "alert" : "status");
       msg.textContent = text;
     }
 
@@ -158,8 +159,17 @@ const CATEGORIES = [
       const category = val("category");
       const contactName = val("contactName");
       const email = val("email");
+      let firstInvalid: HTMLElement | null = null;
+      for (const name of ["businessName", "category", "contactName", "email"]) {
+        const input = form.querySelector<HTMLInputElement | HTMLSelectElement>(`[name="${name}"]`);
+        if (!input) continue;
+        const empty = !val(name);
+        input.setAttribute("aria-invalid", empty ? "true" : "false");
+        if (empty && !firstInvalid) firstInvalid = input;
+      }
       if (!businessName || !category || !contactName || !email) {
         show("error", "Business name, category, your name, and email are required.");
+        firstInvalid?.focus();
         return;
       }
 

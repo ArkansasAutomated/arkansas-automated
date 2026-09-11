@@ -27,7 +27,7 @@ const steps = [
 <Base {title} {description} path="/speed-to-lead">
   <SiteNav />
 
-  <main>
+  <main id="main-content" tabindex="-1">
     {/* Hero + Form */}
     <section class="hero">
       <div class="container hero-grid">
@@ -45,23 +45,23 @@ const steps = [
           <form id="auditForm" class="form-card enter">
             <div class="mb-5">
               <label for="businessUrl" class="mb-2 block text-sm font-medium" style="color:var(--text-primary)">Business website</label>
-              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:var(--bg-primary);padding:0 1rem;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              <div class="field-shell" style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:var(--bg-primary);padding:0 1rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 <input required id="businessUrl" name="businessUrl" type="text" inputmode="url" placeholder="yourbusiness.com" style="flex:1;min-width:0;background:transparent;border:none;outline:none;padding:1rem 0.75rem;color:var(--text-primary);font-size:1rem" />
               </div>
             </div>
 
             <div style="margin-bottom:1.25rem">
               <label for="email" style="display:block;font-size:0.875rem;font-weight:500;margin-bottom:0.5rem;color:var(--text-primary)">Email for your report</label>
-              <div style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:var(--bg-primary);padding:0 1rem;">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              <div class="field-shell" style="display:flex;align-items:center;border-radius:0.75rem;border:1px solid var(--line);background:var(--bg-primary);padding:0 1rem;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text-muted);flex-shrink:0" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
                 <input required id="email" name="email" type="email" placeholder="you@yourbusiness.com" style="flex:1;min-width:0;background:transparent;border:none;outline:none;padding:1rem 0.75rem;color:var(--text-primary);font-size:1rem" />
               </div>
             </div>
 
             <div style="margin-bottom:1.25rem;border-radius:0.75rem;border:1px solid var(--accent-line);background:var(--accent-soft);padding:0.75rem 1rem;font-size:0.875rem;color:var(--accent)">
               <div style="display:flex;align-items:center;gap:0.5rem;font-weight:600">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
                 Web form test
               </div>
               <p style="margin-top:0.25rem;font-size:0.75rem;color:var(--text-muted)">
@@ -92,13 +92,13 @@ const steps = [
 
             <button type="submit" id="auditBtn" class="btn btn-primary" style="width:100%">
               Start the audit
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </button>
 
-            <p id="auditError" style="margin-top:0.75rem;text-align:center;font-size:0.875rem;color:#ef4444;display:none"></p>
+            <p id="auditError" role="alert" tabindex="-1" style="margin-top:0.75rem;text-align:center;font-size:0.875rem;color:#8b3d2a;display:none"></p>
 
             <p style="margin-top:1rem;text-align:center;font-size:0.75rem;color:var(--text-muted);display:flex;align-items:center;justify-content:center;gap:0.5rem">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4 12 14.01l-3-3"/></svg>
               One test per business every 7 days
             </p>
           </form>
@@ -131,8 +131,9 @@ const steps = [
               } catch (e2) {
                 err.textContent = e2.message || "Something went wrong.";
                 err.style.display = "block";
+                err.focus();
                 btn.disabled = false;
-                btn.innerHTML = 'Start the audit <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
+                btn.innerHTML = 'Start the audit <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>';
               }
             });
           </script>
