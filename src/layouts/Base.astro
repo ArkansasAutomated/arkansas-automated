@@ -1,5 +1,13 @@
 ---
 import "../styles/global.css";
+import {
+  SITE_URL,
+  SITE_NAME,
+  DEFAULT_OG_IMAGE,
+  OG_LOCALE,
+  canonicalUrl,
+  absoluteUrl,
+} from "../lib/seo";
 
 interface Props {
   title: string;
@@ -9,11 +17,21 @@ interface Props {
   /** Replaces the default Organization JSON-LD when provided. */
   schema?: Record<string, unknown>;
   ogType?: string;
+  /** Extra robots directive, e.g. "noindex, follow" for confirmation pages. */
+  robots?: string;
 }
-const { title, description, path, ogImage = "/og-image.png", schema: pageSchema, ogType = "website" } = Astro.props;
-const site = "https://arkansasautomated.com";
-const canonical = `${site}${path}`;
-const og = new URL(ogImage, site).href;
+const {
+  title,
+  description,
+  path,
+  ogImage = DEFAULT_OG_IMAGE,
+  schema: pageSchema,
+  ogType = "website",
+  robots,
+} = Astro.props;
+const origin = Astro.site?.origin ?? SITE_URL;
+const canonical = canonicalUrl(path, origin);
+const og = absoluteUrl(ogImage, origin);
 
 // Organization schema only. No aggregateRating, no review count, no employee
 // or client numbers: nothing here is a claim we cannot show evidence for
@@ -21,8 +39,8 @@ const og = new URL(ogImage, site).href;
 const defaultSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Arkansas Automated",
-  url: site,
+  name: SITE_NAME,
+  url: origin,
   description,
   areaServed: [
     { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
@@ -48,9 +66,11 @@ const schema = pageSchema ?? defaultSchema;
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {robots && <meta name="robots" content={robots} />}
 
     <meta property="og:type" content={ogType} />
-    <meta property="og:site_name" content="Arkansas Automated" />
+    <meta property="og:site_name" content={SITE_NAME} />
+    <meta property="og:locale" content={OG_LOCALE} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

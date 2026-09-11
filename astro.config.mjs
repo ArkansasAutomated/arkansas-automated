@@ -18,15 +18,23 @@ export default defineConfig({
   trailingSlash: "never",
   integrations: [
     sitemap({
+      filter(page) {
+        return !page.includes("/speed-to-lead/thank-you");
+      },
       serialize(item) {
-        const path = new URL(item.url).pathname;
+        const url = new URL(item.url);
+        if (url.pathname !== "/" && url.pathname.endsWith("/")) {
+          url.pathname = url.pathname.replace(/\/+$/, "");
+          item.url = url.href;
+        }
+        const path = url.pathname;
         const refreshed =
           path === "/" ||
-          path === "/for/" ||
+          path === "/for" ||
           path.startsWith("/for/") ||
-          path === "/learn/" ||
+          path === "/learn" ||
           path.startsWith("/learn/") ||
-          path === "/services/" ||
+          path === "/services" ||
           path.startsWith("/services/") ||
           path.startsWith("/ai-workshops/");
 
