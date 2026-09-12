@@ -389,6 +389,10 @@ img { max-width: 100%; display: block; }
 .article-body h2:first-child { margin-top: 0; }
 .article-body p { color: var(--text-secondary); margin-top: 1.15rem; }
 .article-body strong { color: var(--text-primary); }
+.article-body ul, .article-body ol { color: var(--text-secondary); margin: 1.15rem 0 0 1.25rem; }
+.article-body li { margin-top: 0.65rem; }
+.article-body .takeaways { margin-left: 1.25rem; }
+.article-body .takeaways li { color: var(--text-primary); }
 .next-step { margin-top: 2.75rem; border-top: 2px solid var(--accent-line); padding-top: 1.4rem; }
 .next-step p { margin-top: 0; }
 
