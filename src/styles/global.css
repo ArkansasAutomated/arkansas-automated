@@ -139,7 +139,23 @@ img { max-width: 100%; display: block; }
 .nav-links { display: flex; align-items: center; gap: 1.75rem; font-size: 0.96rem; color: var(--text-secondary); }
 .nav-links a:hover { color: var(--text-primary); }
 .nav-links .btn { padding: 0.62rem 1.25rem; font-size: 0.94rem; }
-@media (max-width: 860px) { .nav-links .nav-hide { display: none; } }
+.nav-call { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.call-dock { display: none; }
+.footer-phone { margin-top: 0.85rem; font-variant-numeric: tabular-nums; }
+.footer-phone a { color: var(--text-primary); }
+@media (max-width: 860px) {
+  .nav-links .nav-hide { display: none; }
+  .nav-call { display: none; }
+  .call-dock {
+    display: flex; align-items: center; justify-content: center;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+    padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--line);
+    background: var(--accent); color: var(--accent-ink);
+    font-weight: 700; font-size: 1.02rem;
+  }
+  body { padding-bottom: 4.75rem; }
+}
 
 /* Hero: asymmetric split, photo right. */
 .hero { padding: clamp(3.5rem, 7vw, 6rem) 0 clamp(3.5rem, 6vw, 5.5rem); }

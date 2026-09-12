@@ -6,6 +6,7 @@
  */
 import { cities } from "../data/cities";
 import { industries } from "../data/industries";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
 
 const properties = [
   { name: "Fort Smith Directory", url: "https://fortsmithdirectory.com" },
@@ -31,6 +32,7 @@ const footerIndustries = industries.filter((i) =>
           In-person AI workshops and done-for-you automation for operators in Fort Smith,
           Northwest Arkansas, and across the state.
         </p>
+        <p class="footer-phone"><a href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a></p>
       </div>
       <nav class="footer-col" aria-label="AI receptionist">
         <h2>AI receptionist</h2>

@@ -1,5 +1,5 @@
 ---
-/* Shared site header. Same structure as the homepage nav. */
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
 ---
 
 <header class="nav">
@@ -11,6 +11,7 @@
       <a class="nav-hide" href="/ai-workshops">Locations</a>
       <a class="nav-hide" href="/for">Industries</a>
       <a class="nav-hide" href="/services">Services</a>
+      <a class="nav-call" href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a>
       <a class="btn btn-primary" href="/#reserve">Choose your next step</a>
     </nav>
   </div>
