@@ -9,6 +9,7 @@ import {
   absoluteUrl,
 } from "../lib/seo";
 import { HUB_PV_URL } from "../lib/hub";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_E164, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
 
 interface Props {
   title: string;
@@ -42,6 +43,7 @@ const defaultSchema = {
   "@type": "ProfessionalService",
   name: SITE_NAME,
   url: origin,
+  telephone: AA_PUBLIC_PHONE_E164,
   description,
   areaServed: [
     { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
@@ -95,6 +97,7 @@ const siteHost = new URL(Astro.site?.origin ?? SITE_URL).hostname;
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
     <slot />
+    <a class="call-dock" href={AA_PUBLIC_PHONE_HREF}>Call {AA_PUBLIC_PHONE_DISPLAY}</a>
 
     <script define:vars={{ pageviewEndpoint, siteHost }}>
       // First-party pageview beacon into the hub. APEX host, never www: www

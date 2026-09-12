@@ -3,6 +3,7 @@ import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import LeadForm from "../components/LeadForm.astro";
+import { AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
 
 const title = "Every Call Answered | AI Front Desk for Arkansas Businesses";
 const description =
@@ -153,6 +154,7 @@ const homeSchema = {
       "@type": ["Organization", "ProfessionalService"],
       name: "Arkansas Automated",
       url: "https://arkansasautomated.com",
+      telephone: AA_PUBLIC_PHONE_E164,
       description,
       // Real alternative representations of the same operator (Brassfield
       // Ventures), shown on this page in the "We run this playbook on our own
