@@ -17,6 +17,115 @@ export interface Service {
 
 export const services: Service[] = [
   {
+    name: "Front Door",
+    slug: "front-door",
+    price: "$497",
+    tagline:
+      "A 5 to 8 page storefront on your domain, live in 7 days after we have your photos and copy, domain in your name.",
+    answer:
+      "The Front Door is a 5 to 8 page website for Arkansas service businesses, built on a domain you own and live 7 days after we have your complete intake packet. You approve the staging site before we point DNS. $497 total: $197 to start, $300 on approval. No booking calendar in this SKU.",
+    includes: [
+      "5 to 8 pages: Home, Services hub plus up to 5 service pages, Service areas, About, Contact, Privacy, Terms",
+      "Staging link you approve before DNS is pointed",
+      "GBP NAP kickoff so your hours, phone, and address match",
+      "30-day inquiry check: what happened to your last 10 inquiries",
+      "One written revision round in a 24-hour window",
+      "Domain, registrar, hosting access, and repo in your name",
+    ],
+    process: [
+      {
+        h: "Intake packet",
+        p: "You send the questionnaire, logo, at least 10 real photos, service list, hours, license numbers, and registrar access. The 7-day clock starts when that packet is complete, not when you sign.",
+      },
+      {
+        h: "Staging site",
+        p: "We build the pages on a staging link with your photos and your words. No stock faces, no invented reviews.",
+      },
+      {
+        h: "You approve",
+        p: "You review the staging site and send one written revision round. Nothing points at your domain until you say yes in writing.",
+      },
+      {
+        h: "DNS and handover",
+        p: "After your written approval we point DNS, then hand over the registrar, hosting, and repo credentials on one page. The 30-day inquiry check starts.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Does the $497 site take online bookings?",
+        a: "No. This SKU has no booking calendar. The site carries a lead form and tap-to-call. If you want job requests landing on a calendar you own, that is Front Door Wired at $1,497.",
+      },
+      {
+        q: "Will this get me to the top of Google?",
+        a: "We do not promise rankings, call volume, or revenue. You get a real storefront that matches your Google Business Profile and makes it easy for someone to request a job. We do not guarantee a position.",
+      },
+      {
+        q: "Who owns the domain and the site?",
+        a: "You do. The domain stays in your registrar in your name, and you get the hosting access and the repo at handover. If you ever leave, the site leaves with you.",
+      },
+      {
+        q: "When does the 7 days start?",
+        a: "When your intake packet is complete: questionnaire, logo, at least 10 real photos or a written waiver, service list, hours, license numbers, and registrar access. It does not start at signature, and it does not run while we wait on your photos or copy.",
+      },
+      {
+        q: "How does payment work?",
+        a: "$197 to start and $300 when you approve the staging site, $497 total. The balance is due only after you say yes in writing. Nothing is charged for an approval you never gave.",
+      },
+    ],
+  },
+  {
+    name: "Front Door Wired",
+    slug: "front-door-wired",
+    price: "$1,497",
+    tagline: "The Front Door plus a request-to-book page on a shop calendar you own.",
+    answer:
+      "Front Door Wired is the Front Door plus a request-to-book page on a shop calendar you own. Requests land in a CRM you control, with an SMS confirmation when a request comes in. Voice is not included. $1,497 total: $497 to start, $1,000 on staging approval and a working book URL.",
+    includes: [
+      "Everything in Front Door",
+      "A request-to-book page on a shop calendar you own",
+      "Your site's lead form wired into that CRM",
+      "SMS confirmation when a request comes in",
+      "Book URL proof before the balance is due",
+      "Qualify is set to request: nothing auto-books a job",
+    ],
+    process: [
+      {
+        h: "Intake packet",
+        p: "The same packet as the Front Door, plus who receives new requests and what a good job looks like. The clock starts when the packet is complete.",
+      },
+      {
+        h: "Staging site and shop book",
+        p: "We build the Front Door pages on a staging link and stand up your shop book alongside them.",
+      },
+      {
+        h: "You approve",
+        p: "You review the staging site and the book page. Qualify stays on request, so a request never becomes a booked job without you.",
+      },
+      {
+        h: "Book wired, DNS, handover",
+        p: "We confirm the live book URL, wire the form and the SMS confirmation, point DNS after your written approval, and hand over every credential.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Does the calendar answer the phone?",
+        a: "No. Voice is not included in this SKU. Requests arrive through the site, land in your CRM, and text you. Voice is a separate engagement and gets bound to a number only after a named go-ahead.",
+      },
+      {
+        q: "Does a request automatically become a booked job?",
+        a: "No. Qualify is set to request, so a submission creates a request you approve. Nothing auto-books a job, and no slot is held until you accept it.",
+      },
+      {
+        q: "How does payment work on this SKU?",
+        a: "$497 to start and $1,000 on staging approval and book URL proof, $1,497 total. You see the book page working on your own calendar before the balance is due.",
+      },
+      {
+        q: "Do I own the booking system?",
+        a: "Yes. The shop book runs on a calendar you own, handed over with the domain, hosting, and repo. This is not a rented seat in someone else's platform.",
+      },
+    ],
+  },
+  {
     name: "AI front desk",
     slug: "ai-front-desk",
     price: "$2,500 setup + $497/mo",

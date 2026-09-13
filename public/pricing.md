@@ -1,7 +1,26 @@
 # Pricing — Arkansas Automated
 
 All prices public. No sales call required to read the price sheet.
-Last updated: 2026-07-29.
+Last updated: 2026-09-13.
+
+## Front Door (website, done for you)
+
+- Price: $497 total
+- Payment: $197 to start, $300 on staging approval
+- Includes: 5 to 8 pages (Home, Services hub plus up to 5 service pages, Service areas hub, About, Contact, Privacy, Terms); staging link you approve before DNS; GBP NAP kickoff; 30-day inquiry check on your last 10 inquiries; one written revision round
+- Timeline: Live on your domain 7 calendar days after your intake packet is complete. The clock starts when the packet is complete, not at signature.
+- Ownership: Domain, registrar, hosting access, and repo in your name
+- Not included: Booking calendar. This SKU is call and request only. No ranking, call volume, or revenue guarantee.
+- Optional care: $0 for 30 days, then $49/mo, month to month, cancel anytime. Hosting plus one small copy or photo edit. Leave with the repo and host it yourself if you want.
+
+## Front Door Wired (website plus request-to-book, done for you)
+
+- Price: $1,497 total
+- Payment: $497 to start, $1,000 on staging approval and book URL proof
+- Includes: everything in Front Door, plus a request-to-book page on a shop calendar you own, the site's lead form wired into that CRM, and an SMS confirmation when a request comes in
+- Qualify: Requests are requests. Nothing auto-books a job and no slot is held until the owner accepts it.
+- Not included: Voice. Voice is a separate engagement and is bound to a number only after a named go-ahead.
+- Ownership: Domain, registrar, hosting access, repo, and the shop book are in your name
 
 ## AI Workshop (learn it yourself)
 
@@ -47,4 +66,4 @@ Last updated: 2026-07-29.
 - Service area: all of Arkansas; public workshops in Fort Smith, private on-site statewide
 - All fees are USD
 - No per-minute or per-call pricing on any plan
-- Workshop and audit credit policy applies once per business
+- Credit: Front Door fee credits toward a Front Desk ($2,500) build started within 60 days. Workshop, audit, and Front Door credits apply once per business. The largest one credit wins. They do not stack.
