@@ -6,6 +6,7 @@ import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../../lib/public-
 
 const PAY_URL = "https://book.stripe.com/9B6dRa5nF9j97MO2Sx0x200";
 const SEATS = 16;
+const SHOW_LEFT = 4;
 const PRICE = 497;
 
 const title = "Sep 19 AI Front Desk Workshop | $497 | Fort Smith";
@@ -35,7 +36,7 @@ const included = [
           Park in the garage, elevator all the way up, room on the right.
         </p>
         <p id="seat-line" class="body-lg" style="margin-top:1rem">
-          <strong id="seat-count">{SEATS} of {SEATS} seats</strong> left. Checkout closes at zero.
+          <strong id="seat-count">{SHOW_LEFT} of {SEATS} seats</strong> left. Checkout closes at zero.
         </p>
         <div class="hero-ctas" style="margin-top:2rem">
           <a class="btn btn-primary" id="pay-btn" href={PAY_URL}>Pay $497 and take a seat</a>
@@ -80,10 +81,12 @@ const included = [
       var line = document.getElementById("seat-count");
       var btns = [document.getElementById("pay-btn"), document.getElementById("pay-btn-2")];
       if (!d || typeof d.remaining !== "number") return;
-      if (line) line.textContent = d.remaining + " of " + d.limit + " seats";
-      if (d.soldOut) {
+      if (d.soldOut || d.remaining === 0) {
+        if (line) line.textContent = "0 of " + d.limit + " seats";
         btns.forEach(function (b) { if (b) b.hidden = true; });
+        return;
       }
+      if (line) line.textContent = "{SHOW_LEFT} of " + d.limit + " seats";
     })
     .catch(function () {});
 </script>
