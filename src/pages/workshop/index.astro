@@ -41,9 +41,6 @@ const included = [
           <a class="btn btn-primary" id="pay-btn" href={PAY_URL}>Pay $497 and take a seat</a>
           <a class="btn btn-secondary" href={AA_PUBLIC_PHONE_HREF}>Call {AA_PUBLIC_PHONE_DISPLAY}</a>
         </div>
-        <p id="sold-out" hidden class="body-lg" style="margin-top:1rem">
-          This workshop is full. Email <a class="text-link" href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a> for the waitlist.
-        </p>
       </div>
     </section>
 
@@ -78,16 +75,14 @@ const included = [
 
 <script>
   fetch("/api/workshop-seats")
-    .then(function (r) { return r.json(); })
+    .then(function (r) { return r.ok ? r.json() : null; })
     .then(function (d) {
       var line = document.getElementById("seat-count");
-      var sold = document.getElementById("sold-out");
       var btns = [document.getElementById("pay-btn"), document.getElementById("pay-btn-2")];
       if (!d || typeof d.remaining !== "number") return;
       if (line) line.textContent = d.remaining + " of " + d.limit + " seats";
       if (d.soldOut) {
         btns.forEach(function (b) { if (b) b.hidden = true; });
-        if (sold) sold.hidden = false;
       }
     })
     .catch(function () {});
