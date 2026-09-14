@@ -1,3 +1,2 @@
-/** Public workshop checkout on AA Book. */
-export const WORKSHOP_BOOK_URL =
-  "https://book.arkansasautomated.com/book/front-desk-workshop";
+/** Public Sep 19 workshop checkout. Standalone. Not AA Book. */
+export const WORKSHOP_BOOK_URL = "/workshop";

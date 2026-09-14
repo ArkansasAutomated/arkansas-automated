@@ -57,7 +57,7 @@ const included = [
   "Escalation rules you set and test yourself",
   "30 days of email support after the session",
   "Your seat price credited toward a done-for-you build started within 60 days",
-  "A room capped at 18 owners, so your questions get answered",
+  "A room capped at 16 owners, so your questions get answered",
 ];
 
 const paths = [
@@ -94,7 +94,7 @@ const packages = [
 const faqs = [
   {
     q: "I am not technical. Will I keep up in the workshop?",
-    a: "Yes. The workshop is built for owners, not engineers. Everything is no-code, we build step by step together, and the room is capped at 18 so nobody gets left behind. If you can run a smartphone, you can do this.",
+    a: "Yes. The workshop is built for owners, not engineers. Everything is no-code, we build step by step together, and the room is capped at 16 so nobody gets left behind. If you can run a smartphone, you can do this.",
   },
   {
     q: "What exactly do I leave with?",
@@ -209,8 +209,8 @@ const homeSchema = {
               <span>No payment today. We will tell you if the numbers do not make sense.</span>
             </div>
             <div class="cta-choice">
-              <a class="btn btn-secondary" href="https://book.arkansasautomated.com/book/front-desk-workshop">Build mine in the workshop</a>
-              <span>Fort Smith · Saturdays, 1–5 PM · $497 early bird</span>
+              <a class="btn btn-secondary" href="/workshop">Build mine in the workshop</a>
+              <span>Fort Smith · Sat Sep 19, 1–5 PM · $497</span>
             </div>
           </div>
           <a class="tool-link enter enter-3" href="/ai-opportunity-map/">Not sure which path fits? Map your next move <span>→</span></a>
@@ -299,8 +299,8 @@ const homeSchema = {
         <div class="facts">
           <div class="fact"><span class="fact-k">When</span> Saturdays, 1 to 5 PM</div>
           <div class="fact"><span class="fact-k">Where</span> Central Mall, Fort Smith — upstairs event room</div>
-          <div class="fact"><span class="fact-k">Room</span> Capped at 18 owners</div>
-          <div class="fact"><span class="fact-k">Price</span> $497 early bird, $697 standard</div>
+          <div class="fact"><span class="fact-k">Room</span> Capped at 16 owners</div>
+          <div class="fact"><span class="fact-k">Price</span> $497</div>
           <div class="fact"><span class="fact-k">Second seat</span> $297 for a partner or office manager</div>
         </div>
 
@@ -308,7 +308,7 @@ const homeSchema = {
           {included.map((i) => <li>{i}</li>)}
         </ul>
 
-        <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/front-desk-workshop" style="margin-top:2.5rem">Build mine in the workshop</a>
+        <a class="btn btn-primary" href="/workshop" style="margin-top:2.5rem">Build mine in the workshop</a>
       </div>
     </section>
 
@@ -423,10 +423,10 @@ const homeSchema = {
           <section id="workshop-request" class="intent-form">
             <div class="intent-form-copy">
               <span class="phase-k">Build with us</span>
-              <h3>Request a workshop seat</h3>
-              <p>Central Mall, Fort Smith, upstairs event room. Saturdays 1–5. $497 early bird. Cap 18. Park in the garage, elevator all the way up; meeting room is directly to the right.</p>
+              <h3>Take a workshop seat</h3>
+              <p>Central Mall, Fort Smith, upstairs event room. Sat Sep 19, 1 to 5 PM. $497. Cap 16. Non-refundable, transferable. Park in the garage, elevator all the way up; meeting room is directly to the right.</p>
+              <a class="btn btn-primary" href="/workshop" style="margin-top:1.25rem">Pay $497 and take a seat</a>
             </div>
-            <LeadForm variant="workshop" formId="workshop-form" detailsPlaceholder="Example: after-hours calls or booking estimates." />
           </section>
           <section id="assessment-request" class="intent-form">
             <div class="intent-form-copy">
@@ -445,8 +445,7 @@ const homeSchema = {
         <span class="eyebrow">AA Letter</span>
         <h2 class="heading-lg">Last chance to grab a seat before the next Saturday fills.</h2>
         <p class="body-lg" style="margin-top:1rem">
-          Every workshop is capped at 18 and the early-bird price goes away as the date approaches.
-          Get one email when the next date opens — and nothing else. No spam, no daily noise.
+          Every workshop is capped at 16. Get one email when the next date opens, and nothing else.
         </p>
         <a class="btn btn-primary" href="https://book.arkansasautomated.com/subscribe" style="margin-top:1.5rem">Email me the next workshop date <span aria-hidden="true">→</span></a>
       </div>

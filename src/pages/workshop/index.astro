@@ -1,0 +1,94 @@
+---
+import Base from "../../layouts/Base.astro";
+import SiteNav from "../../components/SiteNav.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../../lib/public-phone";
+
+const PAY_URL = "https://book.stripe.com/9B6dRa5nF9j97MO2Sx0x200";
+const SEATS = 16;
+const PRICE = 497;
+
+const title = "Sep 19 AI Front Desk Workshop | $497 | Fort Smith";
+const description =
+  "Saturday Sep 19, 2026, 1 to 5 PM at Central Mall Fort Smith. One $497 seat. Non-refundable, transferable. 16 seats. Card checkout.";
+
+const included = [
+  "A working AI receptionist prototype configured for your business",
+  "Calendar and SMS follow-up wired in",
+  "Escalation rules you set and test from the room",
+  "30 days of email support after the session",
+  "Seat price credited toward a done-for-you build started within 60 days",
+];
+---
+
+<Base {title} {description} path="/workshop">
+  <SiteNav />
+  <main>
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span>Workshop
+        </nav>
+        <h1 class="heading-xl measure">AI Front Desk workshop. One Saturday. $497.</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          Saturday Sep 19, 2026, 1 to 5 PM. Central Mall Fort Smith, upstairs event room.
+          Park in the garage, elevator all the way up, room on the right.
+        </p>
+        <p id="seat-line" class="body-lg" style="margin-top:1rem">
+          <strong id="seat-count">{SEATS} of {SEATS} seats</strong> left. Checkout closes at zero.
+        </p>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-primary" id="pay-btn" href={PAY_URL}>Pay $497 and take a seat</a>
+          <a class="btn btn-secondary" href={AA_PUBLIC_PHONE_HREF}>Call {AA_PUBLIC_PHONE_DISPLAY}</a>
+        </div>
+        <p id="sold-out" hidden class="body-lg" style="margin-top:1rem">
+          This workshop is full. Email <a class="text-link" href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a> for the waitlist.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="facts">
+          <div class="fact"><span class="fact-k">When</span> Sat Sep 19, 2026, 1 to 5 PM</div>
+          <div class="fact"><span class="fact-k">Where</span> Central Mall, Fort Smith, upstairs event room</div>
+          <div class="fact"><span class="fact-k">Price</span> $497, one seat</div>
+          <div class="fact"><span class="fact-k">Seats</span> {SEATS}. Sales stop at zero.</div>
+          <div class="fact"><span class="fact-k">Terms</span> Non-refundable. Transferable to another owner.</div>
+          <div class="fact"><span class="fact-k">Pay</span> Card. Name, email, and phone at checkout.</div>
+        </div>
+        <ul class="included" style="margin-top:2rem">
+          {included.map((i) => <li>{i}</li>)}
+        </ul>
+        <p class="body-lg measure" style="margin-top:1.5rem">
+          You watch a live AI receptionist answer, qualify, and book. Then you configure your own
+          greeting, services, calendar, and SMS follow-up. Before you leave, you call your own
+          number from the room.
+        </p>
+        <p class="form-note" style="margin-top:1.25rem">
+          No Affirm or Afterpay on this checkout. If you cannot attend, transfer the seat. We do
+          not refund it. Stripe emails your receipt. We email Dre on each sale.
+        </p>
+        <a class="btn btn-primary" id="pay-btn-2" href={PAY_URL} style="margin-top:2rem">Pay $497 and take a seat</a>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
+
+<script>
+  fetch("/api/workshop-seats")
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      var line = document.getElementById("seat-count");
+      var sold = document.getElementById("sold-out");
+      var btns = [document.getElementById("pay-btn"), document.getElementById("pay-btn-2")];
+      if (!d || typeof d.remaining !== "number") return;
+      if (line) line.textContent = d.remaining + " of " + d.limit + " seats";
+      if (d.soldOut) {
+        btns.forEach(function (b) { if (b) b.hidden = true; });
+        if (sold) sold.hidden = false;
+      }
+    })
+    .catch(function () {});
+</script>

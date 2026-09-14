@@ -2,6 +2,11 @@
   "framework": "astro",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "functions": {
+    "api/workshop-seats.js": {
+      "maxDuration": 10
+    }
+  },
   "cleanUrls": true,
   "rewrites": [
     {
