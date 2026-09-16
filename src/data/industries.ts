@@ -82,7 +82,7 @@ export const industries: Industry[] = [
       },
       {
         q: "What does this cost a one-truck shop?",
-        a: "The AI front desk is $2,500 to set up plus $497 a month, and it typically pays for itself with one or two booked jobs it would have missed. The workshop seat is $497 and credits toward the build if you start within 60 days.",
+        a: "The AI front desk is $2,500 to set up plus $497 a month, and it typically pays for itself with one or two booked jobs it would have missed. A Front Door site is $497 and credits toward the build if you start within 60 days.",
       },
     ],
   },
@@ -198,7 +198,7 @@ export const industries: Industry[] = [
       },
       {
         q: "What is the cheapest way to try it?",
-        a: "The Saturday workshop, $497 early bird. You build the receptionist yourself in one afternoon and the seat price credits toward a done-for-you build started within 60 days. Or skip the workshop and start with the free 15-minute assessment.",
+        a: "A Front Door site is $497. Live in 7 days after we have your photos and copy, and the fee credits toward a done-for-you build started within 60 days. Or start with the free 15-minute assessment.",
       },
     ],
   },

@@ -22,14 +22,10 @@ Last updated: 2026-09-13.
 - Not included: Voice. Voice is a separate engagement and is bound to a number only after a named go-ahead.
 - Ownership: Domain, registrar, hosting access, repo, and the shop book are in your name
 
-## AI Workshop (learn it yourself)
+## Public workshop (not for sale)
 
-- Price: $497 early bird | $697 standard
-- Second seat (partner or office manager): $297
-- Format: One Saturday afternoon, 1:00 PM to 5:00 PM, in person in Fort Smith, Arkansas
-- Room size: Capped at 18 owners
-- Includes: Working AI receptionist prototype configured for your business, calendar and SMS follow-up wired in, escalation rules you set and test, 30 days of email support
-- Credit: Full seat price credited toward any done-for-you build started within 60 days
+- Sep 19, 2026 session canceled. 0 sold. No public seats for sale.
+- The $497 SKU for sale today is Front Door, not a class.
 - Private on-site workshops (one company or one trade): priced on request
 
 ## AI Operations Audit

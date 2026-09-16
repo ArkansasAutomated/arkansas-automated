@@ -42,14 +42,14 @@ export const cities: City[] = [
       "Manufacturing, logistics on the Arkansas and Oklahoma line, two hospital systems, and a deep bench of HVAC, plumbing, roofing, and electrical shops serving the whole River Valley.",
     angle: [
       "Fort Smith runs on shops that answer the phone between jobs. A roofer on a ladder in Chaffee Crossing or a plumber under a house in Fianna Hills cannot pick up, and the caller does not wait. They dial the next name in the list.",
-      "This is where we host the public workshops, and where we built the intake and follow-up systems behind Fort Smith Directory. If you want to see the work before you buy it, everything we install for clients is running here first.",
+      "This is our home base, and where we built the intake and follow-up systems behind Fort Smith Directory. If you want to see the work before you buy it, everything we install for clients is running here first.",
     ],
     phones: [
       "The Fort Smith service call is almost always placed from a phone the caller is holding while looking at the problem. Water on the floor, no cold air in August, a garage door that will not close. Those callers do not leave voicemail and they do not call back. They work down the search results until a voice answers.",
       "An AI receptionist changes the arithmetic for a Fort Smith shop because the owner is usually the one missing the call. You are in a crawl space, on a roof, or driving between Chaffee Crossing and Greenwood. The receptionist picks up in your business's voice, asks your qualification questions, and puts the job on your calendar before you are back in the truck.",
     ],
     workshopNote:
-      "Public workshops run here on Saturday afternoons, 1 to 5 PM, capped at 18 owners. The room address goes out with your seat confirmation.",
+      "Public workshop seats are not for sale. Fort Smith owners start with a $497 Front Door site or the free 15-minute fit assessment. Private on-site sessions for a team are priced on request.",
     nearby: ["van-buren", "russellville", "siloam-springs", "fayetteville"],
   },
   {
@@ -68,7 +68,7 @@ export const cities: City[] = [
       "The fix is not a call center that answers as a stranger. It is a receptionist that answers as your business, knows your service area stops at the county line or does not, and texts you the details of anything it cannot handle. Van Buren owners tend to test it hardest on that last point, and it holds up.",
     ],
     workshopNote:
-      "Public workshops run 10 minutes away in Fort Smith on Saturday afternoons. Private on-site workshops for a Van Buren team or trade group are available on request.",
+      "Public workshop seats are not for sale. Start with Front Door $497 or the free assessment. Private on-site sessions for a Van Buren team or trade group are available on request.",
     nearby: ["fort-smith", "siloam-springs", "russellville", "fayetteville"],
   },
   {
@@ -87,7 +87,7 @@ export const cities: City[] = [
       "An AI receptionist does not queue. It answers the fortieth call the way it answered the first, takes the unit number and the problem, and books the slot. For Fayetteville the useful setting is usually overflow: your office picks up when it can, and everything that would have rung out goes to the receptionist instead of to voicemail.",
     ],
     workshopNote:
-      "Northwest Arkansas workshop sessions open as demand builds. Reserve a seat and we will notify you first, or book a private on-site workshop for your team now.",
+      "Public workshop seats are not for sale. Start with Front Door $497 or the free assessment, or book a private on-site session for your team.",
     nearby: ["springdale", "rogers", "bentonville", "siloam-springs"],
   },
   {
@@ -106,7 +106,7 @@ export const cities: City[] = [
       "A bilingual AI receptionist takes the language cue from the caller and runs your qualification script either way, then hands you one job card in English. Springdale contractors and trucking outfits get the second thing too: the after-hours dispatch call answered at 11 PM without paying somebody to sit up for it.",
     ],
     workshopNote:
-      "Northwest Arkansas sessions open as demand builds, or book a private on-site workshop in Springdale for your team. Bilingual setups are covered in the build.",
+      "Public workshop seats are not for sale. Start with Front Door $497, or book a private on-site session in Springdale for your team. Bilingual setups are covered in the build.",
     nearby: ["fayetteville", "rogers", "siloam-springs", "bentonville"],
   },
   {
@@ -125,7 +125,7 @@ export const cities: City[] = [
       "That is why the receptionist math is easy here. Answering every paid call, qualifying it against your service area and job minimum, and booking it on the spot recovers the spend you are already making. Rogers owners who track cost per booked job see it inside the first month.",
     ],
     workshopNote:
-      "Northwest Arkansas sessions open as demand builds, or bring us on-site in Rogers for a private workshop built around your trade.",
+      "Public workshop seats are not for sale. Start with Front Door $497, or bring us on-site in Rogers for a private session built around your trade.",
     nearby: ["bentonville", "springdale", "fayetteville", "siloam-springs"],
   },
   {
@@ -144,7 +144,7 @@ export const cities: City[] = [
       "An AI receptionist is how a four-person Bentonville business sounds like a company with a front desk, because functionally it has one. Consistent greeting, real qualification, a booked slot, and a confirmation text. The customer never files you under the second category.",
     ],
     workshopNote:
-      "Northwest Arkansas sessions open as demand builds, or book a private on-site workshop in Bentonville for your team.",
+      "Public workshop seats are not for sale. Start with Front Door $497, or book a private on-site session in Bentonville for your team.",
     nearby: ["rogers", "springdale", "fayetteville", "siloam-springs"],
   },
   {
@@ -163,7 +163,7 @@ export const cities: City[] = [
       "This is the setup where patience is the feature. The receptionist can take the whole description, quote the range you approved, confirm the address on a private drive, and book a window instead of a time. Bella Vista owners usually set it to offer a live callback option too, because some of this customer base wants a person and there is no reason to fight that.",
     ],
     workshopNote:
-      "Northwest Arkansas sessions open as demand builds. Bella Vista and Bentonville teams can also book a private on-site workshop, and we run NWA sessions closer to Rogers when there are enough seats.",
+      "Public workshop seats are not for sale. Start with Front Door $497. Bella Vista and Bentonville teams can book a private on-site session.",
     nearby: ["bentonville", "rogers", "springdale", "siloam-springs"],
   },
   {
@@ -182,7 +182,7 @@ export const cities: City[] = [
       "You can encode it once. The receptionist asks for the address first, checks it against the service area you defined, and either books it or declines it politely with a referral. Siloam Springs owners get back the twenty minutes a day they spend on calls they were never going to take.",
     ],
     workshopNote:
-      "Northwest Arkansas sessions open as demand builds. Siloam Springs teams can also book a private on-site workshop, and Fort Smith public seats are about 50 minutes away.",
+      "Public workshop seats are not for sale. Start with Front Door $497. Siloam Springs teams can book a private on-site session.",
     nearby: ["springdale", "fayetteville", "rogers", "fort-smith"],
   },
   {
@@ -201,7 +201,7 @@ export const cities: City[] = [
       "The receptionist takes the call you cannot take and gives it back to you as a job card with the address already in it. For Russellville the second win is routing: it can ask where the caller is and slot them into the day you are already driving, instead of sending you back across the county tomorrow.",
     ],
     workshopNote:
-      "Fort Smith public workshops are about an hour west. Private on-site workshops in Russellville are available for teams and trade groups.",
+      "Public workshop seats are not for sale. Start with Front Door $497. Private on-site sessions in Russellville are available for teams and trade groups.",
     nearby: ["fort-smith", "conway", "searcy", "van-buren"],
   },
   {
@@ -239,7 +239,7 @@ export const cities: City[] = [
       "For firms and clinics the receptionist does more than answer. It runs intake: conflict-check questions for a law firm, insurance and reason-for-visit for a clinic, job type and address for a trade. The Little Rock version of this build is usually the one with the most qualification logic in it, because the volume justifies getting the screening right.",
     ],
     workshopNote:
-      "For Little Rock we lead with the $999 operations audit or a private on-site workshop for your firm. Public workshop seats run in Fort Smith if you want the full-day experience.",
+      "For Little Rock we lead with the $999 operations audit, Front Door $497, or a private on-site session for your firm. Public workshop seats are not for sale.",
     nearby: ["north-little-rock", "benton", "conway", "searcy"],
   },
   {
