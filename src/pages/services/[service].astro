@@ -5,6 +5,8 @@ import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
 import LeadForm from "../../components/LeadForm.astro";
 import { services, serviceBySlug } from "../../data/services";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../../lib/public-phone";
+import { FRONT_DOOR_START_URL } from "../../lib/front-door-checkout";
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { service: s.slug } }));
@@ -47,6 +49,8 @@ const schema = {
   ],
 };
 const others = services.filter((x) => x.slug !== s.slug);
+const isFrontDoor = s.slug === "front-door";
+const payUrl = isFrontDoor ? FRONT_DOOR_START_URL : "";
 ---
 
 <Base title={title} description={description} path={`/services/${s.slug}`} schema={schema}>
@@ -61,8 +65,22 @@ const others = services.filter((x) => x.slug !== s.slug);
         <h1 class="heading-xl measure">{s.name}.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{s.answer}</p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="#contact">Book the free assessment</a>
-          <a class="btn btn-secondary" href="/services/front-door">Front Door $497</a>
+          {payUrl ? (
+            <>
+              <a class="btn btn-primary" href={payUrl}>Pay $197 to start</a>
+              <a class="btn btn-secondary" href="#contact">Questions first</a>
+            </>
+          ) : isFrontDoor ? (
+            <>
+              <a class="btn btn-primary" href="#contact">Book the free assessment</a>
+              <a class="btn btn-secondary" href={AA_PUBLIC_PHONE_HREF}>Call {AA_PUBLIC_PHONE_DISPLAY}</a>
+            </>
+          ) : (
+            <>
+              <a class="btn btn-primary" href="#contact">Book the free assessment</a>
+              <a class="btn btn-secondary" href="/services/front-door">Front Door $497</a>
+            </>
+          )}
         </div>
       </div>
     </section>
@@ -73,6 +91,12 @@ const others = services.filter((x) => x.slug !== s.slug);
         <ul class="included">
           {s.includes.map((i) => <li>{i}</li>)}
         </ul>
+        {payUrl && (
+          <div class="form-note" style="margin-top:1.5rem">
+            <p>$197 to start, $300 when you approve staging. Card only. No Affirm or Afterpay.</p>
+            <a class="btn btn-primary" href={payUrl} style="margin-top:1.25rem">Pay $197 to start</a>
+          </div>
+        )}
       </div>
     </section>
 
@@ -122,11 +146,15 @@ const others = services.filter((x) => x.slug !== s.slug);
     <section class="section section-tint" id="contact">
       <div class="container split">
         <div>
-          <h2 class="heading-lg">Start with the free assessment.</h2>
+          <h2 class="heading-lg">{payUrl ? "Pay $197 to start, or ask a question." : "Start with the free assessment."}</h2>
           <p class="body-lg" style="margin-top:1rem">
-            Fifteen minutes, your business details, and a straight answer on whether this pays
-            for itself in your operation. No payment due now; we reply from a real address.
+            {payUrl
+              ? "Card checkout for the Front Door start. $497 total. The $300 balance is due only after you approve staging in writing."
+              : "Fifteen minutes, your business details, and a straight answer on whether this pays for itself in your operation. No payment due now; we reply from a real address."}
           </p>
+          {payUrl && (
+            <a class="btn btn-primary" href={payUrl} style="margin-top:1.25rem">Pay $197 to start</a>
+          )}
           <p class="fine-print" style="margin-top:2rem">
             Last updated July 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
