@@ -217,7 +217,7 @@ export const services: Service[] = [
       },
       {
         q: "Does the fee really credit toward a build?",
-        a: "Yes. Start any done-for-you build within 60 days and the full $999 comes off the setup. Same rule as the workshop seat.",
+        a: "Yes. Start any done-for-you build within 60 days and the full $999 comes off the setup. Same rule as Front Door.",
       },
     ],
   },

@@ -21,14 +21,14 @@ const { city: slug } = Astro.params;
 const c = cityBySlug(slug);
 const nearby = c.nearby.map(cityBySlug);
 
-const title = `AI Workshops in ${c.name}, AR | Arkansas Automated`;
-const description = `AI workshops and done-for-you automation for ${c.name} businesses. Build an AI receptionist in one afternoon or have us build it for you.`;
+const title = `AI automation in ${c.name}, AR | Arkansas Automated`;
+const description = `Front Door sites and done-for-you AI front desks for ${c.name} businesses. Start at $497 or have us build the desk.`;
 
 const ways = [
   {
-    n: "Learn",
-    h: "The workshop, $497 early bird",
-    p: "One Saturday afternoon, hands-on. You watch an AI receptionist work, build your own with help in the room, and call it live before you leave.",
+    n: "Start",
+    h: "Front Door site, $497",
+    p: "A 5 to 8 page storefront on your domain, live in 7 days after we have your photos and copy. Credits toward an AI front desk started within 60 days.",
   },
   {
     n: "Audit",
@@ -49,20 +49,20 @@ const ways = [
 
 const faqs = [
   {
-    q: `Do you run workshops in ${c.name}?`,
-    a: c.workshopNote,
+    q: `Do you run public workshops in ${c.name}?`,
+    a: "Public workshop seats are not for sale. " + c.workshopNote,
   },
   {
     q: "I am not technical. Is this for me?",
-    a: "Yes. The workshop is built for owners, not engineers. Everything is no-code, we build step by step together, and the room is capped at 18 so nobody gets left behind. If you can run a smartphone, you can do this.",
+    a: "Yes. We build it. Start with a $497 Front Door site or the free 15-minute fit assessment. You do not sit through a class.",
   },
   {
     q: "What if I would rather not sit through a workshop?",
-    a: "That is exactly what the done-for-you work is for. Start with the free 15-minute assessment call, and if the ROI is there we build and manage everything, including on-site work under the retainer.",
+    a: "You do not have to. Public seats are not for sale. Start with the free 15-minute assessment call, and if the ROI is there we build and manage everything, including on-site work under the retainer.",
   },
   {
-    q: "What does it cost after the workshop?",
-    a: "Nothing is required. If you want us to run it, the AI front desk is $2,500 setup plus $497 a month. Larger workflow builds run $1,500 to $5,000 setup. Your seat price credits toward any build started within 60 days.",
+    q: "What does it cost?",
+    a: "Front Door is $497. The AI front desk is $2,500 setup plus $497 a month. Larger workflow builds run $1,500 to $5,000 setup. Front Door and audit fees credit toward any build started within 60 days.",
   },
 ];
 
@@ -75,9 +75,9 @@ const schema = {
       "@type": "ProfessionalService",
       name: "Arkansas Automated",
       url: site,
-      description: `AI workshops, workflow automation, and AI front desk builds for ${c.name}, Arkansas businesses.`,
+      description: `AI front desks, Front Door sites, and workflow automation for ${c.name}, Arkansas businesses.`,
       areaServed: { "@type": "City", name: `${c.name}, Arkansas` },
-      serviceType: ["AI workshops and training", "Workflow automation", "AI front desk"],
+      serviceType: ["AI front desk", "Workflow automation", "AI implementation"],
       priceRange: "$497 - $5,000+",
     },
     {
@@ -109,15 +109,14 @@ const schema = {
           <a href="/">Home</a><span>/</span><a href="/ai-workshops">AI workshops</a><span>/</span>{c.name}
         </nav>
         <span class="eyebrow">{c.region}</span>
-        <h1 class="heading-xl measure">AI workshops and automation in {c.name}.</h1>
+        <h1 class="heading-xl measure">AI automation in {c.name}.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">
-          Arkansas Automated runs in-person AI workshops and done-for-you automation builds for
-          {" "}{c.name} business owners. Learn to run an AI front desk yourself in one Saturday
-          afternoon, or have us build and manage it for you. {c.drive}.
+          Arkansas Automated builds Front Door sites and done-for-you AI front desks for
+          {" "}{c.name} business owners. Public workshop seats are not for sale. {c.drive}.
         </p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="#contact">Reserve a seat</a>
-          <a class="btn btn-secondary" href="#ways">We build it for you</a>
+          <a class="btn btn-primary" href="#contact">Book a 15-minute fit assessment</a>
+          <a class="btn btn-secondary" href="/services/front-door">Front Door $497</a>
         </div>
       </div>
     </section>
@@ -147,7 +146,7 @@ const schema = {
           }
         </div>
         <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
-          Workshop and audit fees credit toward a done-for-you build started within 60 days.
+          Front Door and audit fees credit toward a done-for-you build started within 60 days.
           {" "}<a class="text-link" href="/services">See full services and pricing</a>.
         </p>
       </div>
@@ -156,14 +155,13 @@ const schema = {
     <section class="section section-tint">
       <div class="container split">
         <div>
-          <h2 class="heading-lg">Workshops for {c.name} owners.</h2>
+          <h2 class="heading-lg">How we work with {c.name} owners.</h2>
         </div>
         <div>
           <p class="body-lg">{c.workshopNote}</p>
           <p class="body-lg" style="margin-top:1.1rem">
-            Every seat includes the working prototype you build in the room, 30 days of email
-            support, and a credit of the full seat price toward any done-for-you build started
-            within 60 days. <a class="text-link" href="/#workshop">What the afternoon covers</a>.
+            Public workshop seats are not for sale. Start with Front Door $497 or the free
+            fit assessment. {" "}<a class="text-link" href="/services/front-door">See Front Door</a>.
           </p>
         </div>
       </div>
@@ -200,7 +198,7 @@ const schema = {
         <div>
           <h2 class="heading-lg">Start in {c.name}.</h2>
           <p class="body-lg" style="margin-top:1rem">
-            One form for everything: workshop seats, the free assessment, and done-for-you
+            One form for everything: Front Door, the free assessment, and done-for-you
             scoping. Tell us which and we reply from a real address, usually within one
             business day.
           </p>
@@ -209,8 +207,8 @@ const schema = {
           </p>
         </div>
         <LeadForm
-          variant="workshop"
-          defaultIntent="Reserve a workshop seat, $497 early bird"
+          variant="assessment"
+          defaultIntent="Book the free 15-minute assessment"
           sourceCity={c.name}
           detailsPlaceholder={`Example: after-hours calls at my ${c.name} shop, quote follow-up, scheduling.`}
         />
