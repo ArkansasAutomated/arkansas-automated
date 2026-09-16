@@ -28,43 +28,11 @@ const leaks = [
   },
 ];
 
-const agenda = [
-  {
-    t: "1:00",
-    h: "The cost of a missed call",
-    p: "What after-hours voicemail actually costs a local service business, and what a human receptionist versus an AI front desk runs per month.",
-  },
-  {
-    t: "1:45",
-    h: "Watch it answer",
-    p: "Live demo. An AI receptionist picks up, qualifies the caller, captures the job details, and books it against a real calendar.",
-  },
-  {
-    t: "2:30",
-    h: "Build yours",
-    p: "Configure your own version: your greeting, your services, your calendar, your SMS handoff. No code, and we build it together.",
-  },
-  {
-    t: "4:00",
-    h: "Test it live",
-    p: "Call your own number from the room. Set the guardrails and escalation rules. Then decide: run it yourself, or hand it to us.",
-  },
-];
-
-const included = [
-  "A working AI receptionist prototype configured for your business",
-  "Your calendar and SMS follow-up wired in before you leave",
-  "Escalation rules you set and test yourself",
-  "30 days of email support after the session",
-  "Your seat price credited toward a done-for-you build started within 60 days",
-  "A room capped at 16 owners, so your questions get answered",
-];
-
 const paths = [
   {
-    k: "Build with us",
-    h: "Leave the workshop with a working prototype",
-    p: "$497 early bird. Spend one Saturday building, testing, and understanding an AI front desk configured for your business.",
+    k: "Start small",
+    h: "Front Door site, $497",
+    p: "A 5 to 8 page storefront on your domain, live in 7 days after we have your photos and copy. Credits toward an AI front desk started within 60 days.",
   },
   {
     k: "Have us build it",
@@ -93,28 +61,28 @@ const packages = [
 
 const faqs = [
   {
-    q: "I am not technical. Will I keep up in the workshop?",
-    a: "Yes. The workshop is built for owners, not engineers. Everything is no-code, we build step by step together, and the room is capped at 16 so nobody gets left behind. If you can run a smartphone, you can do this.",
+    q: "I am not technical. Can you still build this for me?",
+    a: "Yes. You do not become the system administrator. We implement and manage the AI front desk. The 15-minute fit assessment is a conversation, not a class.",
   },
   {
-    q: "What exactly do I leave with?",
-    a: "A working AI receptionist prototype configured for your business: your greeting, your services, your calendar, and SMS follow-up. You will call it live before you leave. Keep running it yourself, or hand it to us to productionize and manage.",
+    q: "What can I buy today?",
+    a: "Front Door is $497 for a 5 to 8 page storefront on your domain. The AI front desk is $2,500 setup plus $497 a month. Workflow builds run $1,500 to $5,000 setup. Every paid engagement starts with a free 15-minute fit assessment.",
   },
   {
-    q: "What if I would rather not sit through a workshop?",
-    a: "That is exactly what the done-for-you work is for. Start with the free 15-minute assessment call, and if the ROI is there we build and manage everything, including on-site work under the retainer.",
+    q: "What if I only need a website?",
+    a: "That is Front Door. $497. Live in 7 days after we have your photos and copy. The fee credits toward an AI front desk started within 60 days.",
   },
   {
-    q: "What does it cost after the workshop?",
-    a: "Nothing is required. If you want us to run it, the AI front desk is $2,500 setup plus $497 a month. Larger workflow builds run $1,500 to $5,000 setup. Your seat price credits toward any build started within 60 days.",
+    q: "What does the AI front desk cost?",
+    a: "$2,500 setup plus $497 a month. Larger workflow builds run $1,500 to $5,000 setup. Front Door, audit, and prior workshop fees credit toward a build started within 60 days. The largest one credit wins. They do not stack.",
   },
   {
     q: "Does the AI receptionist sound robotic?",
-    a: "You will hear it in the first hour of the workshop, or on your assessment call with your own business details loaded. It answers in your business's voice, follows your rules, and hands off to a human whenever you say so.",
+    a: "You will hear it on the assessment call with your own business details loaded. It answers in your business's voice, follows your rules, and hands off to a human whenever you say so.",
   },
   {
-    q: "When and where do workshops run?",
-    a: "Saturday afternoons, 1 to 5 PM, at Central Mall in Fort Smith, upstairs event room. Park in the garage, elevator all the way up; the meeting room is directly to the right. Private workshops for one company or one trade are available on request.",
+    q: "Do I have to sit through a class?",
+    a: "No. Public workshop seats are not for sale. If you want the outcome, request the fit assessment and we build it.",
   },
 ];
 
@@ -166,7 +134,7 @@ const homeSchema = {
         { "@type": "State", name: "Arkansas" },
       ],
       serviceType: [
-        "AI workshops and training",
+        "AI front desk",
         "Workflow automation",
         "AI implementation",
         "CRM integration",
@@ -200,8 +168,8 @@ const homeSchema = {
           <p class="hero-kicker enter">Practical AI for Arkansas service businesses</p>
           <h1 class="heading-xl enter">Every call answered. Every lead followed up.</h1>
           <p class="body-lg enter enter-2">
-            Let our Arkansas team implement and manage an AI front desk for you, or build a
-            working one in a Saturday workshop.
+            Let our Arkansas team implement and manage an AI front desk for you. Start with a
+            free 15-minute fit assessment, or a $497 Front Door site.
           </p>
           <div class="hero-ctas enter enter-3">
             <div class="cta-choice">
@@ -209,8 +177,8 @@ const homeSchema = {
               <span>No payment today. We will tell you if the numbers do not make sense.</span>
             </div>
             <div class="cta-choice">
-              <a class="btn btn-secondary" href="/workshop">Sep 19 workshop update</a>
-              <span>That Saturday is canceled. No seats for sale.</span>
+              <a class="btn btn-secondary" href="/services/front-door">Get a Front Door site</a>
+              <span>$497. Live in 7 days after we have your photos and copy.</span>
             </div>
           </div>
           <a class="tool-link enter enter-3" href="/ai-opportunity-map/">Not sure which path fits? Map your next move <span>→</span></a>
@@ -264,57 +232,22 @@ const homeSchema = {
 
     <section class="section" id="workshop">
       <div class="container">
-        <span class="eyebrow">The workshop</span>
-        <h2 class="heading-lg measure">One afternoon. Your own AI front desk, working.</h2>
+        <span class="eyebrow">What you can buy today</span>
+        <h2 class="heading-lg measure">Front Door $497. AI front desk $2,500 + $497/mo.</h2>
         <p class="body-lg measure" style="margin-top:1rem">
-          A half-day, in-person session in Fort Smith. You watch a live AI receptionist work, then
-          build your own with help in the room, then call it yourself before you leave.
+          A storefront on your domain, or a 24/7 receptionist that answers in your voice and books
+          the job. No class. No seat sales.
         </p>
-
-        <div class="workshop-grid">
-          <div class="rows">
-            {
-              agenda.map((a) => (
-                <article class="row">
-                  <div class="row-n">{a.t}</div>
-                  <h3>{a.h}</h3>
-                  <p>{a.p}</p>
-                </article>
-              ))
-            }
-          </div>
-          <figure class="workshop-figure">
-            <img
-              src="/images/workshop-hands.webp"
-              alt="Workshop participant testing his new AI receptionist from his own phone"
-              width="1280"
-              height="787"
-              loading="lazy"
-              decoding="async"
-            />
-            <figcaption>Test call from the room, before you leave.</figcaption>
-          </figure>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-secondary" href="/services/front-door">Get a Front Door site</a>
+          <a class="btn btn-primary" href="/services/ai-front-desk">See the AI front desk</a>
         </div>
-
-        <div class="facts">
-          <div class="fact"><span class="fact-k">When</span> Saturdays, 1 to 5 PM</div>
-          <div class="fact"><span class="fact-k">Where</span> Central Mall, Fort Smith — upstairs event room</div>
-          <div class="fact"><span class="fact-k">Room</span> Capped at 16 owners</div>
-          <div class="fact"><span class="fact-k">Price</span> $497</div>
-          <div class="fact"><span class="fact-k">Second seat</span> $297 for a partner or office manager</div>
-        </div>
-
-        <ul class="included">
-          {included.map((i) => <li>{i}</li>)}
-        </ul>
-
-        <a class="btn btn-secondary" href="/workshop" style="margin-top:2.5rem">Sep 19 is canceled</a>
       </div>
     </section>
 
     <section class="section section-tint" id="paths">
       <div class="container">
-        <h2 class="heading-lg measure">Build it with us—or have us build it.</h2>
+        <h2 class="heading-lg measure">Start with a Front Door, or have us build the desk.</h2>
         <div class="phases">
           {
             paths.map((p) => (
@@ -328,7 +261,7 @@ const homeSchema = {
         </div>
         <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
           Need the workflow mapped before a build? The $999 operations audit is available inside
-          the done-for-you path. Workshop and audit fees credit toward a build started within 60 days.
+          the done-for-you path. Front Door and audit fees credit toward a build started within 60 days.
         </p>
       </div>
     </section>
@@ -336,9 +269,9 @@ const homeSchema = {
     <section class="section" id="done-for-you">
       <div class="container">
         <span class="eyebrow">Done for you</span>
-        <h2 class="heading-lg measure">Too busy for a workshop? We come in and build it.</h2>
+        <h2 class="heading-lg measure">Too busy to build it yourself? We come in and build it.</h2>
         <p class="body-lg measure" style="margin-top:1rem">
-          For owners who would rather pay for the outcome than sit through the training. We price
+          For owners who would rather pay for the outcome than sit through training. We price
           the result, not the tech, and every engagement starts with a free 15-minute assessment
           call.
         </p>
@@ -417,15 +350,15 @@ const homeSchema = {
       <div class="container">
         <h2 class="heading-lg measure">Choose the next step that fits how you work.</h2>
         <p class="body-lg measure" style="margin-top:1rem">
-          The workshop and managed-build paths are separate, so you only answer questions relevant to your request.
+          Front Door, AI front desk, or a conversation first. One form.
         </p>
         <div class="intent-forms">
           <section id="workshop-request" class="intent-form">
             <div class="intent-form-copy">
-              <span class="phase-k">Build with us</span>
-              <h3>Sep 19 workshop is canceled</h3>
-              <p>That Saturday is off. No seats are for sale. If you still want an AI front desk, request a fit assessment.</p>
-              <a class="btn btn-primary" href="#assessment-request" style="margin-top:1.25rem">Request a 15-minute fit assessment</a>
+              <span class="phase-k">Start small</span>
+              <h3>Front Door site, $497</h3>
+              <p>A 5 to 8 page storefront on your domain. Live in 7 days after we have your photos and copy.</p>
+              <a class="btn btn-primary" href="/services/front-door" style="margin-top:1.25rem">Get a Front Door site</a>
             </div>
           </section>
           <section id="assessment-request" class="intent-form">
@@ -443,11 +376,11 @@ const homeSchema = {
     <section class="section section-tint" id="aa-letter">
       <div class="container measure">
         <span class="eyebrow">AA Letter</span>
-        <h2 class="heading-lg">Last chance to grab a seat before the next Saturday fills.</h2>
+        <h2 class="heading-lg">Missed-call notes for Arkansas owners.</h2>
         <p class="body-lg" style="margin-top:1rem">
-          Every workshop is capped at 16. Get one email when the next date opens, and nothing else.
+          One email when we publish. No seat sales.
         </p>
-        <a class="btn btn-primary" href="https://book.arkansasautomated.com/subscribe" style="margin-top:1.5rem">Email me the next workshop date <span aria-hidden="true">→</span></a>
+        <a class="btn btn-primary" href="https://book.arkansasautomated.com/subscribe" style="margin-top:1.5rem">Get the AA Letter <span aria-hidden="true">→</span></a>
       </div>
     </section>
   </main>
