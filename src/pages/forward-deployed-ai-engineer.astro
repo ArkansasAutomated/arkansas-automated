@@ -15,7 +15,7 @@
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import LeadForm from "../components/LeadForm.astro";
+import BookCall from "../components/BookCall.astro";
 import { serviceBySlug } from "../data/services";
 
 const s = serviceBySlug("automation-retainer");
@@ -284,9 +284,9 @@ const schema = {
             Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
         </div>
-        <LeadForm
-          defaultIntent="Talk done-for-you or retainer"
-          detailsPlaceholder="Example: three crews, two systems that do not talk, and I am the bottleneck."
+        <BookCall
+          heading="Book the operations audit call"
+          note="Almost every retainer starts with the operations audit. Fifteen minutes, your business details, and a plain answer on whether embedded work is the right shape for it."
         />
       </div>
     </section>

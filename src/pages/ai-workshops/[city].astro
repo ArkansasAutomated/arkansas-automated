@@ -10,7 +10,7 @@
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import LeadForm from "../../components/LeadForm.astro";
+import BookCall from "../../components/BookCall.astro";
 import { cities, cityBySlug } from "../../data/cities";
 
 export function getStaticPaths() {
@@ -115,7 +115,7 @@ const schema = {
           {" "}{c.name} business owners. Public workshop seats are not for sale. {c.drive}.
         </p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="#contact">Book a 15-minute fit assessment</a>
+          <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book a 15-minute fit assessment</a>
           <a class="btn btn-secondary" href="/services/front-door">Front Door $497</a>
         </div>
       </div>
@@ -206,11 +206,9 @@ const schema = {
             Last updated July 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
         </div>
-        <LeadForm
-          variant="assessment"
-          defaultIntent="Book the free 15-minute assessment"
-          sourceCity={c.name}
-          detailsPlaceholder={`Example: after-hours calls at my ${c.name} shop, quote follow-up, scheduling.`}
+        <BookCall
+          heading={`Pick a time that fits your ${c.name} week`}
+          note={`Fifteen minutes, your ${c.name} business details, and a straight answer on whether automation pays for itself. If it does not, we will tell you that too.`}
         />
       </div>
     </section>

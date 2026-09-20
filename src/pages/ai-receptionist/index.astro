@@ -6,7 +6,7 @@
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import LeadForm from "../../components/LeadForm.astro";
+import BookCall from "../../components/BookCall.astro";
 import { regions, cities } from "../../data/cities";
 import { serviceBySlug } from "../../data/services";
 
@@ -96,7 +96,7 @@ const byRegion = regions.map((r) => ({
         <h1 class="heading-xl measure">AI receptionist, built for Arkansas businesses.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{answer}</p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="#contact">Hear it answer as your business</a>
+          <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Hear it answer as your business</a>
           <a class="btn btn-secondary" href="/services/ai-front-desk">Full pricing and detail</a>
         </div>
       </div>
@@ -165,9 +165,9 @@ const byRegion = regions.map((r) => ({
             Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
         </div>
-        <LeadForm
-          defaultIntent="Talk done-for-you or retainer"
-          detailsPlaceholder="Example: we miss after-hours calls and want them answered, qualified, and booked."
+        <BookCall
+          heading="Pick your own time"
+          note="Fifteen minutes, your business details loaded, and you hear it answer as your company before you spend anything. If it does not pay for itself, we will say so."
         />
       </div>
     </section>

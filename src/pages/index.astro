@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import LeadForm from "../components/LeadForm.astro";
+import BookCall from "../components/BookCall.astro";
 import { AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
 
 const title = "Every Call Answered | AI Front Desk for Arkansas Businesses";
@@ -173,8 +173,8 @@ const homeSchema = {
           </p>
           <div class="hero-ctas enter enter-3">
             <div class="cta-choice">
-              <a class="btn btn-primary" href="#assessment-request">Book a 15-minute fit assessment</a>
-              <span>No payment today. We will tell you if the numbers do not make sense.</span>
+              <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book a 15-minute fit assessment</a>
+              <span>Pick your own time. No payment today, and we will tell you if the numbers do not make sense.</span>
             </div>
             <div class="cta-choice">
               <a class="btn btn-secondary" href="/services/front-door">Get a Front Door site</a>
@@ -350,7 +350,7 @@ const homeSchema = {
       <div class="container">
         <h2 class="heading-lg measure">Choose the next step that fits how you work.</h2>
         <p class="body-lg measure" style="margin-top:1rem">
-          Front Door, AI front desk, or a conversation first. One form.
+          Front Door, AI front desk, or a conversation first. Book the call, or start with a site.
         </p>
         <div class="intent-forms">
           <section id="workshop-request" class="intent-form">
@@ -364,10 +364,14 @@ const homeSchema = {
           <section id="assessment-request" class="intent-form">
             <div class="intent-form-copy">
               <span class="phase-k">Have us build it</span>
-              <h3>Request a 15-minute fit assessment</h3>
-              <p>Tell us what is breaking now. We will assess whether automation is practical before recommending a paid engagement.</p>
+              <h3>Book a 15-minute fit assessment</h3>
+              <p>Tell us what is breaking now on the call. We will assess whether automation is practical before recommending a paid engagement.</p>
             </div>
-            <LeadForm variant="assessment" formId="assessment-form" detailsPlaceholder="Example: missed calls, slow quote follow-up, or duplicate data entry." />
+            <BookCall
+              heading="Pick a slot that works"
+              body="The calendar shows real openings on our side. Choose one and the invite lands in your inbox — no waiting on a reply."
+              note="Fifteen minutes. Bring the calls, quotes, or handoffs that keep slipping. If automation does not pay for itself here, we will say so on that call."
+            />
           </section>
         </div>
       </div>

@@ -11,6 +11,7 @@ import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
 import LeadForm from "../components/LeadForm.astro";
+import BookCall from "../components/BookCall.astro";
 
 const title = "AA Book — Instant Booking Software for Service Businesses | Arkansas Automated";
 const description =
@@ -156,7 +157,7 @@ const schema = {
           call when something breaks.
         </p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="#contact">Start free trial</a>
+          <a class="btn btn-primary" href="#trial">Start free trial</a>
           <a class="btn btn-secondary" href="#how">See how it works</a>
         </div>
         <p class="fine-print" style="margin-top:1.25rem">
@@ -166,7 +167,7 @@ const schema = {
     </section>
 
     {/* Old way vs new way */}
-    <section class="section section-tint">
+    <section class="section section-tint" id="trial">
       <div class="container split">
         <div>
           <h2 class="heading-lg measure">Same customer. Two different endings.</h2>
@@ -318,17 +319,16 @@ const schema = {
           <h2 class="heading-lg">Get your booking link live this week.</h2>
           <p class="body-lg" style="margin-top:1rem">
             Start with the free 15-minute assessment — we load your real services, walk your
-            booking flow, and switch your 7-day trial on. Nothing is due at that call. We reply
-            from a real address, usually within one business day.
+            booking flow, and switch your 7-day trial on. Nothing is due at that call. Pick a
+            time on the calendar and it is confirmed immediately.
           </p>
           <p class="fine-print" style="margin-top:2rem">
             Last updated September 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
         </div>
-        <LeadForm
-          formId="final"
-          defaultIntent="Book the free 15-minute assessment for AA Book"
-          detailsPlaceholder="Example: after-hours calls, booking estimates, rescheduling."
+        <BookCall
+          heading="Pick your own time"
+          note="Fifteen minutes. We load your real services, walk your booking flow, and switch your 7-day trial on. Nothing is due at that call."
         />
       </div>
     </section>

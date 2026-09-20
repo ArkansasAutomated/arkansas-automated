@@ -8,7 +8,7 @@
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import LeadForm from "../../components/LeadForm.astro";
+import BookCall from "../../components/BookCall.astro";
 import { problems, problemBySlug } from "../../data/problems";
 import { serviceBySlug } from "../../data/services";
 import { cityBySlug } from "../../data/cities";
@@ -74,7 +74,7 @@ const schema = {
         <h1 class="heading-xl measure">{p.h1}.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{p.answer}</p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="#contact">Book the free assessment</a>
+          <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book the free assessment</a>
           <a class="btn btn-secondary" href="#fix">Read the fix first</a>
         </div>
       </div>
@@ -159,9 +159,9 @@ const schema = {
             Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
         </div>
-        <LeadForm
-          defaultIntent="Talk done-for-you or retainer"
-          detailsPlaceholder={`Example: ${p.intent.toLowerCase()} at my business.`}
+        <BookCall
+          heading="Pick a time on the live calendar"
+          note="Fifteen free minutes on your actual numbers. If the fix does not pay for itself in your operation, we will say so on that call rather than sell you something."
         />
       </div>
     </section>
