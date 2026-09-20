@@ -1,0 +1,51 @@
+---
+/**
+ * Direct booking CTA for the AA Book discovery call.
+ *
+ * Replaces the old "Request a 15-minute fit assessment" LeadForm: prospects
+ * pick a real slot on the live calendar instead of waiting on a reply-to-form
+ * loop. Do not swap this back to a form — DRE-219.
+ */
+interface Props {
+  heading?: string;
+  body?: string;
+  ctaLabel?: string;
+  note?: string;
+}
+
+const {
+  heading = "Book the 15-minute fit assessment",
+  body = "Pick a time on the live calendar. You get a confirmed slot and a calendar invite, not a request waiting on a reply.",
+  ctaLabel = "Pick my time →",
+  note = "Fifteen minutes, your business details, and a straight answer on whether automation pays for itself. If it does not, we will tell you that too.",
+} = Astro.props;
+
+const BOOKING_URL = "https://book.arkansasautomated.com/book/discovery-call";
+---
+
+<aside class="form-card book-call" data-book-discovery-call>
+  <p class="book-call-kicker">Live calendar</p>
+  <h3 class="book-call-heading">{heading}</h3>
+  <p class="book-call-body">{body}</p>
+  <a class="btn btn-primary book-call-btn" href={BOOKING_URL} data-book-discovery-call-link>
+    {ctaLabel}
+  </a>
+  <p class="form-note">{note}</p>
+  <p class="form-note">
+    Prefer to write first? Email <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>.
+  </p>
+  <p class="form-legal">
+    Booking runs on book.arkansasautomated.com. See our <a href="/privacy">privacy and data handling page</a>.
+  </p>
+</aside>
+
+<style>
+  .book-call { display: grid; align-content: start; }
+  .book-call-kicker {
+    color: var(--accent); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+  }
+  .book-call-heading { font-size: clamp(1.25rem, 2.4vw, 1.6rem); margin-top: 0.6rem; }
+  .book-call-body { color: var(--text-secondary); margin-top: 0.75rem; }
+  .book-call-btn { margin-top: 1.4rem; width: 100%; }
+</style>

@@ -1,6 +1,6 @@
 ---
 interface Props {
-  variant?: "workshop" | "assessment" | "merchant";
+  variant?: "workshop" | "merchant" | "general";
   formId?: string;
   defaultIntent?: string;
   detailsPlaceholder?: string;
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const {
-  variant = "assessment",
+  variant = "general",
   formId = "lead",
   defaultIntent,
   detailsPlaceholder = "Example: after-hours calls, booking estimates, rescheduling.",
@@ -23,7 +23,7 @@ const {
 const isWorkshop = variant === "workshop";
 const isMerchant = variant === "merchant";
 const intent = defaultIntent ??
-  (isWorkshop ? "Book the free 15-minute assessment" : isMerchant ? "Merchant store activation" : "Book the free 15-minute assessment");
+  (isWorkshop ? "Reserve a workshop seat, $497 early bird" : isMerchant ? "Merchant store activation" : "General question about automation");
 const fieldId = (name: string) => `${formId}-${name}`;
 ---
 
@@ -94,7 +94,7 @@ const fieldId = (name: string) => `${formId}-${name}`;
       <input id={fieldId("bot-field")} name="bot-field" type="text" tabindex="-1" autocomplete="off" />
     </div>
     <button class="btn btn-primary" type="submit" style="width:100%" data-lead-submit>
-      {submitLabel ?? (isWorkshop ? "Request my 15-minute assessment" : "Request my 15-minute assessment")}
+      {submitLabel ?? (isWorkshop ? "Request my workshop seat" : isMerchant ? "Send my activation request" : "Send my request")}
     </button>
     <p class="form-note">No payment today. We usually reply within one business day. You can also email <a href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>.</p>
     <p class="form-legal">By submitting, you agree that Arkansas Automated may contact you about this request. See our <a href="/privacy">privacy and data handling page</a>.</p>

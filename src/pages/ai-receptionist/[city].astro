@@ -12,7 +12,7 @@
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import LeadForm from "../../components/LeadForm.astro";
+import BookCall from "../../components/BookCall.astro";
 import { cities, cityBySlug } from "../../data/cities";
 import { serviceBySlug } from "../../data/services";
 
@@ -104,7 +104,7 @@ const schema = {
         <h1 class="heading-xl measure">AI receptionist in {c.name}, Arkansas.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{answer}</p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="#contact">Hear it answer as your business</a>
+          <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Hear it answer as your business</a>
           <a class="btn btn-secondary" href="#how">How the build runs</a>
         </div>
       </div>
@@ -197,9 +197,9 @@ const schema = {
             Last updated August 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
         </div>
-        <LeadForm
-          defaultIntent="Talk done-for-you or retainer"
-          detailsPlaceholder={`Example: we miss after-hours calls at our ${c.name} shop and want them answered and booked.`}
+        <BookCall
+          heading={`Pick a time that fits your ${c.name} week`}
+          note={`Fifteen minutes. We load your ${c.name} business details and you listen to the receptionist answer as your company. No payment due, and if it does not pay for itself we will say so.`}
         />
       </div>
     </section>

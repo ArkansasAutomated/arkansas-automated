@@ -7,7 +7,7 @@
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
 import SiteFooter from "../../components/SiteFooter.astro";
-import LeadForm from "../../components/LeadForm.astro";
+import BookCall from "../../components/BookCall.astro";
 import { industries, industryBySlug } from "../../data/industries";
 
 export function getStaticPaths() {
@@ -80,7 +80,7 @@ const schema = {
         <h1 class="heading-xl measure">AI that answers, books, and follows up for {ind.name}.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{ind.angle}</p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="#contact">Book the free assessment</a>
+          <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book the free assessment</a>
           <a class="btn btn-secondary" href="/services/front-door">Front Door $497</a>
         </div>
       </div>
@@ -182,10 +182,9 @@ const schema = {
             Last updated July 2026. Written by Andre Brassfield, founder of Arkansas Automated.
           </p>
         </div>
-        <LeadForm
-          defaultIntent="Book the free 15-minute assessment"
-          sourceIndustry={ind.name}
-          detailsPlaceholder={`Example: missed calls while on jobs, quote follow-up for my ${ind.singular}.`}
+        <BookCall
+          heading="Pick your own time"
+          note={`Fifteen minutes on ${ind.name} operations: missed calls while on jobs, quote follow-up for your ${ind.singular}, and whether automation pays for itself. If it does not, we will say so.`}
         />
       </div>
     </section>
