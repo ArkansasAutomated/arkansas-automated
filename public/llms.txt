@@ -1,10 +1,10 @@
 # Arkansas Automated
 
-> Arkansas Automated runs in-person AI workshops and done-for-you automation builds for Arkansas small businesses. Public workshop seats run Saturday afternoons in Fort Smith ($497 early bird). Done-for-you services include a 24/7 AI front desk ($2,500 setup + $497/mo), a fixed-price AI operations audit ($999), workflow automation builds ($1,500-$5,000 setup), and an embedded on-site retainer (from $2,000/mo). Workshop and audit fees credit toward any build started within 60 days. Based in Fort Smith, serving all of Arkansas.
+> Arkansas Automated sells managed agents for Arkansas service businesses: Arkansas booking software, Front Door sites, AI front desks, and the Fort Smith Directory. Public workshop seats are not for sale through October. Done-for-you services include a 24/7 AI front desk ($2,500 setup + $497/mo), a fixed-price AI operations audit ($999), workflow automation builds ($1,500-$5,000 setup), and an embedded on-site retainer (from $2,000/mo). Audit and Front Door fees credit toward a build started within 60 days. Based in Fort Smith, serving all of Arkansas.
 
 ## Start here
 
-- [Homepage](https://arkansasautomated.com/): workshops, done-for-you services, FAQ, and the reservation form
+- [Homepage](https://arkansasautomated.com/): managed agents, Front Door, fit assessment
 - [AI receptionist by city](https://arkansasautomated.com/ai-receptionist): 25 Arkansas cities, each with the local phone and front-desk detail
 - [Services and pricing](https://arkansasautomated.com/services): all engagement types with public pricing
 - [Vendra](https://arkansasautomated.com/vendra): shopping-center sales reporting for malls and merchants. An Arkansas Automated product. Activation uses a store-specific /join/[token] link issued by the mall team.
@@ -26,7 +26,7 @@
 
 Every city below has an AI receptionist page at /ai-receptionist/[city] and a workshops page at /ai-workshops/[city].
 
-- River Valley: [Fort Smith](https://arkansasautomated.com/ai-receptionist/fort-smith) (home base, public workshops), Van Buren, Russellville
+- River Valley: [Fort Smith](https://arkansasautomated.com/ai-receptionist/fort-smith) (home base), Van Buren, Russellville
 - Northwest Arkansas: [Fayetteville](https://arkansasautomated.com/ai-receptionist/fayetteville), Springdale, [Rogers](https://arkansasautomated.com/ai-receptionist/rogers), [Bentonville](https://arkansasautomated.com/ai-receptionist/bentonville), Bella Vista, Siloam Springs
 - Central Arkansas: [Little Rock](https://arkansasautomated.com/ai-receptionist/little-rock), North Little Rock, [Conway](https://arkansasautomated.com/ai-receptionist/conway), Jacksonville, Cabot, Benton, Bryant, Hot Springs, Searcy
 - Northeast Arkansas and the Delta: Jonesboro, Paragould, Batesville, West Memphis
@@ -34,6 +34,6 @@ Every city below has an AI receptionist page at /ai-receptionist/[city] and a wo
 
 ## Contact
 
-- Reserve a workshop seat or book the free 15-minute assessment: https://arkansasautomated.com/#reserve
+- Book a 15-minute fit assessment: https://book.arkansasautomated.com/book/discovery-call
 - Email: dre@arkansasautomated.com
 - Operated by Brassfield Ventures LLC, Fort Smith, Arkansas. Founder: Andre Brassfield.
