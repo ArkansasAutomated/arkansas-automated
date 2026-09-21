@@ -2,89 +2,15 @@
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import BookCall from "../components/BookCall.astro";
+import VisibilityInstallOffer from "../components/VisibilityInstallOffer.astro";
 import { AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
+import { serviceBySlug } from "../data/services";
 
-const title = "Every Call Answered | AI Front Desk for Arkansas Businesses";
+const s = serviceBySlug("visibility-install");
+
+const title = "Does ChatGPT know your business exists? | Arkansas Automated";
 const description =
-  "Every call answered. Every lead followed up. Arkansas Automated builds and runs AI front desks for family-owned service businesses. Start with a free 15-minute fit assessment.";
-
-const leaks = [
-  {
-    h: "Calls that reach voicemail",
-    p: "An unanswered call is not a message in a queue. It is a customer dialing the next name on the list while your crew is under a truck.",
-  },
-  {
-    h: "Quotes that wait overnight",
-    p: "A request lands after hours and goes out the next afternoon. By then the buyer is holding three other numbers and yours is not the first callback.",
-  },
-  {
-    h: "The same job, typed three times",
-    p: "Details captured in the field, rekeyed into the CRM, rekeyed again into accounting. You are paying three times for one piece of information.",
-  },
-  {
-    h: "Follow-up that runs on memory",
-    p: "Estimates go cold because the second and third touch belong to nobody in particular. The work was already won and then quietly lost.",
-  },
-];
-
-const paths = [
-  {
-    k: "Start small",
-    h: "Front Door site, $497",
-    p: "A 5 to 8 page storefront on your domain, live in 7 days after we have your photos and copy. Credits toward an AI front desk started within 60 days.",
-  },
-  {
-    k: "Have us build it",
-    h: "Pay for the outcome, not the training",
-    p: "Start with a free 15-minute fit assessment. If the numbers work, we can audit, build, launch, and manage the system for you.",
-  },
-];
-
-const packages = [
-  {
-    price: "$2,500 + $497/mo",
-    h: "AI front desk",
-    p: "Answers 24/7 in your business's voice, qualifies the caller, and books straight onto your calendar. SMS follow-up, call recordings, and monthly tuning included.",
-  },
-  {
-    price: "$1,500 to $5,000 + monthly",
-    h: "Workflow automation",
-    p: "Lead to quote to job to invoice, without the retyping and the follow-up gaps. Built on the tools you already pay for.",
-  },
-  {
-    price: "From $2,000/mo",
-    h: "Embedded retainer",
-    p: "We come to you. On-site working sessions, a continuous build-out of custom workflows, priority turnaround, and staff training included.",
-  },
-];
-
-const faqs = [
-  {
-    q: "I am not technical. Can you still build this for me?",
-    a: "Yes. You do not become the system administrator. We implement and manage the AI front desk. The 15-minute fit assessment is a conversation, not a class.",
-  },
-  {
-    q: "What can I buy today?",
-    a: "Front Door is $497 for a 5 to 8 page storefront on your domain. The AI front desk is $2,500 setup plus $497 a month. Workflow builds run $1,500 to $5,000 setup. Every paid engagement starts with a free 15-minute fit assessment.",
-  },
-  {
-    q: "What if I only need a website?",
-    a: "That is Front Door. $497. Live in 7 days after we have your photos and copy. The fee credits toward an AI front desk started within 60 days.",
-  },
-  {
-    q: "What does the AI front desk cost?",
-    a: "$2,500 setup plus $497 a month. Larger workflow builds run $1,500 to $5,000 setup. Front Door, audit, and prior workshop fees credit toward a build started within 60 days. The largest one credit wins. They do not stack.",
-  },
-  {
-    q: "Does the AI receptionist sound robotic?",
-    a: "You will hear it on the assessment call with your own business details loaded. It answers in your business's voice, follows your rules, and hands off to a human whenever you say so.",
-  },
-  {
-    q: "Do I have to sit through a class?",
-    a: "No. Public workshop seats are not for sale. If you want the outcome, request the fit assessment and we build it.",
-  },
-];
+  "Visibility Install for Arkansas service businesses. Five inspectable items on the site you already have, live in 14 days from access. $2,500 setup, then $497 a month. Not a ranking promise. Not the AI front desk.";
 
 const properties = [
   {
@@ -113,8 +39,6 @@ const properties = [
   },
 ];
 
-// Homepage schema: Organization/ProfessionalService + WebSite + FAQPage. The FAQPage
-// mirrors the visible FAQ section exactly (schema must match page content).
 const homeSchema = {
   "@context": "https://schema.org",
   "@graph": [
@@ -124,9 +48,6 @@ const homeSchema = {
       url: "https://arkansasautomated.com",
       telephone: AA_PUBLIC_PHONE_E164,
       description,
-      // Real alternative representations of the same operator (Brassfield
-      // Ventures), shown on this page in the "We run this playbook on our own
-      // properties" section. No invented social profiles (PROTOCOL 10).
       sameAs: properties.map((p) => p.url),
       areaServed: [
         { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
@@ -134,11 +55,10 @@ const homeSchema = {
         { "@type": "State", name: "Arkansas" },
       ],
       serviceType: [
+        "Visibility Install",
+        "AI search visibility",
         "AI front desk",
-        "Workflow automation",
-        "AI implementation",
-        "CRM integration",
-        "Business process automation",
+        "Front Door websites",
       ],
     },
     {
@@ -147,8 +67,15 @@ const homeSchema = {
       url: "https://arkansasautomated.com",
     },
     {
+      "@type": "Service",
+      name: s.name,
+      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: "https://arkansasautomated.com" },
+      areaServed: { "@type": "State", name: "Arkansas" },
+      description: s.answer,
+    },
+    {
       "@type": "FAQPage",
-      mainEntity: faqs.map((f) => ({
+      mainEntity: s.faqs.map((f) => ({
         "@type": "Question",
         name: f.q,
         acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -160,161 +87,15 @@ const homeSchema = {
 
 <Base title={title} description={description} path="/" schema={homeSchema}>
   <SiteNav />
-
   <main id="main-content" tabindex="-1">
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="hero-kicker enter">Practical AI for Arkansas service businesses</p>
-          <h1 class="heading-xl enter">Every call answered. Every lead followed up.</h1>
-          <p class="body-lg enter enter-2">
-            Let our Arkansas team implement and manage an AI front desk for you. Start with a
-            free 15-minute fit assessment, or a $497 Front Door site.
-          </p>
-          <div class="hero-ctas enter enter-3">
-            <div class="cta-choice">
-              <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book a 15-minute fit assessment</a>
-              <span>Pick your own time. No payment today, and we will tell you if the numbers do not make sense.</span>
-            </div>
-            <div class="cta-choice">
-              <a class="btn btn-secondary" href="/services/front-door">Get a Front Door site</a>
-              <span>$497. Live in 7 days after we have your photos and copy.</span>
-            </div>
-          </div>
-          <a class="tool-link enter enter-3" href="/ai-opportunity-map/">Not sure which path fits? Map your next move <span>→</span></a>
-        </div>
-        <figure class="hero-figure enter enter-2">
-          <img
-            src="/images/hero-workshop.webp"
-            alt="Facilitator demonstrating an AI phone dashboard to business owners seated around a workshop table"
-            width="1280"
-            height="664"
-            fetchpriority="high"
-            decoding="async"
-          />
-        </figure>
-      </div>
-    </section>
-
-    <section class="proof-strip" aria-labelledby="proof-strip-title">
-      <div class="container proof-strip-grid">
-        <div>
-          <h2 id="proof-strip-title">See where automation stops before you buy it.</h2>
-          <p>We demonstrate the full call path: answer, qualify, book, follow up, and hand off to a person.</p>
-        </div>
-        <ul>
-          <li>Test the prototype live</li>
-          <li>Set your own escalation rules</li>
-          <li>Keep judgment and exceptions human</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section section-tint" id="missed-calls">
-      <div class="container">
-        <h2 class="heading-lg measure">How many calls went to voicemail last weekend?</h2>
-        <p class="body-lg measure" style="margin-top:1rem">
-          For a local service business, the leak is never one big line item. It is a dozen small
-          handoffs that each cost an hour, repeated every week.
-        </p>
-        <div class="leak-grid">
-          {
-            leaks.map((l) => (
-              <article class="leak">
-                <h3>{l.h}</h3>
-                <p>{l.p}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="workshop">
-      <div class="container">
-        <span class="eyebrow">What you can buy today</span>
-        <h2 class="heading-lg measure">Front Door $497. AI front desk $2,500 + $497/mo.</h2>
-        <p class="body-lg measure" style="margin-top:1rem">
-          A storefront on your domain, or a 24/7 receptionist that answers in your voice and books
-          the job. No class. No seat sales.
-        </p>
-        <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-secondary" href="/services/front-door">Get a Front Door site</a>
-          <a class="btn btn-primary" href="/services/ai-front-desk">See the AI front desk</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-tint" id="paths">
-      <div class="container">
-        <h2 class="heading-lg measure">Start with a Front Door, or have us build the desk.</h2>
-        <div class="phases">
-          {
-            paths.map((p) => (
-              <article class="phase">
-                <span class="phase-k">{p.k}</span>
-                <h3>{p.h}</h3>
-                <p>{p.p}</p>
-              </article>
-            ))
-          }
-        </div>
-        <p class="body-lg measure" style="margin-top:2.25rem;font-size:1rem">
-          Need the workflow mapped before a build? The $999 operations audit is available inside
-          the done-for-you path. Front Door and audit fees credit toward a build started within 60 days.
-        </p>
-      </div>
-    </section>
-
-    <section class="section" id="done-for-you">
-      <div class="container">
-        <span class="eyebrow">Done for you</span>
-        <h2 class="heading-lg measure">Too busy to build it yourself? We come in and build it.</h2>
-        <p class="body-lg measure" style="margin-top:1rem">
-          For owners who would rather pay for the outcome than sit through training. We price
-          the result, not the tech, and every engagement starts with a free 15-minute assessment
-          call.
-        </p>
-        <div class="rows">
-          {
-            packages.map((p) => (
-              <article class="row row-pkg">
-                <div class="row-n row-price">{p.price}</div>
-                <h3>{p.h}</h3>
-                <p>{p.p}</p>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-tint" id="boundary">
-      <div class="container split">
-        <div>
-          <h2 class="heading-lg">What we will not automate.</h2>
-        </div>
-        <div>
-          <p class="body-lg">
-            Judgment, negotiation, pricing exceptions, and the conversations that decide whether
-            somebody trusts your company stay with your people.
-          </p>
-          <p class="body-lg" style="margin-top:1.1rem">
-            Good automation makes that line obvious instead of blurring it. If a system cannot
-            state plainly where it stops and a human starts, it is not finished, and we will tell
-            you so before the invoice, not after.
-          </p>
-        </div>
-      </div>
-    </section>
+    <VisibilityInstallOffer home />
 
     <section class="section" id="proof">
       <div class="container">
         <h2 class="heading-lg measure">We run this playbook on our own properties.</h2>
         <p class="body-lg measure" style="margin-top:1rem">
-          Arkansas Automated builds and operates the local directories and service sites below. The
-          intake, routing, and follow-up systems we install for clients are the ones our own
-          revenue depends on. They are live, so you can check them.
+          Arkansas Automated builds and operates the local directories and service sites below.
+          They are live, so you can check them.
         </p>
         <div class="props">
           {
@@ -329,65 +110,6 @@ const homeSchema = {
         </div>
       </div>
     </section>
-
-    <section class="section section-tint" id="faq">
-      <div class="container faq-wrap">
-        <h2 class="heading-lg measure">Questions owners actually ask.</h2>
-        <div class="faq-list">
-          {
-            faqs.map((f) => (
-              <details class="faq-item">
-                <summary>{f.q}</summary>
-                <p>{f.a}</p>
-              </details>
-            ))
-          }
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="reserve">
-      <div class="container">
-        <h2 class="heading-lg measure">Choose the next step that fits how you work.</h2>
-        <p class="body-lg measure" style="margin-top:1rem">
-          Front Door, AI front desk, or a conversation first. Book the call, or start with a site.
-        </p>
-        <div class="intent-forms">
-          <section id="workshop-request" class="intent-form">
-            <div class="intent-form-copy">
-              <span class="phase-k">Start small</span>
-              <h3>Front Door site, $497</h3>
-              <p>A 5 to 8 page storefront on your domain. Live in 7 days after we have your photos and copy.</p>
-              <a class="btn btn-primary" href="/services/front-door" style="margin-top:1.25rem">Get a Front Door site</a>
-            </div>
-          </section>
-          <section id="assessment-request" class="intent-form">
-            <div class="intent-form-copy">
-              <span class="phase-k">Have us build it</span>
-              <h3>Book a 15-minute fit assessment</h3>
-              <p>Tell us what is breaking now on the call. We will assess whether automation is practical before recommending a paid engagement.</p>
-            </div>
-            <BookCall
-              heading="Pick a slot that works"
-              body="The calendar shows real openings on our side. Choose one and the invite lands in your inbox — no waiting on a reply."
-              note="Fifteen minutes. Bring the calls, quotes, or handoffs that keep slipping. If automation does not pay for itself here, we will say so on that call."
-            />
-          </section>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section-tint" id="aa-letter">
-      <div class="container measure">
-        <span class="eyebrow">AA Letter</span>
-        <h2 class="heading-lg">Missed-call notes for Arkansas owners.</h2>
-        <p class="body-lg" style="margin-top:1rem">
-          One email when we publish. No seat sales.
-        </p>
-        <a class="btn btn-primary" href="https://book.arkansasautomated.com/subscribe" style="margin-top:1.5rem">Get the AA Letter <span aria-hidden="true">→</span></a>
-      </div>
-    </section>
   </main>
-
   <SiteFooter />
 </Base>
