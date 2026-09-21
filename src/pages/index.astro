@@ -88,28 +88,7 @@ const homeSchema = {
 <Base title={title} description={description} path="/" schema={homeSchema}>
   <SiteNav />
   <main id="main-content" tabindex="-1">
-    <VisibilityInstallOffer home />
-
-    <section class="section" id="proof">
-      <div class="container">
-        <h2 class="heading-lg measure">We run this playbook on our own properties.</h2>
-        <p class="body-lg measure" style="margin-top:1rem">
-          Arkansas Automated builds and operates the local directories and service sites below.
-          They are live, so you can check them.
-        </p>
-        <div class="props">
-          {
-            properties.map((p) => (
-              <a class="prop" href={p.url} target="_blank" rel="noopener">
-                <span class="prop-name">{p.name}</span>
-                <span class="prop-role">{p.role}</span>
-                <span class="prop-host">{p.host}</span>
-              </a>
-            ))
-          }
-        </div>
-      </div>
-    </section>
+    <VisibilityInstallOffer home properties={properties} />
   </main>
   <SiteFooter />
 </Base>
