@@ -178,16 +178,16 @@ export const services: Service[] = [
     slug: "visibility-install",
     price: "$2,500 setup + $497/mo",
     tagline:
-      "Five inspectable items on the website you already have, live in 14 days from access. This is not the AI front desk.",
+      "Five fixes on the website you already have, live in 14 days from access.",
     answer:
-      "The Visibility Install puts five inspectable items on the website you already have, in 14 days from access. Titles and one H1, business markup, offer markup, one buyer guide on your domain, and junk URLs taken out of the index. $2,500 setup, then $497 a month. 90-day term. This is not the AI front desk. It does not answer the phone.",
+      "Visibility Install puts five published fixes on the website you already have, in 14 days from access: one headline per page, your real business facts in a form Google and ChatGPT can read, your services listed the same way, one buyer guide on your domain, and junk pages taken out of search. $2,500 setup, then $497 a month. 90-day term. It does not answer the phone.",
     includes: [
-      "Clear the pages: one H1 per page, titles that name the service and the market",
-      "Define the company: Organization and LocalBusiness markup from verified facts",
-      "Define the offer: service or event markup for what a customer can book or buy",
-      "Own the answer: one buyer guide on your domain, covering the questions people ask before they call",
-      "Remove the noise: noindex junk URLs, one call-to-action link everywhere",
-      "Day-zero and day-14 readout: the same buyer questions asked of AI, with screenshots, so you can see what changed",
+      "One headline per page that names the work and the town",
+      "Your real business facts (name, address, hours, license) in a form Google and ChatGPT can read",
+      "Your services listed the same way, so AI knows what you actually sell",
+      "One guide on your domain that answers the questions people ask before they call",
+      "Junk pages hidden from search, and one call-or-book button on every page",
+      "Screenshots on day 0 and day 14 of the same buyer questions asked of ChatGPT",
     ],
     process: [
       {
@@ -203,8 +203,8 @@ export const services: Service[] = [
         p: "Nothing publishes until you say yes in writing. If we are waiting on you, the clock pauses.",
       },
       {
-        h: "Five items live",
-        p: "Published inside 14 days of access. Then $497 a month keeps every new page titled, marked up, and on one call-to-action. Cancel anytime after day 90.",
+        h: "Five fixes live",
+        p: "Published inside 14 days of access. Then $497 a month keeps every new page titled, readable, and on one button. Cancel anytime after day 90.",
       },
     ],
     faqs: [
@@ -214,7 +214,7 @@ export const services: Service[] = [
       },
       {
         q: "Will this get me to the top of Google or ChatGPT?",
-        a: "We do not promise rankings, call volume, or revenue. You get five inspectable items published on your site. We do not guarantee a position.",
+        a: "We do not promise rankings, call volume, or revenue. You get five published fixes on your site. We do not guarantee a position.",
       },
       {
         q: "What does the $497 a month cover?",
