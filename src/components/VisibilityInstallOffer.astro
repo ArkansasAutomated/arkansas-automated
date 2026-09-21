@@ -1,5 +1,6 @@
 ---
 import BookCall from "./BookCall.astro";
+import HeroAsk from "./HeroAsk.astro";
 import { serviceBySlug } from "../data/services";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
 import { VISIBILITY_INSTALL_URL } from "../lib/visibility-install-checkout";
@@ -67,12 +68,25 @@ const fixes = [
 ];
 ---
 
-<section class="hero" id="install">
-  <div class="container hero-grid">
-    <div>
+<div class="hero-frame">
+  <div class="hero-stage-media" aria-hidden="true">
+    <img
+      class="hero-stage-bg"
+      src="/images/hero-network.webp"
+      alt=""
+      width="1122"
+      height="1402"
+      fetchpriority="high"
+    />
+    <div class="hero-stage-scrim"></div>
+    <div class="hero-stage-grain"></div>
+  </div>
+  <section class="hero-stage" id="install">
+    <div class="container hero-stage-grid">
+    <div class="hero-stage-copy">
       {
         !home && (
-          <nav class="crumbs" aria-label="Breadcrumb">
+          <nav class="crumbs crumbs-on-dark" aria-label="Breadcrumb">
             <a href="/">Home</a><span>/</span><a href="/services">Services</a><span>/</span>{s.name}
           </nav>
         )
@@ -92,23 +106,10 @@ const fixes = [
         </div>
       </div>
     </div>
-    <aside class="answer-sheet enter enter-2" aria-label="What the install changes">
-      <p class="answer-prompt">A stranger in your town asks who to hire.</p>
-      <div class="answer-pair">
-        <div class="answer-col">
-          <p class="answer-k">Before the five fixes</p>
-          <p>ChatGPT names a directory, a competitor, or a page you forgot you published.</p>
-          <p class="answer-ex"><s>Home</s></p>
-        </div>
-        <div class="answer-col answer-after">
-          <p class="answer-k">After they are live</p>
-          <p>It can name you: the work, the town, the hours, the license, and how to call.</p>
-          <p class="answer-ex">HVAC repair in Fort Smith</p>
-        </div>
-      </div>
-    </aside>
+    <HeroAsk />
   </div>
-</section>
+  </section>
+</div>
 
 <section class="proof-strip" aria-labelledby="vi-proof-title">
   <div class="container">
@@ -150,6 +151,16 @@ const fixes = [
   )
 }
 
+<figure class="photo-band">
+  <img
+    src="/images/shops-network.webp"
+    alt="Storefronts, a trade shop, and a clinic on the same local map."
+    width="1122"
+    height="1010"
+  />
+  <figcaption>The jobs you never hear about start here. A stranger asks. AI names somebody.</figcaption>
+</figure>
+
 <section class="section section-tint">
   <div class="container">
     <h2 class="heading-lg measure">The jobs you never hear about.</h2>
@@ -173,7 +184,7 @@ const fixes = [
 <section class="section">
   <div class="container">
     <h2 class="heading-lg measure">What you actually get.</h2>
-    <div class="rows">
+    <div class="rows row-stack">
       {
         fixes.map((item, idx) => (
           <article class="row">
