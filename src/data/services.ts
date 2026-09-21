@@ -174,6 +174,67 @@ export const services: Service[] = [
     ],
   },
   {
+    name: "Visibility Install",
+    slug: "visibility-install",
+    price: "$2,500 setup + $497/mo",
+    tagline:
+      "Five inspectable items on the website you already have, live in 14 days from access. This is not the AI front desk.",
+    answer:
+      "The Visibility Install puts five inspectable items on the website you already have, in 14 days from access. Titles and one H1, business markup, offer markup, one buyer guide on your domain, and junk URLs taken out of the index. $2,500 setup, then $497 a month. 90-day term. This is not the AI front desk. It does not answer the phone.",
+    includes: [
+      "Clear the pages: one H1 per page, titles that name the service and the market",
+      "Define the company: Organization and LocalBusiness markup from verified facts",
+      "Define the offer: service or event markup for what a customer can book or buy",
+      "Own the answer: one buyer guide on your domain, covering the questions people ask before they call",
+      "Remove the noise: noindex junk URLs, one call-to-action link everywhere",
+      "Day-zero and day-14 readout: the same buyer questions asked of AI, with screenshots, so you can see what changed",
+    ],
+    process: [
+      {
+        h: "You pay",
+        p: "Card checkout for the $2,500 setup. We email the three access requests the same day. The 14-day clock does not start at payment.",
+      },
+      {
+        h: "You grant access",
+        p: "Website, Google Business Profile, and Search Console. The clock starts when those three are in.",
+      },
+      {
+        h: "You approve copy",
+        p: "Nothing publishes until you say yes in writing. If we are waiting on you, the clock pauses.",
+      },
+      {
+        h: "Five items live",
+        p: "Published inside 14 days of access. Then $497 a month keeps every new page titled, marked up, and on one call-to-action. Cancel anytime after day 90.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is this the AI front desk?",
+        a: "No. Same price, different job. The AI front desk answers the phone. The Visibility Install makes the site you already have easier for AI and Google to name. It does not answer calls, send SMS, or book jobs.",
+      },
+      {
+        q: "Will this get me to the top of Google or ChatGPT?",
+        a: "We do not promise rankings, call volume, or revenue. You get five inspectable items published on your site. We do not guarantee a position.",
+      },
+      {
+        q: "What does the $497 a month cover?",
+        a: "Every new page gets the right title, one H1, and markup before it publishes. Once a month we test the real service-and-city questions buyers ask, and we update business facts when they change.",
+      },
+      {
+        q: "When does the 14 days start?",
+        a: "When website, Google Business Profile, and Search Console access are in. It does not start at payment, and it pauses while we wait on your copy approval.",
+      },
+      {
+        q: "Can I cancel?",
+        a: "90-day initial term, then month to month. Cancel anytime after day 90. The work stays on your site. We do not take it down.",
+      },
+      {
+        q: "What if the five items are not live in 14 days?",
+        a: "We keep working at no extra setup cost until they are, or we refund the $2,500. Live means published. It does not mean a ranking we cannot control.",
+      },
+    ],
+  },
+  {
     name: "AI operations audit",
     slug: "operations-audit",
     price: "$999 flat",

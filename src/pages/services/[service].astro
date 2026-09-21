@@ -9,7 +9,9 @@ import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../../lib/public-
 import { FRONT_DOOR_START_URL } from "../../lib/front-door-checkout";
 
 export function getStaticPaths() {
-  return services.map((s) => ({ params: { service: s.slug } }));
+  return services
+    .filter((s) => s.slug !== "visibility-install")
+    .map((s) => ({ params: { service: s.slug } }));
 }
 
 const { service: slug } = Astro.params;

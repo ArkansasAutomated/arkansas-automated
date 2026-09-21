@@ -29,7 +29,7 @@ const footerIndustries = industries.filter((i) =>
       <div>
         <div class="brand">Arkansas <span class="accent">Automated</span></div>
         <p class="body-lg" style="margin-top:0.9rem;max-width:32ch;font-size:1rem">
-          Done-for-you AI front desks and Front Door sites for operators in Fort Smith,
+          Visibility Install, Front Door sites, and AI front desks for operators in Fort Smith,
           Northwest Arkansas, and across the state.
         </p>
         <p class="footer-phone"><a href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a></p>
@@ -38,7 +38,7 @@ const footerIndustries = industries.filter((i) =>
         <h2>AI receptionist</h2>
         {footerCities.map((c) => <a href={`/ai-receptionist/${c.slug}`}>{c.name}</a>)}
         <a href="/ai-receptionist">All {cities.length} cities</a>
-        <a href="/ai-workshops">Workshops by city</a>
+        <a href="/ai-workshops">Workshops by city, paused</a>
       </nav>
       <nav class="footer-col" aria-label="Industries">
         <h2>Industries</h2>
@@ -47,6 +47,7 @@ const footerIndustries = industries.filter((i) =>
       </nav>
       <nav class="footer-col" aria-label="Company">
         <h2>Company</h2>
+        <a href="/#install">Visibility Install</a>
         <a href="/services">Services and pricing</a>
         <a href="/vendra">Vendra sales reporting</a>
         <a href="/fix">Problems we fix</a>
@@ -55,7 +56,6 @@ const footerIndustries = industries.filter((i) =>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
         <a href="/services/front-door">Front Door $497</a>
-        <a href="/#reserve">Choose your next step</a>
         <a href="/list-your-business">List your business</a>
       </nav>
       <nav class="footer-col" aria-label="Network">
