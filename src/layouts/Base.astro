@@ -42,6 +42,10 @@ const defaultSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: SITE_NAME,
+  /** Disambiguates us from "Arkansas Automated Security, LLC" (Mayflower AR,
+   *  security installer) in machine knowledge graphs (GEO teardown fix #8). */
+  legalName: "Brassfield Ventures LLC",
+  alternateName: ["Arkansas Automated", "ArkansasAutomated.com"],
   url: origin,
   telephone: AA_PUBLIC_PHONE_E164,
   description,
@@ -59,6 +63,22 @@ const defaultSchema = {
   ],
 };
 const schema = pageSchema ?? defaultSchema;
+// Entity disambiguation on every schema node, not just the default: pages
+// that pass their own @graph with an Organization/ProfessionalService node
+// (homepage, city and industry pages) would otherwise lose the fields that
+// separate us from "Arkansas Automated Security, LLC" in knowledge graphs.
+(function tagOrgNodes(node) {
+  if (Array.isArray(node)) return node.forEach(tagOrgNodes);
+  if (!node || typeof node !== "object") return;
+  if (
+    String(node["@type"]).match(/Organization|ProfessionalService/) &&
+    !("legalName" in node)
+  ) {
+    node.legalName = defaultSchema.legalName;
+    node.alternateName = defaultSchema.alternateName;
+  }
+  Object.values(node).forEach(tagOrgNodes);
+})(schema);
 const pageviewEndpoint = import.meta.env.PROD ? HUB_PV_URL : "";
 const siteHost = new URL(Astro.site?.origin ?? SITE_URL).hostname;
 ---
