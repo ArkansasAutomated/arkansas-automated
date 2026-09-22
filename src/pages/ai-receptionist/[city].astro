@@ -8,6 +8,11 @@
  * city-specific `phones` paragraphs from cities.ts, so no two of these read the
  * same. Cross-links go sideways to nearby cities, up to the hub, and across to
  * the workshop page for the same town.
+ *
+ * GEO prompt-matching pass (teardown fix #4): the title keeps the indexed head
+ * phrase "AI receptionist in {city}, AR" verbatim as the prefix, then carries
+ * the question an owner actually types into an assistant. The H1 is that same
+ * question, answered by the self-contained `answer` block right below it.
  */
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
@@ -25,30 +30,30 @@ const c = cityBySlug(slug);
 const s = serviceBySlug("ai-front-desk");
 const nearby = c.nearby.map(cityBySlug);
 
-const title = `AI Receptionist in ${c.name}, AR | 24/7 Calls`;
+const title = `AI receptionist in ${c.name}, AR: who answers when you are on a job?`;
 const description = `A 24/7 AI receptionist for ${c.name} businesses. Answers in your voice, qualifies the caller, books the job. $497/mo, built and tuned by us.`;
 
 const answer = `An AI receptionist for a ${c.name}, Arkansas business answers every call around the clock in your business's voice, qualifies the caller by rules you write, books the job on your real calendar, and sends SMS follow-up. Arkansas Automated builds and manages it for $2,500 setup plus $497 a month, tuning included.`;
 
 const faqs = [
   {
-    q: `Does the AI receptionist work for a small ${c.name} business?`,
+    q: `Will an AI receptionist work for a small business in ${c.name}, Arkansas?`,
     a: `Yes, and small is where the arithmetic is clearest. A one or two truck operation in ${c.name} has nobody at a desk, so it misses the highest share of its calls. You will hear it answer as your business on the free 15-minute assessment before you commit a dollar.`,
   },
   {
-    q: "What happens when a caller needs a real person?",
+    q: "What happens when a caller asks for a real person?",
     a: s.faqs[1].a,
   },
   {
-    q: `How is this different from an answering service in ${c.name}?`,
+    q: `How is an AI receptionist different from an answering service in ${c.name}?`,
     a: "An answering service takes a message and hands the work back to you. The AI receptionist qualifies the caller against your rules and books the job on your calendar during the call, at any hour, for a flat monthly fee instead of per minute. We wrote a full side-by-side comparison in the guides.",
   },
   {
-    q: "What does the $497 a month cover?",
+    q: "What does an AI receptionist cost per month?",
     a: s.faqs[2].a,
   },
   {
-    q: `Do you come to ${c.name} in person?`,
+    q: `Do you work with ${c.name} businesses in person?`,
     a: c.workshopNote,
   },
 ];
@@ -101,7 +106,7 @@ const schema = {
           <a href="/">Home</a><span>/</span><a href="/ai-receptionist">AI receptionist</a><span>/</span>{c.name}
         </nav>
         <span class="eyebrow">{c.region} · {s.price}</span>
-        <h1 class="heading-xl measure">AI receptionist in {c.name}, Arkansas.</h1>
+        <h1 class="heading-xl measure">Who answers your {c.name} business phone when you are on a job?</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{answer}</p>
         <div class="hero-ctas" style="margin-top:2rem">
           <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Hear it answer as your business</a>
