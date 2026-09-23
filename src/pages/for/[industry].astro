@@ -3,6 +3,11 @@
  * /for/[industry] — Personas playbook (programmatic-seo skill). Trade-specific
  * leaks, automate-first items, and FAQs from src/data/industries.ts, with
  * Service + FAQPage + BreadcrumbList schema.
+ *
+ * GEO prompt-matching pass (teardown fix #4): the title keeps the indexed head
+ * phrase "AI for {Trade} in Arkansas" verbatim as the prefix, then carries the
+ * question an owner actually types into an assistant. The H1 is the same
+ * question, and the `automate` section below it is the answer.
  */
 import Base from "../../layouts/Base.astro";
 import SiteNav from "../../components/SiteNav.astro";
@@ -20,16 +25,16 @@ const display = ind.name.charAt(0).toUpperCase() + ind.name.slice(1);
 const seoName =
   ({ landscapers: "Landscapers", "medical-clinics": "Medical Clinics" } as Record<string, string>)[ind.slug] ?? display;
 
-const title = `AI for ${seoName} in Arkansas | Arkansas Automated`;
+const title = `AI for ${seoName} in Arkansas: what should you automate first?`;
 const description = `${ind.intent}. Front Door sites and done-for-you automation for Arkansas ${ind.name.toLowerCase()}.`;
 
 const sharedFaqs = [
   {
-    q: "Can I learn to run this myself?",
+    q: "Do you run public workshops, or is this done for you?",
     a: "Yes, as a done-for-you build. Public workshop seats are not for sale. Start with a $497 Front Door site or the free 15-minute fit assessment, and we build the AI front desk if the ROI is there. Front Door fees credit toward a build started within 60 days.",
   },
   {
-    q: "What if I want it built and managed for me?",
+    q: "Can you build and manage it for me?",
     a: "That is the done-for-you path. Start with the free 15-minute assessment, and if the ROI is there we build, launch, and manage the system, including on-site work under the retainer for larger operations.",
   },
 ];
@@ -77,7 +82,7 @@ const schema = {
         <nav class="crumbs" aria-label="Breadcrumb">
           <a href="/">Home</a><span>/</span><a href="/for">Industries</a><span>/</span>{display}
         </nav>
-        <h1 class="heading-xl measure">AI that answers, books, and follows up for {ind.name}.</h1>
+        <h1 class="heading-xl measure">What should {ind.name} in Arkansas automate first?</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">{ind.angle}</p>
         <div class="hero-ctas" style="margin-top:2rem">
           <a class="btn btn-primary" href="https://book.arkansasautomated.com/book/discovery-call">Book the free assessment</a>

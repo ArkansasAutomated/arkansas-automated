@@ -7,6 +7,10 @@
  * intake, and follow-up that lives in somebody's memory.
  *
  * Voice rules: direct, plain, concrete, no hype, no em dashes.
+ *
+ * GEO prompt-matching pass (teardown fix #4): FAQ questions are phrased the way
+ * an owner asks an assistant (natural question form, first person where it
+ * fits), not as labels. Answers are unchanged.
  */
 
 export interface Industry {
@@ -139,7 +143,7 @@ export const industries: Industry[] = [
         a: "Yes. The front desk books into the calendar and pushes intake into the tools you already pay for. If your stack is a shared Google Calendar and QuickBooks, it works with that too.",
       },
       {
-        q: "What about maintenance plan sales on the call?",
+        q: "Can it sell maintenance plans on the call?",
         a: "You choose. The system can offer the agreement on every qualifying call, mention it only on tune-up bookings, or never mention it. The script is yours and we build it together.",
       },
     ],
@@ -363,7 +367,7 @@ export const industries: Industry[] = [
     ],
     faqs: [
       {
-        q: "What about confidentiality and attorney-client privilege?",
+        q: "How do you handle confidentiality and attorney-client privilege?",
         a: "The intake collects contact and matter basics, the same information your receptionist takes on a first call, and it states plainly that no attorney-client relationship is formed and no confidential detail should be shared yet. You approve every word of the script.",
       },
       {
@@ -537,7 +541,7 @@ export const industries: Industry[] = [
     ],
     faqs: [
       {
-        q: "We use Shop-Ware / Tekmetric / Mitchell 1. Does it tie in?",
+        q: "Does it work with Shop-Ware, Tekmetric, or Mitchell 1?",
         a: "The front desk and status automation connect to the calendar and workflow layer your shop actually runs on. We confirm the exact path for your system on the assessment call before quoting the build.",
       },
       {
