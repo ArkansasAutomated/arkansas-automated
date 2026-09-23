@@ -1,0 +1,11 @@
+vendor,category,published_price_usd,billing_unit,books_into_calendar,setup_fee,source_url,date_checked,verification
+Arkansas Automated,AI done-for-you,2500 setup + 497/mo,"Flat, unlimited calls and minutes","Yes, onto your calendar",2500,https://arkansasautomated.com/pricing.md,2026-09-22,verified
+Ruby,Live receptionists,250 (50 min); 395 (100); 720 (200); 1725 (500),Per minute,"Yes, scheduling on all plans",None published,https://www.ruby.com/plans-and-pricing/,2026-09-22,verified
+PATLive,Live receptionists,49/mo + 2.99/min pay-as-you-go; 99 (50 min); 189 (100); 349 (200); 479 (300); 759 (500); 1499 (1000),Per minute,"Yes, appointment scheduling",None published,https://www.patlive.com/pricing/,2026-09-22,verified
+AnswerConnect,Live receptionists,350 (200 min); 395 (300 min); 575 (400 min),"Per minute, rounded up","Yes, appointment scheduling",49.99 on Entry and Standard,https://www.answerconnect.com/services,2026-09-22,verified
+Abby,Human plus AI,165 (50 min); 329 (100); 599 (200); 1380 (500),Per Abby Minute; AI uses half,Not stated on pricing page,None published,https://www.abby.com/pricing/,2026-09-22,verified
+Smith.ai,Live receptionists,300 (30 calls); 810 (90); 2100 (300),Per call,"Yes, 1.50 per booked appointment",None published,https://smith.ai/pricing,2026-09-22,verified
+Goodcall,AI self-serve,79 Starter; 129 Growth; 249 Scale per agent,"Flat per agent, unlimited minutes",Not stated on pricing page,None published,https://www.goodcall.com/pricing,2026-09-22,verified
+Dialzara,AI self-serve,29 (60 min); 99 (220); 199 (500); 349 (1000),"Per minute, 0.35-0.48 overage","Yes, calendar sync on Pro and above",None published,https://dialzara.com/pricing,2026-09-22,verified
+Slang AI,AI restaurants only,399 Core; 599 Premium per location,Flat per location,"Yes, OpenTable and SevenRooms reservations",None published,https://www.slang.ai/pricing,2026-09-22,verified
+Synthflow,Enterprise voice AI platform,30000+/year,Annual contract,Platform you build on,None published,https://synthflow.ai/pricing,2026-09-22,verified
