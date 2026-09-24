@@ -1,0 +1,308 @@
+---
+/*
+ * /marketing — landing page for Arkansas Automated Marketing (AIMA):
+ * flat $3,000/mo Meta + Google lead systems for HVAC and roofing.
+ * Built from DRE-225. Locked decisions (do not reopen): phone
+ * (479) 282-3121, booking CTA book.arkansasautomated.com/book/discovery-call,
+ * flat $3,000/mo management (never a % of ad spend), ad spend is the
+ * client's money in the client's Meta/Google accounts. This is a separate
+ * offer from the AI front desk, Visibility Install, and the workshop — the
+ * page mentions the AI receptionist once, soft, in the FAQ, and pitches
+ * nothing else. No metrics or case studies are claimed; the proof section
+ * carries honest placeholders until real proof exists.
+ */
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const title =
+  "Arkansas Automated Marketing — Flat $3,000/mo Meta + Google Lead Systems for HVAC & Roofing";
+const description =
+  "Done-for-you Meta and Google lead systems for Arkansas HVAC and roofing shops. Flat $3,000/mo management — never a percentage of ad spend. You fund the ads in your own accounts; we build, launch, and optimize the machine.";
+
+const site = "https://arkansasautomated.com";
+const bookingUrl = "https://book.arkansasautomated.com/book/discovery-call";
+const phoneDisplay = "(479) 282-3121";
+const phoneHref = "tel:+14792823121";
+const contactEmail = "andrebrassfield@gmail.com";
+
+const steps = [
+  {
+    n: "1",
+    h: "15-minute fit call",
+    p: "Capacity, speed-to-lead, budget, and geography. If the economics do not work, we say so on the call.",
+  },
+  {
+    n: "2",
+    h: "Kickoff",
+    p: "Offer lock, creative assets, and access to your Business Manager and Google Ads accounts. Yours — we operate inside them.",
+  },
+  {
+    n: "3",
+    h: "Launch",
+    p: "Creative goes live in your accounts, pointed at your service area and your capacity.",
+  },
+  {
+    n: "4",
+    h: "Optimize",
+    p: "Weekly three-line report: spend, leads, cost per lead. You call the leads fast; we tune the campaigns.",
+  },
+];
+
+const goodFit = [
+  "Capacity for new jobs — you can actually take the work",
+  "Someone who calls leads back in minutes, not days",
+  "A separate ad budget, at least $50/day to start",
+  "You will honor the offer on the phone when the lead calls",
+];
+
+const notFit = [
+  "\"Can the ad spend be included in the $3k?\" — no, and it never will be",
+  "Brand-awareness-only campaigns — we run lead systems, not impressions",
+  "Nobody answers the phone — ads that ring into a voicemail are burned money",
+];
+
+const faqs = [
+  {
+    q: "What's included in the $3,000/mo?",
+    a: "Management: creative, campaign build and structure, targeting, optimization, and a weekly three-line report (spend, leads, cost per lead). Ad spend is separate — it goes on your cards in your accounts, and every dollar of it buys your leads, not our margin.",
+  },
+  {
+    q: "Who owns the ad accounts?",
+    a: "You do. Campaigns are built and run inside your Meta Business Manager and Google Ads accounts. If we ever stop working together, the account history, pixels, and data stay with you.",
+  },
+  {
+    q: "What's a typical starting ad budget?",
+    a: "$50 to $100 per day is where most HVAC and roofing shops start. The right number depends on your service area and how many jobs you can absorb — that gets set on the fit call, not guessed here.",
+  },
+  {
+    q: "How fast until the first leads?",
+    a: "After kickoff and account access, campaigns are usually live in days, not months. Leads start when the ads do; the fit call makes sure you can actually answer them.",
+  },
+  {
+    q: "Do you do AI receptionist too?",
+    a: "Yes, but it is a separate Arkansas Automated offer — an AI front desk that answers and books your calls 24/7. It is not part of this page. See <a href=\"/ai-receptionist/\">the AI receptionist page</a> if you want that side of the house.",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      name: "Arkansas Automated Marketing",
+      serviceType: "Meta and Google paid lead generation for HVAC and roofing contractors",
+      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: site },
+      areaServed: { "@type": "State", name: "Arkansas" },
+      description,
+      offers: {
+        "@type": "Offer",
+        price: "3000.00",
+        priceCurrency: "USD",
+        description: "Flat $3,000/month campaign management. Ad spend is paid by the client directly to Meta and Google.",
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: site },
+        { "@type": "ListItem", position: 2, name: "Arkansas Automated Marketing", item: `${site}/marketing` },
+      ],
+    },
+  ],
+};
+---
+
+<Base {title} {description} path="/marketing" {schema}>
+  <SiteNav />
+
+  <main>
+    {/* Hero — locked H1/H2, primary CTA to the discovery call */}
+    <section class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a> <span aria-hidden="true">/</span> <span>Marketing</span>
+        </nav>
+        <span class="eyebrow">Arkansas Automated Marketing · ads arm of the AA family</span>
+        <h1 class="heading-xl measure">Booked-solid leads for Arkansas HVAC &amp; roofers.</h1>
+        <h2 class="heading-lg measure" style="margin-top:1.15rem">
+          Flat $3,000/mo Meta + Google systems. You fund the ads. We run the machine.
+        </h2>
+        <div class="hero-ctas" style="margin-top:2rem">
+          <a class="btn btn-primary" href={bookingUrl}>Book a 15-minute fit call</a>
+          <a class="btn btn-secondary" href="#offer">See how the economics work</a>
+        </div>
+        <p class="fine-print" style="margin-top:1.25rem">
+          <strong>$3,000/mo</strong> flat management · ad spend stays on your cards · we never take a % of spend
+        </p>
+      </div>
+    </section>
+
+    {/* Who it's for */}
+    <section class="section section-tint" id="who">
+      <div class="container">
+        <h2 class="heading-lg measure">Who this is for.</h2>
+        <ul class="included" style="margin-top:2rem">
+          <li><strong>HVAC and roofing owners</strong> in Fort Smith, the River Valley, and Northwest Arkansas</li>
+          <li><strong>Capacity for new jobs</strong> — the trucks and crews can absorb the work ads bring in</li>
+          <li><strong>Someone who can call leads in minutes</strong> — speed-to-lead is where ad money lives or dies</li>
+          <li><strong>A separate ad budget</strong> — at least $50/day you are willing to put straight into Meta or Google</li>
+        </ul>
+      </div>
+    </section>
+
+    {/* The offer — two buckets, no ambiguity */}
+    <section class="section" id="offer">
+      <div class="container">
+        <h2 class="heading-lg measure">The offer. Two buckets. Crystal clear.</h2>
+        <div class="split" style="margin-top:2rem; align-items:start">
+          <div>
+            <span class="eyebrow">Bucket one · to us</span>
+            <p style="font-size:3rem; font-weight:700; margin:0.5rem 0 0; line-height:1">
+              $3,000<span style="font-size:1rem; font-weight:400; color:var(--text-muted)">/mo</span>
+            </p>
+            <p class="body-lg" style="margin-top:0.75rem">Flat management. Never a percentage of ad spend.</p>
+            <ul class="included" style="margin-top:1.5rem">
+              <li>Creative — ads written and built for your offers</li>
+              <li>Campaign build and structure in your accounts</li>
+              <li>Ongoing optimization, week over week</li>
+              <li>Weekly three-line report: spend, leads, cost per lead</li>
+            </ul>
+          </div>
+          <div>
+            <span class="eyebrow">Bucket two · to Meta/Google</span>
+            <p style="font-size:3rem; font-weight:700; margin:0.5rem 0 0; line-height:1">
+              Ad spend<span style="font-size:1rem; font-weight:400; color:var(--text-muted)">, your cards</span>
+            </p>
+            <p class="body-lg" style="margin-top:0.75rem">The actual clicks and leads — funded by you, in your accounts.</p>
+            <ul class="included" style="margin-top:1.5rem">
+              <li>Your Meta Business Manager and Google Ads accounts</li>
+              <li>Your payment methods, your billing history, your data</li>
+              <li>Start at $50–$100/day and tune from the reports</li>
+              <li>Every dollar of spend buys your leads, not our margin</li>
+            </ul>
+          </div>
+        </div>
+        <p class="body-lg measure" style="margin-top:2.5rem">
+          <strong>We never take a % of ad spend.</strong> Percent-of-spend pricing pays the agency to spend more of
+          your money. Flat is the only structure where we want the same thing you want: cheaper leads.
+        </p>
+      </div>
+    </section>
+
+    {/* Starter offers */}
+    <section class="section section-tint" id="offers">
+      <div class="container">
+        <h2 class="heading-lg measure">Starter offers we run.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          Ads work when the offer gives a homeowner a reason to raise a hand today. These two carry most of the load:
+        </p>
+        <ul class="included" style="margin-top:2rem">
+          <li><strong>HVAC:</strong> free estimate + $89 tune-up</li>
+          <li><strong>Roofing:</strong> free inspection + drone / storm + insurance help</li>
+        </ul>
+        <p class="fine-print" style="margin-top:1.5rem">
+          You have to honor the offer on the phone. An offer the office talks callers out of is not an offer, it is bait.
+        </p>
+      </div>
+    </section>
+
+    {/* How it works */}
+    <section class="section" id="how">
+      <div class="container">
+        <h2 class="heading-lg measure">How it works.</h2>
+        <ul class="included" style="margin-top:2rem">
+          {steps.map((s) => (
+            <li>
+              <strong>{s.n}. {s.h}.</strong> {s.p}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    {/* Fit / disqualify */}
+    <section class="section section-tint" id="fit">
+      <div class="container split" style="align-items:start">
+        <div>
+          <h2 class="heading-lg measure">Good fit.</h2>
+          <ul class="included" style="margin-top:1.5rem">
+            {goodFit.map((g) => <li>{g}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h2 class="heading-lg measure">Not a fit.</h2>
+          <ul class="included" style="margin-top:1.5rem">
+            {notFit.map((n) => <li>{n}</li>)}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    {/* Proof / trust — honest placeholders, no invented numbers */}
+    <section class="section" id="proof">
+      <div class="container">
+        <h2 class="heading-lg measure">Why listen to us.</h2>
+        <p class="body-lg measure" style="margin-top:1rem">
+          Arkansas Automated Marketing is the ads arm of Arkansas Automated — same owner, same Fort Smith roots,
+          same build-it-and-tell-you-the-truth way of working. You may already know us from the AI front desk side
+          of the house.
+        </p>
+        <p class="body-lg measure" style="margin-top:1.25rem">
+          Case notes, sample creative, and client reviews go in this space as they actually exist. We do not publish
+          numbers we cannot back, and we will not put fake results on this page to warm it up. Ask for real examples
+          on the fit call.
+        </p>
+      </div>
+    </section>
+
+    {/* FAQ */}
+    <section class="section section-tint">
+      <div class="container faq-wrap">
+        <h2 class="heading-lg measure">Common questions.</h2>
+        <div class="faq-list" style="margin-top:1.5rem">
+          {faqs.map((f) => (
+            <details class="faq-item">
+              <summary>{f.q}</summary>
+              <p set:html={f.a} />
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* Final CTA — locked contacts */}
+    <section class="section" id="contact">
+      <div class="container split" style="align-items:start">
+        <div>
+          <h2 class="heading-lg">Book the fit call.</h2>
+          <p class="body-lg measure" style="margin-top:1rem">
+            Most shops don't need another agency retainer speech. They need estimate and inspection leads that show
+            up while they still have capacity — and someone calling those leads in minutes. If that sounds like how
+            you want to grow, book fifteen minutes. If you want ads "included" in the $3k, or you can't answer leads
+            fast, we'll tell you this isn't the right fit.
+          </p>
+          <div class="hero-ctas" style="margin-top:2rem">
+            <a class="btn btn-primary" href={bookingUrl}>Book a 15-minute fit call</a>
+          </div>
+          <p class="body-lg" style="margin-top:2rem">
+            Prefer to write first? Email <a href={`mailto:${contactEmail}`}>{contactEmail}</a> or call{" "}
+            <a href={phoneHref}>{phoneDisplay}</a>. — Andre
+          </p>
+          <p class="fine-print" style="margin-top:1.5rem">
+            Last updated September 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
