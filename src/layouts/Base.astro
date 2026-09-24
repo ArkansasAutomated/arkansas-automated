@@ -21,6 +21,8 @@ interface Props {
   ogType?: string;
   /** Extra robots directive, e.g. "noindex, follow" for confirmation pages. */
   robots?: string;
+  /** Browser chrome color. Defaults to the site paper. */
+  themeColor?: string;
 }
 const {
   title,
@@ -30,6 +32,7 @@ const {
   schema: pageSchema,
   ogType = "website",
   robots,
+  themeColor = "#eef1f0",
 } = Astro.props;
 const origin = Astro.site?.origin ?? SITE_URL;
 const canonical = canonicalUrl(path, origin);
@@ -110,7 +113,7 @@ const siteHost = new URL(Astro.site?.origin ?? SITE_URL).hostname;
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <meta name="theme-color" content="#eef1f0" />
+    <meta name="theme-color" content={themeColor} />
 
     <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
