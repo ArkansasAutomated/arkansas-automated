@@ -1,87 +1,88 @@
 ---
 /*
- * /marketing — landing page for Arkansas Automated Marketing (AIMA):
- * flat $3,000/mo Meta + Google lead systems for HVAC and roofing.
- * Built from DRE-225. Locked decisions (do not reopen): phone
- * (479) 282-3121, booking CTA book.arkansasautomated.com/book/discovery-call,
- * flat $3,000/mo management (never a % of ad spend), ad spend is the
- * client's money in the client's Meta/Google accounts. This is a separate
- * offer from the AI front desk, Visibility Install, and the workshop — the
- * page mentions the AI receptionist once, soft, in the FAQ, and pitches
- * nothing else. No metrics or case studies are claimed; the proof section
- * carries honest placeholders until real proof exists.
+ * /marketing — Arkansas Automated Marketing.
+ * Flat $3,000/mo Meta + Google management for any Arkansas business.
+ * Ad spend is the client's, in the client's accounts, 0% markup, never inside the $3,000.
+ * Separate from the AI receptionist, Visibility Install, and the workshop.
+ * The receptionist is one FAQ link. No invented results.
  */
+import "@fontsource/barlow-condensed/latin-700.css";
+import "@fontsource/barlow-condensed/latin-800.css";
+import "../styles/marketing.css";
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_E164, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
 
-const title =
-  "Arkansas Automated Marketing — Flat $3,000/mo Meta + Google Lead Systems for HVAC & Roofing";
+const title = "Arkansas Automated Marketing — Flat $3,000/mo, 0% Markup";
 const description =
-  "Done-for-you Meta and Google lead systems for Arkansas HVAC and roofing shops. Flat $3,000/mo management — never a percentage of ad spend. You fund the ads in your own accounts; we build, launch, and optimize the machine.";
+  "Meta and Google ads for any Arkansas business. Flat $3,000 a month. Your ad account, your money, 0% markup.";
 
 const site = "https://arkansasautomated.com";
 const bookingUrl = "https://book.arkansasautomated.com/book/discovery-call";
-const phoneDisplay = "(479) 282-3121";
-const phoneHref = "tel:+14792823121";
+const phoneDisplay = AA_PUBLIC_PHONE_DISPLAY;
+const phoneHref = AA_PUBLIC_PHONE_HREF;
 const contactEmail = "andrebrassfield@gmail.com";
+
+const photoNote = "Illustrative photo. AI-generated. Not a client, and not Andre.";
 
 const steps = [
   {
-    n: "1",
-    h: "15-minute fit call",
+    n: "01",
+    h: "Fit call",
     p: "Capacity, speed-to-lead, budget, and geography. If the economics do not work, we say so on the call.",
   },
   {
-    n: "2",
+    n: "02",
     h: "Kickoff",
-    p: "Offer lock, creative assets, and access to your Business Manager and Google Ads accounts. Yours — we operate inside them.",
+    p: "Offer lock, creative, and access to your Meta Business Manager and Google Ads account. The accounts stay yours. We work inside them.",
   },
   {
-    n: "3",
+    n: "03",
     h: "Launch",
-    p: "Creative goes live in your accounts, pointed at your service area and your capacity.",
+    p: "Ads go live in your accounts, pointed at your service area and the customers you can actually take.",
   },
   {
-    n: "4",
+    n: "04",
     h: "Optimize",
-    p: "Weekly three-line report: spend, leads, cost per lead. You call the leads fast; we tune the campaigns.",
+    p: "Reporting you can actually read: spend, leads, cost per lead. You call the leads. We tune the campaigns.",
   },
 ];
 
 const goodFit = [
-  "Capacity for new jobs — you can actually take the work",
-  "Someone who calls leads back in minutes, not days",
-  "A separate ad budget, at least $50/day to start",
-  "You will honor the offer on the phone when the lead calls",
+  "You have capacity for new customers. The business can take the work.",
+  "Someone calls leads back in minutes, not days.",
+  "You have a separate ad budget of at least $50/day.",
+  "You will honor the offer on the phone.",
 ];
 
 const notFit = [
-  "\"Can the ad spend be included in the $3k?\" — no, and it never will be",
-  "Brand-awareness-only campaigns — we run lead systems, not impressions",
-  "Nobody answers the phone — ads that ring into a voicemail are burned money",
+  "You want the ad spend included in the $3,000. It is not, and it will not be.",
+  "You want awareness-only campaigns. We run lead systems.",
+  "Nobody answers the phone. Ads that ring into silence are burned money.",
 ];
 
 const faqs = [
   {
     q: "What's included in the $3,000/mo?",
-    a: "Management: creative, campaign build and structure, targeting, optimization, and a weekly three-line report (spend, leads, cost per lead). Ad spend is separate — it goes on your cards in your accounts, and every dollar of it buys your leads, not our margin.",
+    text: "Management: creative, copy, campaign build and structure, targeting, optimization, pixel monitoring, and reporting you can actually read: spend, leads, cost per lead. Ad spend is separate. You pay it into your own Meta Business Manager and Google Ads accounts. We take 0% of it. Ad spend is never included in the $3,000.",
   },
   {
     q: "Who owns the ad accounts?",
-    a: "You do. Campaigns are built and run inside your Meta Business Manager and Google Ads accounts. If we ever stop working together, the account history, pixels, and data stay with you.",
+    text: "You do. Campaigns run inside your Meta Business Manager and Google Ads accounts. If you leave, the accounts, the pixel, and the data stay with you. That includes campaign history.",
   },
   {
     q: "What's a typical starting ad budget?",
-    a: "$50 to $100 per day is where most HVAC and roofing shops start. The right number depends on your service area and how many jobs you can absorb — that gets set on the fit call, not guessed here.",
+    text: "At least $50 a day, paid by you to Meta or Google. Many Arkansas businesses start between $50 and $100 a day. The right number depends on your service area and how many customers you can take. That gets set on the fit call, not guessed here.",
   },
   {
     q: "How fast until the first leads?",
-    a: "After kickoff and account access, campaigns are usually live in days, not months. Leads start when the ads do; the fit call makes sure you can actually answer them.",
+    text: "After kickoff and account access, campaigns usually go live in days. Leads start when the ads do. The fit call is where we confirm you can answer them.",
   },
   {
     q: "Do you do AI receptionist too?",
-    a: "Yes, but it is a separate Arkansas Automated offer — an AI front desk that answers and books your calls 24/7. It is not part of this page. See <a href=\"/ai-receptionist/\">the AI receptionist page</a> if you want that side of the house.",
+    text: "Yes, as a separate Arkansas Automated offer. It is not part of this page or this engagement. The AI receptionist page covers that side of the house.",
+    html: `Yes, as a separate Arkansas Automated offer. It is not part of this page or this engagement. The <a class="text-link" href="/ai-receptionist">AI receptionist page</a> covers that side of the house.`,
   },
 ];
 
@@ -91,15 +92,21 @@ const schema = {
     {
       "@type": "Service",
       name: "Arkansas Automated Marketing",
-      serviceType: "Meta and Google paid lead generation for HVAC and roofing contractors",
-      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: site },
+      serviceType: "Meta and Google paid lead generation for Arkansas businesses",
+      provider: {
+        "@type": "ProfessionalService",
+        name: "Arkansas Automated",
+        url: site,
+        telephone: AA_PUBLIC_PHONE_E164,
+      },
       areaServed: { "@type": "State", name: "Arkansas" },
       description,
       offers: {
         "@type": "Offer",
         price: "3000.00",
         priceCurrency: "USD",
-        description: "Flat $3,000/month campaign management. Ad spend is paid by the client directly to Meta and Google.",
+        description:
+          "Flat $3,000 per month campaign management. Ad spend is paid by the client into their own Meta Business Manager and Google Ads accounts. 0% markup.",
       },
     },
     {
@@ -107,7 +114,7 @@ const schema = {
       mainEntity: faqs.map((f) => ({
         "@type": "Question",
         name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
+        acceptedAnswer: { "@type": "Answer", text: f.text },
       })),
     },
     {
@@ -121,188 +128,455 @@ const schema = {
 };
 ---
 
-<Base {title} {description} path="/marketing" {schema}>
-  <SiteNav />
+<Base {title} {description} path="/marketing" ogImage="/marketing/og.jpg" themeColor="#121312" {schema}>
+  <SiteNav overHero />
 
-  <main>
-    {/* Hero — locked H1/H2, primary CTA to the discovery call */}
-    <section class="hero">
+  <main class="mkt" id="main-content" tabindex="-1">
+    <section class="mkt-hero hero-stage">
       <div class="container">
-        <nav class="crumbs" aria-label="Breadcrumb">
-          <a href="/">Home</a> <span aria-hidden="true">/</span> <span>Marketing</span>
+        <nav class="crumbs mkt-crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <span>Marketing</span>
         </nav>
-        <span class="eyebrow">Arkansas Automated Marketing · ads arm of the AA family</span>
-        <h1 class="heading-xl measure">Booked-solid leads for Arkansas HVAC &amp; roofers.</h1>
-        <h2 class="heading-lg measure" style="margin-top:1.15rem">
-          Flat $3,000/mo Meta + Google systems. You fund the ads. We run the machine.
-        </h2>
-        <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href={bookingUrl}>Book a 15-minute fit call</a>
-          <a class="btn btn-secondary" href="#offer">See how the economics work</a>
-        </div>
-        <p class="fine-print" style="margin-top:1.25rem">
-          <strong>$3,000/mo</strong> flat management · ad spend stays on your cards · we never take a % of spend
-        </p>
-      </div>
-    </section>
-
-    {/* Who it's for */}
-    <section class="section section-tint" id="who">
-      <div class="container">
-        <h2 class="heading-lg measure">Who this is for.</h2>
-        <ul class="included" style="margin-top:2rem">
-          <li><strong>HVAC and roofing owners</strong> in Fort Smith, the River Valley, and Northwest Arkansas</li>
-          <li><strong>Capacity for new jobs</strong> — the trucks and crews can absorb the work ads bring in</li>
-          <li><strong>Someone who can call leads in minutes</strong> — speed-to-lead is where ad money lives or dies</li>
-          <li><strong>A separate ad budget</strong> — at least $50/day you are willing to put straight into Meta or Google</li>
-        </ul>
-      </div>
-    </section>
-
-    {/* The offer — two buckets, no ambiguity */}
-    <section class="section" id="offer">
-      <div class="container">
-        <h2 class="heading-lg measure">The offer. Two buckets. Crystal clear.</h2>
-        <div class="split" style="margin-top:2rem; align-items:start">
-          <div>
-            <span class="eyebrow">Bucket one · to us</span>
-            <p style="font-size:3rem; font-weight:700; margin:0.5rem 0 0; line-height:1">
-              $3,000<span style="font-size:1rem; font-weight:400; color:var(--text-muted)">/mo</span>
-            </p>
-            <p class="body-lg" style="margin-top:0.75rem">Flat management. Never a percentage of ad spend.</p>
-            <ul class="included" style="margin-top:1.5rem">
-              <li>Creative — ads written and built for your offers</li>
-              <li>Campaign build and structure in your accounts</li>
-              <li>Ongoing optimization, week over week</li>
-              <li>Weekly three-line report: spend, leads, cost per lead</li>
-            </ul>
+        <div class="mkt-hero-grid">
+        <div>
+          <p class="mkt-kicker">Arkansas Automated Marketing</p>
+          <h1>
+            <span class="ln">Your ad account.</span>
+            <span class="ln">Your money.</span>
+            <span class="ln lime">0% markup.</span>
+          </h1>
+          <p class="mkt-fee">
+            <span class="mkt-fee-num">$3,000</span>
+            <span class="mkt-fee-unit">/mo flat</span>
+          </p>
+          <p class="mkt-lede" style="margin-top:0.85rem">
+            Ad spend is separate. You pay it into your own Meta Business Manager and Google Ads accounts. We never take a percent of spend, and ad spend is never included in the $3,000.
+          </p>
+          <div class="mkt-ctas">
+            <a class="btn mkt-btn" id="mkt-cta-hero-book" href={bookingUrl}>Book a 15-minute fit call</a>
+            <a class="btn mkt-btn mkt-btn-ghost" id="mkt-cta-hero-call" href={phoneHref}>Call {phoneDisplay}</a>
           </div>
+          <p class="fine" style="margin-top:1rem">
+            For any Arkansas business. HVAC, roofing, dental, med spa, real estate, law, restaurants, auto, and more.
+          </p>
+        </div>
+        <figure class="mkt-photo">
+          <img
+            src="/marketing/a-followup.webp"
+            srcset="/marketing/a-followup-480.webp 480w, /marketing/a-followup-720.webp 720w, /marketing/a-followup.webp 1075w"
+            sizes="(min-width: 1100px) 460px, (min-width: 960px) 340px, calc(100vw - 2.5rem)"
+            width="1075"
+            height="1344"
+            alt="AI-generated illustration of a person reaching for a phone at a workbench. Not a client and not Andre."
+            fetchpriority="high"
+            decoding="async"
+          />
+          <figcaption>{photoNote}</figcaption>
+        </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="mkt-section mkt-ink" id="follow-up">
+      <div class="container mkt-prose">
+        <p class="mkt-kicker">01 — The callback</p>
+        <h2><span class="ln">Speed-to-lead</span><span class="ln">is your side.</span></h2>
+        <hr class="mkt-rule" />
+        <p class="mkt-lede">
+          A form fill is a hand raise, not a customer. If someone asks to book and hears back two days later, the campaign cannot rescue that customer. Speed-to-lead is your side of the work. Before anything launches, we ask who answers, how fast, and what happens after 6 p.m.
+        </p>
+        <p class="mkt-lede" style="margin-top:0.9rem">
+          Our job is the ads. Your job is calling the lead back in minutes. If nobody can do that, this is not a fit, and we will say so.
+        </p>
+      </div>
+    </section>
+
+    <section class="mkt-section" id="ownership">
+      <div class="container">
+        <div class="mkt-split">
           <div>
-            <span class="eyebrow">Bucket two · to Meta/Google</span>
-            <p style="font-size:3rem; font-weight:700; margin:0.5rem 0 0; line-height:1">
-              Ad spend<span style="font-size:1rem; font-weight:400; color:var(--text-muted)">, your cards</span>
+            <p class="mkt-kicker">02 — Ownership</p>
+            <h2><span class="ln">Two buckets.</span><span class="ln">Nothing mixed.</span></h2>
+            <hr class="mkt-rule" />
+            <p class="mkt-lede">
+              The $3,000 is management. Ad spend is a separate payment, from your accounts, to Meta and Google.
             </p>
-            <p class="body-lg" style="margin-top:0.75rem">The actual clicks and leads — funded by you, in your accounts.</p>
-            <ul class="included" style="margin-top:1.5rem">
-              <li>Your Meta Business Manager and Google Ads accounts</li>
-              <li>Your payment methods, your billing history, your data</li>
-              <li>Start at $50–$100/day and tune from the reports</li>
-              <li>Every dollar of spend buys your leads, not our margin</li>
+            <ul class="mkt-list">
+              <li>You own the accounts. We operate inside them.</li>
+              <li>If you leave, the accounts, the pixel, and the data stay with you.</li>
+              <li>You can log in and see the spend yourself.</li>
             </ul>
+            <p class="mkt-lede" style="margin-top:1.35rem">
+              Percent-of-spend pricing pays an agency to spend more of your money. A flat fee is the structure where cheaper leads are the point.
+            </p>
+          </div>
+          <figure class="mkt-photo">
+            <img
+              src="/marketing/b-ownership.webp"
+              srcset="/marketing/b-ownership-480.webp 480w, /marketing/b-ownership-720.webp 720w, /marketing/b-ownership.webp 1075w"
+              sizes="(min-width: 1100px) 460px, (min-width: 960px) 340px, calc(100vw - 2.5rem)"
+              width="1075"
+              height="1344"
+              alt="AI-generated illustration of a person at a desk with a tablet. Not a client and not Andre."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>{photoNote}</figcaption>
+          </figure>
+        </div>
+        <div class="buckets">
+          <article class="bucket">
+            <p class="bucket-k">Bucket one · to us</p>
+            <p class="bucket-num">$3,000<span style="font-size:0.45em">/mo</span></p>
+            <p>Flat management. Never a percent of ad spend.</p>
+            <ul class="mkt-list">
+              <li>Creative and copy for your offer</li>
+              <li>Campaign build inside your accounts</li>
+              <li>Optimization and pixel monitoring</li>
+              <li>Reporting you can actually read: spend, leads, cost per lead</li>
+            </ul>
+          </article>
+          <article class="bucket">
+            <p class="bucket-k">Bucket two · to Meta and Google</p>
+            <p class="bucket-num">Ad spend</p>
+            <p>Your money, on your cards, in your accounts.</p>
+            <ul class="mkt-list">
+              <li>Your Meta Business Manager</li>
+              <li>Your Google Ads account</li>
+              <li>At least $50/day to start</li>
+              <li>0% markup. Every dollar of spend buys media, not our margin</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mkt-section mkt-light mkt-math" id="math">
+      <div class="container">
+        <div class="mkt-split">
+          <div>
+            <p class="mkt-kicker">03 — Intake math</p>
+            <h2><span class="ln">Run the math</span><span class="ln">on a customer.</span></h2>
+            <hr class="mkt-rule" />
+            <p class="mkt-lede">
+              Average job or customer value, close rate, and lifetime purchases produce a break-even cost per lead. Add what you will pay the platforms, and the same numbers show how many booked customers cover the $3,000 fee plus that ad spend.
+            </p>
+            <p class="fine" style="margin-top:0.75rem">
+              The boxes start empty. Hints marked “example” are made up, the same way the worksheet’s example column is made up. This is arithmetic, not a forecast, and not a result we claim.
+            </p>
+          </div>
+          <figure class="mkt-photo">
+            <img
+              src="/marketing/c-customer-value.webp"
+              srcset="/marketing/c-customer-value-480.webp 480w, /marketing/c-customer-value-720.webp 720w, /marketing/c-customer-value.webp 1075w"
+              sizes="(min-width: 1100px) 460px, (min-width: 960px) 340px, calc(100vw - 2.5rem)"
+              width="1075"
+              height="1344"
+              alt="AI-generated illustration of a person working through numbers at a desk. Not a client and not Andre."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>{photoNote}</figcaption>
+          </figure>
+        </div>
+
+        <div class="mkt-math-grid" data-intake>
+          <form class="calc" action="#math">
+            <div class="calc-fields">
+              <div class="calc-field">
+                <label for="intake-job">Average job or customer value</label>
+                <input id="intake-job" name="job" type="text" inputmode="decimal" autocomplete="off" placeholder="Example: 400" />
+                <span class="hint">Dollars per job, visit, or sale. Worksheet example: 400. Illustrative only.</span>
+              </div>
+              <div class="calc-field">
+                <label for="intake-close">Close rate</label>
+                <input id="intake-close" name="close" type="text" inputmode="decimal" autocomplete="off" placeholder="Example: 25" />
+                <span class="hint">Percent of leads that become customers. Enter 25 for 25%.</span>
+              </div>
+              <div class="calc-field">
+                <label for="intake-life">Lifetime purchases</label>
+                <input id="intake-life" name="life" type="text" inputmode="decimal" autocomplete="off" placeholder="Example: 6" />
+                <span class="hint">How many times a typical customer buys or books, including the first. Worksheet example: 6.</span>
+              </div>
+              <div class="calc-field">
+                <label for="intake-spend">Monthly ad spend</label>
+                <input id="intake-spend" name="spend" type="text" inputmode="decimal" autocomplete="off" placeholder="What you pay the platforms" />
+                <span class="hint">Dollars to Meta and Google. Separate from the $3,000. Not included in the fee.</span>
+              </div>
+              <div class="calc-field calc-field-wide">
+                <label for="intake-margin">Gross margin <span style="font-weight:400">(optional)</span></label>
+                <input id="intake-margin" name="margin" type="text" inputmode="decimal" autocomplete="off" placeholder="Example: 40" />
+                <span class="hint">Percent. Leave blank and the cost per lead is on revenue. Add it and the figure switches to gross profit. Worksheet example: 40.</span>
+              </div>
+            </div>
+            <div class="calc-actions">
+              <button class="btn mkt-btn" type="button" id="mkt-calc-example">Use the worksheet example</button>
+              <a class="btn mkt-btn mkt-btn-ghost" id="mkt-calc-sheet" href="/marketing/free/intake-math-worksheet.pdf">Download the worksheet</a>
+            </div>
+          </form>
+
+          <div class="calc-out" aria-live="polite">
+            <div class="calc-block">
+              <p class="calc-kicker" data-out="cpl-kicker">Break-even cost per lead</p>
+              <p class="calc-stat"><span data-out="cpl">—</span></p>
+              <p data-out="cpl-note">Enter average job or customer value, close rate, and lifetime purchases. This stays blank until those three are filled in.</p>
+            </div>
+            <div class="calc-block">
+              <p class="calc-kicker">Customers to cover the month</p>
+              <p class="calc-stat"><span data-out="jobs">—</span> customers</p>
+              <p data-out="jobs-note">Add monthly ad spend to see how many booked customers cover the $3,000 fee plus that spend.</p>
+            </div>
+            <p class="calc-warn" data-out="warn"></p>
+            <p class="calc-example" data-out="example" hidden>Example numbers from the worksheet. Illustrative only. Not your business, and not a benchmark.</p>
           </div>
         </div>
-        <p class="body-lg measure" style="margin-top:2.5rem">
-          <strong>We never take a % of ad spend.</strong> Percent-of-spend pricing pays the agency to spend more of
-          your money. Flat is the only structure where we want the same thing you want: cheaper leads.
-        </p>
+        <noscript>
+          <p class="mkt-lede" style="margin-top:1rem">The calculator needs JavaScript. The intake math worksheet PDF works without it.</p>
+        </noscript>
       </div>
     </section>
 
-    {/* Starter offers */}
-    <section class="section section-tint" id="offers">
+    <section class="mkt-section mkt-offers" id="offers">
       <div class="container">
-        <h2 class="heading-lg measure">Starter offers we run.</h2>
-        <p class="body-lg measure" style="margin-top:1rem">
-          Ads work when the offer gives a homeowner a reason to raise a hand today. These two carry most of the load:
+        <p class="mkt-kicker">Starter offers</p>
+        <h2><span class="ln">The offer has to</span><span class="ln">survive the phone.</span></h2>
+        <hr class="mkt-rule" />
+        <p class="mkt-lede">
+          You set the offer. These are examples. The same $3,000 is for any Arkansas business: HVAC, roofing, dental, med spa, real estate, law, restaurants, auto, and more. You have to honor the offer on the phone. An offer the office talks people out of is not an offer.
         </p>
-        <ul class="included" style="margin-top:2rem">
-          <li><strong>HVAC:</strong> free estimate + $89 tune-up</li>
-          <li><strong>Roofing:</strong> free inspection + drone / storm + insurance help</li>
-        </ul>
-        <p class="fine-print" style="margin-top:1.5rem">
-          You have to honor the offer on the phone. An offer the office talks callers out of is not an offer, it is bait.
-        </p>
+        <div class="mkt-switch">
+          <input type="radio" name="niche" id="niche-hvac" checked />
+          <label for="niche-hvac">HVAC</label>
+          <input type="radio" name="niche" id="niche-roof" />
+          <label for="niche-roof">Roofing</label>
+          <input type="radio" name="niche" id="niche-dental" />
+          <label for="niche-dental">Dental</label>
+        </div>
+        <div class="mkt-panel" id="panel-hvac">
+          <p class="mkt-offer-name">Free estimate + $89 tune-up</p>
+          <p class="mkt-lede">The front door for a service call, not the whole value of the customer. The tune-up price is $89. The office has to quote that price when the lead calls.</p>
+        </div>
+        <div class="mkt-panel" id="panel-roof">
+          <p class="mkt-offer-name">Free inspection + drone/storm-insurance help</p>
+          <p class="mkt-lede">Free inspection, drone photos, and storm-insurance help. It only works if you can take the appointments the inspection creates.</p>
+        </div>
+        <div class="mkt-panel" id="panel-dental">
+          <p class="mkt-offer-name">$79 new-patient exam + X-rays + cleaning</p>
+          <p class="mkt-lede">Same $3,000 flat fee. Same rule: the ad account is the practice’s, and ad spend is separate at 0% markup.</p>
+        </div>
       </div>
     </section>
 
-    {/* How it works */}
-    <section class="section" id="how">
+    <section class="mkt-section mkt-light" id="how">
       <div class="container">
-        <h2 class="heading-lg measure">How it works.</h2>
-        <ul class="included" style="margin-top:2rem">
+        <p class="mkt-kicker">How it works</p>
+        <h2><span class="ln">Fit call. Kickoff.</span><span class="ln">Launch. Optimize.</span></h2>
+        <hr class="mkt-rule" />
+        <ol class="steps">
           {steps.map((s) => (
             <li>
-              <strong>{s.n}. {s.h}.</strong> {s.p}
+              <p class="n">{s.n}</p>
+              <h3>{s.h}</h3>
+              <p>{s.p}</p>
             </li>
           ))}
-        </ul>
+        </ol>
       </div>
     </section>
 
-    {/* Fit / disqualify */}
-    <section class="section section-tint" id="fit">
-      <div class="container split" style="align-items:start">
-        <div>
-          <h2 class="heading-lg measure">Good fit.</h2>
-          <ul class="included" style="margin-top:1.5rem">
-            {goodFit.map((g) => <li>{g}</li>)}
-          </ul>
-        </div>
-        <div>
-          <h2 class="heading-lg measure">Not a fit.</h2>
-          <ul class="included" style="margin-top:1.5rem">
-            {notFit.map((n) => <li>{n}</li>)}
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    {/* Proof / trust — honest placeholders, no invented numbers */}
-    <section class="section" id="proof">
+    <section class="mkt-section" id="fit">
       <div class="container">
-        <h2 class="heading-lg measure">Why listen to us.</h2>
-        <p class="body-lg measure" style="margin-top:1rem">
-          Arkansas Automated Marketing is the ads arm of Arkansas Automated — same owner, same Fort Smith roots,
-          same build-it-and-tell-you-the-truth way of working. You may already know us from the AI front desk side
-          of the house.
-        </p>
-        <p class="body-lg measure" style="margin-top:1.25rem">
-          Case notes, sample creative, and client reviews go in this space as they actually exist. We do not publish
-          numbers we cannot back, and we will not put fake results on this page to warm it up. Ask for real examples
-          on the fit call.
-        </p>
+        <p class="mkt-kicker">Before we start</p>
+        <h2>Good fit. Not a fit.</h2>
+        <div class="fit-grid" style="margin-top:1.5rem">
+          <article class="fit-card yes">
+            <h3 class="lime">Good fit</h3>
+            <ul class="mkt-list">
+              {goodFit.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+          <article class="fit-card no">
+            <h3>Not a fit</h3>
+            <ul class="mkt-list">
+              {notFit.map((item) => <li>{item}</li>)}
+            </ul>
+          </article>
+        </div>
+        <div class="mkt-ctas">
+          <a class="btn mkt-btn" id="mkt-cta-fit-book" href={bookingUrl}>Book a 15-minute fit call</a>
+        </div>
       </div>
     </section>
 
-    {/* FAQ */}
-    <section class="section section-tint">
+    <section class="mkt-section mkt-light" id="resources">
+      <div class="container">
+        <p class="mkt-kicker">Free</p>
+        <h2><span class="ln">Take the sheets.</span><span class="ln">No email gate.</span></h2>
+        <hr class="mkt-rule" />
+        <p class="mkt-lede">
+          Three PDFs. Same ones we send when someone asks. Nothing to send back.
+        </p>
+        <div class="free-grid">
+          <article class="free-card">
+            <p class="kw">Phone</p>
+            <h3>Lead follow-up&nbsp;self-audit</h3>
+            <p>What happens after a lead comes in. About ten minutes. The answers stay with you.</p>
+            <a class="btn mkt-btn" id="mkt-free-phone" href="/marketing/free/lead-follow-up-self-audit.pdf" download>Download the PDF</a>
+          </article>
+          <article class="free-card">
+            <p class="kw">Ownership</p>
+            <h3>Ad account ownership&nbsp;questions</h3>
+            <p>Questions to ask about any ad account before you sign, or to check a setup you already have.</p>
+            <a class="btn mkt-btn" id="mkt-free-ownership" href="/marketing/free/ad-account-ownership-questions.pdf" download>Download the PDF</a>
+          </article>
+          <article class="free-card">
+            <p class="kw">Math</p>
+            <h3>Intake math&nbsp;worksheet</h3>
+            <p>Your numbers beside an example column. The example is illustrative only. Yours are the ones that matter.</p>
+            <a class="btn mkt-btn" id="mkt-free-math" href="/marketing/free/intake-math-worksheet.pdf" download>Download the PDF</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mkt-section mkt-light mkt-stack" id="faq">
       <div class="container faq-wrap">
-        <h2 class="heading-lg measure">Common questions.</h2>
-        <div class="faq-list" style="margin-top:1.5rem">
+        <h2>Common questions.</h2>
+        <div class="faq-list">
           {faqs.map((f) => (
             <details class="faq-item">
               <summary>{f.q}</summary>
-              <p set:html={f.a} />
+              {f.html ? <p set:html={f.html} /> : <p>{f.text}</p>}
             </details>
           ))}
         </div>
       </div>
     </section>
 
-    {/* Final CTA — locked contacts */}
-    <section class="section" id="contact">
-      <div class="container split" style="align-items:start">
-        <div>
-          <h2 class="heading-lg">Book the fit call.</h2>
-          <p class="body-lg measure" style="margin-top:1rem">
-            Most shops don't need another agency retainer speech. They need estimate and inspection leads that show
-            up while they still have capacity — and someone calling those leads in minutes. If that sounds like how
-            you want to grow, book fifteen minutes. If you want ads "included" in the $3k, or you can't answer leads
-            fast, we'll tell you this isn't the right fit.
-          </p>
-          <div class="hero-ctas" style="margin-top:2rem">
-            <a class="btn btn-primary" href={bookingUrl}>Book a 15-minute fit call</a>
-          </div>
-          <p class="body-lg" style="margin-top:2rem">
-            Prefer to write first? Email <a href={`mailto:${contactEmail}`}>{contactEmail}</a> or call{" "}
-            <a href={phoneHref}>{phoneDisplay}</a>. — Andre
-          </p>
-          <p class="fine-print" style="margin-top:1.5rem">
-            Last updated September 2026. Written by Andre Brassfield, founder of Arkansas Automated.
-          </p>
+    <section class="mkt-section" id="contact">
+      <div class="container">
+        <p class="mkt-kicker">From Andre</p>
+        <h2>Book the fit call.</h2>
+        <hr class="mkt-rule" />
+        <p class="mkt-lede">
+          Most businesses do not need another agency speech. They need a flat fee, accounts they own, and leads they can call back. If you want the ad spend included in the $3,000, or nobody answers the phone, we will tell you this is not the right fit.
+        </p>
+        <div class="mkt-ctas">
+          <a class="btn mkt-btn" id="mkt-cta-final-book" href={bookingUrl}>Book a 15-minute fit call</a>
+          <a class="btn mkt-btn mkt-btn-ghost" id="mkt-cta-final-call" href={phoneHref}>Call {phoneDisplay}</a>
         </div>
+        <p class="mkt-lede" style="margin-top:1.35rem">
+          Prefer to write first? Email <a id="mkt-cta-final-email" href={`mailto:${contactEmail}`}>{contactEmail}</a> or call <a href={phoneHref}>{phoneDisplay}</a>.
+        </p>
+        <p class="mkt-sign">Andre</p>
+        <p class="fine">Andre Brassfield, founder of Arkansas Automated. Fort Smith.</p>
+        <p class="fine" style="margin-top:0.85rem">
+          We don’t publish numbers we can’t back. No testimonials, client logos, or case studies on this page.
+        </p>
+        <p class="fine" style="margin-top:0.45rem">Last updated September 2026.</p>
       </div>
     </section>
   </main>
   <SiteFooter />
 </Base>
+
+<script>
+  import { formatUsd, intakeMath, parseIntakeNumber, MANAGEMENT_FEE } from "../lib/intake-math";
+
+  const root = document.querySelector("[data-intake]");
+  if (root instanceof HTMLElement) {
+    const form = root.querySelector("form");
+    const job = root.querySelector("#intake-job");
+    const close = root.querySelector("#intake-close");
+    const life = root.querySelector("#intake-life");
+    const spend = root.querySelector("#intake-spend");
+    const margin = root.querySelector("#intake-margin");
+    const exampleBtn = root.querySelector("#mkt-calc-example");
+    const cpl = root.querySelector("[data-out='cpl']");
+    const cplNote = root.querySelector("[data-out='cpl-note']");
+    const jobs = root.querySelector("[data-out='jobs']");
+    const jobsNote = root.querySelector("[data-out='jobs-note']");
+    const warn = root.querySelector("[data-out='warn']");
+    const example = root.querySelector("[data-out='example']");
+
+    const fields = [job, close, life, spend, margin];
+    let usingExample = false;
+
+    function read(el: Element | null): number | null {
+      return el instanceof HTMLInputElement ? parseIntakeNumber(el.value) : null;
+    }
+
+    function render() {
+      const result = intakeMath({
+        jobValue: read(job),
+        closeRatePct: read(close),
+        lifetimeJobs: read(life),
+        monthlyAdSpend: read(spend),
+        marginPct: read(margin),
+      });
+
+      if (warn) warn.textContent = result.issues.join(" ");
+      if (example instanceof HTMLElement) example.hidden = !usingExample;
+
+      if (cpl && cplNote) {
+        if (result.profitPerLead !== null && result.firstJobAllowableCpl !== null) {
+          cpl.textContent = formatUsd(result.profitPerLead);
+          cplNote.textContent = `On lifetime gross profit: customer value × margin × lifetime purchases × close rate. First purchase only, the worksheet’s conservative figure, is ${formatUsd(result.firstJobAllowableCpl)}. Neither number is a forecast.`;
+        } else if (result.revenuePerLead !== null) {
+          cpl.textContent = formatUsd(result.revenuePerLead);
+          cplNote.textContent =
+            "On lifetime revenue: customer value × lifetime purchases × close rate. This counts the whole price, not profit or the $3,000 fee. Add gross margin for a tighter figure. Not a forecast.";
+        } else {
+          cpl.textContent = "—";
+          cplNote.textContent =
+            "Enter average job or customer value, close rate, and lifetime purchases. This stays blank until those three are filled in.";
+        }
+      }
+
+      if (jobs && jobsNote) {
+        if (result.jobsToCoverRevenue !== null && result.monthTotal !== null) {
+          jobs.textContent = String(result.jobsToCoverRevenue);
+          const rounded = result.jobsRounded ? " Rounded up to the next customer." : "";
+          const profit =
+            result.jobsToCoverProfit !== null
+              ? ` On gross profit, that same month takes ${result.jobsToCoverProfit} booked customers.`
+              : "";
+          jobsNote.textContent = `Booked customers whose revenue equals the $3,000 fee plus ${formatUsd(result.monthTotal - MANAGEMENT_FEE)} in ad spend (${formatUsd(result.monthTotal)} together).${rounded}${profit} Revenue is not profit, and this is not a prediction of customers you will get.`;
+        } else if (result.feeOnlyJobs !== null) {
+          jobs.textContent = String(result.feeOnlyJobs);
+          jobsNote.textContent =
+            "Booked customers whose revenue equals the $3,000 fee alone. Add monthly ad spend and the count includes that spend too. Ad spend is never inside the $3,000.";
+        } else {
+          jobs.textContent = "—";
+          jobsNote.textContent =
+            "Add average job or customer value and monthly ad spend to see how many booked customers cover the $3,000 fee plus that spend.";
+        }
+      }
+    }
+
+    fields.forEach((el) => {
+      el?.addEventListener("input", () => {
+        usingExample = false;
+        render();
+      });
+    });
+
+    exampleBtn?.addEventListener("click", () => {
+      if (job instanceof HTMLInputElement) job.value = "400";
+      if (close instanceof HTMLInputElement) close.value = "25";
+      if (life instanceof HTMLInputElement) life.value = "6";
+      if (margin instanceof HTMLInputElement) margin.value = "40";
+      if (spend instanceof HTMLInputElement) spend.value = "1280";
+      usingExample = true;
+      render();
+    });
+
+    form?.addEventListener("submit", (event) => {
+      event.preventDefault();
+    });
+
+    render();
+  }
+</script>
