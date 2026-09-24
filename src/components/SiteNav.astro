@@ -6,38 +6,70 @@ interface Props {
 }
 
 const { overHero = false } = Astro.props;
+
+const links = [
+  { href: "/learn", label: "Learn" },
+  { href: "/services/front-door", label: "Front Door" },
+  { href: "/ai-receptionist", label: "AI receptionist" },
+  { href: "/booking-software", label: "Booking software" },
+  { href: "/for", label: "Industries" },
+  { href: "/services", label: "Services" },
+];
 ---
 
-<header class:list={["nav", overHero && "nav-over-hero"]}>
+<header class:list={["nav", "site-nav", overHero && "nav-over-hero"]}>
   <div class="container nav-inner">
     <a class="brand" href="/">Arkansas <span class="accent">Automated</span></a>
     <nav class="nav-links" aria-label="Main">
-      <a class="nav-hide" href="/learn">Learn</a>
-      <a class="nav-hide" href="/services/front-door">Front Door</a>
-      <a class="nav-hide" href="/ai-receptionist">AI receptionist</a>
-      <a class="nav-hide" href="/booking-software">Booking software</a>
-      <a class="nav-hide" href="/for">Industries</a>
-      <a class="nav-hide" href="/services">Services</a>
+      {links.map((l) => <a class="nav-hide" href={l.href}>{l.label}</a>)}
       <a class="nav-call" href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a>
-      <a class="btn btn-primary" href="/#install">Visibility Install</a>
+      <a class="btn btn-primary" href="/services/visibility-install">Visibility Install</a>
     </nav>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+  <nav id="mobile-menu" class="mobile-menu" aria-label="Main menu" hidden>
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a>
+    <a class="btn btn-primary" href="/services/visibility-install">Visibility Install</a>
+  </nav>
 </header>
 
-{
-  overHero && (
-    <script>
-      const nav = document.querySelector(".nav-over-hero");
-      const hero = document.querySelector(".hero-stage");
-      if (nav instanceof HTMLElement && hero instanceof Element) {
-        const io = new IntersectionObserver(
-          ([entry]) => {
-            nav.classList.toggle("is-solid", !entry.isIntersecting || entry.intersectionRatio < 0.12);
-          },
-          { threshold: [0, 0.12, 0.4, 1] },
-        );
-        io.observe(hero);
+<script>
+  const nav = document.querySelector(".nav-over-hero");
+  const hero = document.querySelector(".hero-stage");
+  if (nav instanceof HTMLElement && hero instanceof Element) {
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        nav.classList.toggle("is-solid", !entry.isIntersecting || entry.intersectionRatio < 0.12);
+      },
+      { threshold: [0, 0.12, 0.4, 1] },
+    );
+    io.observe(hero);
+  }
+
+  const toggle = document.querySelector(".nav-toggle");
+  const menu = document.getElementById("mobile-menu");
+  if (toggle instanceof HTMLButtonElement && menu instanceof HTMLElement) {
+    const close = () => {
+      menu.setAttribute("hidden", "");
+      toggle.setAttribute("aria-expanded", "false");
+      toggle.setAttribute("aria-label", "Open menu");
+      toggle.classList.remove("is-open");
+    };
+    toggle.addEventListener("click", () => {
+      if (menu.hasAttribute("hidden")) {
+        menu.removeAttribute("hidden");
+        toggle.setAttribute("aria-expanded", "true");
+        toggle.setAttribute("aria-label", "Close menu");
+        toggle.classList.add("is-open");
+      } else {
+        close();
       }
-    </script>
-  )
-}
+    });
+    menu.addEventListener("click", (e) => {
+      if (e.target instanceof Element && e.target.closest("a")) close();
+    });
+  }
+</script>
