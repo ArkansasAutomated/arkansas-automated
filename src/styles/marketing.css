@@ -100,8 +100,8 @@
   gap: 1.75rem;
 }
 @media (min-width: 960px) {
-  .mkt-hero-grid { grid-template-columns: 1.15fr 0.85fr; align-items: end; gap: 2.5rem; }
-  .mkt-split { grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 3rem; }
+  .mkt-hero-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; gap: 2.5rem; }
+  .mkt-split { grid-template-columns: 1.05fr 0.95fr; align-items: start; gap: 3rem; }
 }
 
 .mkt-fee {
@@ -190,36 +190,24 @@
 .mkt-math .mkt-btn:not(.mkt-btn-ghost):hover { background: #ff7a3c; border-color: #ff7a3c; color: var(--mkt-black); }
 .mkt-math .mkt-btn:focus-visible { outline-color: var(--mkt-black); }
 
+/* Full creatives only. Native frame is 1075×1344. Never crop, cover, or scale past that. */
 .mkt-photo {
   margin: 0;
-  position: relative;
-  border-radius: 20px;
-  overflow: hidden;
-  background: #0c0d0c;
+  max-width: 1075px;
 }
 .mkt-photo img {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: 50% 22%;
+  max-width: 1075px;
 }
 .mkt-photo-band { margin: 1.6rem 0 0; }
-.mkt-photo-band img {
-  aspect-ratio: 16 / 8;
-  object-position: 55% 28%;
-}
 .mkt-photo figcaption {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 2.2rem 0.9rem 0.75rem;
-  background: linear-gradient(transparent, rgba(18, 19, 18, 0.88));
-  color: var(--mkt-cream);
+  margin-top: 0.55rem;
+  color: var(--mkt-on-dark-dim);
   font-size: 0.82rem;
   line-height: 1.35;
 }
+.mkt-light .mkt-photo figcaption { color: var(--mkt-on-light-dim); }
 
 .mkt-crumbs { margin-bottom: 1.1rem; }
 .mkt .crumbs,
