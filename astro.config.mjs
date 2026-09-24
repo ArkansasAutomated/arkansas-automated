@@ -16,6 +16,9 @@ export default defineConfig({
   site: "https://arkansasautomated.com",
   output: "static",
   trailingSlash: "never",
+  // Bind the dev server to IPv4 explicitly: "localhost" resolves to ::1 on
+  // macOS, which breaks tooling that probes http://127.0.0.1:4321 for readiness.
+  server: { host: "127.0.0.1" },
   integrations: [
     sitemap({
       filter(page) {
