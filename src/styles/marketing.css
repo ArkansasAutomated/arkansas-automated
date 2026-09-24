@@ -104,8 +104,19 @@
 
 .mkt .fine { color: var(--mkt-on-dark-dim); font-size: 0.92rem; line-height: 1.45; }
 
-.mkt-hero { padding: 1.25rem 0 3.5rem; }
-@media (min-width: 960px) { .mkt-hero { padding: 2.25rem 0 6rem; } }
+/* The section keeps .hero-stage so the nav can watch it. The homepage
+   rule for that class is a full-viewport flex column and would open a
+   dead band under the nav. Reset it here. */
+.mkt-hero.hero-stage {
+  min-height: 0;
+  display: block;
+  align-items: stretch;
+  padding: 1rem 0 3.5rem;
+  color: inherit;
+}
+@media (min-width: 960px) {
+  .mkt-hero.hero-stage { padding: 1.15rem 0 6rem; }
+}
 
 .mkt-hero-grid,
 .mkt-split {
@@ -534,8 +545,9 @@ body .call-dock {
 .nav-over-hero:not(.is-solid) .accent { color: #d9ff3f; }
 
 @media (max-width: 860px) {
-  /* The call dock overlays the bottom of the viewport. Keep the last actions clear of it. */
-  #contact { padding-bottom: 1.5rem; }
+  /* The call dock is fixed. Body padding already clears it on every page;
+     this keeps the marketing footer from sitting in that strip. */
+  body:has(.mkt) { padding-bottom: 5.25rem; }
 }
 @media (max-width: 380px) {
   .mkt h1 { font-size: 2.85rem; }
