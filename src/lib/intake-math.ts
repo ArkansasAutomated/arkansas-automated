@@ -57,8 +57,8 @@ export function intakeMath(input: IntakeInput): IntakeResult {
   const issues: string[] = [];
   const { jobValue, closeRatePct, lifetimeJobs, monthlyAdSpend, marginPct } = input;
 
-  if (finite(jobValue) && jobValue <= 0) issues.push("Average job value has to be above zero.");
-  if (finite(lifetimeJobs) && lifetimeJobs <= 0) issues.push("Lifetime jobs has to be above zero.");
+  if (finite(jobValue) && jobValue <= 0) issues.push("Average job or customer value has to be above zero.");
+  if (finite(lifetimeJobs) && lifetimeJobs <= 0) issues.push("Lifetime purchases has to be above zero.");
   if (finite(monthlyAdSpend) && monthlyAdSpend < 0) issues.push("Monthly ad spend can't be negative.");
   if (finite(closeRatePct) && closeRatePct > 100) issues.push("Close rate can't be over 100%.");
   if (finite(closeRatePct) && closeRatePct <= 0) issues.push("Close rate has to be above zero.");

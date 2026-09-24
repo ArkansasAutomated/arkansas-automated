@@ -1,8 +1,8 @@
 ---
 /*
  * /marketing — Arkansas Automated Marketing.
- * Flat $3,000/mo Meta + Google management. Ad spend is the client's,
- * in the client's accounts, 0% markup, never inside the $3,000.
+ * Flat $3,000/mo Meta + Google management for any Arkansas business.
+ * Ad spend is the client's, in the client's accounts, 0% markup, never inside the $3,000.
  * Separate from the AI receptionist, Visibility Install, and the workshop.
  * The receptionist is one FAQ link. No invented results.
  */
@@ -16,7 +16,7 @@ import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_E164, AA_PUBLIC_PHONE_HREF } f
 
 const title = "Arkansas Automated Marketing — Flat $3,000/mo, 0% Markup";
 const description =
-  "Meta and Google ads for HVAC and roofers in Fort Smith, the River Valley, and Northwest Arkansas. Flat $3,000 a month. Your ad account, your money, 0% markup.";
+  "Meta and Google ads for any Arkansas business. Flat $3,000 a month. Your ad account, your money, 0% markup.";
 
 const site = "https://arkansasautomated.com";
 const bookingUrl = "https://book.arkansasautomated.com/book/discovery-call";
@@ -40,7 +40,7 @@ const steps = [
   {
     n: "03",
     h: "Launch",
-    p: "Ads go live in your accounts, pointed at your service area and the jobs you can actually take.",
+    p: "Ads go live in your accounts, pointed at your service area and the customers you can actually take.",
   },
   {
     n: "04",
@@ -50,7 +50,7 @@ const steps = [
 ];
 
 const goodFit = [
-  "You have capacity for new jobs. The crew can take the work.",
+  "You have capacity for new customers. The business can take the work.",
   "Someone calls leads back in minutes, not days.",
   "You have a separate ad budget of at least $50/day.",
   "You will honor the offer on the phone.",
@@ -73,7 +73,7 @@ const faqs = [
   },
   {
     q: "What's a typical starting ad budget?",
-    text: "At least $50 a day, paid by you to Meta or Google. Many HVAC and roofing shops start between $50 and $100 a day. The right number depends on your service area and how many jobs you can absorb. That gets set on the fit call, not guessed here.",
+    text: "At least $50 a day, paid by you to Meta or Google. Many Arkansas businesses start between $50 and $100 a day. The right number depends on your service area and how many customers you can take. That gets set on the fit call, not guessed here.",
   },
   {
     q: "How fast until the first leads?",
@@ -92,18 +92,14 @@ const schema = {
     {
       "@type": "Service",
       name: "Arkansas Automated Marketing",
-      serviceType: "Meta and Google paid lead generation for HVAC and roofing contractors",
+      serviceType: "Meta and Google paid lead generation for Arkansas businesses",
       provider: {
         "@type": "ProfessionalService",
         name: "Arkansas Automated",
         url: site,
         telephone: AA_PUBLIC_PHONE_E164,
       },
-      areaServed: [
-        { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
-        { "@type": "AdministrativeArea", name: "River Valley, Arkansas" },
-        { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
-      ],
+      areaServed: { "@type": "State", name: "Arkansas" },
       description,
       offers: {
         "@type": "Offer",
@@ -163,7 +159,7 @@ const schema = {
             <a class="btn mkt-btn mkt-btn-ghost" id="mkt-cta-hero-call" href={phoneHref}>Call {phoneDisplay}</a>
           </div>
           <p class="fine" style="margin-top:1rem">
-            HVAC and roofers in Fort Smith, the River Valley, and Northwest Arkansas. Dental is a secondary fit.
+            For any Arkansas business. HVAC, roofing, dental, med spa, real estate, law, restaurants, auto, and more.
           </p>
         </div>
         <figure class="mkt-photo">
@@ -173,7 +169,7 @@ const schema = {
             sizes="(min-width: 1100px) 460px, (min-width: 960px) 340px, calc(100vw - 2.5rem)"
             width="1075"
             height="1344"
-            alt="AI-generated illustration of a contractor reaching for a phone at a workbench. Not a client and not Andre."
+            alt="AI-generated illustration of a person reaching for a phone at a workbench. Not a client and not Andre."
             fetchpriority="high"
             decoding="async"
           />
@@ -189,7 +185,7 @@ const schema = {
         <h2><span class="ln">Speed-to-lead</span><span class="ln">is your side.</span></h2>
         <hr class="mkt-rule" />
         <p class="mkt-lede">
-          A form fill is a hand raise, not a customer. If a homeowner asks for a free roof inspection after a storm and hears back two days later, the campaign cannot rescue that job. Speed-to-lead is your side of the work. Before anything launches, we ask who answers, how fast, and what happens after 6 p.m.
+          A form fill is a hand raise, not a customer. If someone asks to book and hears back two days later, the campaign cannot rescue that customer. Speed-to-lead is your side of the work. Before anything launches, we ask who answers, how fast, and what happens after 6 p.m.
         </p>
         <p class="mkt-lede" style="margin-top:0.9rem">
           Our job is the ads. Your job is calling the lead back in minutes. If nobody can do that, this is not a fit, and we will say so.
@@ -223,7 +219,7 @@ const schema = {
               sizes="(min-width: 1100px) 460px, (min-width: 960px) 340px, calc(100vw - 2.5rem)"
               width="1075"
               height="1344"
-              alt="AI-generated illustration of a contractor at a desk with a tablet. Not a client and not Andre."
+              alt="AI-generated illustration of a person at a desk with a tablet. Not a client and not Andre."
               loading="lazy"
               decoding="async"
             />
@@ -262,10 +258,10 @@ const schema = {
         <div class="mkt-split">
           <div>
             <p class="mkt-kicker">03 — Intake math</p>
-            <h2><span class="ln">Run the math</span><span class="ln">on your jobs.</span></h2>
+            <h2><span class="ln">Run the math</span><span class="ln">on a customer.</span></h2>
             <hr class="mkt-rule" />
             <p class="mkt-lede">
-              Average job value, close rate, and lifetime jobs produce a break-even cost per lead. Add what you will pay the platforms, and the same numbers show how many closed jobs cover the $3,000 fee plus that ad spend.
+              Average job or customer value, close rate, and lifetime purchases produce a break-even cost per lead. Add what you will pay the platforms, and the same numbers show how many booked customers cover the $3,000 fee plus that ad spend.
             </p>
             <p class="fine" style="margin-top:0.75rem">
               The boxes start empty. Hints marked “example” are made up, the same way the worksheet’s example column is made up. This is arithmetic, not a forecast, and not a result we claim.
@@ -278,7 +274,7 @@ const schema = {
               sizes="(min-width: 1100px) 460px, (min-width: 960px) 340px, calc(100vw - 2.5rem)"
               width="1075"
               height="1344"
-              alt="AI-generated illustration of a contractor working through numbers at a shop desk. Not a client and not Andre."
+              alt="AI-generated illustration of a person working through numbers at a desk. Not a client and not Andre."
               loading="lazy"
               decoding="async"
             />
@@ -290,9 +286,9 @@ const schema = {
           <form class="calc" action="#math">
             <div class="calc-fields">
               <div class="calc-field">
-                <label for="intake-job">Average job value</label>
+                <label for="intake-job">Average job or customer value</label>
                 <input id="intake-job" name="job" type="text" inputmode="decimal" autocomplete="off" placeholder="Example: 400" />
-                <span class="hint">Dollars. Worksheet example: 400. Illustrative only.</span>
+                <span class="hint">Dollars per job, visit, or sale. Worksheet example: 400. Illustrative only.</span>
               </div>
               <div class="calc-field">
                 <label for="intake-close">Close rate</label>
@@ -300,9 +296,9 @@ const schema = {
                 <span class="hint">Percent of leads that become customers. Enter 25 for 25%.</span>
               </div>
               <div class="calc-field">
-                <label for="intake-life">Lifetime jobs</label>
+                <label for="intake-life">Lifetime purchases</label>
                 <input id="intake-life" name="life" type="text" inputmode="decimal" autocomplete="off" placeholder="Example: 6" />
-                <span class="hint">Jobs a typical customer does with you, including the first. Worksheet example: 6.</span>
+                <span class="hint">How many times a typical customer buys or books, including the first. Worksheet example: 6.</span>
               </div>
               <div class="calc-field">
                 <label for="intake-spend">Monthly ad spend</label>
@@ -325,12 +321,12 @@ const schema = {
             <div class="calc-block">
               <p class="calc-kicker" data-out="cpl-kicker">Break-even cost per lead</p>
               <p class="calc-stat"><span data-out="cpl">—</span></p>
-              <p data-out="cpl-note">Enter average job value, close rate, and lifetime jobs. This stays blank until those three are filled in.</p>
+              <p data-out="cpl-note">Enter average job or customer value, close rate, and lifetime purchases. This stays blank until those three are filled in.</p>
             </div>
             <div class="calc-block">
-              <p class="calc-kicker">Jobs to cover the month</p>
-              <p class="calc-stat"><span data-out="jobs">—</span> jobs</p>
-              <p data-out="jobs-note">Add monthly ad spend to see how many closed jobs cover the $3,000 fee plus that spend.</p>
+              <p class="calc-kicker">Customers to cover the month</p>
+              <p class="calc-stat"><span data-out="jobs">—</span> customers</p>
+              <p data-out="jobs-note">Add monthly ad spend to see how many booked customers cover the $3,000 fee plus that spend.</p>
             </div>
             <p class="calc-warn" data-out="warn"></p>
             <p class="calc-example" data-out="example" hidden>Example numbers from the worksheet. Illustrative only. Not your business, and not a benchmark.</p>
@@ -348,7 +344,7 @@ const schema = {
         <h2><span class="ln">The offer has to</span><span class="ln">survive the phone.</span></h2>
         <hr class="mkt-rule" />
         <p class="mkt-lede">
-          You set the offer. These are the ones we start from for Fort Smith, the River Valley, and Northwest Arkansas. You have to honor the offer on the phone. An offer the office talks people out of is not an offer.
+          You set the offer. These are examples. The same $3,000 is for any Arkansas business: HVAC, roofing, dental, med spa, real estate, law, restaurants, auto, and more. You have to honor the offer on the phone. An offer the office talks people out of is not an offer.
         </p>
         <div class="mkt-switch">
           <input type="radio" name="niche" id="niche-hvac" checked />
@@ -364,11 +360,11 @@ const schema = {
         </div>
         <div class="mkt-panel" id="panel-roof">
           <p class="mkt-offer-name">Free inspection + drone/storm-insurance help</p>
-          <p class="mkt-lede">Free inspection, drone photos, and storm-insurance help. It only works if the crew can take the jobs the inspection creates.</p>
+          <p class="mkt-lede">Free inspection, drone photos, and storm-insurance help. It only works if you can take the appointments the inspection creates.</p>
         </div>
         <div class="mkt-panel" id="panel-dental">
           <p class="mkt-offer-name">$79 new-patient exam + X-rays + cleaning</p>
-          <p class="mkt-lede">Dental is the secondary niche, after HVAC and roofing. Same $3,000 flat fee. Same rule: the ad account is the practice’s, and ad spend is separate at 0% markup.</p>
+          <p class="mkt-lede">Same $3,000 flat fee. Same rule: the ad account is the practice’s, and ad spend is separate at 0% markup.</p>
         </div>
       </div>
     </section>
@@ -465,7 +461,7 @@ const schema = {
         <h2>Book the fit call.</h2>
         <hr class="mkt-rule" />
         <p class="mkt-lede">
-          Most shops do not need another agency speech. They need a flat fee, accounts they own, and leads they can call back. If you want the ad spend included in the $3,000, or nobody answers the phone, we will tell you this is not the right fit.
+          Most businesses do not need another agency speech. They need a flat fee, accounts they own, and leads they can call back. If you want the ad spend included in the $3,000, or nobody answers the phone, we will tell you this is not the right fit.
         </p>
         <div class="mkt-ctas">
           <a class="btn mkt-btn" id="mkt-cta-final-book" href={bookingUrl}>Book a 15-minute fit call</a>
@@ -527,35 +523,35 @@ const schema = {
       if (cpl && cplNote) {
         if (result.profitPerLead !== null && result.firstJobAllowableCpl !== null) {
           cpl.textContent = formatUsd(result.profitPerLead);
-          cplNote.textContent = `On lifetime gross profit: job value × margin × lifetime jobs × close rate. First job only, the worksheet’s conservative figure, is ${formatUsd(result.firstJobAllowableCpl)}. Neither number is a forecast.`;
+          cplNote.textContent = `On lifetime gross profit: customer value × margin × lifetime purchases × close rate. First purchase only, the worksheet’s conservative figure, is ${formatUsd(result.firstJobAllowableCpl)}. Neither number is a forecast.`;
         } else if (result.revenuePerLead !== null) {
           cpl.textContent = formatUsd(result.revenuePerLead);
           cplNote.textContent =
-            "On lifetime revenue: job value × lifetime jobs × close rate. This counts the whole job price, not profit, labor, or the $3,000 fee. Add gross margin for a tighter figure. Not a forecast.";
+            "On lifetime revenue: customer value × lifetime purchases × close rate. This counts the whole price, not profit or the $3,000 fee. Add gross margin for a tighter figure. Not a forecast.";
         } else {
           cpl.textContent = "—";
           cplNote.textContent =
-            "Enter average job value, close rate, and lifetime jobs. This stays blank until those three are filled in.";
+            "Enter average job or customer value, close rate, and lifetime purchases. This stays blank until those three are filled in.";
         }
       }
 
       if (jobs && jobsNote) {
         if (result.jobsToCoverRevenue !== null && result.monthTotal !== null) {
           jobs.textContent = String(result.jobsToCoverRevenue);
-          const rounded = result.jobsRounded ? " Rounded up to the next job." : "";
+          const rounded = result.jobsRounded ? " Rounded up to the next customer." : "";
           const profit =
             result.jobsToCoverProfit !== null
-              ? ` On gross profit, that same month takes ${result.jobsToCoverProfit} closed jobs.`
+              ? ` On gross profit, that same month takes ${result.jobsToCoverProfit} booked customers.`
               : "";
-          jobsNote.textContent = `Closed jobs whose revenue equals the $3,000 fee plus ${formatUsd(result.monthTotal - MANAGEMENT_FEE)} in ad spend (${formatUsd(result.monthTotal)} together).${rounded}${profit} Revenue is not profit, and this is not a prediction of jobs you will get.`;
+          jobsNote.textContent = `Booked customers whose revenue equals the $3,000 fee plus ${formatUsd(result.monthTotal - MANAGEMENT_FEE)} in ad spend (${formatUsd(result.monthTotal)} together).${rounded}${profit} Revenue is not profit, and this is not a prediction of customers you will get.`;
         } else if (result.feeOnlyJobs !== null) {
           jobs.textContent = String(result.feeOnlyJobs);
           jobsNote.textContent =
-            "Closed jobs whose revenue equals the $3,000 fee alone. Add monthly ad spend and the count includes that spend too. Ad spend is never inside the $3,000.";
+            "Booked customers whose revenue equals the $3,000 fee alone. Add monthly ad spend and the count includes that spend too. Ad spend is never inside the $3,000.";
         } else {
           jobs.textContent = "—";
           jobsNote.textContent =
-            "Add average job value and monthly ad spend to see how many closed jobs cover the $3,000 fee plus that spend.";
+            "Add average job or customer value and monthly ad spend to see how many booked customers cover the $3,000 fee plus that spend.";
         }
       }
     }
