@@ -137,18 +137,19 @@ const schema = {
 
   <main class="mkt" id="main-content" tabindex="-1">
     <section class="mkt-hero hero-stage">
-      <div class="container mkt-hero-grid">
+      <div class="container">
+        <nav class="crumbs mkt-crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span aria-hidden="true">/</span>
+          <span>Marketing</span>
+        </nav>
+        <div class="mkt-hero-grid">
         <div>
-          <nav class="crumbs mkt-crumbs" aria-label="Breadcrumb">
-            <a href="/">Home</a>
-            <span aria-hidden="true">/</span>
-            <span>Marketing</span>
-          </nav>
           <p class="mkt-kicker">Arkansas Automated Marketing</p>
           <h1>
-            Your ad account.<br />
-            Your money.<br />
-            <span class="lime">0% markup.</span>
+            <span class="ln">Your ad account.</span>
+            <span class="ln">Your money.</span>
+            <span class="ln lime">0% markup.</span>
           </h1>
           <p class="mkt-fee">
             <span class="mkt-fee-num">$3,000</span>
@@ -167,56 +168,68 @@ const schema = {
         </div>
         <figure class="mkt-photo">
           <img
-            src="/marketing/b-ownership.webp"
-            srcset="/marketing/b-ownership-480.webp 480w, /marketing/b-ownership-720.webp 720w, /marketing/b-ownership.webp 1075w"
-            sizes="(min-width: 960px) 42vw, calc(100vw - 2.5rem)"
+            src="/marketing/a-followup.webp"
+            srcset="/marketing/a-followup-480.webp 480w, /marketing/a-followup-720.webp 720w, /marketing/a-followup.webp 1075w"
+            sizes="(min-width: 1100px) 460px, (min-width: 960px) 340px, calc(100vw - 2.5rem)"
             width="1075"
             height="1344"
-            alt="AI-generated illustration of a contractor at a desk with a tablet. Not a client and not Andre."
+            alt="AI-generated illustration of a contractor reaching for a phone at a workbench. Not a client and not Andre."
             fetchpriority="high"
             decoding="async"
           />
           <figcaption>{photoNote}</figcaption>
         </figure>
+        </div>
       </div>
     </section>
 
     <section class="mkt-section mkt-ink" id="follow-up">
-      <div class="container mkt-split">
-        <div>
-          <p class="mkt-kicker">01 — The callback</p>
-          <h2>The ads worked. Then nothing happened.</h2>
-          <hr class="mkt-rule" />
-          <p class="mkt-lede">Leads die on the callback.</p>
-          <p class="mkt-lede" style="margin-top:0.9rem">
-            A form fill is a hand raise, not a customer. If a homeowner asks for a free roof inspection after a storm and hears back two days later, the campaign cannot rescue that job. Speed-to-lead is your side of the work. Before anything launches, we ask who answers, how fast, and what happens after 6 p.m.
-          </p>
-          <p class="mkt-lede" style="margin-top:0.9rem">
-            Our job is the ads. Your job is calling the lead back in minutes. If nobody can do that, this is not a fit, and we will say so.
-          </p>
-        </div>
-        <figure class="mkt-photo">
-          <img
-            src="/marketing/a-followup.webp"
-            srcset="/marketing/a-followup-480.webp 480w, /marketing/a-followup-720.webp 720w, /marketing/a-followup.webp 1075w"
-            sizes="(min-width: 960px) 42vw, calc(100vw - 2.5rem)"
-            width="1075"
-            height="1344"
-            alt="AI-generated illustration of a contractor reaching for a phone at a workbench. Not a client and not Andre."
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>{photoNote}</figcaption>
-        </figure>
+      <div class="container mkt-prose">
+        <p class="mkt-kicker">01 — The callback</p>
+        <h2><span class="ln">Speed-to-lead</span><span class="ln">is your side.</span></h2>
+        <hr class="mkt-rule" />
+        <p class="mkt-lede">
+          A form fill is a hand raise, not a customer. If a homeowner asks for a free roof inspection after a storm and hears back two days later, the campaign cannot rescue that job. Speed-to-lead is your side of the work. Before anything launches, we ask who answers, how fast, and what happens after 6 p.m.
+        </p>
+        <p class="mkt-lede" style="margin-top:0.9rem">
+          Our job is the ads. Your job is calling the lead back in minutes. If nobody can do that, this is not a fit, and we will say so.
+        </p>
       </div>
     </section>
 
     <section class="mkt-section" id="ownership">
       <div class="container">
-        <p class="mkt-kicker">02 — Ownership</p>
-        <h2>Your ad account. Your money. <span class="lime">0% markup.</span></h2>
-        <hr class="mkt-rule" />
-        <p class="mkt-lede">One flat monthly fee. Two buckets. Nothing mixed together.</p>
+        <div class="mkt-split">
+          <div>
+            <p class="mkt-kicker">02 — Ownership</p>
+            <h2><span class="ln">Two buckets.</span><span class="ln">Nothing mixed.</span></h2>
+            <hr class="mkt-rule" />
+            <p class="mkt-lede">
+              The $3,000 is management. Ad spend is a separate payment, from your accounts, to Meta and Google.
+            </p>
+            <ul class="mkt-list">
+              <li>You own the accounts. We operate inside them.</li>
+              <li>If you leave, the accounts, the pixel, and the data stay with you.</li>
+              <li>You can log in and see the spend yourself.</li>
+            </ul>
+            <p class="mkt-lede" style="margin-top:1.35rem">
+              Percent-of-spend pricing pays an agency to spend more of your money. A flat fee is the structure where cheaper leads are the point.
+            </p>
+          </div>
+          <figure class="mkt-photo">
+            <img
+              src="/marketing/b-ownership.webp"
+              srcset="/marketing/b-ownership-480.webp 480w, /marketing/b-ownership-720.webp 720w, /marketing/b-ownership.webp 1075w"
+              sizes="(min-width: 1100px) 460px, (min-width: 960px) 340px, calc(100vw - 2.5rem)"
+              width="1075"
+              height="1344"
+              alt="AI-generated illustration of a contractor at a desk with a tablet. Not a client and not Andre."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>{photoNote}</figcaption>
+          </figure>
+        </div>
         <div class="buckets">
           <article class="bucket">
             <p class="bucket-k">Bucket one · to us</p>
@@ -241,43 +254,39 @@ const schema = {
             </ul>
           </article>
         </div>
-        <ul class="mkt-list" style="margin-top:1.5rem">
-          <li>You own the accounts. We operate inside them.</li>
-          <li>If you leave, the accounts, the pixel, and the data stay with you.</li>
-          <li>You can log in and see the spend yourself.</li>
-        </ul>
-        <p class="mkt-lede" style="margin-top:1.35rem">
-          Percent-of-spend pricing pays an agency to spend more of your money. A flat fee is the structure where cheaper leads are the point.
-        </p>
       </div>
     </section>
 
     <section class="mkt-section mkt-light mkt-math" id="math">
       <div class="container">
-        <p class="mkt-kicker">03 — The math before the spend</p>
-        <h2>What's one <span class="hot">customer</span> worth to you?</h2>
-        <hr class="mkt-rule" />
-        <p class="mkt-lede">
-          We ask before we spend anything. Average job value, close rate, and lifetime jobs produce a break-even cost per lead. Add what you will pay the platforms, and the same numbers show how many closed jobs cover the $3,000 fee plus that ad spend.
-        </p>
-        <p class="fine" style="margin-top:0.75rem">
-          The boxes start empty. Hints marked “example” are made up, the same way the worksheet’s example column is made up. This is arithmetic, not a forecast, and not a result we claim.
-        </p>
-        <figure class="mkt-photo mkt-photo-band">
-          <img
-            src="/marketing/c-customer-value.webp"
-            srcset="/marketing/c-customer-value-480.webp 480w, /marketing/c-customer-value-720.webp 720w, /marketing/c-customer-value.webp 1075w"
-            sizes="(min-width: 1200px) 1075px, calc(100vw - 2.5rem)"
-            width="1075"
-            height="1344"
-            alt="AI-generated illustration of a contractor working through numbers at a shop desk. Not a client and not Andre."
-            loading="lazy"
-            decoding="async"
-          />
-          <figcaption>{photoNote}</figcaption>
-        </figure>
+        <div class="mkt-split">
+          <div>
+            <p class="mkt-kicker">03 — Intake math</p>
+            <h2><span class="ln">Run the math</span><span class="ln">on your jobs.</span></h2>
+            <hr class="mkt-rule" />
+            <p class="mkt-lede">
+              Average job value, close rate, and lifetime jobs produce a break-even cost per lead. Add what you will pay the platforms, and the same numbers show how many closed jobs cover the $3,000 fee plus that ad spend.
+            </p>
+            <p class="fine" style="margin-top:0.75rem">
+              The boxes start empty. Hints marked “example” are made up, the same way the worksheet’s example column is made up. This is arithmetic, not a forecast, and not a result we claim.
+            </p>
+          </div>
+          <figure class="mkt-photo">
+            <img
+              src="/marketing/c-customer-value.webp"
+              srcset="/marketing/c-customer-value-480.webp 480w, /marketing/c-customer-value-720.webp 720w, /marketing/c-customer-value.webp 1075w"
+              sizes="(min-width: 1100px) 460px, (min-width: 960px) 340px, calc(100vw - 2.5rem)"
+              width="1075"
+              height="1344"
+              alt="AI-generated illustration of a contractor working through numbers at a shop desk. Not a client and not Andre."
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption>{photoNote}</figcaption>
+          </figure>
+        </div>
 
-        <div class="mkt-math-grid" style="margin-top:1.75rem" data-intake>
+        <div class="mkt-math-grid" data-intake>
           <form class="calc" action="#math">
             <div class="calc-fields">
               <div class="calc-field">
@@ -336,7 +345,7 @@ const schema = {
     <section class="mkt-section mkt-offers" id="offers">
       <div class="container">
         <p class="mkt-kicker">Starter offers</p>
-        <h2>The offer has to survive the phone.</h2>
+        <h2><span class="ln">The offer has to</span><span class="ln">survive the phone.</span></h2>
         <hr class="mkt-rule" />
         <p class="mkt-lede">
           You set the offer. These are the ones we start from for Fort Smith, the River Valley, and Northwest Arkansas. You have to honor the offer on the phone. An offer the office talks people out of is not an offer.
@@ -367,7 +376,7 @@ const schema = {
     <section class="mkt-section mkt-light" id="how">
       <div class="container">
         <p class="mkt-kicker">How it works</p>
-        <h2>Fit call. Kickoff. Launch. Optimize.</h2>
+        <h2><span class="ln">Fit call. Kickoff.</span><span class="ln">Launch. Optimize.</span></h2>
         <hr class="mkt-rule" />
         <ol class="steps">
           {steps.map((s) => (
@@ -387,13 +396,13 @@ const schema = {
         <h2>Good fit. Not a fit.</h2>
         <div class="fit-grid" style="margin-top:1.5rem">
           <article class="fit-card yes">
-            <h2 class="lime">Good fit</h2>
+            <h3 class="lime">Good fit</h3>
             <ul class="mkt-list">
               {goodFit.map((item) => <li>{item}</li>)}
             </ul>
           </article>
           <article class="fit-card no">
-            <h2>Not a fit</h2>
+            <h3>Not a fit</h3>
             <ul class="mkt-list">
               {notFit.map((item) => <li>{item}</li>)}
             </ul>
@@ -408,7 +417,7 @@ const schema = {
     <section class="mkt-section mkt-light" id="resources">
       <div class="container">
         <p class="mkt-kicker">Free</p>
-        <h2>Take the sheets. No email gate.</h2>
+        <h2><span class="ln">Take the sheets.</span><span class="ln">No email gate.</span></h2>
         <hr class="mkt-rule" />
         <p class="mkt-lede">
           Three PDFs. Same ones we send when someone asks. Nothing to send back.
@@ -416,19 +425,19 @@ const schema = {
         <div class="free-grid">
           <article class="free-card">
             <p class="kw">Phone</p>
-            <h3>Lead follow-up self-audit</h3>
+            <h3>Lead follow-up&nbsp;self-audit</h3>
             <p>What happens after a lead comes in. About ten minutes. The answers stay with you.</p>
             <a class="btn mkt-btn" id="mkt-free-phone" href="/marketing/free/lead-follow-up-self-audit.pdf" download>Download the PDF</a>
           </article>
           <article class="free-card">
             <p class="kw">Ownership</p>
-            <h3>Ad account ownership questions</h3>
+            <h3>Ad account ownership&nbsp;questions</h3>
             <p>Questions to ask about any ad account before you sign, or to check a setup you already have.</p>
             <a class="btn mkt-btn" id="mkt-free-ownership" href="/marketing/free/ad-account-ownership-questions.pdf" download>Download the PDF</a>
           </article>
           <article class="free-card">
             <p class="kw">Math</p>
-            <h3>Intake math worksheet</h3>
+            <h3>Intake math&nbsp;worksheet</h3>
             <p>Your numbers beside an example column. The example is illustrative only. Yours are the ones that matter.</p>
             <a class="btn mkt-btn" id="mkt-free-math" href="/marketing/free/intake-math-worksheet.pdf" download>Download the PDF</a>
           </article>
@@ -436,7 +445,7 @@ const schema = {
       </div>
     </section>
 
-    <section class="mkt-section mkt-light" id="faq" style="padding-top:0">
+    <section class="mkt-section mkt-light mkt-stack" id="faq">
       <div class="container faq-wrap">
         <h2>Common questions.</h2>
         <div class="faq-list">
