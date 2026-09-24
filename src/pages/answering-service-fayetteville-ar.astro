@@ -6,8 +6,10 @@
  * edits at build time: dropped a vendor-blog-sourced demand claim, tightened
  * the bilingual-demand wording to the literal job-listing evidence, and kept
  * the phone number off the page while the GBP NAP decision is pending.
- * Planned follow-on pages (P2 missed-call text back, P3 property management,
- * P4 contractor after-hours) link to live /fix/ and /for/ pages until they ship.
+ * Follow-on routes that have shipped are linked where this hub already
+ * points at the live page (P2 missed-call text back, and the med spa front
+ * desk page in the city-sibling block). P3 property management and P4
+ * contractor after-hours still use the older /for/ and /fix/ links in the body.
  */
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
@@ -108,6 +110,10 @@ const schema = {
           Springdale is the same corridor and a different city. Tyson HQ shift-change
           and the plants around that headquarters start on the
           <a class="text-link" href="/answering-service-springdale-ar/">Springdale answering service page</a>.
+          A med spa is the same city and a different desk. The provider is with a client,
+          the front desk can take one call at a time, and a booking call during a treatment
+          starts on the
+          <a class="text-link" href="/med-spa-front-desk-automation-fayetteville-ar/">med spa front desk automation page</a>.
         </p>
         <p class="fine-print" style="margin-top:1.5rem">
           Last updated September 2026. Written by Andre Brassfield, founder of Arkansas Automated.
