@@ -363,7 +363,15 @@ const schema = {
         {faqs.map((f) => (
           <div class="faq-item">
             <h3 class="heading-md">{f.q}</h3>
-            <p>{f.a}</p>
+            {f.q === "Do you handle Spanish-speaking callers?" ? (
+              <p>
+                {f.a}{" "}
+                Statewide English and Spanish coverage is on the{" "}
+                <a class="text-link" href="/bilingual-answering-service-arkansas/">bilingual answering service page</a>.
+              </p>
+            ) : (
+              <p>{f.a}</p>
+            )}
           </div>
         ))}
       </div>
