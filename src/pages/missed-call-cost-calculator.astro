@@ -1,0 +1,456 @@
+---
+/*
+ * /missed-call-cost-calculator: 4 inputs, annual missed-call loss.
+ * Trade defaults are industry estimates, not facts. No phone number in this file.
+ */
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const title = "Missed Call Cost Calculator — What Are Missed Calls Costing Your Business?";
+const description =
+  "Missed Call Cost Calculator: four inputs, your annual missed-call loss in 60 seconds.";
+
+const site = "https://arkansasautomated.com";
+const path = "/missed-call-cost-calculator";
+const pageUrl = `${site}${path}`;
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: "The Missed Call Cost Calculator",
+  description,
+  url: pageUrl,
+  datePublished: "2026-09-27",
+  mainEntityOfPage: pageUrl,
+};
+---
+
+<Base title={title} description={description} path={path} schema={schema}>
+  <SiteNav />
+  <main id="main-content" tabindex="-1" class="mcc-page">
+    <section class="mcc-hero">
+      <div class="container">
+        <p class="eyebrow">60-second calculator</p>
+        <h1>The Missed Call Cost Calculator</h1>
+        <p class="mcc-promise">
+          Four inputs. Your annual missed-call loss, on this page, in about 60 seconds. The figure uses only the numbers you enter.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <form class="mcc-shell" id="mcc-calc" novalidate>
+          <label class="mcc-trade">
+            Trade
+            <select name="trade" id="mcc-trade">
+              <option value="">Select a trade</option>
+              <option>HVAC</option>
+              <option>Plumbing</option>
+              <option>Electrical</option>
+              <option>Roofing</option>
+              <option>Dental</option>
+              <option>Med spa</option>
+              <option>Other</option>
+            </select>
+          </label>
+          <p class="mcc-quiet">The trade only fills two defaults. It does not run the math.</p>
+
+          <div class="mcc-inputs">
+            <fieldset>
+              <legend>Calls per day</legend>
+              <label>
+                Calls per day
+                <input class="mcc-in" name="callsPerDay" type="number" min="0" step="any" inputmode="decimal" placeholder="calls on a typical day" />
+              </label>
+            </fieldset>
+            <fieldset>
+              <legend>Percent of calls missed</legend>
+              <label>
+                Percent of calls missed
+                <input class="mcc-in" name="missedPercent" id="mcc-missed" type="number" min="0" max="100" step="any" inputmode="decimal" placeholder="percent you miss" />
+              </label>
+              <p class="mcc-estimate" data-mcc-missed-estimate hidden>industry estimate</p>
+            </fieldset>
+            <fieldset>
+              <legend>Average job value in dollars</legend>
+              <label>
+                Average job value in dollars
+                <input class="mcc-in" name="jobValue" id="mcc-job" type="number" min="0" step="any" inputmode="decimal" placeholder="enter your average job value" />
+              </label>
+              <p class="mcc-estimate" data-mcc-job-estimate hidden>industry estimate</p>
+            </fieldset>
+            <fieldset>
+              <legend>Days per week open</legend>
+              <label>
+                Days per week open
+                <input class="mcc-in" name="daysPerWeek" type="number" min="0" max="7" step="any" inputmode="decimal" placeholder="days open in a typical week" />
+              </label>
+            </fieldset>
+          </div>
+
+          <button class="btn btn-primary" type="submit">See the annual loss</button>
+        </form>
+
+        <section class="mcc-results" data-mcc-results hidden aria-live="polite" tabindex="-1">
+          <h2>Annual missed-call loss</h2>
+          <div data-mcc-missing hidden>
+            <p>A number from an empty field would be made up. Still needed:</p>
+            <ul data-mcc-missing-list></ul>
+          </div>
+          <div data-mcc-computed hidden>
+            <p data-mcc-loss></p>
+            <p>This is an estimate, not a quote.</p>
+            <p data-mcc-half></p>
+            <p data-mcc-most></p>
+            <p class="mcc-quiet">These two lines are scenarios on your inputs. They are not a promise that the money comes back.</p>
+          </div>
+        </section>
+
+        <form class="mcc-capture" data-mcc-lead novalidate>
+          <h3>Full 1-page report</h3>
+          <p>
+            The report is the number, the recovery math, where the calls go instead, and the 90-second fix overview. It renders on this page after you submit. This form does not send the report by email.
+          </p>
+          <label>
+            Email
+            <input name="email" type="email" autocomplete="email" required />
+          </label>
+          <button class="btn btn-primary" type="submit">Show the report</button>
+          <p class="mcc-status" data-mcc-status hidden role="status"></p>
+          <p class="mcc-legal">By submitting, you agree that Arkansas Automated may contact you about this calculator. See our <a href="/privacy">privacy page</a>.</p>
+        </form>
+
+        <section class="mcc-report" data-mcc-report hidden>
+          <h2>Your 1-page report</h2>
+          <p data-mcc-report-loss></p>
+          <p>This is an estimate, not a quote.</p>
+          <h3>Recovery math</h3>
+          <p data-mcc-report-half></p>
+          <p data-mcc-report-most></p>
+          <p>Same arithmetic as the result above. Scenarios on your inputs, not a promise that the money comes back.</p>
+          <h3>Where the calls go instead</h3>
+          <p>
+            A missed call does not wait on your line. It goes to voicemail, to the next shop that picks up, or it ends. This page does not split that into shares. It prices the calls you said you miss, at the job value you entered.
+          </p>
+          <h3>The 90-second fix overview</h3>
+          <p>
+            The leak in this number is calls that are not answered. The fix for the leak is a done-for-you system installed in 7 days. It is $497 one-time. That price is the install. It is not a claim that this calculator number returns.
+          </p>
+          <p><a class="text-link" href="/marketing/">See your install options</a></p>
+          <p>Want the full picture (follow-up, no-shows, after-hours)? Take the 12-question <a class="text-link" href="/revenue-leak-scorecard/">Revenue Leak Scorecard</a>.</p>
+        </section>
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
+
+<script>
+  import { HUB_LEADS_URL } from "../lib/hub";
+
+  /*
+   * Annual missed-call loss:
+   * (calls/day x missed%/100 x avg job value) x (days/week x 52)
+   * Displayed dollars are that product, rounded to the nearest dollar.
+   * Recovery scenarios are 50% and 70% of that same number.
+   * They are scenarios on the user's inputs, not promises of recovery.
+   *
+   * Trade defaults (industry estimates, editable, not facts):
+   * HVAC missed midpoint 50, Astra Results, retrieved 2026-09-22.
+   * HVAC job value 700, Astra Results blended ticket, retrieved 2026-09-22.
+   * Dental job value 3247, Buildberg, retrieved 2026-09-22.
+   * Dental missed percent stays empty.
+   * Every other trade stays empty.
+   */
+  const TRADE_DEFAULTS = {
+    HVAC: { missedPercent: 50, jobValue: 700 },
+    Dental: { jobValue: 3247 },
+  };
+  const MAIL_TO = "dre@arkansasautomated.com";
+
+  const calc = document.querySelector("#mcc-calc");
+  const tradeSelect = document.querySelector("#mcc-trade");
+  const missedInput = document.querySelector("#mcc-missed");
+  const jobInput = document.querySelector("#mcc-job");
+  const missedEstimate = document.querySelector("[data-mcc-missed-estimate]");
+  const jobEstimate = document.querySelector("[data-mcc-job-estimate]");
+  const results = document.querySelector("[data-mcc-results]");
+  const missingWrap = document.querySelector("[data-mcc-missing]");
+  const missingList = document.querySelector("[data-mcc-missing-list]");
+  const computed = document.querySelector("[data-mcc-computed]");
+  const lossEl = document.querySelector("[data-mcc-loss]");
+  const halfEl = document.querySelector("[data-mcc-half]");
+  const mostEl = document.querySelector("[data-mcc-most]");
+  const leadForm = document.querySelector("[data-mcc-lead]");
+  const report = document.querySelector("[data-mcc-report]");
+  const reportLoss = document.querySelector("[data-mcc-report-loss]");
+  const reportHalf = document.querySelector("[data-mcc-report-half]");
+  const reportMost = document.querySelector("[data-mcc-report-most]");
+
+  let snapshot = null;
+  let sawResult = false;
+  const applied = { missedPercent: null, jobValue: null };
+
+  function money(value) {
+    return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(value);
+  }
+
+  function field(name) {
+    return calc?.elements.namedItem(name);
+  }
+
+  function readRaw(name) {
+    const el = field(name);
+    return el && "value" in el ? String(el.value).trim() : "";
+  }
+
+  function readNumber(name) {
+    const raw = readRaw(name);
+    if (raw === "") return { raw, empty: true, value: NaN };
+    const value = Number(raw);
+    return { raw, empty: false, value };
+  }
+
+  function syncEstimate(input, label, key, preset) {
+    if (!input || !label) return;
+    if (preset != null) {
+      input.value = String(preset);
+      applied[key] = preset;
+      label.hidden = false;
+      return;
+    }
+    if (applied[key] != null && Number(input.value) === applied[key]) {
+      input.value = "";
+    }
+    applied[key] = null;
+    label.hidden = true;
+  }
+
+  function syncDefaults() {
+    const preset = TRADE_DEFAULTS[tradeSelect?.value ?? ""] ?? {};
+    syncEstimate(missedInput, missedEstimate, "missedPercent", preset.missedPercent);
+    syncEstimate(jobInput, jobEstimate, "jobValue", preset.jobValue);
+  }
+
+  function hideEstimateIfEdited(input, label, key) {
+    const preset = TRADE_DEFAULTS[tradeSelect?.value ?? ""]?.[key];
+    const matches = preset != null && Number(input.value) === preset;
+    if (label) label.hidden = !matches;
+    if (!matches) applied[key] = null;
+  }
+
+  tradeSelect?.addEventListener("change", () => {
+    syncDefaults();
+    snapshot = null;
+    sawResult = false;
+    if (report) report.hidden = true;
+    if (computed) computed.hidden = true;
+    if (missingWrap) missingWrap.hidden = true;
+    if (results) results.hidden = true;
+  });
+  missedInput?.addEventListener("input", () => {
+    hideEstimateIfEdited(missedInput, missedEstimate, "missedPercent");
+    if (sawResult) render();
+  });
+  jobInput?.addEventListener("input", () => {
+    hideEstimateIfEdited(jobInput, jobEstimate, "jobValue");
+    if (sawResult) render();
+  });
+  calc?.querySelectorAll(".mcc-in").forEach((input) => {
+    if (input === missedInput || input === jobInput) return;
+    input.addEventListener("input", () => {
+      if (sawResult) render();
+    });
+  });
+
+  function showMissing(items) {
+    snapshot = null;
+    if (report) report.hidden = true;
+    if (missingList) {
+      missingList.replaceChildren(...items.map((text) => {
+        const li = document.createElement("li");
+        li.textContent = text;
+        return li;
+      }));
+    }
+    if (missingWrap) missingWrap.hidden = false;
+    if (computed) computed.hidden = true;
+    if (results) {
+      results.hidden = false;
+      results.focus();
+    }
+  }
+
+  function render() {
+    const missing = [];
+    const calls = readNumber("callsPerDay");
+    const missed = readNumber("missedPercent");
+    const job = readNumber("jobValue");
+    const days = readNumber("daysPerWeek");
+
+    if (calls.empty) missing.push("Calls per day is empty.");
+    else if (!Number.isFinite(calls.value) || calls.value < 0) missing.push("Calls per day needs a number that is not negative.");
+    if (missed.empty) missing.push("Percent of calls missed is empty.");
+    else if (!Number.isFinite(missed.value) || missed.value < 0 || missed.value > 100) missing.push("Percent of calls missed has to be from 0 to 100.");
+    if (job.empty) missing.push("Average job value is empty.");
+    else if (!Number.isFinite(job.value) || job.value < 0) missing.push("Average job value needs a number that is not negative.");
+    if (days.empty) missing.push("Days per week open is empty.");
+    else if (!Number.isFinite(days.value) || days.value < 0 || days.value > 7) missing.push("Days per week open has to be from 0 to 7.");
+
+    if (missing.length) {
+      showMissing(missing);
+      return;
+    }
+
+    const annual = (calls.value * (missed.value / 100) * job.value) * (days.value * 52);
+    const rounded = Math.round(annual);
+    const half = Math.round(annual * 0.5);
+    const most = Math.round(annual * 0.7);
+    const halfLine = `If you recovered 50% of it: ${money(half)}`;
+    const mostLine = `If you recovered 70% of it: ${money(most)}`;
+
+    snapshot = {
+      trade: readRaw("trade"),
+      callsPerDay: calls.raw,
+      missedPercent: missed.raw,
+      jobValue: job.raw,
+      daysPerWeek: days.raw,
+      result: rounded,
+    };
+
+    if (lossEl) lossEl.textContent = `Annual missed-call loss: ${money(rounded)}.`;
+    if (halfEl) halfEl.textContent = halfLine;
+    if (mostEl) mostEl.textContent = mostLine;
+    if (reportLoss) reportLoss.textContent = `Annual missed-call loss: ${money(rounded)}.`;
+    if (reportHalf) reportHalf.textContent = halfLine;
+    if (reportMost) reportMost.textContent = mostLine;
+    if (report) report.hidden = true;
+    if (missingWrap) missingWrap.hidden = true;
+    if (computed) computed.hidden = false;
+    if (results) {
+      results.hidden = false;
+      results.focus();
+    }
+  }
+
+  calc?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    sawResult = true;
+    render();
+  });
+
+  function showLeadStatus(kind, text, mailtoHref) {
+    const status = leadForm?.querySelector("[data-mcc-status]");
+    if (!status) return;
+    status.hidden = false;
+    status.dataset.kind = kind;
+    status.setAttribute("role", kind === "error" ? "alert" : "status");
+    status.replaceChildren();
+    const note = document.createElement("p");
+    note.textContent = text;
+    status.append(note);
+    if (mailtoHref) {
+      const link = document.createElement("a");
+      link.href = mailtoHref;
+      link.textContent = "Email this result instead";
+      status.append(link);
+    }
+  }
+
+  function mailtoFallback(email) {
+    const body = [
+      `Email: ${email}`,
+      `Trade: ${snapshot?.trade ?? ""}`,
+      `Calls per day: ${snapshot?.callsPerDay ?? ""}`,
+      `Percent of calls missed: ${snapshot?.missedPercent ?? ""}`,
+      `Average job value: ${snapshot?.jobValue ?? ""}`,
+      `Days per week open: ${snapshot?.daysPerWeek ?? ""}`,
+      `Result: ${snapshot?.result ?? ""}`,
+    ].join("\n");
+    return `mailto:${MAIL_TO}?subject=${encodeURIComponent("Missed Call Cost Calculator")}&body=${encodeURIComponent(body)}`;
+  }
+
+  leadForm?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const status = leadForm.querySelector("[data-mcc-status]");
+    const submit = leadForm.querySelector("button[type=submit]");
+    const email = String(leadForm.elements.namedItem("email")?.value ?? "").trim();
+    if (!snapshot) {
+      showLeadStatus("error", "See the annual loss before sending. An empty result is not a lead.");
+      return;
+    }
+    if (!email || !email.includes("@")) {
+      showLeadStatus("error", "An email is required before this can be sent.");
+      return;
+    }
+    const payload = {
+      email,
+      source: "missed-call-cost-calculator",
+      trade: snapshot.trade,
+      callsPerDay: snapshot.callsPerDay,
+      missedPercent: snapshot.missedPercent,
+      jobValue: snapshot.jobValue,
+      daysPerWeek: snapshot.daysPerWeek,
+      result: snapshot.result,
+    };
+    const mail = mailtoFallback(email);
+    if (!HUB_LEADS_URL) {
+      showLeadStatus("error", "The lead form is not configured on this build. Email the result instead so it is not lost.", mail);
+      return;
+    }
+    if (submit) {
+      submit.disabled = true;
+      submit.textContent = "Sending";
+    }
+    try {
+      const response = await fetch(HUB_LEADS_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(payload),
+      });
+      if (!response.ok) throw new Error("lead endpoint rejected request");
+      if (status) {
+        status.hidden = false;
+        status.dataset.kind = "ok";
+        status.setAttribute("role", "status");
+        status.textContent = "Saved. The report is on this page.";
+      }
+      if (submit) submit.textContent = "Report saved";
+      if (report) report.hidden = false;
+    } catch {
+      showLeadStatus("error", "That did not go through, and we do not want to lose the result. Email it instead.", mail);
+      if (submit) {
+        submit.disabled = false;
+        submit.textContent = "Show the report";
+      }
+    }
+  });
+</script>
+
+<style>
+  .mcc-page { background: var(--bg-primary); }
+  .mcc-hero { padding: clamp(4rem, 8vw, 7rem) 0 2.5rem; border-bottom: 1px solid var(--line); }
+  .mcc-hero h1 { max-width: 18ch; margin: .4rem 0 1rem; }
+  .mcc-promise { max-width: 42rem; font-size: 1.15rem; line-height: 1.5; }
+  .mcc-quiet { color: var(--text-muted); max-width: 40rem; margin-top: .75rem; }
+  .mcc-shell, .mcc-results, .mcc-capture, .mcc-report { max-width: 820px; margin: 2rem auto 0; }
+  .mcc-trade, .mcc-inputs label, .mcc-capture label { display: grid; gap: .4rem; color: var(--text-secondary); font-size: .9rem; }
+  .mcc-inputs { display: grid; gap: 1rem; margin: 1.5rem 0; }
+  .mcc-page fieldset { border: 1px solid var(--line); border-radius: var(--radius-md); background: var(--bg-secondary); padding: 1rem 1.1rem 1.15rem; }
+  .mcc-page legend { font-family: var(--font-heading); font-weight: 700; padding: 0 .25rem; }
+  .mcc-page input, .mcc-page select { width: 100%; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--bg-primary); color: var(--text-primary); padding: .85rem 1rem; font: inherit; }
+  .mcc-page input:focus, .mcc-page select:focus { border-color: var(--accent); outline: 2px solid var(--accent); outline-offset: 1px; }
+  .mcc-estimate { margin: .55rem 0 0; color: var(--text-muted); font-size: .8rem; letter-spacing: .04em; text-transform: lowercase; }
+  .mcc-results, .mcc-report { border-top: 1px solid var(--line); padding-top: 2rem; }
+  .mcc-results:focus { outline: none; }
+  .mcc-results p, .mcc-report p { color: var(--text-secondary); margin-top: .45rem; }
+  .mcc-capture { margin-top: 1.5rem; padding: 1.2rem; border: 1px solid var(--line); border-left: 2px solid var(--accent); border-radius: var(--radius-md); background: var(--bg-primary); }
+  .mcc-capture h3, .mcc-report h3 { margin-bottom: .75rem; }
+  .mcc-status { margin-top: .8rem; }
+  .mcc-status[data-kind="error"] { color: #8b3d2a; }
+  .mcc-status[data-kind="ok"] { color: var(--accent); }
+  .mcc-status a { display: inline-block; margin-top: .35rem; text-decoration: underline; }
+  .mcc-legal { color: var(--text-muted); font-size: .76rem; margin-top: .7rem; }
+  .mcc-page .btn { margin-top: .5rem; }
+</style>
