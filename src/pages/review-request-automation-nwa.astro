@@ -1,0 +1,320 @@
+---
+/*
+ * /review-request-automation-nwa: MOFU/BOFU page for intent pattern #26
+ * (review request automation, NWA) in docs/NWA-SEO-ANGLES-2026-09-23.md.
+ * Planned feeder from the P2 missed-call page. Facts are limited to the
+ * price sheet and one demand-side proof point: NWA Cooling & Heating
+ * (Rogers) publicly advertises Housecall Pro online booking and SMS.
+ * Not a client. No review statistics, no star-rating promises, no phone
+ * number while the GBP NAP decision is pending.
+ */
+import Base from "../layouts/Base.astro";
+import SiteNav from "../components/SiteNav.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+const title = "Review Request Automation for NWA Businesses — The Ask That Goes Out on Time";
+const description =
+  "Review request automation for Northwest Arkansas businesses. When the job is marked done, the ask goes out. Included in a workflow automation build, $1,500 to $5,000 setup. Not a standalone app.";
+
+const faqs = [
+  {
+    q: "Is review request automation its own subscription?",
+    a: "No. There is no standalone review app and no per-review SKU. Review requests are included in a workflow automation build: lead capture, quote follow-up sequences, scheduling coordination, invoice chasing, and review requests, built on the tools you already pay for. Setup is $1,500 to $5,000 depending on scope. The monthly managed tier is priced with that build, not as a separate review plan.",
+  },
+  {
+    q: "What does it cost, and does the audit credit apply?",
+    a: "Workflow automation setup is $1,500 to $5,000 depending on scope. The monthly managed tier is priced with the build. The AI Operations Audit is $999 flat, and the full fee credits toward any done-for-you build started within 60 days. There is no per-minute or per-call pricing on any plan, and no per-review fee.",
+  },
+  {
+    q: "Do you send incentives, or only ask people who will leave five stars?",
+    a: "Neither. Incentivized asks are not sent. A discount, a gift, or any payment tied to the review is out. We also do not gate: we do not screen for a predicted happy answer and send the public link only to those people. Platform rules are respected. We do not promise a star rating or a review count.",
+  },
+  {
+    q: "Does the ask fire from Housecall Pro, ServiceTitan, or Jobber?",
+    a: "The job-complete event in the system you already run fires the ask. That includes Housecall Pro, ServiceTitan, and Jobber when that is where the job is marked done. We do not claim anything else those tools do, and we do not ask you to switch tools to send the ask.",
+  },
+  {
+    q: "What about consent and opt-out?",
+    a: "The ask names the business, says why you are writing, and includes a way to stop. Reply STOP and it ends. A finished job is not consent to add that number to a promotion list. The texting discipline, including 10DLC registration, is the same one we use for missed call text back. This is an operating rule, not a legal opinion.",
+  },
+  {
+    q: "How long does setup take?",
+    a: "We do not publish a day count. Scope sets the clock, and the audit prices that scope before you commit. Nothing sends until you have read the wording and signed off. The first conversation is the free 15-minute assessment.",
+  },
+];
+
+const site = "https://arkansasautomated.com";
+const pageUrl = `${site}/review-request-automation-nwa`;
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      headline: "Review Request Automation for Northwest Arkansas Businesses",
+      description,
+      author: { "@type": "Person", name: "Andre Brassfield", jobTitle: "Founder, Arkansas Automated" },
+      publisher: { "@type": "Organization", name: "Arkansas Automated", url: site },
+      datePublished: "2026-09-27",
+      dateModified: "2026-09-27",
+      mainEntityOfPage: pageUrl,
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    },
+    {
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${site}/` },
+        { "@type": "ListItem", position: 2, name: "Review Request Automation, NWA", item: pageUrl },
+      ],
+    },
+  ],
+};
+---
+
+<Base title={title} description={description} path="/review-request-automation-nwa" schema={schema} ogType="article">
+  <SiteNav />
+  <main id="main-content" tabindex="-1">
+    <article class="hero">
+      <div class="container">
+        <nav class="crumbs" aria-label="Breadcrumb">
+          <a href="/">Home</a><span>/</span>Review Request Automation, NWA
+        </nav>
+        <h1 class="heading-xl measure">Review request automation for Northwest Arkansas businesses</h1>
+        <p class="body-lg measure" style="margin-top:1.15rem">
+          The job is marked done. The ask should go out then, not three weeks
+          later when someone remembers. Review request automation sends that
+          ask from the tools the shop already runs. It is included in a
+          workflow automation build. It is not a standalone app, and it is not
+          priced per review.
+        </p>
+        <p class="measure" style="margin-top:1rem">
+          This page is for shops in Fayetteville, Bentonville, Rogers,
+          Springdale, and Fort Smith. It covers what the ask does, when it
+          fires, what it refuses to do, and what it costs. The text that
+          recovers a missed call is a different layer, on our
+          <a class="text-link" href="/missed-call-text-back-northwest-arkansas/">missed call text back page</a>.
+          The calendar the job was booked on is the
+          <a class="text-link" href="/booking-software/">booking software</a>
+          setup. If the problem is the phone itself, start with the
+          <a class="text-link" href="/answering-service-fayetteville-ar/">Fayetteville answering service page</a>.
+        </p>
+        <p class="fine-print" style="margin-top:1.5rem">
+          Last updated September 2026. Written by Andre Brassfield, founder of Arkansas Automated.
+        </p>
+      </div>
+    </article>
+
+    <section class="section section-tint">
+      <div class="container article-body">
+        <h2 class="heading-lg measure">What review request automation actually does</h2>
+        <p>
+          Job marked done, the ask goes out. A completed job in the system the
+          shop already uses fires a message from the business, asking that
+          customer for a review. Nobody on the crew has to remember it after
+          the truck leaves.
+        </p>
+        <p>
+          That is the whole motion. The message does not write the review. It
+          does not pick a star. It does not promise that a review will show up,
+          or that a count will move. If the customer never replies, you have a
+          record of the ask, not a review we invented.
+        </p>
+        <p>
+          This is a capability inside a done-for-you build, not a product you
+          subscribe to on its own. Review requests sit with lead capture, quote
+          follow-up sequences, scheduling coordination, and invoice chasing,
+          built on the tools you already pay for. The calendar is one layer.
+          Follow-up after the job is another. Booking lives on the
+          <a class="text-link" href="/booking-software/">booking software</a>
+          page. The ask after the job is this page.
+        </p>
+
+        <h2 class="heading-lg measure">Why good NWA shops have thin review counts</h2>
+        <p>
+          A shop can do good work and still have a thin review count. The usual
+          miss is timing and follow-through, not the quality of the job. The
+          tech marks the work done, the next call is already waiting, and the
+          ask sits with whoever was supposed to send it. A week later that
+          person is not sure the message went out.
+        </p>
+        <p>
+          This page does not publish a share of consumers who read reviews, a
+          target count, or a star rating. We have not measured those figures
+          on NWA accounts. We will not invent them. Thin counts, on this page,
+          means the ask did not go out when the job was done. That is a
+          follow-through problem. It is not a verdict on the work.
+        </p>
+        <p>
+          Local shops already run and buy this tool stack. NWA Cooling &amp;
+          Heating (Rogers) publicly advertises Housecall Pro online booking
+          and SMS communication to homeowners across NWA and the Fort Smith
+          River Valley. That is demand-side evidence, used once. It is not a
+          client we are claiming, and it is not a review count.
+        </p>
+
+        <h2 class="heading-lg measure">The triggers: firing the ask when the job is really done</h2>
+        <p>
+          The trigger is the moment the job is really done, not the moment
+          someone remembers. In ServiceTitan, Housecall Pro, or Jobber, the
+          job-complete event fires the ask. That is the only claim we make
+          about those tools. If the shop runs a different system, the same
+          rule holds: the event that means the job is finished is the event
+          that sends the message. We do not ask you to switch tools to get
+          the ask.
+        </p>
+        <p>
+          "Done" is not the same hour in every shop. Some mark complete when
+          the tech leaves. Some wait until the invoice is paid. Some wait
+          until the customer signs off. Sending while the tech is still in
+          the driveway is the wrong moment. Waiting on memory is the gap this
+          build closes.
+        </p>
+        <p>
+          Which event counts as done is decided on the assessment call, before
+          anything sends. You see the wording. You see the trigger. Nothing
+          goes to a customer until you sign off, the same gate we use before
+          a text-back build messages anyone.
+        </p>
+
+        <h2 class="heading-lg measure">What the customer actually receives</h2>
+        <p>
+          A message from your business. It names the business, says the job is
+          done, and asks for a review. It includes a way to stop. It does not
+          offer money, a discount, a gift, or an entry in a drawing. It does
+          not tell the customer which star to pick.
+        </p>
+        <p>
+          The wording is yours. We do not ship a script you have not read. If
+          they do not reply, there is no review to invent. You can read what
+          went out and the lack of a reply.
+        </p>
+        <p>
+          The texting channel follows the same consent and opt-out discipline
+          as
+          <a class="text-link" href="/missed-call-text-back-northwest-arkansas/">missed call text back</a>.
+          That page covers 10DLC registration and why a message about one
+          event is not permission to build a promotion list. This page does
+          not re-run that section. We follow it.
+        </p>
+
+        <h2 class="heading-lg measure">The rules: consent, opt-out, and why no incentives or gating</h2>
+        <p>
+          This is the operating rule we build to, not a legal opinion. If your
+          counsel wants a different line, we follow that.
+        </p>
+        <p>
+          <strong>Consent and opt-out.</strong> The ask identifies the
+          business, says why you are writing, and includes a way to stop.
+          Reply STOP and it ends. A finished job is not consent to drop that
+          number onto a promotion list or a newsletter. Those need their own
+          opt-in. The fuller texting rules live on the missed-call page. We
+          do not loosen them here.
+        </p>
+        <p>
+          <strong>No incentives.</strong> Platform rules are respected and
+          incentivized asks are not sent. A discount for a review, a gift
+          card, or any payment tied to the ask is out. We will not add one
+          because a competitor does.
+        </p>
+        <p>
+          <strong>No gating.</strong> We do not screen for a predicted happy
+          answer and send the public link only to those people, while routing
+          everyone else somewhere private. That is review gating, and this
+          build does not do it. The ask goes to the customer the job was for,
+          when the job is done, under the wording you signed off on. We do
+          not write the review, and we do not post one in their name.
+        </p>
+
+        <h2 class="heading-lg measure">What this does NOT do</h2>
+        <ul>
+          <li>It does not sell a standalone review app, a per-review subscription, or a per-review fee.</li>
+          <li>It does not promise a star rating, a review count, or a ranking. We do not publish those figures because we do not have them.</li>
+          <li>It does not send incentivized asks, and it does not gate who sees a public review link.</li>
+          <li>It does not invent reviews or tell the customer what to write.</li>
+          <li>It does not replace the calendar. That layer is <a class="text-link" href="/booking-software/">booking software</a>.</li>
+          <li>It does not replace missed-call recovery. That layer is <a class="text-link" href="/missed-call-text-back-northwest-arkansas/">missed call text back</a>.</li>
+          <li>It does not replace the phone being answered. That setup, for Fayetteville, is the <a class="text-link" href="/answering-service-fayetteville-ar/">answering service page</a>.</li>
+          <li>It does not give legal advice. Consent and opt-out are decided carefully and stated plainly. Counsel sets a different line if you need one.</li>
+          <li>It does not claim features of ServiceTitan, Housecall Pro, or Jobber beyond this: the job-complete event fires the ask.</li>
+        </ul>
+
+        <h2 class="heading-lg measure">How it fits the flat-fee build</h2>
+        <p>
+          One price sheet. Review requests are not their own SKU. They are
+          included in Workflow Automation, a done-for-you build on the tools
+          you already pay for.
+        </p>
+        <ul>
+          <li><strong>Setup:</strong> $1,500 to $5,000 depending on scope</li>
+          <li><strong>Monthly:</strong> managed tier, priced with the build. We do not publish a separate monthly number for review requests, because they are not sold alone.</li>
+          <li><strong>Included:</strong> lead capture, quote follow-up sequences, scheduling coordination, invoice chasing, review requests, built on the tools you already pay for</li>
+          <li><strong>Not charged:</strong> no per-minute or per-call pricing on any plan. No per-review fee. No incentivized-ask add-on, because those asks are not sent.</li>
+        </ul>
+        <p>
+          The entry point is the AI Operations Audit, $999 flat. It maps calls,
+          quotes, scheduling, and invoicing, including whether the review ask
+          is one of the gaps. The full fee credits toward any done-for-you
+          build started within 60 days.
+        </p>
+        <p>
+          The AI Front Desk monthly plan is $497 a month and includes SMS
+          follow-up. That is the phone and text layer, not a review-request
+          subscription. Service detail is on the
+          <a class="text-link" href="/services/ai-front-desk">AI front desk page</a>.
+          What automation is for, in the order that usually pays back, is on
+          the
+          <a class="text-link" href="/learn/what-is-business-process-automation/">business process automation page</a>.
+          If you want to see whether the ask is an open leak before that
+          audit, the
+          <a class="text-link" href="/revenue-leak-scorecard/">revenue leak scorecard</a>
+          asks the question. It does not publish a review count, and neither
+          does this page.
+        </p>
+        <p>
+          <strong>Call to action:</strong> Book the free 15-minute assessment at
+          <a class="text-link" href="https://book.arkansasautomated.com/book/discovery-call">book.arkansasautomated.com</a>
+          or use the <a class="text-link" href="/contact/">contact page</a>.
+          Email <a class="text-link" href="mailto:dre@arkansasautomated.com">dre@arkansasautomated.com</a>
+          if you would rather write. Scope, trigger, and wording get decided
+          on that call. Nothing is due then.
+        </p>
+
+        <h2 class="heading-lg measure">Setup: what we need from you and how long it takes</h2>
+        <p>
+          We do not publish a day count for this build. Scope sets the clock.
+          A narrow follow-up and a wider lead-to-invoice pipeline are not the
+          same job, which is why setup runs $1,500 to $5,000 depending on
+          scope. The audit fixes the number before you commit. Nothing sends
+          until you sign off.
+        </p>
+        <p>What we need before the first ask goes out:</p>
+        <ol>
+          <li><strong>The system the job lives in.</strong> ServiceTitan, Housecall Pro, Jobber, or whatever you already pay for. The job-complete event in that system fires the ask.</li>
+          <li><strong>Your definition of done.</strong> Tech left, invoice paid, or customer signed off. We use your line, not a default we picked.</li>
+          <li><strong>Who may receive it, and who must not.</strong> The customer the job was for, under rules you write. Not a purchased list. Not every number in the phone.</li>
+          <li><strong>The wording, including the way to stop.</strong> You read it. You sign off. Incentivized language does not make the cut, and neither does a gate.</li>
+          <li><strong>The assessment, then the audit if you want the map first.</strong> The 15-minute assessment is free. The AI Operations Audit is $999 flat, and that fee credits toward a build started within 60 days.</li>
+        </ol>
+        <p>
+          Questions before that call go through the
+          <a class="text-link" href="/contact/">contact page</a>.
+        </p>
+
+        <h2 class="heading-lg measure">FAQs</h2>
+        {faqs.map((f) => (
+          <div class="faq-item">
+            <h3 class="heading-md">{f.q}</h3>
+            <p>{f.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <SiteFooter />
+</Base>
