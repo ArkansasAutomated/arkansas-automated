@@ -8,9 +8,9 @@ import { serviceBySlug } from "../data/services";
 
 const s = serviceBySlug("visibility-install");
 
-const title = "When buyers ask ChatGPT who to hire | Arkansas Automated";
+const title = "Arkansas Automated | AI & Business Automation in Arkansas";
 const description =
-  "Visibility Install for Arkansas shops. Five fixes on the website you already have, live in 14 days from access. $2,500 setup, then $497 a month. Delivery guarantee, not a ranking promise.";
+  "Arkansas Automated is an AI and business automation company in Fort Smith, serving Arkansas. Operated by Brassfield Ventures LLC. Not affiliated with Arkansas Automated Security. Visibility Install: five website fixes, live in 14 days from access. $2,500 setup, then $497 a month. Delivery guarantee, not a ranking promise.";
 
 const properties = [
   {
@@ -44,10 +44,15 @@ const homeSchema = {
   "@graph": [
     {
       "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://arkansasautomated.com/#organization",
       name: "Arkansas Automated",
+      legalName: "Brassfield Ventures LLC",
       url: "https://arkansasautomated.com",
       telephone: AA_PUBLIC_PHONE_E164,
       description,
+      disambiguatingDescription:
+        "AI and business automation company in Fort Smith, Arkansas, operated by Brassfield Ventures LLC. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
+      founder: { "@id": "https://arkansasautomated.com/about#andre-brassfield" },
       sameAs: properties.map((p) => p.url),
       areaServed: [
         { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
@@ -62,9 +67,18 @@ const homeSchema = {
       ],
     },
     {
+      "@type": "Person",
+      "@id": "https://arkansasautomated.com/about#andre-brassfield",
+      name: "Andre Brassfield",
+      jobTitle: "Founder",
+      url: "https://arkansasautomated.com/about",
+      worksFor: { "@id": "https://arkansasautomated.com/#organization" },
+    },
+    {
       "@type": "WebSite",
       name: "Arkansas Automated",
       url: "https://arkansasautomated.com",
+      publisher: { "@id": "https://arkansasautomated.com/#organization" },
     },
     {
       "@type": "Service",

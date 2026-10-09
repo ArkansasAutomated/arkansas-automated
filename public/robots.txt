@@ -1,6 +1,10 @@
-# Arkansas Automated welcomes AI search and citation crawlers. Citation is
-# how Arkansas owners find the workshops; blocking the bots that cite us
-# would be blocking the front door (ai-seo skill).
+# Arkansas Automated welcomes AI search and citation crawlers.
+# OAI-SearchBot is the ChatGPT search crawler. OpenAI treats it separately
+# from GPTBot. Naming it here is the search-inclusion control. The wildcard
+# below also allows it. A robots.txt change can take about 24 hours to propagate.
+
+User-agent: OAI-SearchBot
+Allow: /
 
 User-agent: GPTBot
 Allow: /
