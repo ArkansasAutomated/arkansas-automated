@@ -199,12 +199,20 @@ const siteHost = new URL(Astro.site?.origin ?? SITE_URL).hostname;
             /* no-op */
           }
           try {
+            var params = new URLSearchParams(location.search);
+            var referrer = document.referrer || null;
+            // ChatGPT search puts utm_source=chatgpt.com on the landing URL.
+            // Browsers often omit that query from document.referrer. Record it
+            // in the existing referrer field only when the browser sent none.
+            if (!referrer && params.get("utm_source") === "chatgpt.com") {
+              referrer = "https://chatgpt.com/";
+            }
             fetch(ENDPOINT, {
               method: "POST",
               headers: { "Content-Type": "text/plain" },
               body: JSON.stringify({
                 path: location.pathname,
-                referrer: document.referrer || null,
+                referrer: referrer,
               }),
               keepalive: true,
             }).catch(function () {});
