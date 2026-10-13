@@ -8,9 +8,9 @@ import { serviceBySlug } from "../data/services";
 
 const s = serviceBySlug("visibility-install");
 
-const title = "Arkansas Automated | AI & Business Automation in Arkansas";
+const title = "Arkansas Automated | AI for Rogers and Fort Smith";
 const description =
-  "Arkansas Automated is an AI and business automation company in Fort Smith, serving Arkansas. Operated by Brassfield Ventures LLC. Not affiliated with Arkansas Automated Security. Visibility Install: five website fixes, live in 14 days from access. $2,500 setup, then $497 a month. Delivery guarantee, not a ranking promise.";
+  "Arkansas Automated serves Rogers and Fort Smith. Call (479) 282-3121. AI and business automation, operated by Brassfield Ventures LLC. Not affiliated with Arkansas Automated Security.";
 
 const properties = [
   {
@@ -51,11 +51,12 @@ const homeSchema = {
       telephone: AA_PUBLIC_PHONE_E164,
       description,
       disambiguatingDescription:
-        "AI and business automation company in Fort Smith, Arkansas, operated by Brassfield Ventures LLC. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
+        "AI and business automation company operated by Brassfield Ventures LLC, serving Rogers and Fort Smith, Arkansas. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
       founder: { "@id": "https://arkansasautomated.com/about#andre-brassfield" },
       sameAs: properties.map((p) => p.url),
       areaServed: [
-        { "@type": "AdministrativeArea", name: "Fort Smith, Arkansas" },
+        { "@type": "City", name: "Rogers, Arkansas" },
+        { "@type": "City", name: "Fort Smith, Arkansas" },
         { "@type": "AdministrativeArea", name: "Northwest Arkansas" },
         { "@type": "State", name: "Arkansas" },
       ],
