@@ -1,7 +1,17 @@
 # Pricing — Arkansas Automated
 
 All prices public. No sales call required to read the price sheet.
-Last updated: 2026-09-13.
+Last updated: 2026-10-14.
+
+## Visibility Install (homepage offer)
+
+- Price: $2,500 to start, then $497 a month
+- Term: 90 days, then month to month. Cancel anytime after day 90.
+- What it is: five fixes on the website the customer already has. One headline per page, readable business facts, services listed once, one guide on their domain, junk pages out of search, one call-or-book button.
+- Clock: starts when website, Google Business Profile, and Search Console access are in. Not at payment.
+- Guarantee: if the five fixes are not live in 14 days from access, keep working at no extra setup cost, or refund the $2,500. The customer keeps every asset.
+- Not included: phone answering, SMS, or booking. That job is the AI Front Desk. Same published dollars, different job.
+- Page: https://arkansasautomated.com/services/visibility-install
 
 ## Front Door (website, done for you)
 
