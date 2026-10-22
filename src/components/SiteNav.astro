@@ -8,8 +8,9 @@ interface Props {
 const { overHero = false } = Astro.props;
 
 const links = [
-  { href: "/#who", label: "Who it's for" },
-  { href: "/services/visibility-install", label: "The offer" },
+  { href: "/audit", label: "Audit" },
+  { href: "/for", label: "Trades" },
+  { href: "/services", label: "Prices" },
 ];
 ---
 
@@ -19,7 +20,7 @@ const links = [
     <nav class="nav-links" aria-label="Main">
       {links.map((l) => <a class="nav-hide" href={l.href}>{l.label}</a>)}
       <a class="nav-call" href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a>
-      <a class="btn btn-primary" href="/services/visibility-install">Visibility Install</a>
+      <a class="btn btn-primary" href="/audit">Book the audit</a>
     </nav>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
       <span></span><span></span><span></span>
@@ -28,7 +29,7 @@ const links = [
   <nav id="mobile-menu" class="mobile-menu" aria-label="Main menu" hidden>
     {links.map((l) => <a href={l.href}>{l.label}</a>)}
     <a href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a>
-    <a class="btn btn-primary" href="/services/visibility-install">Visibility Install</a>
+    <a class="btn btn-primary" href="/audit">Book the audit</a>
   </nav>
 </header>
 

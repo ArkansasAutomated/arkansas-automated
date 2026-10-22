@@ -2,15 +2,16 @@
 import Base from "../layouts/Base.astro";
 import SiteNav from "../components/SiteNav.astro";
 import SiteFooter from "../components/SiteFooter.astro";
-import VisibilityInstallOffer from "../components/VisibilityInstallOffer.astro";
+import AdvisorHome from "../components/AdvisorHome.astro";
 import { AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
 import { serviceBySlug } from "../data/services";
 
-const s = serviceBySlug("visibility-install");
+const audit = serviceBySlug("operations-audit");
+const install = serviceBySlug("visibility-install");
 
-const title = "Arkansas Automated | AI for Rogers and Fort Smith";
+const title = "AI Consultant in Arkansas | Rogers and Fort Smith";
 const description =
-  "Arkansas Automated serves Rogers and Fort Smith. Call (479) 282-3121. AI and business automation, operated by Brassfield Ventures LLC. Not affiliated with Arkansas Automated Security.";
+  "AI consultant for Rogers and Fort Smith. Andre Brassfield finds the process bleeding money and fixes it with AI. $999 operations audit, credited toward a build within 60 days. Call (479) 282-3121. Not Arkansas Automated Security.";
 
 const properties = [
   {
@@ -51,7 +52,7 @@ const homeSchema = {
       telephone: AA_PUBLIC_PHONE_E164,
       description,
       disambiguatingDescription:
-        "AI and business automation company operated by Brassfield Ventures LLC, serving Rogers and Fort Smith, Arkansas. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
+        "AI consultant and business automation company operated by Brassfield Ventures LLC, serving Rogers and Fort Smith, Arkansas. Not affiliated with Arkansas Automated Security, LLC of Mayflower, a separate security and alarm installer.",
       founder: { "@id": "https://arkansasautomated.com/about#andre-brassfield" },
       sameAs: properties.map((p) => p.url),
       areaServed: [
@@ -61,8 +62,9 @@ const homeSchema = {
         { "@type": "State", name: "Arkansas" },
       ],
       serviceType: [
+        "AI consulting",
+        "AI operations audit",
         "Visibility Install",
-        "AI search visibility",
         "AI front desk",
         "Front Door websites",
       ],
@@ -83,14 +85,28 @@ const homeSchema = {
     },
     {
       "@type": "Service",
-      name: s.name,
+      name: audit.name,
       provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: "https://arkansasautomated.com" },
       areaServed: { "@type": "State", name: "Arkansas" },
-      description: s.answer,
+      description: audit.answer,
+      offers: {
+        "@type": "Offer",
+        price: "999",
+        priceCurrency: "USD",
+        url: "https://arkansasautomated.com/audit",
+      },
+    },
+    {
+      "@type": "Service",
+      name: install.name,
+      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: "https://arkansasautomated.com" },
+      areaServed: { "@type": "State", name: "Arkansas" },
+      description: install.answer,
+      url: "https://arkansasautomated.com/services/visibility-install",
     },
     {
       "@type": "FAQPage",
-      mainEntity: s.faqs.map((f) => ({
+      mainEntity: audit.faqs.map((f) => ({
         "@type": "Question",
         name: f.q,
         acceptedAnswer: { "@type": "Answer", text: f.a },
@@ -103,7 +119,7 @@ const homeSchema = {
 <Base title={title} description={description} path="/" schema={homeSchema}>
   <SiteNav overHero />
   <main id="main-content" tabindex="-1">
-    <VisibilityInstallOffer home properties={properties} />
+    <AdvisorHome properties={properties} />
   </main>
   <SiteFooter />
 </Base>
