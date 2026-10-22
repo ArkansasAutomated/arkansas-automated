@@ -1,9 +1,13 @@
 # Pricing — Arkansas Automated
 
 All prices public. No sales call required to read the price sheet.
-Last updated: 2026-10-14.
+Last updated: 2026-10-22.
 
-## Visibility Install (homepage offer)
+## Homepage front door
+
+The homepage leads with the AI operations audit below. Visibility Install is still sold. It is no longer the homepage offer.
+
+## Visibility Install
 
 - Price: $2,500 to start, then $497 a month
 - Term: 90 days, then month to month. Cancel anytime after day 90.
@@ -41,8 +45,11 @@ Last updated: 2026-10-14.
 ## AI Operations Audit
 
 - Price: $999 flat
+- Homepage: https://arkansasautomated.com/ and https://arkansasautomated.com/audit
 - Includes: Full process map of calls, quotes, scheduling, and invoicing; costed leak list; prioritized build plan with ROI math; honest verdicts on what not to automate
+- Session: ninety minutes with the owner and whoever touches the phones or the books
 - Credit: Full fee credited toward any done-for-you build started within 60 days
+- Checkout: not on the website. Book the discovery call, then pay if you want the map.
 
 ## AI Front Desk (done for you)
 

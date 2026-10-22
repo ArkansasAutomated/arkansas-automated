@@ -1,0 +1,183 @@
+---
+import { serviceBySlug } from "../data/services";
+import { industries } from "../data/industries";
+import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
+
+interface Property {
+  name: string;
+  role: string;
+  host: string;
+  url: string;
+}
+
+interface Props {
+  properties: Property[];
+}
+
+const { properties } = Astro.props;
+const audit = serviceBySlug("operations-audit");
+const install = serviceBySlug("visibility-install");
+const frontDoor = serviceBySlug("front-door");
+const desk = serviceBySlug("ai-front-desk");
+const retainer = serviceBySlug("automation-retainer");
+
+const trades = ["dentists", "hvac", "law-firms", "plumbers", "roofers"]
+  .map((slug) => industries.find((i) => i.slug === slug))
+  .filter((i): i is NonNullable<typeof i> => Boolean(i));
+
+const ladder = [
+  {
+    n: "01",
+    name: "Learn",
+    price: "Free",
+    p: "Plain guides on the leaks, the prices, and what not to automate. Buyers who want the map start here.",
+    href: "/learn",
+  },
+  {
+    n: "02",
+    name: audit.name,
+    price: audit.price,
+    p: "The front door. Ninety minutes with the people who touch the phones and the books. A written map, every leak costed, ranked by payback. The fee credits toward a build started within 60 days.",
+    href: "/audit",
+  },
+  {
+    n: "03",
+    name: "Build",
+    price: "Scoped",
+    p: `${frontDoor.name} ${frontDoor.price}. ${desk.name} ${desk.price}. ${install.name} ${install.price}. Custom workflow builds $1,500 to $5,000. One build at a time, smallest payback first.`,
+    href: "/services",
+  },
+  {
+    n: "04",
+    name: retainer.name,
+    price: retainer.price,
+    p: "Ongoing advisor work for operators who want the roadmap kept moving. On-site sessions, new cuts as they show up, systems kept running. The forward-deployed page is this tier, written out.",
+    href: "/forward-deployed-ai-engineer",
+  },
+];
+---
+
+<div class="hero-frame">
+  <div class="hero-stage-media" aria-hidden="true">
+    <img
+      class="hero-stage-bg"
+      src="/images/hero-network.webp"
+      alt=""
+      width="1122"
+      height="1402"
+      fetchpriority="high"
+    />
+    <div class="hero-stage-scrim"></div>
+    <div class="hero-stage-grain"></div>
+  </div>
+  <section class="hero-stage" id="audit">
+    <div class="container hero-stage-grid">
+      <div class="hero-stage-copy">
+        <p class="eyebrow">Andre Brassfield. AI consultant in Arkansas. Not a security company.</p>
+        <h1 class="heading-xl advisor-h1 enter">I find the process bleeding money in your business, and fix it with AI.</h1>
+        <p class="body-lg enter enter-2">
+          Ninety minutes in the operation. One written map back: every leak, costed, ranked by payback.
+          Then I build the top one. The audit is {audit.price}. It credits toward a build started within 60 days.
+        </p>
+        <div class="hero-ctas one enter enter-3">
+          <div class="cta-choice">
+            <a class="btn btn-primary" href="/audit">Book the audit</a>
+            <p class="guarantee">
+              No checkout on this site for the audit. You book a time, we confirm scope, then you decide.
+              Call {AA_PUBLIC_PHONE_DISPLAY} if you would rather talk first.
+            </p>
+          </div>
+        </div>
+      </div>
+      <aside class="audit-ticket" aria-label="Audit terms">
+        <p class="ask-bar">The front door</p>
+        <p class="audit-ticket-price">{audit.price}</p>
+        <ul>
+          <li>90 minutes with the owner and whoever runs the phones or the books</li>
+          <li>Written map, costed leaks, ranked by payback</li>
+          <li>What I would not automate, and why</li>
+          <li>Full fee off a build started within 60 days</li>
+        </ul>
+        <a class="text-link ticket-link" href={AA_PUBLIC_PHONE_HREF}>Or call {AA_PUBLIC_PHONE_DISPLAY}</a>
+      </aside>
+    </div>
+  </section>
+</div>
+
+<section class="proof-strip" aria-labelledby="proof-title">
+  <div class="container">
+    <div class="proof-strip-grid">
+      <div>
+        <h2 id="proof-title">The same stack runs the businesses we operate.</h2>
+        <p>Named client teardowns publish when the owner says yes. Until then, these are the public proof.</p>
+      </div>
+      <ul>
+        {properties.map((p) => (
+          <li><a href={p.url}>{p.name}</a></li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ladder">
+  <div class="container">
+    <h2 class="heading-lg measure">One ladder. Public prices.</h2>
+    <p class="body-lg measure" style="margin-top:1rem">
+      Start at the audit. The builds stay at the prices already on the sheet.
+      Nothing here is a discount, and nothing stacks.
+    </p>
+    <div class="rows">
+      {ladder.map((step) => (
+        <article class="row">
+          <div class="row-n">{step.n}</div>
+          <h3><a class="text-link-plain" href={step.href}>{step.name}</a></h3>
+          <p><strong>{step.price}.</strong> {step.p}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint" id="trades">
+  <div class="container">
+    <h2 class="heading-lg measure">The trades we already write for.</h2>
+    <p class="body-lg measure" style="margin-top:1rem">
+      Each page names the three or four processes that bleed money in that trade, then points at the audit.
+    </p>
+    <div class="city-grid">
+      {trades.map((t) => (
+        <a class="city-card" href={`/for/${t.slug}`}>
+          <span class="prop-name">{t.name.charAt(0).toUpperCase() + t.name.slice(1)}</span>
+          <span class="prop-role">{t.intent}</span>
+          <span class="city-cta">See the leaks</span>
+        </a>
+      ))}
+      <a class="city-card" href="/ai-consultant">
+        <span class="prop-name">By city</span>
+        <span class="prop-role">Fort Smith, Rogers, Fayetteville, Bentonville, Little Rock, Conway, Hot Springs.</span>
+        <span class="city-cta">AI consultant pages</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="visibility-install">
+  <div class="container split">
+    <div>
+      <p class="eyebrow">A named build, not the front door</p>
+      <h2 class="heading-lg">When a buyer asks ChatGPT who to hire, it should name you.</h2>
+    </div>
+    <div>
+      <p class="body-lg">
+        That line still sells the {install.name}. Five fixes on the website you already have,
+        live in 14 days from access. {install.price}. It does not answer the phone.
+        The page, the price, and the URL stay.
+      </p>
+      <div class="hero-ctas" style="margin-top:1.5rem">
+        <a class="btn btn-secondary" href="/services/visibility-install">Visibility Install</a>
+        <a class="btn btn-secondary" href="/services">All prices</a>
+      </div>
+    </div>
+  </div>
+</section>

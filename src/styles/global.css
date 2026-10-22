@@ -322,6 +322,50 @@ img { max-width: 100%; display: block; }
   font-size: clamp(2.55rem, 5.4vw, 4.35rem);
   max-width: 14ch;
 }
+/* Advisor H1 is a sentence, not a stacked slogan. Wider measure, still in the left column. */
+.hero-stage .advisor-h1 {
+  max-width: 12em;
+  font-size: clamp(2.1rem, 4.1vw, 3.45rem);
+}
+.audit-ticket {
+  background: rgba(12, 18, 16, 0.72);
+  border: 1px solid rgba(244, 246, 245, 0.14);
+  border-radius: 20px;
+  padding: 1.55rem 1.6rem 1.65rem;
+  color: #f4f6f5;
+  box-shadow: 0 0 0 7px rgba(244, 246, 245, 0.08);
+}
+.audit-ticket .ask-bar { margin-bottom: 0.35rem; }
+.audit-ticket-price {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin: 0.35rem 0 1.1rem;
+}
+.audit-ticket ul { list-style: none; display: grid; gap: 0.75rem; }
+.audit-ticket li {
+  position: relative;
+  padding-left: 1.1rem;
+  color: rgba(244, 246, 245, 0.88);
+  font-size: 0.98rem;
+}
+.audit-ticket li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 0.42rem;
+  height: 0.42rem;
+  background: #9ad7d3;
+  border-radius: 2px;
+}
+.audit-ticket .ticket-link {
+  display: inline-block;
+  margin-top: 1.25rem;
+  color: #f4f6f5;
+}
 .hero-stage .body-lg {
   color: rgba(244, 246, 245, 0.86);
   margin: 1.15rem 0 2rem;

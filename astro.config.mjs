@@ -31,6 +31,15 @@ export default defineConfig({
           item.url = url.href;
         }
         const path = url.pathname;
+        if (
+          path === "/" ||
+          path === "/audit" ||
+          path.startsWith("/ai-consultant") ||
+          path === "/learn/audit-teardown"
+        ) {
+          item.lastmod = new Date("2026-10-22");
+          return item;
+        }
         const refreshed =
           path === "/" ||
           path === "/for" ||

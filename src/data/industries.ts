@@ -96,7 +96,7 @@ export const industries: Industry[] = [
     slug: "hvac",
     intent: "AI answering and workflow automation for HVAC contractors",
     angle:
-      "HVAC demand in Arkansas is a cliff, not a curve. The first 100-degree week and the first hard freeze both arrive at once, and the companies that answer every call in that spike book the season. The rest pay for the same ads and lose the same calls.",
+      "HVAC demand in Arkansas is a cliff, not a curve. The first 100-degree week and the first hard freeze both arrive at once, and the companies that answer every call in that spike book the season. The audit times the unanswered calls and the quotes that go cold, then ranks which one pays back first.",
     leaks: [
       {
         h: "Seasonal spikes that break the front desk",
@@ -270,7 +270,7 @@ export const industries: Industry[] = [
     slug: "dentists",
     intent: "AI front desk and scheduling automation for dental practices",
     angle:
-      "A dental front desk is a revenue position disguised as an admin position. Every unanswered new-patient call is a hygiene family worth thousands a year, and most Arkansas practices miss calls every day while the front desk checks somebody in.",
+      "A dental front desk is a revenue position. New-patient calls die during check-in, insurance verification stacks up, and billing follow-up waits on whoever is free. The audit times those three before anyone buys a tool.",
     leaks: [
       {
         h: "New patient calls during check-in rush",
@@ -285,8 +285,8 @@ export const industries: Industry[] = [
         p: "A 2 PM crown cancels at 10 AM and the chair sits empty because the waitlist lives in someone's head.",
       },
       {
-        h: "After-hours calls that are not emergencies",
-        p: "Most evening calls are scheduling requests that could book themselves. Instead they become Monday voicemails that half-convert.",
+        h: "Verification and billing that wait on the desk",
+        p: "Eligibility checks and unpaid balances pile up while the desk is with a patient. The money is already earned. It just is not collected on time.",
       },
     ],
     automate: [
