@@ -27,7 +27,7 @@ const nearby = c.nearby
 
 const title = `AI consultant in ${c.name}, AR | Arkansas Automated`;
 const description = `AI consultant for ${c.name} businesses. ${audit.price} operations audit: leaks costed and ranked by payback. ${c.drive}.`;
-const answer = `An AI consultant for a ${c.name} business starts with a $999 operations audit, not a tool demo. Arkansas Automated spends ninety minutes on the real process, then hands back a written map of the leaks, costed and ranked by payback. The fee credits toward a build started within 60 days.`;
+const answer = `An AI consultant for a ${c.name} business starts with a free missed-call test, then a $1,500 leak audit if the recording shows a real leak. Arkansas Automated spends ninety minutes on the real process and hands back a written map, costed and ranked by payback. The full fee comes off the first fix.`;
 
 const site = "https://arkansasautomated.com";
 const pageUrl = `${site}/ai-consultant/${c.slug}`;
@@ -43,7 +43,7 @@ const schema = {
       description: answer,
       offers: {
         "@type": "Offer",
-        price: "999",
+        price: "1500",
         priceCurrency: "USD",
         url: `${site}/audit`,
       },
@@ -131,9 +131,9 @@ const schema = {
         </div>
         <BookCall
           heading={`Book the ${c.name} audit call`}
-          body="Pick a time. The audit is $999. This booking does not take payment."
+          body="Pick a time. The audit is $1,500. This booking does not take payment."
           ctaLabel="Pick a time"
-          note={`${c.drive}. If a free 15-minute look is enough, say so in the notes.`}
+          note={`${c.drive}. The free start is the missed-call test, not this calendar.`}
         />
       </div>
     </section>

@@ -237,17 +237,17 @@ export const services: Service[] = [
   {
     name: "AI operations audit",
     slug: "operations-audit",
-    price: "$999 flat",
-    tagline: "A prioritized automation plan with real ROI numbers, before anyone writes a big check.",
+    price: "$1,500",
+    tagline: "A written map of the leaks, costed and ranked by payback, before anyone writes a bigger check.",
     answer:
-      "The AI operations audit is a fixed-price, $999 assessment of how your Arkansas business handles calls, quotes, scheduling, and invoicing. We map every handoff, price the hours and missed revenue each leak costs, and hand you a prioritized automation plan with realistic ROI numbers. The fee credits toward any build started within 60 days.",
+      "The leak audit is a fixed-price, $1,500 look at how your Arkansas business handles calls, quotes, scheduling, and invoicing. Ninety minutes with the people who touch the phones or the books. You get a written map, every leak costed, ranked by payback, and a straight list of what not to automate. The full fee comes off the first fix if you build it with us.",
     includes: [
       "A full map of your intake, quoting, scheduling, and invoicing flow",
       "Hour and dollar cost assigned to every leak",
       "A prioritized build list: what to automate first and why",
       "Honest verdicts on what not to automate",
       "Tooling recommendations that use what you already pay for",
-      "Full fee credit toward a build started within 60 days",
+      "Full $1,500 credit toward the first fix if you build it with us",
     ],
     process: [
       {
@@ -270,7 +270,7 @@ export const services: Service[] = [
     faqs: [
       {
         q: "Why pay for an audit instead of going straight to a build?",
-        a: "Because the audit is where we find out whether the build pays. Some businesses need the front desk first, some need quote follow-up first, and a few do not need us at all yet. The $999 buys a straight answer with numbers attached.",
+        a: "Because the audit is where we find out whether a fix pays. Some shops need the phone answered first. Some need the second touch on estimates. A few do not need a build yet. The $1,500 buys the map, with the numbers attached.",
       },
       {
         q: "What do I physically receive?",
@@ -278,7 +278,7 @@ export const services: Service[] = [
       },
       {
         q: "Does the fee really credit toward a build?",
-        a: "Yes. Start any done-for-you build within 60 days and the full $999 comes off the setup. Same rule as Front Door.",
+        a: "Yes. If you build the first fix with us, the full $1,500 comes off that price. If you do not build, you keep the map.",
       },
     ],
   },

@@ -22,6 +22,36 @@
       "permanent": true
     },
     {
+      "source": "/ai-consultant/rogers",
+      "destination": "/ai-consultant/northwest-arkansas",
+      "permanent": true
+    },
+    {
+      "source": "/ai-consultant/fayetteville",
+      "destination": "/ai-consultant/northwest-arkansas",
+      "permanent": true
+    },
+    {
+      "source": "/ai-consultant/bentonville",
+      "destination": "/ai-consultant/northwest-arkansas",
+      "permanent": true
+    },
+    {
+      "source": "/ai-consultant/little-rock",
+      "destination": "/ai-consultant/fort-smith",
+      "permanent": true
+    },
+    {
+      "source": "/ai-consultant/conway",
+      "destination": "/ai-consultant/fort-smith",
+      "permanent": true
+    },
+    {
+      "source": "/ai-consultant/hot-springs",
+      "destination": "/ai-consultant/fort-smith",
+      "permanent": true
+    },
+    {
       "source": "/:path+/",
       "destination": "/:path+",
       "permanent": true

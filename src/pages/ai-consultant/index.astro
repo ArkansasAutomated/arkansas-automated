@@ -7,7 +7,7 @@ import { cityBySlug } from "../../data/cities";
 
 const title = "AI Consultant in Arkansas | Arkansas Automated";
 const description =
-  "Andre Brassfield is the AI consultant Arkansas businesses call first. The front door is a $999 operations audit: leaks costed and ranked by payback. Fort Smith, Northwest Arkansas, and central Arkansas.";
+  "Andre Brassfield is the AI consultant for Fort Smith and Northwest Arkansas. Start with a free missed-call test, then a $1,500 leak audit if the recording shows a real leak.";
 
 const site = "https://arkansasautomated.com";
 const pages = consultantCities.map((c) => ({ ...c, city: cityBySlug(c.slug) }));
@@ -46,11 +46,11 @@ const schema = {
         <h1 class="heading-xl measure">AI consultant in Arkansas, by city.</h1>
         <p class="body-lg measure" style="margin-top:1.15rem">
           These pages exist only where we can say something true about the local work.
-          The offer is the same in every city: a $999 operations audit, then a build if the map says it pays.
-          Not a name swapped onto a template.
+          The offer is the same: a free missed-call test, then a $1,500 leak audit if the recording shows a real leak.
+          Fort Smith is its own page. Rogers, Fayetteville, and Bentonville share one.
         </p>
         <div class="hero-ctas" style="margin-top:2rem">
-          <a class="btn btn-primary" href="/audit">Book the audit</a>
+          <a class="btn btn-primary" href="/missed-call-test">Get the missed-call test</a>
           <a class="btn btn-secondary" href="/for">By trade</a>
         </div>
       </div>
@@ -59,6 +59,11 @@ const schema = {
     <section class="section section-tint">
       <div class="container">
         <div class="city-grid">
+          <a class="city-card" href="/ai-consultant/northwest-arkansas">
+            <span class="prop-name">Northwest Arkansas</span>
+            <span class="prop-role">Rogers, Fayetteville, and Bentonville. One page.</span>
+            <span class="city-cta">AI consultant in Northwest Arkansas</span>
+          </a>
           {pages.map((p) => (
             <a class="city-card" href={`/ai-consultant/${p.slug}`}>
               <span class="prop-name">{p.city.name}</span>

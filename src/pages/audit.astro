@@ -9,7 +9,7 @@ import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-pho
 const s = serviceBySlug("operations-audit");
 const title = "AI Operations Audit in Arkansas | Arkansas Automated";
 const description =
-  "The AI operations audit is $999. Ninety minutes in the operation, then a written map of every leak, costed and ranked by payback. The fee credits toward a build started within 60 days. No checkout on this page.";
+  "The leak audit is $1,500. Ninety minutes in the operation, then a written map of every leak, costed and ranked by payback. The full fee comes off the first fix. No checkout on this page.";
 
 const site = "https://arkansasautomated.com";
 const schema = {
@@ -24,9 +24,9 @@ const schema = {
       description: s.answer,
       offers: {
         "@type": "Offer",
-        price: "999",
+        price: "1500",
         priceCurrency: "USD",
-        description: "Flat fee. Credits toward a done-for-you build started within 60 days.",
+        description: "Flat fee. The full amount comes off the first fix if you build it with us.",
       },
     },
     {
@@ -151,15 +151,15 @@ const schema = {
         <div>
           <h2 class="heading-lg">Book the call. Pay later, if you want the map.</h2>
           <p class="body-lg" style="margin-top:1rem">
-            The calendar is the existing discovery call. It does not charge the $999.
+            The calendar does not charge the $1,500.
             If the audit is the wrong shape, we say so on the call.
           </p>
         </div>
         <BookCall
           heading="Book the audit call"
-          body="Pick a time on the live calendar. The audit is $999. This booking does not take payment."
+          body="Pick a time on the live calendar. The audit is $1,500. This booking does not take payment."
           ctaLabel="Pick a time"
-          note="Ninety minutes after we confirm scope. If a free 15-minute look is enough, say that in the notes and we will keep it to fifteen."
+          note="If you want the free test first, use the missed-call form. This calendar is for the $1,500 audit."
         />
       </div>
     </section>
