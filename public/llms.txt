@@ -1,13 +1,15 @@
 # Arkansas Automated
 
-> Arkansas Automated is operated by Brassfield Ventures LLC in Fort Smith. It is not Arkansas Automated Security, LLC of Mayflower. The homepage front door is the AI operations audit: $999, ninety minutes, a written map of the leaks ranked by payback. The fee credits toward a build started within 60 days. Visibility Install is a named build, not the homepage: five fixes on the website the customer already has, $2,500 to start, then $497 a month for 90 days. It does not answer the phone. The AI front desk is a different job at the same published dollars ($2,500 setup + $497/mo) and does answer the phone. Other public prices: Front Door $497, Front Door Wired $1,497, workflow builds $1,500 to $5,000 setup, embedded retainer from $2,000/mo. Public workshop seats are not for sale. Phone (479) 282-3121.
+> Arkansas Automated is Brassfield Ventures LLC in Fort Smith. It is not Arkansas Automated Security, LLC of Mayflower. The current offer is a free missed-call test, then a $1,500 leak audit. The full audit fee comes off the first fix. First fix from $2,500. Advisor retainer from $2,000 a month. Strategy and roadmap from $7,500 for a company with 25 or more people. Phone (479) 282-3121.
 
 ## Start here
 
-- [Homepage](https://arkansasautomated.com/): the AI consultant front door. $999 operations audit. Not a security company.
-- [AI operations audit](https://arkansasautomated.com/audit): ninety minutes, written map, fee credits within 60 days. No checkout on the page.
-- [Visibility Install](https://arkansasautomated.com/services/visibility-install): five fixes on an existing site, $2,500 to start, then $497 a month for 90 days. Does not answer the phone.
-- [AI consultant by city](https://arkansasautomated.com/ai-consultant): Fort Smith, Rogers, Fayetteville, Bentonville, Little Rock, Conway, Hot Springs
+- [Homepage](https://arkansasautomated.com/): AI consultant in Fort Smith. Free missed-call test, then a $1,500 leak audit.
+- [Missed-call test](https://arkansasautomated.com/missed-call-test): call the line after hours, send a short recording. Free.
+- [Leak audit](https://arkansasautomated.com/audit): $1,500. Full fee comes off the first fix. No checkout on the page.
+- [Prices](https://arkansasautomated.com/services): the four paid rungs
+- [Fort Smith](https://arkansasautomated.com/ai-consultant/fort-smith)
+- [Northwest Arkansas](https://arkansasautomated.com/ai-consultant/northwest-arkansas)
 - [AI receptionist by city](https://arkansasautomated.com/ai-receptionist): 25 Arkansas cities, each with the local phone and front-desk detail
 - [Services and pricing](https://arkansasautomated.com/services): all engagement types with public pricing
 - [Vendra](https://arkansasautomated.com/vendra): shopping-center sales reporting for malls and merchants. An Arkansas Automated product. Activation uses a store-specific /join/[token] link issued by the mall team.

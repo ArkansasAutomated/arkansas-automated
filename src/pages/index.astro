@@ -7,11 +7,10 @@ import { AA_PUBLIC_PHONE_E164 } from "../lib/public-phone";
 import { serviceBySlug } from "../data/services";
 
 const audit = serviceBySlug("operations-audit");
-const install = serviceBySlug("visibility-install");
 
-const title = "AI Consultant in Arkansas | Rogers and Fort Smith";
+const title = "AI Consultant in Fort Smith | Arkansas Automated";
 const description =
-  "AI consultant for Rogers and Fort Smith. Andre Brassfield finds the process bleeding money and fixes it with AI. $999 operations audit, credited toward a build within 60 days. Call (479) 282-3121. Not Arkansas Automated Security.";
+  "Andre Brassfield finds the process bleeding money in Fort Smith and Northwest Arkansas businesses and fixes it with AI. Free missed-call test. Leak audit $1,500, credited in full toward the first fix. Call (479) 282-3121.";
 
 const properties = [
   {
@@ -64,9 +63,7 @@ const homeSchema = {
       serviceType: [
         "AI consulting",
         "AI operations audit",
-        "Visibility Install",
         "AI front desk",
-        "Front Door websites",
       ],
     },
     {
@@ -91,18 +88,10 @@ const homeSchema = {
       description: audit.answer,
       offers: {
         "@type": "Offer",
-        price: "999",
+        price: "1500",
         priceCurrency: "USD",
         url: "https://arkansasautomated.com/audit",
       },
-    },
-    {
-      "@type": "Service",
-      name: install.name,
-      provider: { "@type": "ProfessionalService", name: "Arkansas Automated", url: "https://arkansasautomated.com" },
-      areaServed: { "@type": "State", name: "Arkansas" },
-      description: install.answer,
-      url: "https://arkansasautomated.com/services/visibility-install",
     },
     {
       "@type": "FAQPage",

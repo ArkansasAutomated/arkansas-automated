@@ -3,9 +3,15 @@
 All prices public. No sales call required to read the price sheet.
 Last updated: 2026-10-22.
 
-## Homepage front door
+## Current offer
 
-The homepage leads with the AI operations audit below. Visibility Install is still sold. It is no longer the homepage offer.
+- Missed-call test: free. We call the business line after the office is closed and send a short recording.
+- Leak audit: $1,500. Ninety minutes. Written map, leaks costed, ranked by payback. Full fee comes off the first fix.
+- First fix: from $2,500. The one cut at the top of the map.
+- Advisor retainer: from $2,000 a month.
+- Strategy and roadmap: from $7,500, for a company with 25 or more people.
+- Pages: https://arkansasautomated.com/missed-call-test and https://arkansasautomated.com/audit
+- Checkout: the audit is not charged on the website.
 
 ## Visibility Install
 
@@ -44,12 +50,12 @@ The homepage leads with the AI operations audit below. Visibility Install is sti
 
 ## AI Operations Audit
 
-- Price: $999 flat
-- Homepage: https://arkansasautomated.com/ and https://arkansasautomated.com/audit
-- Includes: Full process map of calls, quotes, scheduling, and invoicing; costed leak list; prioritized build plan with ROI math; honest verdicts on what not to automate
-- Session: ninety minutes with the owner and whoever touches the phones or the books
-- Credit: Full fee credited toward any done-for-you build started within 60 days
-- Checkout: not on the website. Book the discovery call, then pay if you want the map.
+- Price: $1,500
+- Homepage: https://arkansasautomated.com/audit
+- Includes: written map of calls, quotes, scheduling, and invoicing; costed leak list; what not to automate
+- Session: ninety minutes
+- Credit: full fee comes off the first fix if you build it with us
+- Checkout: not on the website
 
 ## AI Front Desk (done for you)
 

@@ -4,7 +4,6 @@
  * within one click of every page (no orphans, hub-and-spoke per the
  * site-architecture skill).
  */
-import { cities } from "../data/cities";
 import { industries } from "../data/industries";
 import { AA_PUBLIC_PHONE_DISPLAY, AA_PUBLIC_PHONE_HREF } from "../lib/public-phone";
 
@@ -15,9 +14,6 @@ const properties = [
   { name: "Good Garage Co.", url: "https://goodgarageco.com" },
 ];
 
-const footerCities = cities.filter((c) =>
-  ["fort-smith", "fayetteville", "rogers", "little-rock", "conway", "hot-springs"].includes(c.slug),
-);
 const footerIndustries = industries.filter((i) =>
   ["plumbers", "hvac", "roofers", "dentists", "law-firms"].includes(i.slug),
 );
@@ -29,17 +25,17 @@ const footerIndustries = industries.filter((i) =>
       <div>
         <div class="brand">Arkansas <span class="accent">Automated</span></div>
         <p class="body-lg" style="margin-top:0.9rem;max-width:32ch;font-size:1rem">
-          The front door is the $999 operations audit. Find the leak, then build the one that pays.
-          Visibility Install stays a named build. It does not answer the phone.
+          AI consultant in Fort Smith. Free missed-call test. Leak audit $1,500.
+          The full fee comes off the first fix.
         </p>
         <p class="footer-phone"><a href={AA_PUBLIC_PHONE_HREF}>{AA_PUBLIC_PHONE_DISPLAY}</a></p>
       </div>
-      <nav class="footer-col" aria-label="AI receptionist">
-        <h2>AI receptionist</h2>
-        {footerCities.map((c) => <a href={`/ai-receptionist/${c.slug}`}>{c.name}</a>)}
-        <a href="/ai-receptionist">All {cities.length} cities</a>
-        <a href="/ai-workshops">Workshops by city</a>
-        <a href="/workshop">Workshop wait-list</a>
+      <nav class="footer-col" aria-label="Where">
+        <h2>Where</h2>
+        <a href="/ai-consultant/fort-smith">Fort Smith</a>
+        <a href="/ai-consultant/northwest-arkansas">Northwest Arkansas</a>
+        <a href="/missed-call-test">Missed-call test</a>
+        <a href="/audit">Leak audit</a>
       </nav>
       <nav class="footer-col" aria-label="Industries">
         <h2>Industries</h2>
@@ -48,18 +44,14 @@ const footerIndustries = industries.filter((i) =>
       </nav>
       <nav class="footer-col" aria-label="Company">
         <h2>Company</h2>
-        <a href="/audit">Operations audit</a>
-        <a href="/ai-consultant">AI consultant by city</a>
-        <a href="/services/visibility-install">Visibility Install</a>
-        <a href="/services">Services and pricing</a>
-        <a href="/vendra">Vendra sales reporting</a>
+        <a href="/missed-call-test">Missed-call test</a>
+        <a href="/audit">Leak audit</a>
+        <a href="/services">Prices</a>
         <a href="/fix">Problems we fix</a>
         <a href="/forward-deployed-ai-engineer">Forward deployed AI</a>
         <a href="/learn">Learn</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
-        <a href="/services/front-door">Front Door $497</a>
-        <a href="/list-your-business">List your business</a>
       </nav>
       <nav class="footer-col" aria-label="Network">
         <h2>Network</h2>
